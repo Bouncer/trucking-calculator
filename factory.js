@@ -19,7 +19,7 @@ import { BuildTarget } from "./target.js"
 import { Totals } from "./totals.js"
 import { renderTotals } from "./visualize.js"
 
-const DEFAULT_ITEM_KEY = "supercomputer"
+const DEFAULT_ITEM_KEY = "scrap-aluminium"
 
 let minerCategories = new Set(["mineral", "oil"])
 
@@ -136,7 +136,8 @@ class FactorySpecification {
         }
     }
     getOverclock(recipe) {
-        return this.overclock.get(recipe) || one
+        return one;
+        //return this.overclock.get(recipe) || one
     }
     setOverclock(recipe, overclock) {
         if (overclock.equal(one)) {
@@ -155,7 +156,8 @@ class FactorySpecification {
         return building.getRecipeRate(this, recipe)
     }
     getResourcePurity(recipe) {
-        return this.minerSettings.get(recipe).purity
+        return one;
+        //return this.minerSettings.get(recipe).purity
     }
     setMiner(recipe, miner, purity) {
         this.minerSettings.set(recipe, {miner, purity})

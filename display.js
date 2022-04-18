@@ -43,9 +43,9 @@ let displayedItems = []
 
 export function displayItems(spec, totals, ignore) {
     let headers = [
-        new Header("items/" + spec.format.rateName, 2),
-        new Header("belts", 2),
-        new Header("buildings", 2),
+        new Header("cargo/" + spec.format.rateName, 2),
+        new Header("trucks", 2),
+        new Header("locations", 2),
         new Header("overclock", 1),
         new Header("power", 1),
     ]
@@ -106,7 +106,7 @@ export function displayItems(spec, totals, ignore) {
             .attr("height", 32)
             .on("click", toggleIgnoreHandler)
     row.append("td")
-        .classed("right-align", true)
+        .classed("left-align", true)
         .append("tt")
             .classed("item-rate", true)
     // belts
@@ -163,7 +163,7 @@ export function displayItems(spec, totals, ignore) {
         .attr("src", d => d.item.iconPath())
         .attr("title", d => d.item.name)
     row.selectAll("tt.item-rate")
-        .text(d => spec.format.alignRate(d.itemRate))
+        .text(d => d.item.name)
     row.selectAll("img.belt-icon")
         .attr("src", spec.belt.iconPath())
         .attr("title", spec.belt.name)
@@ -174,7 +174,7 @@ export function displayItems(spec, totals, ignore) {
         .attr("src", d => d.building.iconPath())
         .attr("title", d => d.building.name)
     buildingRow.selectAll("tt.building-count")
-        .text(d => spec.format.alignCount(d.count))
+        .text(d => d.building.name)
     buildingRow.selectAll("input.overclock")
         .attr("value", d => d.overclock)
     buildingRow.selectAll("tt.power")

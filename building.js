@@ -29,7 +29,7 @@ class Building {
         return recipe.time.reciprocate().mul(overclock)
     }
     iconPath() {
-        return "images/" + this.name + ".png"
+        return "images/" + this.category + ".png"
     }
 }
 
@@ -41,7 +41,8 @@ class Miner extends Building {
     getRecipeRate(spec, recipe) {
         let purity = spec.getResourcePurity(recipe)
         let overclock = spec.getOverclock(recipe)
-        return this.baseRate.mul(purity.factor).mul(overclock)
+        return purity;
+        //return this.baseRate.mul(purity.factor).mul(overclock)
     }
 }
 

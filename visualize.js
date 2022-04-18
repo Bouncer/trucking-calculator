@@ -124,6 +124,7 @@ function rankHeightEstimate(rank, valueFactor) {
 }
 
 function nodeText(d) {
+    return d.name;
     if (d.count.isZero()) {
         if (d.rate === null) {
             return ""
@@ -249,13 +250,14 @@ export function renderTotals(totals, targets, ignore) {
             .attr("y", d => d.y0 + (d.y1 - d.y0) / 2 - (iconSize / 2))
             .attr("height", iconSize)
             .attr("width", iconSize)
-            .attr("xlink:href", d => d.recipe.iconPath())
+            .attr("xlink:href", d => (d.count.isZero() ? d.count : `${d.building.iconPath()}`))
     rects.append("text")
         .attr("x", d => d.x0 + iconSize + 2)
         .attr("y", d => (d.y0 + d.y1) / 2)
         .attr("dy", "0.35em")
         .attr("text-anchor", "start")
-        .text(nodeText)
+        .text(d => (d.count.isZero() ? d.count : `${d.building.name}`))
+        //.text(nodeText)
 
     // Link paths
     let link = svg.append("g")
@@ -289,7 +291,7 @@ export function renderTotals(totals, targets, ignore) {
         .attr("y", d => d.y0)
         .attr("dy", "0.35em")
         .attr("text-anchor", "start")
-        .text(d => spec.format.rate(d.rate) + "/" + spec.format.rateName)
+        .text(d => `${d.source.name}`)
 
     // Overlay transparent rect on top of each node, for click events.
     let rectElements = svg.selectAll("g.node").nodes()
