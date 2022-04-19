@@ -96,14 +96,16 @@ export class BuildTarget {
 
         targetCount++
 
+        /*
         this.buildingLabel = element.append("label")
             .classed(SELECTED_INPUT, true)
             .text(" Buildings: ")
             .node()
+        */
 
         this.buildingInput = element.append("input")
             .on("change", changeBuildingCountHandler(this))
-            .attr("type", "text")
+            .attr("type", "hidden")
             .attr("value", 1)
             .attr("size", 3)
             .attr("title", "Enter a value to specify the number of buildings. The rate will be determined based on the number of items a single building can make.")
@@ -122,7 +124,7 @@ export class BuildTarget {
             .node()
     }
     setRateLabel() {
-        this.rateLabel.textContent = " Items/" + spec.format.longRate + ": "
+        this.rateLabel.textContent = " Amount: ";// + spec.format.longRate + ": "
     }
     getRate() {
         this.setRateLabel()
@@ -152,7 +154,7 @@ export class BuildTarget {
     }
     buildingsChanged() {
         this.changedBuilding = true
-        this.buildingLabel.classList.add(SELECTED_INPUT)
+        //this.buildingLabel.classList.add(SELECTED_INPUT)
         this.rateLabel.classList.remove(SELECTED_INPUT)
         this.buildings = Rational.from_string(this.buildingInput.value)
         this.rate = zero
@@ -164,7 +166,7 @@ export class BuildTarget {
     }
     rateChanged() {
         this.changedBuilding = false
-        this.buildingLabel.classList.remove(SELECTED_INPUT)
+        //this.buildingLabel.classList.remove(SELECTED_INPUT)
         this.rateLabel.classList.add(SELECTED_INPUT)
         this.buildings = zero
         this.rate = Rational.from_string(this.rateInput.value).div(spec.format.rateFactor)

@@ -19,7 +19,7 @@ import { BuildTarget } from "./target.js"
 import { Totals } from "./totals.js"
 import { renderTotals } from "./visualize.js"
 
-const DEFAULT_ITEM_KEY = "scrap-aluminium"
+const DEFAULT_ITEM_KEY = "battery"
 
 let minerCategories = new Set(["mineral", "oil"])
 

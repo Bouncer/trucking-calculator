@@ -266,7 +266,7 @@ export function renderTotals(totals, targets, ignore) {
             .attr("width", iconSize)
             .attr("xlink:href", d => (d.count.isZero() ? d.count : `${d.building.iconPath()}`))
     rects.append("text")
-        .attr("x", d => d.x0 + iconSize + 2)
+        .attr("x", d => d.x0 + iconSize + 4)
         .attr("y", d => (d.y0 + d.y1) / 2)
         .attr("dy", "0.35em")
         .attr("text-anchor", "start")
