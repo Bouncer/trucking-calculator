@@ -23,6 +23,19 @@ const nodePadding = 20
 const columnWidth = 150
 const maxNodeHeight = 200
 
+const colorList = [
+    "#1f77b4", // blue
+    "#8c564b", // brown
+    "#2ca02c", // green
+    "#d62728", // red
+    "#9467bd", // purple
+    "#e377c2", // pink
+    "#17becf", // cyan
+    "#7f7f7f", // gray
+    "#bcbd22", // yellow
+    "#ff7f0e", // orange
+]
+
 function makeGraph(totals, targets, ignore) {
     let outputs = []
     let rates = new Map()
@@ -41,8 +54,8 @@ function makeGraph(totals, targets, ignore) {
     let nodes = [{
         "name": "output",
         "ingredients": outputs,
-        "building": null,
-        "count": zero,
+        "building": {"name":"Output"},
+        "count": one,
         "rate": null,
     }]
     let nodeMap = new Map()
@@ -158,7 +171,7 @@ function beltPath(d) {
     return `M ${x0},${y0belt} C ${x_control},${y0belt},${x_control},${y1belt},${x1},${y1belt}`
 }
 
-let color = d3.scaleOrdinal(d3.schemeCategory10)
+let color = d3.scaleOrdinal(colorList)
 
 export function renderTotals(totals, targets, ignore) {
     let data = makeGraph(totals, targets, ignore)
@@ -243,6 +256,7 @@ export function renderTotals(totals, targets, ignore) {
         .attr("height", d => d.y1 - d.y0)
         .attr("width", d => d.x1 - d.x0)
         .attr("fill", d => d3.color(color(d.name)).darker())
+        .attr("stroke", d => d3.color(color(d.name)))
     rects.filter(d => d.name != "output")
         .append("image")
             .classed("ignore", d => ignore.has(d.recipe))

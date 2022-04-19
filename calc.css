@@ -211,7 +211,6 @@ div.graph {
     min-width: max-content;
 }
 g.node rect {
-    stroke: var(--foreground);
     stroke-width: 1px;
 }
 g.overlay {
