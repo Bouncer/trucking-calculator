@@ -72,9 +72,10 @@ export class BuildTarget {
         let itemSpan = dropdown.selectAll("div")
             .data(tiers)
             .join("div")
+                .attr("class","menu-group")
                 .selectAll("span")
                 .data(d => d)
-                .join("span")
+                .join("div")
         let itemLabel = addInputs(
             itemSpan,
             `target-${targetCount}`,
@@ -82,12 +83,16 @@ export class BuildTarget {
             itemHandler(this),
         )
 
+        /*
         itemLabel.append("img")
             .classed("icon", true)
             .attr("src", d => d.iconPath())
             //.attr("width", 32)
             //.attr("height", 32)
             .attr("title", d => d.name)
+        */
+        itemLabel.attr("class","menu-item")
+            .text(d => d.name)
 
         targetCount++
 

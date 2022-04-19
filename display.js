@@ -43,11 +43,11 @@ let displayedItems = []
 
 export function displayItems(spec, totals, ignore) {
     let headers = [
-        new Header("cargo/" + spec.format.rateName, 2),
-        new Header("trucks", 2),
-        new Header("locations", 2),
-        new Header("overclock", 1),
-        new Header("power", 1),
+        new Header("Cargo",2),///" + spec.format.rateName, 2),
+        new Header("Trips", 2),
+        new Header("Location", 2),
+        new Header("", 1),
+        new Header("", 1),
     ]
     let totalCols = 0
     for (let header of headers) {
@@ -112,10 +112,12 @@ export function displayItems(spec, totals, ignore) {
     // belts
     let beltCell = row.append("td")
         .classed("pad", true)
+    /*
     beltCell.append("img")
         .classed("icon belt-icon", true)
         .attr("width", 32)
         .attr("height", 32)
+    */
     beltCell.append(d => new Text(" \u00d7"))
     row.append("td")
         .classed("right-align", true)
@@ -128,9 +130,9 @@ export function displayItems(spec, totals, ignore) {
         .classed("icon building-icon", true)
         .attr("width", 32)
         .attr("height", 32)
-    buildingCell.append(d => new Text(" \u00d7"))
+    buildingCell.append(d => new Text(""))
     row.append("td")
-        .classed("right-align building", true)
+        .classed("left-align building", true)
         .append("tt")
             .classed("building-count", true)
     /*
@@ -139,6 +141,7 @@ export function displayItems(spec, totals, ignore) {
             .attr("colspan", 4)
     */
     // overclock
+    /*
     let overclockCell = row.append("td")
         .classed("pad building", true)
     overclockCell.append("input")
@@ -154,6 +157,7 @@ export function displayItems(spec, totals, ignore) {
         .classed("right-align pad building", true)
         .append("tt")
             .classed("power", true)
+    */
 
     // update rows
     row = table.select("tbody").selectAll("tr")
@@ -164,9 +168,9 @@ export function displayItems(spec, totals, ignore) {
         .attr("title", d => d.item.name)
     row.selectAll("tt.item-rate")
         .text(d => d.item.name)
-    row.selectAll("img.belt-icon")
-        .attr("src", spec.belt.iconPath())
-        .attr("title", spec.belt.name)
+//    row.selectAll("img.belt-icon")
+//        .attr("src", spec.belt.iconPath())
+//        .attr("title", spec.belt.name)
     row.selectAll("tt.belt-count")
         .text(d => spec.format.alignCount(spec.getBeltCount(d.itemRate)))
     let buildingRow = row.filter(d => d.building !== null)
@@ -179,12 +183,12 @@ export function displayItems(spec, totals, ignore) {
         .attr("value", d => d.overclock)
     buildingRow.selectAll("tt.power")
         .text(d => spec.format.alignCount(d.average) + " MW")
-
+    
     let totalPower = [totalAveragePower, totalPeakPower]
     let footerRow = table.selectAll("tfoot tr")
     footerRow.select("td.power-label")
         .attr("colspan", totalCols - 1)
     footerRow.select("tt")
         .data(totalPower)
-        .text(d => spec.format.alignCount(d) + " MW")
+        .text(d => spec.format.alignCount(d) + "")
 }

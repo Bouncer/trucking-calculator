@@ -16,12 +16,12 @@ import { spec } from "./factory.js"
 import { Rational, zero, one } from "./rational.js"
 import { Ingredient } from "./recipe.js"
 
-const iconSize = 48
+const iconSize = 24
 
 const nodePadding = 20
 
 const columnWidth = 150
-const maxNodeHeight = 175
+const maxNodeHeight = 200
 
 function makeGraph(totals, targets, ignore) {
     let outputs = []
@@ -291,7 +291,7 @@ export function renderTotals(totals, targets, ignore) {
         .attr("y", d => d.y0)
         .attr("dy", "0.35em")
         .attr("text-anchor", "start")
-        .text(d => `${d.source.name}`)
+        .text(d => `${spec.format.rate(d.rate)}x ${d.source.name}`)
 
     // Overlay transparent rect on top of each node, for click events.
     let rectElements = svg.selectAll("g.node").nodes()

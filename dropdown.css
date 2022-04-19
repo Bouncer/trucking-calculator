@@ -87,3 +87,9 @@
     background-color: var(--light);
     pointer-events: auto;
 }
+.menu-group {
+    float: left;
+}
+.menu-item {
+    padding: 2px;
+}

@@ -204,7 +204,7 @@ div.tabs button.active, div.tabs button.active:hover {
 div.tab {
     display: none;
     padding: 1em;
-    background-color: var(--main);
+    background-color: #474646;
 }
 /* visualizer */
 div.graph {

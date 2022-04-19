@@ -44,7 +44,8 @@ export class Item {
         return totals
     }
     iconPath() {
-        return "images/" + this.name + ".png"
+        return "images/item.png"
+        //return "images/" + this.name + ".png"
     }
 }
 

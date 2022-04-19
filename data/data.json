@@ -138,6 +138,13 @@
             "category": "chemical-laboratories",
             "power": "1",
             "max": "1"
+        },
+        {
+            "name": "Jewelry Store",
+            "key-name": "jewelry-store",
+            "category": "jewelry-store",
+            "power": "1",
+            "max": "1"
         }
     ],
     "miners": [
@@ -151,7 +158,7 @@
     {
         "name": "Quarry",
         "key-name": "quarry",
-        "category": "quarry",
+        "category": "quarry-resource",
         "base-rate": "60",
         "power": "5"
     },
@@ -756,6 +763,14 @@
             "category": "special",
             "weight": "45",
             "stack_size": "200"
+        },
+        {
+            "name": "Cash",
+            "key_name": "cash",
+            "tier": "2",
+            "category": "special",
+            "weight": "45",
+            "stack_size": "200"
         }
     ],
     "recipes": [
@@ -802,6 +817,105 @@
         "weight": "100",
         "cost": "1000",
         "pays": ""
+    },
+    {
+        "name": "Jewelry Store",
+        "key_name": "jewelry-store",
+        "category": "jewelry-store",
+        "time": 1,
+        "ingredients": [["jewelry",1]],
+        "product": ["cash",1],
+        "weight": "",
+        "cost": "",
+        "pays": "100"
+    },
+    {
+        "name": "Refined Zinc",
+        "key_name": "refined-zinc",
+        "category": "ls-foundry",
+        "time": 1,
+        "ingredients": [["raw-ore-mix",2]],
+        "product": ["refined-zinc",1],
+        "weight": "",
+        "cost": "",
+        "pays": "100"
+    },
+    {
+        "name": "Refined Solder",
+        "key_name": "refined-solder",
+        "category": "ls-foundry",
+        "time": 1,
+        "ingredients": [["scrap-lead",2],["refined-aluminium",2]],
+        "product": ["refined-solder",8],
+        "weight": "",
+        "cost": "",
+        "pays": "100"
+    },
+    {
+        "name": "Scrap Lead",
+        "key_name": "scrap-lead",
+        "category": "filtering-plant",
+        "time": 1,
+        "ingredients": [["toxic-waste",1]],
+        "product": ["scrap-lead",2],
+        "weight": "",
+        "cost": "",
+        "pays": "100"
+    },
+    {
+        "name": "Acid",
+        "key_name": "acid",
+        "category": "filtering-plant",
+        "time": 1,
+        "ingredients": [["toxic-waste",1]],
+        "product": ["acid",4],
+        "weight": "",
+        "cost": "",
+        "pays": "100"
+    },
+    {
+        "name": "Refined Aluminium",
+        "key_name": "refined-aluminium",
+        "category": "ls-foundry",
+        "time": 1,
+        "ingredients": [["scrap-aluminium",2]],
+        "product": ["refined-aluminium",1],
+        "weight": "",
+        "cost": "",
+        "pays": "100"
+    },
+    {
+        "name": "Scrap Aluminium",
+        "key_name": "scrap-aluminium",
+        "category": "sorting-facility",
+        "time": 1,
+        "ingredients": [["recycled-trash",1]],
+        "product": ["scrap-aluminium",4],
+        "weight": "",
+        "cost": "",
+        "pays": "100"
+    },
+    {
+        "name": "Raw Ore Mix",
+        "key_name": "raw-ore-mix",
+        "category": "filtering-plant",
+        "time": 1,
+        "ingredients": [["quarry-rubble",1]],
+        "product": ["raw-ore-mix",4],
+        "weight": "",
+        "cost": "",
+        "pays": "100"
+    },
+    {
+        "name": "Battery",
+        "key_name": "battery",
+        "category": "ls-factory",
+        "time": 1,
+        "ingredients": [["refined-zinc",2],["refined-solder",4],["acid",8]],
+        "product": ["battery",2],
+        "weight": "",
+        "cost": "",
+        "pays": "100"
     }
 ],
     "resources": [
@@ -811,7 +925,7 @@
         },
         {
             "key_name": "quarry-rubble",
-            "category": "quarry"
+            "category": "quarry-resource"
         },
         {
             "key_name": "toxic-waste",
