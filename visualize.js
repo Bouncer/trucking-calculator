@@ -16,7 +16,7 @@ import { spec } from "./factory.js"
 import { Rational, zero, one } from "./rational.js"
 import { Ingredient } from "./recipe.js"
 
-const iconSize = 24
+const iconSize = 20
 
 const nodePadding = 20
 
