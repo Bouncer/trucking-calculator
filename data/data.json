@@ -21,9 +21,9 @@
             "rate": 480
         },
         {
-            "name": "Conveyor Belt Mk.5",
+            "name": "MK14",
             "key_name": "belt5",
-            "rate": 780
+            "rate": 9000
         }
     ],
     "buildings": [
@@ -143,6 +143,13 @@
             "name": "Jewelry Store",
             "key-name": "jewelry-store",
             "category": "jewelry-store",
+            "power": "1",
+            "max": "1"
+        },
+        {
+            "name": "House Construction Site",
+            "key-name": "house-construction-site",
+            "category": "house-construction-site",
             "power": "1",
             "max": "1"
         }
@@ -291,14 +298,6 @@
             "category": "commercial",
             "weight": "30",
             "stack_size": "300"
-        },
-        {
-            "name": "Copper Wire Spool",
-            "key_name": "copper-wire-spool",
-            "tier": "1",
-            "category": "commercial",
-            "weight": "20",
-            "stack_size": "450"
         },
         {
             "name": "Fiberglass Spool",
@@ -763,159 +762,864 @@
             "category": "special",
             "weight": "45",
             "stack_size": "200"
-        },
-        {
-            "name": "Cash",
-            "key_name": "cash",
-            "tier": "2",
-            "category": "special",
-            "weight": "45",
-            "stack_size": "200"
         }
     ],
     "recipes": [
-    {
-        "name": "Scrap Gold",
-        "key_name": "scrap-gold",
-        "category": "sorting-facility",
-        "time": 1,
-        "ingredients": [["recycled-electronics",1]],
-        "product": ["scrap-gold",1],
-        "weight": "",
-        "cost": "",
-        "pays": ""
-    },
-    {
-        "name": "Raw Emeralds",
-        "key_name": "raw-emeralds",
-        "category": "filtering-plant",
-        "time": 1,
-        "ingredients": [["quarry-rubble",1]],
-        "product": ["raw-emeralds",1],
-        "weight": "",
-        "cost": "",
-        "pays": ""
-    },
-    {
-        "name": "Jewelry",
-        "key_name": "jewelry",
-        "category": "ls-factory",
-        "time": 1,
-        "ingredients": [["raw-emeralds",1],["refined-gold",2]],
-        "product": ["jewelry",2],
-        "weight": "10",
-        "cost": "5000",
-        "pays": ""
-    },
-    {
-        "name": "Refined Gold",
-        "key_name": "refined-gold",
-        "category": "ls-foundry",
-        "time": 1,
-        "ingredients": [["scrap-gold",10]],
-        "product": ["refined-gold",5],
-        "weight": "100",
-        "cost": "1000",
-        "pays": ""
-    },
-    {
-        "name": "Jewelry Store",
-        "key_name": "jewelry-store",
-        "category": "jewelry-store",
-        "time": 1,
-        "ingredients": [["jewelry",1]],
-        "product": ["cash",1],
-        "weight": "",
-        "cost": "",
-        "pays": "100"
-    },
-    {
-        "name": "Refined Zinc",
-        "key_name": "refined-zinc",
-        "category": "ls-foundry",
-        "time": 1,
-        "ingredients": [["raw-ore-mix",2]],
-        "product": ["refined-zinc",1],
-        "weight": "",
-        "cost": "",
-        "pays": "100"
-    },
-    {
-        "name": "Refined Solder",
-        "key_name": "refined-solder",
-        "category": "ls-foundry",
-        "time": 1,
-        "ingredients": [["scrap-lead",2],["refined-aluminium",2]],
-        "product": ["refined-solder",8],
-        "weight": "",
-        "cost": "",
-        "pays": "100"
-    },
-    {
-        "name": "Scrap Lead",
-        "key_name": "scrap-lead",
-        "category": "filtering-plant",
-        "time": 1,
-        "ingredients": [["toxic-waste",1]],
-        "product": ["scrap-lead",2],
-        "weight": "",
-        "cost": "",
-        "pays": "100"
-    },
     {
         "name": "Acid",
         "key_name": "acid",
         "category": "filtering-plant",
         "time": 1,
-        "ingredients": [["toxic-waste",1]],
-        "product": ["acid",4],
-        "weight": "",
-        "cost": "",
-        "pays": "100"
-    },
-    {
-        "name": "Refined Aluminium",
-        "key_name": "refined-aluminium",
-        "category": "ls-foundry",
-        "time": 1,
-        "ingredients": [["scrap-aluminium",2]],
-        "product": ["refined-aluminium",1],
-        "weight": "",
-        "cost": "",
-        "pays": "100"
-    },
-    {
-        "name": "Scrap Aluminium",
-        "key_name": "scrap-aluminium",
-        "category": "sorting-facility",
-        "time": 1,
-        "ingredients": [["recycled-trash",1]],
-        "product": ["scrap-aluminium",4],
-        "weight": "",
-        "cost": "",
-        "pays": "100"
-    },
-    {
-        "name": "Raw Ore Mix",
-        "key_name": "raw-ore-mix",
-        "category": "filtering-plant",
-        "time": 1,
-        "ingredients": [["quarry-rubble",1]],
-        "product": ["raw-ore-mix",4],
-        "weight": "",
-        "cost": "",
-        "pays": "100"
+        "ingredients": [
+            [
+                "toxic-waste",
+                1
+            ]
+        ],
+        "product": [
+            "acid",
+            4
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 0
     },
     {
         "name": "Battery",
         "key_name": "battery",
         "category": "ls-factory",
         "time": 1,
-        "ingredients": [["refined-zinc",2],["refined-solder",4],["acid",8]],
-        "product": ["battery",2],
-        "weight": "",
-        "cost": "",
-        "pays": "100"
+        "ingredients": [
+            [
+                "refined-zinc",
+                2
+            ],
+            [
+                "refined-solder",
+                4
+            ],
+            [
+                "acid",
+                8
+            ]
+        ],
+        "product": [
+            "battery",
+            2
+        ],
+        "weight": 60,
+        "cost": 5000,
+        "pays": 0
+    },
+    {
+        "name": "Bronze Alloy",
+        "key_name": "bronze-alloy",
+        "category": "ls-foundry",
+        "time": 1,
+        "ingredients": [
+            [
+                "scrap-aluminium",
+                1
+            ],
+            [
+                "scrap-tin",
+                1
+            ],
+            [
+                "scrap-copper",
+                2
+            ]
+        ],
+        "product": [
+            "bronze-alloy",
+            2
+        ],
+        "weight": 20,
+        "cost": 1000,
+        "pays": 0
+    },
+    {
+        "name": "Cement Mix",
+        "key_name": "cement-mix",
+        "category": "quarry",
+        "time": 1,
+        "ingredients": [
+            [
+                "sand",
+                5
+            ],
+            [
+                "sawdust",
+                2
+            ]
+        ],
+        "product": [
+            "cement-mix",
+            1
+        ],
+        "weight": 25,
+        "cost": 1500,
+        "pays": 0
+    },
+    {
+        "name": "Ceramic Tiles",
+        "key_name": "ceramic-tiles",
+        "category": "ls-foundry",
+        "time": 1,
+        "ingredients": [
+            [
+                "sand",
+                2
+            ],
+            [
+                "flint",
+                10
+            ]
+        ],
+        "product": [
+            "ceramic-tiles",
+            2
+        ],
+        "weight": 20,
+        "cost": 1000,
+        "pays": 0
+    },
+    {
+        "name": "Circuit Board",
+        "key_name": "circuit-board",
+        "category": "ls-factory",
+        "time": 1,
+        "ingredients": [
+            [
+                "scrap-plastic",
+                10
+            ],
+            [
+                "refined-solder",
+                2
+            ],
+            [
+                "copper-wire",
+                1
+            ]
+        ],
+        "product": [
+            "circuit-board",
+            2
+        ],
+        "weight": 40,
+        "cost": 5000,
+        "pays": 0
+    },
+    {
+        "name": "Computer",
+        "key_name": "computer",
+        "category": "ls-factory",
+        "time": 1,
+        "ingredients": [
+            [
+                "circuit-board",
+                1
+            ],
+            [
+                "scrap-gold",
+                2
+            ],
+            [
+                "battery",
+                1
+            ]
+        ],
+        "product": [
+            "computer",
+            2
+        ],
+        "weight": 70,
+        "cost": 5000,
+        "pays": 0
+    },
+    {
+        "name": "Concrete",
+        "key_name": "concrete",
+        "category": "filtering-plant",
+        "time": 1,
+        "ingredients": [
+            [
+                "cement-mix",
+                5
+            ],
+            [
+                "treated-water",
+                1
+            ]
+        ],
+        "product": [
+            "concrete",
+            1
+        ],
+        "weight": 160,
+        "cost": 15000,
+        "pays": 0
+    },
+    {
+        "name": "Copper Wire",
+        "key_name": "copper-wire",
+        "category": "ls-factory",
+        "time": 1,
+        "ingredients": [
+            [
+                "planks",
+                1
+            ],
+            [
+                "refined-copper",
+                4
+            ]
+        ],
+        "product": [
+            "copper-wire",
+            2
+        ],
+        "weight": 40,
+        "cost": 5000,
+        "pays": 0
+    },
+    {
+        "name": "Fiberglass Spool",
+        "key_name": "fiberglass-spool",
+        "category": "ls-factory",
+        "time": 1,
+        "ingredients": [
+            [
+                "planks",
+                1
+            ],
+            [
+                "scrap-plastic",
+                8
+            ],
+            [
+                "glass",
+                4
+            ]
+        ],
+        "product": [
+            "fiberglass-spool",
+            2
+        ],
+        "weight": 40,
+        "cost": 5000,
+        "pays": 0
+    },
+    {
+        "name": "Flint",
+        "key_name": "flint",
+        "category": "filtering-plant",
+        "time": 1,
+        "ingredients": [
+            [
+                "gravel",
+                10
+            ]
+        ],
+        "product": [
+            "flint",
+            4
+        ],
+        "weight": 50,
+        "cost": 15000,
+        "pays": 0
+    },
+    {
+        "name": "Glass",
+        "key_name": "glass",
+        "category": "ls-foundry",
+        "time": 1,
+        "ingredients": [
+            [
+                "sand",
+                1
+            ]
+        ],
+        "product": [
+            "glass",
+            1
+        ],
+        "weight": 5,
+        "cost": 1000,
+        "pays": 0
+    },
+    {
+        "name": "Gravel",
+        "key_name": "gravel",
+        "category": "filtering-plant",
+        "time": 1,
+        "ingredients": [
+            [
+                "quarry-rubble",
+                1
+            ]
+        ],
+        "product": [
+            "gravel",
+            12
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 0
+    },
+    {
+        "name": "House",
+        "key_name": "house",
+        "category": "house-construction-site",
+        "time": 1,
+        "ingredients": [
+            [
+                "ceramic-tiles",
+                4
+            ],
+            [
+                "concrete",
+                1
+            ],
+            [
+                "planks",
+                2
+            ],
+            [
+                "copper-wire",
+                1
+            ],
+            [
+                "computer",
+                1
+            ],
+            [
+                "rebar",
+                1
+            ]
+        ],
+        "product": [
+            "house",
+            1
+        ],
+        "weight": 330,
+        "cost": 0,
+        "pays": 0
+    },
+    {
+        "name": "Jewelry",
+        "key_name": "jewelry",
+        "category": "ls-factory",
+        "time": 1,
+        "ingredients": [
+            [
+                "raw-emeralds",
+                1
+            ],
+            [
+                "refined-gold",
+                2
+            ]
+        ],
+        "product": [
+            "jewelry",
+            2
+        ],
+        "weight": 10,
+        "cost": 5000,
+        "pays": 0
+    },
+    {
+        "name": "Planks",
+        "key_name": "planks",
+        "category": "sawmill",
+        "time": 1,
+        "ingredients": [
+            [
+                "logs",
+                1
+            ]
+        ],
+        "product": [
+            "planks",
+            1
+        ],
+        "weight": 21,
+        "cost": 500,
+        "pays": 0
+    },
+    {
+        "name": "Raw Emeralds",
+        "key_name": "raw-emeralds",
+        "category": "filtering-plant",
+        "time": 1,
+        "ingredients": [
+            [
+                "quarry-rubble",
+                1
+            ]
+        ],
+        "product": [
+            "raw-emeralds",
+            1
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 0
+    },
+    {
+        "name": "Raw Ore Mix",
+        "key_name": "raw-ore-mix",
+        "category": "filtering-plant",
+        "time": 1,
+        "ingredients": [
+            [
+                "quarry-rubble",
+                1
+            ]
+        ],
+        "product": [
+            "raw-ore-mix",
+            4
+        ],
+        "weight": 130,
+        "cost": 15000,
+        "pays": 0
+    },
+    {
+        "name": "Rebar",
+        "key_name": "rebar",
+        "category": "ls-factory",
+        "time": 1,
+        "ingredients": [
+            [
+                "refined-amalgam",
+                6
+            ],
+            [
+                "bronze-alloy",
+                2
+            ]
+        ],
+        "product": [
+            "rebar",
+            2
+        ],
+        "weight": 90,
+        "cost": 5000,
+        "pays": 0
+    },
+    {
+        "name": "Refined Aluminium",
+        "key_name": "refined-aluminium",
+        "category": "ls-foundry",
+        "time": 1,
+        "ingredients": [
+            [
+                "scrap-aluminium",
+                2
+            ]
+        ],
+        "product": [
+            "refined-aluminium",
+            1
+        ],
+        "weight": 10,
+        "cost": 1000,
+        "pays": 0
+    },
+    {
+        "name": "Refined Amalgam",
+        "key_name": "refined-amalgam",
+        "category": "ls-foundry",
+        "time": 1,
+        "ingredients": [
+            [
+                "scrap-mercury",
+                2
+            ],
+            [
+                "refined-tin",
+                2
+            ]
+        ],
+        "product": [
+            "refined-amalgam",
+            2
+        ],
+        "weight": 30,
+        "cost": 1000,
+        "pays": 0
+    },
+    {
+        "name": "Refined Copper",
+        "key_name": "refined-copper",
+        "category": "ls-foundry",
+        "time": 1,
+        "ingredients": [
+            [
+                "scrap-copper",
+                2
+            ]
+        ],
+        "product": [
+            "refined-copper",
+            1
+        ],
+        "weight": 10,
+        "cost": 1000,
+        "pays": 0
+    },
+    {
+        "name": "Refined Gold",
+        "key_name": "refined-gold",
+        "category": "ls-foundry",
+        "time": 1,
+        "ingredients": [
+            [
+                "scrap-gold",
+                10
+            ]
+        ],
+        "product": [
+            "refined-gold",
+            5
+        ],
+        "weight": 100,
+        "cost": 1000,
+        "pays": 0
+    },
+    {
+        "name": "Refined Solder",
+        "key_name": "refined-solder",
+        "category": "ls-foundry",
+        "time": 1,
+        "ingredients": [
+            [
+                "raw-emeralds",
+                1
+            ],
+            [
+                "refined-gold",
+                2
+            ]
+        ],
+        "product": [
+            "refined-solder",
+            8
+        ],
+        "weight": 40,
+        "cost": 1000,
+        "pays": 0
+    },
+    {
+        "name": "Refined Tin",
+        "key_name": "refined-tin",
+        "category": "ls-foundry",
+        "time": 1,
+        "ingredients": [
+            [
+                "scrap-tin",
+                2
+            ]
+        ],
+        "product": [
+            "refined-tin",
+            1
+        ],
+        "weight": 10,
+        "cost": 1000,
+        "pays": 0
+    },
+    {
+        "name": "Refined Zinc",
+        "key_name": "refined-zinc",
+        "category": "ls-foundry",
+        "time": 1,
+        "ingredients": [
+            [
+                "raw-ore-mix",
+                2
+            ]
+        ],
+        "product": [
+            "refined-zinc",
+            1
+        ],
+        "weight": 20,
+        "cost": 1000,
+        "pays": 0
+    },
+    {
+        "name": "Sand",
+        "key_name": "sand",
+        "category": "filtering-plant",
+        "time": 1,
+        "ingredients": [
+            [
+                "gravel",
+                10
+            ]
+        ],
+        "product": [
+            "sand",
+            6
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 0
+    },
+    {
+        "name": "Sawdust",
+        "key_name": "sawdust",
+        "category": "sawmill",
+        "time": 1,
+        "ingredients": [
+            [
+                "logs",
+                1
+            ]
+        ],
+        "product": [
+            "sawdust",
+            10
+        ],
+        "weight": 30,
+        "cost": 500,
+        "pays": 0
+    },
+    {
+        "name": "Sawdust",
+        "key_name": "sawdust",
+        "category": "sawmill",
+        "time": 1,
+        "ingredients": [
+            [
+                "logs",
+                1
+            ]
+        ],
+        "product": [
+            "sawdust",
+            2
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 0
+    },
+    {
+        "name": "Scrap Aluminium",
+        "key_name": "scrap-aluminium",
+        "category": "sorting-facility",
+        "time": 1,
+        "ingredients": [
+            [
+                "recycled-trash",
+                1
+            ]
+        ],
+        "product": [
+            "scrap-aluminium",
+            4
+        ],
+        "weight": 80,
+        "cost": 25000,
+        "pays": 0
+    },
+    {
+        "name": "Scrap Copper",
+        "key_name": "scrap-copper",
+        "category": "sorting-facility",
+        "time": 1,
+        "ingredients": [
+            [
+                "recycled-electronics",
+                1
+            ]
+        ],
+        "product": [
+            "scrap-copper",
+            8
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 0
+    },
+    {
+        "name": "Scrap Gold",
+        "key_name": "scrap-gold",
+        "category": "sorting-facility",
+        "time": 1,
+        "ingredients": [
+            [
+                "recycled-electronics",
+                1
+            ]
+        ],
+        "product": [
+            "scrap-gold",
+            1
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 0
+    },
+    {
+        "name": "Scrap Lead",
+        "key_name": "scrap-lead",
+        "category": "filtering-plant",
+        "time": 1,
+        "ingredients": [
+            [
+                "toxic-waste",
+                1
+            ]
+        ],
+        "product": [
+            "scrap-lead",
+            2
+        ],
+        "weight": 80,
+        "cost": 15000,
+        "pays": 0
+    },
+    {
+        "name": "Scrap Mercury",
+        "key_name": "scrap-mercury",
+        "category": "filtering-plant",
+        "time": 1,
+        "ingredients": [
+            [
+                "toxic-waste",
+                1
+            ]
+        ],
+        "product": [
+            "scrap-mercury",
+            2
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 0
+    },
+    {
+        "name": "Scrap Plastic",
+        "key_name": "scrap-plastic",
+        "category": "sorting-facility",
+        "time": 1,
+        "ingredients": [
+            [
+                "recycled-electronics",
+                1
+            ]
+        ],
+        "product": [
+            "scrap-plastic",
+            12
+        ],
+        "weight": 110,
+        "cost": 25000,
+        "pays": 0
+    },
+    {
+        "name": "Scrap Plastic",
+        "key_name": "scrap-plastic",
+        "category": "sorting-facility",
+        "time": 1,
+        "ingredients": [
+            [
+                "recycled-trash",
+                1
+            ]
+        ],
+        "product": [
+            "scrap-plastic",
+            8
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 0
+    },
+    {
+        "name": "Scrap Tin",
+        "key_name": "scrap-tin",
+        "category": "sorting-facility",
+        "time": 1,
+        "ingredients": [
+            [
+                "recycled-trash",
+                1
+            ]
+        ],
+        "product": [
+            "scrap-tin",
+            4
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 0
+    },
+    {
+        "name": "Sulfur",
+        "key_name": "sulfur",
+        "category": "water-treatment-plant",
+        "time": 1,
+        "ingredients": [
+            [
+                "waste-water",
+                1
+            ]
+        ],
+        "product": [
+            "sulfur",
+            5
+        ],
+        "weight": 25,
+        "cost": 5000,
+        "pays": 0
+    },
+    {
+        "name": "Titanium",
+        "key_name": "titanium",
+        "category": "ls-foundry",
+        "time": 1,
+        "ingredients": [
+            [
+                "titanium-ore",
+                1
+            ]
+        ],
+        "product": [
+            "titanium",
+            1
+        ],
+        "weight": 20,
+        "cost": 1000,
+        "pays": 0
+    },
+    {
+        "name": "Treated Water",
+        "key_name": "treated-water",
+        "category": "water-treatment-plant",
+        "time": 1,
+        "ingredients": [
+            [
+                "unfiltered-water",
+                1
+            ],
+            [
+                "acid",
+                1
+            ]
+        ],
+        "product": [
+            "treated-water",
+            1
+        ],
+        "weight": 100,
+        "cost": 5000,
+        "pays": 0
     }
 ],
     "resources": [

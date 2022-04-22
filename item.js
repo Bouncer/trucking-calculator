@@ -12,12 +12,14 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.*/
 import { Totals } from "./totals.js"
+import { Rational, zero, one } from "./rational.js"
 
 export class Item {
-    constructor(key, name, tier) {
+    constructor(key, name, tier, weight) {
         this.key = key
         this.name = name
         this.tier = tier
+        this.weight = Rational.from_float(weight)
         this.recipes = []
         this.uses = []
     }
@@ -52,7 +54,7 @@ export class Item {
 export function getItems(data) {
     let items = new Map()
     for (let d of data.items) {
-        items.set(d.key_name, new Item(d.key_name, d.name, d.tier))
+        items.set(d.key_name, new Item(d.key_name, d.name, d.tier, d.weight))
     }
     return items
 }

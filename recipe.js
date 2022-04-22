@@ -17,6 +17,7 @@ export class Ingredient {
     constructor(item, amount) {
         this.item = item
         this.amount = amount
+        this.weight = amount.mul(item.weight);
     }
 }
 

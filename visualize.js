@@ -88,6 +88,7 @@ function makeGraph(totals, targets, ignore) {
                 rate = ing.amount
             } else {
                 rate = totals.rates.get(recipe).mul(ing.amount)
+//                rate = rate.mul(ing.item.weight)
             }
             for (let subRecipe of ing.item.recipes) {
                 if (totals.rates.has(subRecipe)) {
@@ -305,7 +306,7 @@ export function renderTotals(totals, targets, ignore) {
         .attr("y", d => d.y0)
         .attr("dy", "0.35em")
         .attr("text-anchor", "start")
-        .text(d => `${spec.format.rate(d.rate)}x ${d.source.name}`)
+        .text(d => `${spec.format.rate(d.rate)}x ${d.source.name}`);// (${d.weight}kg)`)
 
     // Overlay transparent rect on top of each node, for click events.
     let rectElements = svg.selectAll("g.node").nodes()
