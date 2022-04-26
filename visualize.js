@@ -18,10 +18,11 @@ import { Ingredient } from "./recipe.js"
 
 const iconSize = 20
 
-const nodePadding = 20
+const nodePadding = 50
 
 const columnWidth = 150
 const maxNodeHeight = 200
+const minNodeHeight = 20
 
 const colorList = [
     "#1f77b4", // blue
@@ -88,7 +89,7 @@ function makeGraph(totals, targets, ignore) {
                 rate = ing.amount
             } else {
                 rate = totals.rates.get(recipe).mul(ing.amount)
-//                rate = rate.mul(ing.item.weight)
+                //rate = rate.mul(ing.item.weight)
             }
             for (let subRecipe of ing.item.recipes) {
                 if (totals.rates.has(subRecipe)) {
@@ -97,9 +98,11 @@ function makeGraph(totals, targets, ignore) {
                         "target": node,
                         "value": rate.toFloat(),
                         "rate": rate,
+                        "weight": rate.mul(ing.item.weight),
+                        "amount": ing.amount,
                     }
                     let belts = []
-                    let beltCountExact = spec.getBeltCount(rate)
+                    let beltCountExact = spec.getBeltCount(rate.mul(ing.item.weight))
                     let beltCount = beltCountExact.toFloat()
                     for (let j = one; j.less(beltCountExact); j = j.add(one)) {
                         let i = j.toFloat()
@@ -158,6 +161,7 @@ function beltPath(d) {
     let y0top = y0 - d.link.width / 2
     let x1 = d.link.target.x0
     let y1 = d.link.y1
+    let nodeHeight = y1 - y0;
     let y1top = y1 - d.link.width / 2
     let mid = (x1 - x0) / 2
     let slope = (y1 - y0) / (x1 - x0)
@@ -214,7 +218,7 @@ export function renderTotals(totals, targets, ignore) {
         }
     }
     testSVG.remove()
-    let nodeWidth = iconSize + maxTextWidth + 4
+    let nodeWidth = iconSize + maxTextWidth + 40
     let width = maxRank * (nodeWidth + columnWidth) + nodeWidth
     // The height of the display is normalized by the height of the tallest box
     // in the graph. We define it to be (approximately) maxNodeHeight pixels
@@ -232,7 +236,7 @@ export function renderTotals(totals, targets, ignore) {
     let svg = d3.select("svg#graph")
         .attr("viewBox", `0,0,${width+20},${height+20}`)
         .style("width", width+20)
-        .style("height", height+20)
+        .style("height", height+50)
 
     svg.selectAll("g").remove()
 
@@ -254,7 +258,7 @@ export function renderTotals(totals, targets, ignore) {
     rects.append("rect")
         .attr("x", d => d.x0)
         .attr("y", d => d.y0)
-        .attr("height", d => d.y1 - d.y0)
+        .attr("height", d => Math.max(d.y1 - d.y0, minNodeHeight))
         .attr("width", d => d.x1 - d.x0)
         .attr("fill", d => d3.color(color(d.name)).darker())
         .attr("stroke", d => d3.color(color(d.name)))
@@ -262,13 +266,13 @@ export function renderTotals(totals, targets, ignore) {
         .append("image")
             .classed("ignore", d => ignore.has(d.recipe))
             .attr("x", d => d.x0 + 2)
-            .attr("y", d => d.y0 + (d.y1 - d.y0) / 2 - (iconSize / 2))
+            .attr("y", d => ((d.y1 - d.y0 > minNodeHeight) ? (d.y0 + d.y1) / 2 : d.y0 + (minNodeHeight / 2)) - (iconSize / 2))
             .attr("height", iconSize)
             .attr("width", iconSize)
             .attr("xlink:href", d => (d.count.isZero() ? d.count : `${d.building.iconPath()}`))
     rects.append("text")
         .attr("x", d => d.x0 + iconSize + 4)
-        .attr("y", d => (d.y0 + d.y1) / 2)
+        .attr("y", d => (d.y1 - d.y0 > minNodeHeight) ? (d.y0 + d.y1) / 2 : d.y0 + (minNodeHeight / 2))
         .attr("dy", "0.35em")
         .attr("text-anchor", "start")
         .text(d => (d.count.isZero() ? d.count : `${d.building.name}`))
@@ -306,7 +310,7 @@ export function renderTotals(totals, targets, ignore) {
         .attr("y", d => d.y0)
         .attr("dy", "0.35em")
         .attr("text-anchor", "start")
-        .text(d => `${spec.format.rate(d.rate)}x ${d.source.name}`);// (${d.weight}kg)`)
+        .text(d => `${d.amount}x ${d.source.name} (${spec.format.rate(d.weight)}kg)`);// (${d.weight}kg)`)
 
     // Overlay transparent rect on top of each node, for click events.
     let rectElements = svg.selectAll("g.node").nodes()
@@ -325,6 +329,8 @@ export function renderTotals(totals, targets, ignore) {
         }
     }
     graphTab.style("display", origDisplay)
+
+    /*
     svg.append("g")
         .classed("overlay", true)
         .selectAll("rect")
@@ -339,5 +345,6 @@ export function renderTotals(totals, targets, ignore) {
             .on("click", toggleIgnoreHandler)
             .append("title")
                 .text(d => d.node.name + (d.node.count.isZero() ? "" : `\n${d.node.building.name} \u00d7 ${spec.format.count(d.node.count)}`))
+    */
 }
 

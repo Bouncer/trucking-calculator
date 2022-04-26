@@ -3,12 +3,12 @@
         {
             "name": "Conveyor Belt",
             "key_name": "belt1",
-            "rate": 60
+            "rate": 100
         },
         {
             "name": "Conveyor Belt Mk.2",
             "key_name": "belt2",
-            "rate": 120
+            "rate": 200
         },
         {
             "name": "Conveyor Belt Mk.3",
@@ -227,543 +227,543 @@
     }
 ],
     "items": [
-        {
-            "name": "Toxic Waste",
-            "key_name": "toxic-waste",
-            "tier": "0",
-            "category": "commercial",
-            "weight": "110",
-            "stack_size": "81"
-        },
-        {
-            "name": "Recycled Trash",
-            "key_name": "recycled-trash",
-            "tier": "0",
-            "category": "commercial",
-            "weight": "90",
-            "stack_size": "100"
-        },
-        {
-            "name": "Quarry Rubble",
-            "key_name": "quarry-rubble",
-            "tier": "0",
-            "category": "commercial",
-            "weight": "150",
-            "stack_size": "60"
-        },
-        {
-            "name": "Logs",
-            "key_name": "logs",
-            "tier": "0",
-            "category": "commercial",
-            "weight": "60",
-            "stack_size": "150"
-        },
-        {
-            "name": "Recycled Electronics",
-            "key_name": "recycled-electronics",
-            "tier": "0",
-            "category": "commercial",
-            "weight": "130",
-            "stack_size": "69"
-        },
-        {
-            "name": "Unfiltered Water",
-            "key_name": "unfiltered-water",
-            "tier": "0",
-            "category": "commercial",
-            "weight": "100",
-            "stack_size": "90"
-        },
-        {
-            "name": "Treated Water",
-            "key_name": "treated-water",
-            "tier": "0",
-            "category": "commercial",
-            "weight": "100",
-            "stack_size": "90"
-        },
-        {
-            "name": "Sulfur",
-            "key_name": "sulfur",
-            "tier": "1",
-            "category": "commercial",
-            "weight": "5",
-            "stack_size": "1800"
-        },
-        {
-            "name": "Battery",
-            "key_name": "battery",
-            "tier": "2",
-            "category": "commercial",
-            "weight": "30",
-            "stack_size": "300"
-        },
-        {
-            "name": "Fiberglass Spool",
-            "key_name": "fiberglass-spool",
-            "tier": "1",
-            "category": "commercial",
-            "weight": "20",
-            "stack_size": "450"
-        },
-        {
-            "name": "Jewelry",
-            "key_name": "jewelry",
-            "tier": "2",
-            "category": "commercial",
-            "weight": "5",
-            "stack_size": "1800"
-        },
-        {
-            "name": "Rebar",
-            "key_name": "rebar",
-            "tier": "2",
-            "category": "commercial",
-            "weight": "45",
-            "stack_size": "200"
-        },
-        {
-            "name": "Refined Aluminium",
-            "key_name": "refined-aluminium",
-            "tier": "1",
-            "category": "commercial",
-            "weight": "10",
-            "stack_size": "900"
-        },
-        {
-            "name": "Refined Amalgam",
-            "key_name": "refined-amalgam",
-            "tier": "1",
-            "category": "commercial",
-            "weight": "15",
-            "stack_size": "600"
-        },
-        {
-            "name": "Refined Copper",
-            "key_name": "refined-copper",
-            "tier": "1",
-            "category": "commercial",
-            "weight": "10",
-            "stack_size": "900"
-        },
-        {
-            "name": "Glass",
-            "key_name": "glass",
-            "tier": "1",
-            "category": "commercial",
-            "weight": "5",
-            "stack_size": "1800"
-        },
-        {
-            "name": "Refined Gold",
-            "key_name": "refined-gold",
-            "tier": "1",
-            "category": "commercial",
-            "weight": "20",
-            "stack_size": "450"
-        },
-        {
-            "name": "Refined Solder",
-            "key_name": "refined-solder",
-            "tier": "1",
-            "category": "commercial",
-            "weight": "5",
-            "stack_size": "1800"
-        },
-        {
-            "name": "Refined Tin",
-            "key_name": "refined-tin",
-            "tier": "1",
-            "category": "commercial",
-            "weight": "10",
-            "stack_size": "900"
-        },
-        {
-            "name": "Titanium",
-            "key_name": "titanium",
-            "tier": "1",
-            "category": "commercial",
-            "weight": "20",
-            "stack_size": "450"
-        },
-        {
-            "name": "Bronze Alloy",
-            "key_name": "bronze-alloy",
-            "tier": "1",
-            "category": "commercial",
-            "weight": "10",
-            "stack_size": "900"
-        },
-        {
-            "name": "Refined Zinc",
-            "key_name": "refined-zinc",
-            "tier": "1",
-            "category": "commercial",
-            "weight": "10",
-            "stack_size": "900"
-        },
-        {
-            "name": "Cement Mix",
-            "key_name": "cement-mix",
-            "tier": "1",
-            "category": "commercial",
-            "weight": "25",
-            "stack_size": "360"
-        },
-        {
-            "name": "Flint",
-            "key_name": "flint",
-            "tier": "1",
-            "category": "commercial",
-            "weight": "5",
-            "stack_size": "1800"
-        },
-        {
-            "name": "Sand",
-            "key_name": "sand",
-            "tier": "1",
-            "category": "commercial",
-            "weight": "5",
-            "stack_size": "1800"
-        },
-        {
-            "name": "Raw Ore Mix",
-            "key_name": "raw-ore-mix",
-            "tier": "1",
-            "category": "commercial",
-            "weight": "15",
-            "stack_size": "600"
-        },
-        {
-            "name": "Gravel",
-            "key_name": "gravel",
-            "tier": "1",
-            "category": "commercial",
-            "weight": "5",
-            "stack_size": "1800"
-        },
-        {
-            "name": "Raw Emeralds",
-            "key_name": "raw-emeralds",
-            "tier": "1",
-            "category": "commercial",
-            "weight": "10",
-            "stack_size": "900"
-        },
-        {
-            "name": "Scrap Lead",
-            "key_name": "scrap-lead",
-            "tier": "1",
-            "category": "commercial",
-            "weight": "15",
-            "stack_size": "600"
-        },
-        {
-            "name": "Scrap Mercury",
-            "key_name": "scrap-mercury",
-            "tier": "1",
-            "category": "commercial",
-            "weight": "15",
-            "stack_size": "600"
-        },
-        {
-            "name": "Acid",
-            "key_name": "acid",
-            "tier": "1",
-            "category": "commercial",
-            "weight": "5",
-            "stack_size": "1800"
-        },
-        {
-            "name": "Concrete",
-            "key_name": "concrete",
-            "tier": "1",
-            "category": "commercial",
-            "weight": "160",
-            "stack_size": "56"
-        },
-        {
-            "name": "Scrap Plastic",
-            "key_name": "scrap-plastic",
-            "tier": "1",
-            "category": "commercial",
-            "weight": "5",
-            "stack_size": "1800"
-        },
-        {
-            "name": "Scrap Copper",
-            "key_name": "scrap-copper",
-            "tier": "1",
-            "category": "commercial",
-            "weight": "5",
-            "stack_size": "1800"
-        },
-        {
-            "name": "Scrap Gold",
-            "key_name": "scrap-gold",
-            "tier": "1",
-            "category": "commercial",
-            "weight": "10",
-            "stack_size": "900"
-        },
-        {
-            "name": "Scrap Aluminium",
-            "key_name": "scrap-aluminium",
-            "tier": "1",
-            "category": "commercial",
-            "weight": "5",
-            "stack_size": "1800"
-        },
-        {
-            "name": "Scrap Tin",
-            "key_name": "scrap-tin",
-            "tier": "1",
-            "category": "commercial",
-            "weight": "5",
-            "stack_size": "1800"
-        },
-        {
-            "name": "Sawdust",
-            "key_name": "sawdust",
-            "tier": "1",
-            "category": "commercial",
-            "weight": "3",
-            "stack_size": "3000"
-        },
-        {
-            "name": "Planks",
-            "key_name": "planks",
-            "tier": "1",
-            "category": "commercial",
-            "weight": "15",
-            "stack_size": "600"
-        },
-        {
-            "name": "Circuit Board",
-            "key_name": "circuit-board",
-            "tier": "1",
-            "category": "commercial",
-            "weight": "20",
-            "stack_size": "450"
-        },
-        {
-            "name": "Computer",
-            "key_name": "computer",
-            "tier": "2",
-            "category": "commercial",
-            "weight": "35",
-            "stack_size": "257"
-        },
-        {
-            "name": "Cermaic Tiles",
-            "key_name": "cermaic-tiles",
-            "tier": "1",
-            "category": "commercial",
-            "weight": "10",
-            "stack_size": "900"
-        },
-        {
-            "name": "Explosives",
-            "key_name": "explosives",
-            "tier": "1",
-            "category": "military",
-            "weight": "250",
-            "stack_size": "36"
-        },
-        {
-            "name": "Titanium Ore",
-            "key_name": "titanium-ore",
-            "tier": "1",
-            "category": "military",
-            "weight": "25",
-            "stack_size": "360"
-        },
-        {
-            "name": "Titanium",
-            "key_name": "titanium",
-            "tier": "1",
-            "category": "military",
-            "weight": "20",
-            "stack_size": "450"
-        },
-        {
-            "name": "Raw Gas",
-            "key_name": "raw-gas",
-            "tier": "0",
-            "category": "petrochem",
-            "weight": "150",
-            "stack_size": "60"
-        },
-        {
-            "name": "Chemicals",
-            "key_name": "chemicals",
-            "tier": "1",
-            "category": "petrochem",
-            "weight": "25",
-            "stack_size": "360"
-        },
-        {
-            "name": "Propane",
-            "key_name": "propane",
-            "tier": "1",
-            "category": "petrochem",
-            "weight": "25",
-            "stack_size": "360"
-        },
-        {
-            "name": "Waste Water",
-            "key_name": "waste-water",
-            "tier": "1",
-            "category": "petrochem",
-            "weight": "50",
-            "stack_size": "180"
-        },
-        {
-            "name": "Sulfur",
-            "key_name": "sulfur",
-            "tier": "1",
-            "category": "petrochem",
-            "weight": "5",
-            "stack_size": "1800"
-        },
-        {
-            "name": "Kerosene",
-            "key_name": "kerosene",
-            "tier": "1",
-            "category": "petrochem",
-            "weight": "25",
-            "stack_size": "360"
-        },
-        {
-            "name": "Petrol",
-            "key_name": "petrol",
-            "tier": "1",
-            "category": "petrochem",
-            "weight": "25",
-            "stack_size": "360"
-        },
-        {
-            "name": "Diesel",
-            "key_name": "diesel",
-            "tier": "1",
-            "category": "petrochem",
-            "weight": "25",
-            "stack_size": "360"
-        },
-        {
-            "name": "Crude Oil",
-            "key_name": "crude-oil",
-            "tier": "1",
-            "category": "petrochem",
-            "weight": "150",
-            "stack_size": "60"
-        },
-        {
-            "name": "Jerry Can",
-            "key_name": "jerry-can",
-            "tier": "1",
-            "category": "petrochem",
-            "weight": "2",
-            "stack_size": "4500"
-        },
-        {
-            "name": "Dairy Products",
-            "key_name": "dairy-products",
-            "tier": "0",
-            "category": "refridgerated",
-            "weight": "15",
-            "stack_size": "600"
-        },
-        {
-            "name": "Frozen Raw Meat",
-            "key_name": "frozen-raw-meat",
-            "tier": "1",
-            "category": "refridgerated",
-            "weight": "15",
-            "stack_size": "600"
-        },
-        {
-            "name": "Vegetables",
-            "key_name": "vegetables",
-            "tier": "1",
-            "category": "refridgerated",
-            "weight": "15",
-            "stack_size": "600"
-        },
-        {
-            "name": "Airline Meal",
-            "key_name": "airline-meal",
-            "tier": "2",
-            "category": "refridgerated",
-            "weight": "3",
-            "stack_size": "3000"
-        },
-        {
-            "name": "Food Shipment",
-            "key_name": "food-shipment",
-            "tier": "2",
-            "category": "refridgerated",
-            "weight": "10",
-            "stack_size": "900"
-        },
-        {
-            "name": "House",
-            "key_name": "house",
-            "tier": "3",
-            "category": "special",
-            "weight": "330",
-            "stack_size": "27"
-        },
-        {
-            "name": "Ceramic Tiles",
-            "key_name": "ceramic-tiles",
-            "tier": "1",
-            "category": "special",
-            "weight": "40",
-            "stack_size": "225"
-        },
-        {
-            "name": "Concrete",
-            "key_name": "concrete",
-            "tier": "1",
-            "category": "special",
-            "weight": "160",
-            "stack_size": "56"
-        },
-        {
-            "name": "Planks",
-            "key_name": "planks",
-            "tier": "1",
-            "category": "special",
-            "weight": "30",
-            "stack_size": "300"
-        },
-        {
-            "name": "Copper Wire",
-            "key_name": "copper-wire",
-            "tier": "1",
-            "category": "special",
-            "weight": "20",
-            "stack_size": "450"
-        },
-        {
-            "name": "Computer",
-            "key_name": "computer",
-            "tier": "2",
-            "category": "special",
-            "weight": "35",
-            "stack_size": "257"
-        },
-        {
-            "name": "Rebar",
-            "key_name": "rebar",
-            "tier": "2",
-            "category": "special",
-            "weight": "45",
-            "stack_size": "200"
-        }
-    ],
+    {
+        "name": "Acid",
+        "key_name": "acid",
+        "tier": "2",
+        "category": "commercial",
+        "weight": "5",
+        "stack_size": "1800"
+    },
+    {
+        "name": "Airline Meal",
+        "key_name": "airline-meal",
+        "tier": "6",
+        "category": "refridgerated",
+        "weight": "3",
+        "stack_size": "3000"
+    },
+    {
+        "name": "Battery",
+        "key_name": "battery",
+        "tier": "4",
+        "category": "commercial",
+        "weight": "30",
+        "stack_size": "300"
+    },
+    {
+        "name": "Bronze Alloy",
+        "key_name": "bronze-alloy",
+        "tier": "3",
+        "category": "commercial",
+        "weight": "10",
+        "stack_size": "900"
+    },
+    {
+        "name": "Cement Mix",
+        "key_name": "cement-mix",
+        "tier": "3",
+        "category": "commercial",
+        "weight": "25",
+        "stack_size": "360"
+    },
+    {
+        "name": "Ceramic Tiles",
+        "key_name": "ceramic-tiles",
+        "tier": "3",
+        "category": "special",
+        "weight": "40",
+        "stack_size": "225"
+    },
+    {
+        "name": "Cermaic Tiles",
+        "key_name": "cermaic-tiles",
+        "tier": "4",
+        "category": "commercial",
+        "weight": "10",
+        "stack_size": "900"
+    },
+    {
+        "name": "Chemicals",
+        "key_name": "chemicals",
+        "tier": "7",
+        "category": "petrochem",
+        "weight": "25",
+        "stack_size": "360"
+    },
+    {
+        "name": "Circuit Board",
+        "key_name": "circuit-board",
+        "tier": "4",
+        "category": "commercial",
+        "weight": "20",
+        "stack_size": "450"
+    },
+    {
+        "name": "Computer",
+        "key_name": "computer",
+        "tier": "5",
+        "category": "commercial",
+        "weight": "35",
+        "stack_size": "257"
+    },
+    {
+        "name": "Computer",
+        "key_name": "computer",
+        "tier": "5",
+        "category": "special",
+        "weight": "35",
+        "stack_size": "257"
+    },
+    {
+        "name": "Concrete",
+        "key_name": "concrete",
+        "tier": "4",
+        "category": "commercial",
+        "weight": "160",
+        "stack_size": "56"
+    },
+    {
+        "name": "Concrete",
+        "key_name": "concrete",
+        "tier": "4",
+        "category": "special",
+        "weight": "160",
+        "stack_size": "56"
+    },
+    {
+        "name": "Copper Wire",
+        "key_name": "copper-wire",
+        "tier": "4",
+        "category": "special",
+        "weight": "20",
+        "stack_size": "450"
+    },
+    {
+        "name": "Crude Oil",
+        "key_name": "crude-oil",
+        "tier": "7",
+        "category": "petrochem",
+        "weight": "150",
+        "stack_size": "60"
+    },
+    {
+        "name": "Dairy Products",
+        "key_name": "dairy-products",
+        "tier": "6",
+        "category": "refridgerated",
+        "weight": "15",
+        "stack_size": "600"
+    },
+    {
+        "name": "Diesel",
+        "key_name": "diesel",
+        "tier": "7",
+        "category": "petrochem",
+        "weight": "25",
+        "stack_size": "360"
+    },
+    {
+        "name": "Explosives",
+        "key_name": "explosives",
+        "tier": "7",
+        "category": "military",
+        "weight": "250",
+        "stack_size": "36"
+    },
+    {
+        "name": "Fiberglass Spool",
+        "key_name": "fiberglass-spool",
+        "tier": "4",
+        "category": "commercial",
+        "weight": "20",
+        "stack_size": "450"
+    },
+    {
+        "name": "Flint",
+        "key_name": "flint",
+        "tier": "2",
+        "category": "commercial",
+        "weight": "5",
+        "stack_size": "1800"
+    },
+    {
+        "name": "Food Shipment",
+        "key_name": "food-shipment",
+        "tier": "6",
+        "category": "refridgerated",
+        "weight": "10",
+        "stack_size": "900"
+    },
+    {
+        "name": "Frozen Raw Meat",
+        "key_name": "frozen-raw-meat",
+        "tier": "6",
+        "category": "refridgerated",
+        "weight": "15",
+        "stack_size": "600"
+    },
+    {
+        "name": "Glass",
+        "key_name": "glass",
+        "tier": "3",
+        "category": "commercial",
+        "weight": "5",
+        "stack_size": "1800"
+    },
+    {
+        "name": "Gravel",
+        "key_name": "gravel",
+        "tier": "1",
+        "category": "commercial",
+        "weight": "5",
+        "stack_size": "1800"
+    },
+    {
+        "name": "House",
+        "key_name": "house",
+        "tier": "5",
+        "category": "special",
+        "weight": "330",
+        "stack_size": "27"
+    },
+    {
+        "name": "Jerry Can",
+        "key_name": "jerry-can",
+        "tier": "7",
+        "category": "petrochem",
+        "weight": "2",
+        "stack_size": "4500"
+    },
+    {
+        "name": "Jewelry",
+        "key_name": "jewelry",
+        "tier": "4",
+        "category": "commercial",
+        "weight": "5",
+        "stack_size": "1800"
+    },
+    {
+        "name": "Kerosene",
+        "key_name": "kerosene",
+        "tier": "7",
+        "category": "petrochem",
+        "weight": "25",
+        "stack_size": "360"
+    },
+    {
+        "name": "Logs",
+        "key_name": "logs",
+        "tier": "0",
+        "category": "commercial",
+        "weight": "60",
+        "stack_size": "150"
+    },
+    {
+        "name": "Petrol",
+        "key_name": "petrol",
+        "tier": "7",
+        "category": "petrochem",
+        "weight": "25",
+        "stack_size": "360"
+    },
+    {
+        "name": "Planks",
+        "key_name": "planks",
+        "tier": "1",
+        "category": "commercial",
+        "weight": "15",
+        "stack_size": "600"
+    },
+    {
+        "name": "Planks",
+        "key_name": "planks",
+        "tier": "1",
+        "category": "special",
+        "weight": "30",
+        "stack_size": "300"
+    },
+    {
+        "name": "Propane",
+        "key_name": "propane",
+        "tier": "7",
+        "category": "petrochem",
+        "weight": "25",
+        "stack_size": "360"
+    },
+    {
+        "name": "Quarry Rubble",
+        "key_name": "quarry-rubble",
+        "tier": "0",
+        "category": "commercial",
+        "weight": "150",
+        "stack_size": "60"
+    },
+    {
+        "name": "Raw Emeralds",
+        "key_name": "raw-emeralds",
+        "tier": "2",
+        "category": "commercial",
+        "weight": "10",
+        "stack_size": "900"
+    },
+    {
+        "name": "Raw Gas",
+        "key_name": "raw-gas",
+        "tier": "7",
+        "category": "petrochem",
+        "weight": "150",
+        "stack_size": "60"
+    },
+    {
+        "name": "Raw Ore Mix",
+        "key_name": "raw-ore-mix",
+        "tier": "1",
+        "category": "commercial",
+        "weight": "15",
+        "stack_size": "600"
+    },
+    {
+        "name": "Rebar",
+        "key_name": "rebar",
+        "tier": "4",
+        "category": "commercial",
+        "weight": "45",
+        "stack_size": "200"
+    },
+    {
+        "name": "Rebar",
+        "key_name": "rebar",
+        "tier": "4",
+        "category": "special",
+        "weight": "45",
+        "stack_size": "200"
+    },
+    {
+        "name": "Recycled Electronics",
+        "key_name": "recycled-electronics",
+        "tier": "0",
+        "category": "commercial",
+        "weight": "130",
+        "stack_size": "69"
+    },
+    {
+        "name": "Recycled Trash",
+        "key_name": "recycled-trash",
+        "tier": "0",
+        "category": "commercial",
+        "weight": "90",
+        "stack_size": "100"
+    },
+    {
+        "name": "Refined Aluminium",
+        "key_name": "refined-aluminium",
+        "tier": "3",
+        "category": "commercial",
+        "weight": "10",
+        "stack_size": "900"
+    },
+    {
+        "name": "Refined Amalgam",
+        "key_name": "refined-amalgam",
+        "tier": "3",
+        "category": "commercial",
+        "weight": "15",
+        "stack_size": "600"
+    },
+    {
+        "name": "Refined Copper",
+        "key_name": "refined-copper",
+        "tier": "3",
+        "category": "commercial",
+        "weight": "10",
+        "stack_size": "900"
+    },
+    {
+        "name": "Refined Gold",
+        "key_name": "refined-gold",
+        "tier": "3",
+        "category": "commercial",
+        "weight": "20",
+        "stack_size": "450"
+    },
+    {
+        "name": "Refined Solder",
+        "key_name": "refined-solder",
+        "tier": "3",
+        "category": "commercial",
+        "weight": "5",
+        "stack_size": "1800"
+    },
+    {
+        "name": "Refined Tin",
+        "key_name": "refined-tin",
+        "tier": "3",
+        "category": "commercial",
+        "weight": "10",
+        "stack_size": "900"
+    },
+    {
+        "name": "Refined Zinc",
+        "key_name": "refined-zinc",
+        "tier": "3",
+        "category": "commercial",
+        "weight": "10",
+        "stack_size": "900"
+    },
+    {
+        "name": "Sand",
+        "key_name": "sand",
+        "tier": "2",
+        "category": "commercial",
+        "weight": "5",
+        "stack_size": "1800"
+    },
+    {
+        "name": "Sawdust",
+        "key_name": "sawdust",
+        "tier": "1",
+        "category": "commercial",
+        "weight": "3",
+        "stack_size": "3000"
+    },
+    {
+        "name": "Scrap Aluminium",
+        "key_name": "scrap-aluminium",
+        "tier": "2",
+        "category": "commercial",
+        "weight": "5",
+        "stack_size": "1800"
+    },
+    {
+        "name": "Scrap Copper",
+        "key_name": "scrap-copper",
+        "tier": "2",
+        "category": "commercial",
+        "weight": "5",
+        "stack_size": "1800"
+    },
+    {
+        "name": "Scrap Gold",
+        "key_name": "scrap-gold",
+        "tier": "2",
+        "category": "commercial",
+        "weight": "10",
+        "stack_size": "900"
+    },
+    {
+        "name": "Scrap Lead",
+        "key_name": "scrap-lead",
+        "tier": "2",
+        "category": "commercial",
+        "weight": "15",
+        "stack_size": "600"
+    },
+    {
+        "name": "Scrap Mercury",
+        "key_name": "scrap-mercury",
+        "tier": "2",
+        "category": "commercial",
+        "weight": "15",
+        "stack_size": "600"
+    },
+    {
+        "name": "Scrap Plastic",
+        "key_name": "scrap-plastic",
+        "tier": "2",
+        "category": "commercial",
+        "weight": "5",
+        "stack_size": "1800"
+    },
+    {
+        "name": "Scrap Tin",
+        "key_name": "scrap-tin",
+        "tier": "2",
+        "category": "commercial",
+        "weight": "5",
+        "stack_size": "1800"
+    },
+    {
+        "name": "Sulfur",
+        "key_name": "sulfur",
+        "tier": "1",
+        "category": "commercial",
+        "weight": "5",
+        "stack_size": "1800"
+    },
+    {
+        "name": "Sulfur",
+        "key_name": "sulfur",
+        "tier": "1",
+        "category": "petrochem",
+        "weight": "5",
+        "stack_size": "1800"
+    },
+    {
+        "name": "Titanium",
+        "key_name": "titanium",
+        "tier": "7",
+        "category": "commercial",
+        "weight": "20",
+        "stack_size": "450"
+    },
+    {
+        "name": "Titanium",
+        "key_name": "titanium",
+        "tier": "7",
+        "category": "military",
+        "weight": "20",
+        "stack_size": "450"
+    },
+    {
+        "name": "Titanium Ore",
+        "key_name": "titanium-ore",
+        "tier": "7",
+        "category": "military",
+        "weight": "25",
+        "stack_size": "360"
+    },
+    {
+        "name": "Toxic Waste",
+        "key_name": "toxic-waste",
+        "tier": "0",
+        "category": "commercial",
+        "weight": "110",
+        "stack_size": "81"
+    },
+    {
+        "name": "Treated Water",
+        "key_name": "treated-water",
+        "tier": "3",
+        "category": "commercial",
+        "weight": "100",
+        "stack_size": "90"
+    },
+    {
+        "name": "Unfiltered Water",
+        "key_name": "unfiltered-water",
+        "tier": "0",
+        "category": "commercial",
+        "weight": "100",
+        "stack_size": "90"
+    },
+    {
+        "name": "Vegetables",
+        "key_name": "vegetables",
+        "tier": "6",
+        "category": "refridgerated",
+        "weight": "15",
+        "stack_size": "600"
+    },
+    {
+        "name": "Waste Water",
+        "key_name": "waste-water",
+        "tier": "7",
+        "category": "petrochem",
+        "weight": "50",
+        "stack_size": "180"
+    }
+],
     "recipes": [
     {
         "name": "Acid",
@@ -1259,7 +1259,7 @@
         "time": 1,
         "ingredients": [
             [
-                "scrap-copper",
+                "raw-ore-mix",
                 2
             ]
         ],
@@ -1267,8 +1267,8 @@
             "refined-copper",
             1
         ],
-        "weight": 10,
-        "cost": 1000,
+        "weight": 0,
+        "cost": 0,
         "pays": 0
     },
     {
@@ -1297,12 +1297,12 @@
         "time": 1,
         "ingredients": [
             [
-                "raw-emeralds",
-                1
+                "scrap-lead",
+                2
             ],
             [
-                "refined-gold",
-                2
+                "refined-aluminium",
+                1
             ]
         ],
         "product": [
