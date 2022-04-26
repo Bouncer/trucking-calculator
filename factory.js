@@ -31,7 +31,7 @@ export let resourcePurities = [
 
 export let DEFAULT_PURITY = resourcePurities[1]
 
-export let DEFAULT_BELT = "belt1"
+export let DEFAULT_BELT = "mk14"
 
 class FactorySpecification {
     constructor() {

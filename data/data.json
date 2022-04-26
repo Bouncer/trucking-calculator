@@ -1,28 +1,73 @@
 {
     "belts": [
         {
-            "name": "Conveyor Belt",
-            "key_name": "belt1",
-            "rate": 100
+            "name": "MK1",
+            "key_name": "mk1",
+            "rate": 400
         },
         {
-            "name": "Conveyor Belt Mk.2",
-            "key_name": "belt2",
-            "rate": 200
+            "name": "MK2",
+            "key_name": "mk2",
+            "rate": 475
         },
         {
-            "name": "Conveyor Belt Mk.3",
-            "key_name": "belt3",
-            "rate": 270
+            "name": "MK3",
+            "key_name": "mk3",
+            "rate": 600
         },
         {
-            "name": "Conveyor Belt Mk.4",
-            "key_name": "belt4",
-            "rate": 480
+            "name": "MK4",
+            "key_name": "mk4",
+            "rate": 775
+        },
+        {
+            "name": "MK5",
+            "key_name": "mk5",
+            "rate": 1000
+        },
+        {
+            "name": "MK6",
+            "key_name": "mk6",
+            "rate": 1500
+        },
+        {
+            "name": "MK7",
+            "key_name": "mk7",
+            "rate": 2200
+        },
+        {
+            "name": "MK8",
+            "key_name": "mk8",
+            "rate": 2500
+        },
+        {
+            "name": "MK9",
+            "key_name": "mk9",
+            "rate": 2750
+        },
+        {
+            "name": "MK10",
+            "key_name": "mk10",
+            "rate": 3000
+        },
+        {
+            "name": "MK11",
+            "key_name": "mk11",
+            "rate": 3500
+        },
+        {
+            "name": "MK12",
+            "key_name": "mk12",
+            "rate": 5000
+        },
+        {
+            "name": "MK13",
+            "key_name": "mk13",
+            "rate": 8500
         },
         {
             "name": "MK14",
-            "key_name": "belt5",
+            "key_name": "mk14",
             "rate": 9000
         }
     ],
@@ -159,70 +204,70 @@
         "name": "Recycling Center",
         "key-name": "recycling-center",
         "category": "recycling-center",
-        "base-rate": "60",
+        "base-rate": "1",
         "power": "5"
     },
     {
         "name": "Quarry",
         "key-name": "quarry",
         "category": "quarry-resource",
-        "base-rate": "60",
+        "base-rate": "1",
         "power": "5"
     },
     {
         "name": "LSIA Waste Depot ",
         "key-name": "lsia-waste-depot",
         "category": "lsia-waste-depot",
-        "base-rate": "60",
+        "base-rate": "1",
         "power": "5"
     },
     {
         "name": "LS Oil Pumping Station",
         "key-name": "ls-oil-pumping-station",
         "category": "ls-oil-pumping-station",
-        "base-rate": "60",
+        "base-rate": "1",
         "power": "5"
     },
     {
         "name": "Log Camp",
         "key-name": "log-camp",
         "category": "log-camp",
-        "base-rate": "60",
+        "base-rate": "1",
         "power": "5"
     },
     {
         "name": "Land Act Reservoir ",
         "key-name": "land-act-reservoir",
         "category": "land-act-reservoir",
-        "base-rate": "60",
+        "base-rate": "1",
         "power": "5"
     },
     {
         "name": "GSD Gas Pumping Station",
         "key-name": "gsd-gas-pumping-station",
         "category": "gsd-gas-pumping-station",
-        "base-rate": "60",
+        "base-rate": "1",
         "power": "5"
     },
     {
         "name": "Great Chaprral Farming ",
         "key-name": "great-chaprral-farming",
         "category": "great-chaprral-farming",
-        "base-rate": "60",
+        "base-rate": "1",
         "power": "5"
     },
     {
         "name": "Grapeseed Farm",
         "key-name": "grapeseed-farm",
         "category": "grapeseed-farm",
-        "base-rate": "60",
+        "base-rate": "1",
         "power": "5"
     },
     {
         "name": "Electronics Store",
         "key-name": "electronics-store",
         "category": "electronics-store",
-        "base-rate": "60",
+        "base-rate": "1",
         "power": "5"
     }
 ],

@@ -18,8 +18,8 @@ export const DEFAULT_RATE_PRECISION = 1
 export const DEFAULT_COUNT_PRECISION = 1
 
 let seconds = one
-let minutes = Rational.from_float(60)
-let hours = Rational.from_float(3600)
+let minutes = Rational.from_float(1)
+let hours = Rational.from_float(1)
 
 let displayRates = new Map([
     ["s", seconds],

@@ -177,12 +177,13 @@ function renderBelts(settings) {
         .on("change", beltHandler)
     beltOption.append("label")
         .attr("for", d => "belt." + d.key)
-        .append("img")
+
+//        .append("img")
             .classed("icon", true)
             .attr("src", d => d.iconPath())
             .attr("width", 32)
             .attr("height", 32)
-            .attr("title", d => d.name)
+            .text(d => d.name)
 }
 
 // alternate recipes

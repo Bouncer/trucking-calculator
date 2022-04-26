@@ -30,7 +30,7 @@ export function getBelts(data) {
         belts.set(belt.key_name, new Belt(
             belt.key_name,
             belt.name,
-            Rational.from_float(belt.rate).div(Rational.from_float(60))
+            Rational.from_float(belt.rate).div(Rational.from_float(1))
         ))
     }
     return belts

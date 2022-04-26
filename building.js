@@ -63,7 +63,7 @@ export function getBuildings(data) {
             d.name,
             d.category,
             Rational.from_float(d.power),
-            Rational.from_float(d.base_rate).div(Rational.from_float(60)),
+            Rational.from_float(d.base_rate).div(Rational.from_float(1)),
         ))
     }
     return buildings

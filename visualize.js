@@ -98,11 +98,11 @@ function makeGraph(totals, targets, ignore) {
                         "target": node,
                         "value": rate.toFloat(),
                         "rate": rate,
-                        "weight": rate.mul(ing.item.weight),
-                        "amount": ing.amount,
+                        "weight": ing.amount.mul(ing.item.weight),
+                        "amount": rate,
                     }
                     let belts = []
-                    let beltCountExact = spec.getBeltCount(rate.mul(ing.item.weight))
+                    let beltCountExact = spec.getBeltCount(rate)
                     let beltCount = beltCountExact.toFloat()
                     for (let j = one; j.less(beltCountExact); j = j.add(one)) {
                         let i = j.toFloat()
@@ -310,7 +310,7 @@ export function renderTotals(totals, targets, ignore) {
         .attr("y", d => d.y0)
         .attr("dy", "0.35em")
         .attr("text-anchor", "start")
-        .text(d => `${d.amount}x ${d.source.name} (${spec.format.rate(d.weight)}kg)`);// (${d.weight}kg)`)
+        .text(d => `${spec.format.count(d.amount)}x ${d.source.name} (${spec.format.rate(d.rate)}kg)`);// (${d.weight}kg)`)
 
     // Overlay transparent rect on top of each node, for click events.
     let rectElements = svg.selectAll("g.node").nodes()
