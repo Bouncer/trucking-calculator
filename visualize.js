@@ -98,12 +98,13 @@ function makeGraph(totals, targets, ignore) {
                         "target": node,
                         "value": rate.toFloat(),
                         "rate": rate,
-                        "weight": ing.amount.mul(ing.item.weight),
-                        "amount": rate,
+                        "weight": rate.mul(ing.item.weight),
+                        "amount": ing.amount
                     }
-                    let belts = []
-                    let beltCountExact = spec.getBeltCount(rate)
-                    let beltCount = beltCountExact.toFloat()
+                    let belts = [];
+                    let beltCountExact = spec.getBeltCount(link.weight);
+                    let beltCount = beltCountExact.toFloat();
+                    link.trips = Math.ceil(beltCount);
                     for (let j = one; j.less(beltCountExact); j = j.add(one)) {
                         let i = j.toFloat()
                         belts.push({link, i, beltCount})
@@ -310,7 +311,13 @@ export function renderTotals(totals, targets, ignore) {
         .attr("y", d => d.y0)
         .attr("dy", "0.35em")
         .attr("text-anchor", "start")
-        .text(d => `${spec.format.count(d.amount)}x ${d.source.name} (${spec.format.rate(d.rate)}kg)`);// (${d.weight}kg)`)
+        .text(d => `${spec.format.rate(d.rate)}x ${d.source.name}`);
+    link.append("text")
+        .attr("x", d => d.source.x1 + 6)
+        .attr("y", d => d.y0 + 12)
+        .attr("dy", "0.35em")
+        .attr("text-anchor", "start")
+        .text(d => d.trips > 1 ? `${spec.format.rate(d.weight)}kg (${d.trips} trips)` : `${spec.format.rate(d.weight)}kg`)
 
     // Overlay transparent rect on top of each node, for click events.
     let rectElements = svg.selectAll("g.node").nodes()
