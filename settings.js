@@ -350,9 +350,9 @@ function renderResources(settings) {
 export function renderSettings(settings) {
     renderTargets(settings)
     renderIgnore(settings)
-    renderOverclock(settings)
-    renderRateOptions(settings)
-    renderPrecisions(settings)
+    //renderOverclock(settings)
+    //renderRateOptions(settings)
+    //renderPrecisions(settings)
     renderBelts(settings)
     renderAltRecipes(settings)
     renderResources(settings)

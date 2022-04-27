@@ -96,7 +96,7 @@ function makeGraph(totals, targets, ignore) {
                     let link = {
                         "source": nodeMap.get(subRecipe.name),
                         "target": node,
-                        "value": rate.toFloat(),
+                        "value": rate.mul(ing.item.weight).toFloat(),
                         "rate": rate,
                         "weight": rate.mul(ing.item.weight),
                         "amount": ing.amount
@@ -311,13 +311,13 @@ export function renderTotals(totals, targets, ignore) {
         .attr("y", d => d.y0)
         .attr("dy", "0.35em")
         .attr("text-anchor", "start")
-        .text(d => `${d.rate.ceil()}x ${d.source.name}`);
+        .text(d => `${d.rate.ceil().toFloat().toLocaleString()}x ${d.source.name}`);
     link.append("text")
         .attr("x", d => d.source.x1 + 6)
         .attr("y", d => d.y0 + 12)
         .attr("dy", "0.35em")
         .attr("text-anchor", "start")
-        .text(d => d.trips > 1 ? `${d.weight.ceil()}kg (${d.trips} trips)` : `${spec.format.rate(d.weight)}kg`)
+        .text(d => d.trips > 1 ? `${d.weight.ceil().toFloat().toLocaleString()}kg (${d.trips} trips)` : `${spec.format.rate(d.weight).toFloat().toLocaleString()}kg`)
 
     // Overlay transparent rect on top of each node, for click events.
     let rectElements = svg.selectAll("g.node").nodes()
