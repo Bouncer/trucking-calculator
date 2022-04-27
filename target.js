@@ -134,9 +134,11 @@ export class BuildTarget {
             this.rateChanged()
         }
         let baseRate = spec.getRecipeRate(recipe)
+
         if (baseRate !== null) {
             baseRate = baseRate.mul(recipe.gives(this.item))
         }
+
         if (this.changedBuilding) {
             rate = baseRate.mul(this.buildings)
             this.rateInput.value = spec.format.rate(rate)

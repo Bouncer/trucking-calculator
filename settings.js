@@ -89,7 +89,7 @@ function renderOverclock(settings) {
         for (let pair of overclock) {
             let [recipeKey, percentString] = pair.split(":")
             let recipe = spec.recipes.get(recipeKey)
-            let percent = Rational.from_string(percentString).div(Rational.from_float(100))
+            let percent = Rational.from_string(percentString).div(Rational.from_float(1))
             spec.setOverclock(recipe, percent)
         }
     }

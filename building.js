@@ -22,7 +22,7 @@ class Building {
         this.max = max
     }
     getCount(spec, recipe, rate) {
-        return rate.div(this.getRecipeRate(spec, recipe))
+        return rate.div(this.getRecipeRate(spec, recipe)).ceil()
     }
     getRecipeRate(spec, recipe) {
         let overclock = spec.getOverclock(recipe)

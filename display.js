@@ -72,6 +72,8 @@ export function displayItems(spec, totals, ignore) {
         totalPeakPower = totalPeakPower.add(peak)
         display.item = item
         display.itemRate = itemRate
+        //display.weight = rate.mul(ing.item.weight)
+
         display.recipe = recipe
         display.ignore = ignore.has(recipe)
         display.rate = rate
@@ -172,7 +174,7 @@ export function displayItems(spec, totals, ignore) {
 //        .attr("src", spec.belt.iconPath())
 //        .attr("title", spec.belt.name)
     row.selectAll("tt.belt-count")
-        .text(d => spec.format.alignCount(spec.getBeltCount(d.itemRate)))
+        .text(d => `${spec.format.rate(d.rate)}x`)
     let buildingRow = row.filter(d => d.building !== null)
     buildingRow.selectAll("img.building-icon")
         .attr("src", d => d.building.iconPath())

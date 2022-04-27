@@ -33,7 +33,7 @@ export class Item {
         let totals = new Totals()
         let recipe = spec.getRecipe(this)
         let gives = recipe.gives(this)
-        rate = rate.div(gives)
+        rate = rate.div(gives).ceil()
         totals.add(recipe, rate)
         totals.updateHeight(recipe, 0)
         if (ignore.has(recipe)) {
