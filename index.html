@@ -86,17 +86,66 @@ limitations under the License.-->
 
     <div id="settings_tab" class="tab">
         <table id="settings">
+
+
         <tr class="setting-section">
-        <td colspan="2"><span>Trailer</span><hr></td>
+        <td colspan="2"><span>Inventory Capacity</span><hr></td>
         </tr>
 
+        <tr class="setting-row">
+            <td class="setting-label">Strength Level:</td>
+            <td><input id="cprec" class="prec" type="number" value="1" min="0" onchange="handlers.changeCountPrecision(event)"></td>
+        </tr>
+
+        <tr class="setting-row">
+            <td class="setting-label">Strength Perk:</td>
+            <td><input id="cprec" type="checkbox" value="1" min="0" onchange="handlers.changeCountPrecision(event)"></td>
+        </tr>
+
+        <tr class="setting-row">
+            <td class="setting-label">Premium Boost:</td>
+            <td><input id="cprec" type="checkbox" value="1" min="0" onchange="handlers.changeCountPrecision(event)"></td>
+        </tr>
+
+        <tr class="setting-row">
+            <td colspan="2"><hr /></td>
+        </tr>
+        <tr class="setting-row">
+            <td class="setting-label">Truck:</td>
+            <td>
+                <div id="truck_selector">
+                    <span><input id="truck.default" type="radio" name="belt" value="mk1"><label for="truck.default" class="icon" src="images/MK1.png" width="32" height="32">Regular</label></span>
+                    <span><input id="truck.mk15" type="radio" name="belt" value="mk1"><label for="truck.mk15" class="icon" src="images/MK1.png" width="32" height="32">MK15</label></span>
+                </div>
+            </td>
+        </tr>
+
+        <tr class="setting-row">
+            <td class="setting-label">PostOP Perk:</td>
+            <td><input id="cprec" type="checkbox" value="1" min="0" onchange="handlers.changeCountPrecision(event)"></td>
+        </tr>
+
+
+        <tr class="setting-row">
+            <td colspan="2"><hr /></td>
+        </tr>
             <tr class="setting-row">
             <td class="setting-label">Trailer:</td>
             <td><div id="belt_selector"></div></td>
             </tr>
+        
+        <tr class="setting-row">
+            <td colspan="2"><hr /></td>
+        </tr>
+
+        <tr class="setting-row">
+            <td class="setting-label">Total Capacity:</td>
+            <td>0</td>
+        </tr>
+
 
         <tr class="setting-section">
-        <td colspan="2"><span>Routes</span><hr></td>
+        <td colspan="2"><span>Alternative Routes</span><hr></td>
         </tr>
 
             <tr>

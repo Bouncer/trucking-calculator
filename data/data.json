@@ -197,6 +197,20 @@
             "category": "house-construction-site",
             "power": "1",
             "max": "1"
+        },
+        {
+            "name": "Pop's Pills",
+            "key-name": "pops-pills",
+            "category": "pops-pills",
+            "power": "1",
+            "max": "1"
+        },
+        {
+            "name": "Humane Labs",
+            "key-name": "humane-labs",
+            "category": "humane-labs",
+            "power": "1",
+            "max": "1"
         }
     ],
     "miners": [
@@ -267,6 +281,13 @@
         "name": "Electronics Store",
         "key-name": "electronics-store",
         "category": "electronics-store",
+        "base-rate": "1",
+        "power": "5"
+    },
+    {
+        "name": "Liquor Ace",
+        "key-name": "liquor-ace",
+        "category": "liquor-ace",
         "base-rate": "1",
         "power": "5"
     }
@@ -807,6 +828,30 @@
         "category": "petrochem",
         "weight": "50",
         "stack_size": "180"
+    },
+    {
+        "name": "Methamphetamine",
+        "key_name": "methamphetamine",
+        "tier": "8",
+        "category": "illegal",
+        "weight": "10",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Pills",
+        "key_name": "pills",
+        "tier": "8",
+        "category": "illegal",
+        "weight": "0.1",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Pills Crate",
+        "key_name": "pills-crate",
+        "tier": "8",
+        "category": "illegal",
+        "weight": "40",
+        "stack_size": "1000"
     }
 ],
     "recipes": [
@@ -1665,6 +1710,52 @@
         "weight": 100,
         "cost": 5000,
         "pays": 0
+    },
+    {
+        "name": "Pills",
+        "key_name": "pills",
+        "category": "humane-labs",
+        "time": 1,
+        "ingredients": [
+            [
+                "pills-crate",
+                3
+            ],
+            [
+                "methamphetamine",
+                8
+            ]
+        ],
+        "product": [
+            "pills",
+            1
+        ],
+        "weight": 0,
+        "cost": 100000,
+        "pays": 0
+    },
+    {
+        "name": "Pills Crate",
+        "key_name": "pills-crate",
+        "category": "pops-pills",
+        "time": 1,
+        "ingredients": [
+            [
+                "planks",
+                1
+            ],
+            [
+                "scrap-plastic",
+                5
+            ]
+        ],
+        "product": [
+            "pills-crate",
+            1
+        ],
+        "weight": 40,
+        "cost": 10000,
+        "pays": 0
     }
 ],
     "resources": [
@@ -1707,6 +1798,10 @@
         {
             "key_name": "recycled-electronics",
             "category": "electronics-store"
+        },
+        {
+            "key_name": "methamphetamine",
+            "category": "liquor-ace"
         }
     ]
 }
