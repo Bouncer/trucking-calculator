@@ -49,8 +49,41 @@ export function toggleIgnoreHandler(d) {
 
 // setting events
 
-export function changeRatePrecision(event) {
-    spec.format.ratePrecision = Number(event.target.value)
+export function changeStrength(event) {
+    spec.capacity.strength = Number(event.target.value)
+    spec.updateSolution()
+}
+export function changePremium(event) {
+    if(event.target.checked) {
+        spec.capacity.premium = 1.15
+    } else {
+        spec.capacity.premium = 1
+    }
+    spec.updateSolution()
+}
+
+export function changePerk(event) {
+    if(event.target.value == "strength") {
+        spec.capacity.strengthperk = 2; 
+        spec.capacity.postop = 1; 
+    } else if(event.target.value == "postop") {
+        spec.capacity.strengthperk = 1;
+        spec.capacity.postop = 1.15; 
+    } else {
+        spec.capacity.strengthperk = 1;
+        spec.capacity.postop = 1; 
+    }
+    spec.updateSolution()
+}
+
+
+export function changeTruck(event) {
+    spec.capacity.truck = Number(event.target.value)
+    spec.updateSolution()
+}
+
+export function changeCapacity(event) {
+    spec.capacity.total = Number(event.target.value)
     spec.updateSolution()
 }
 

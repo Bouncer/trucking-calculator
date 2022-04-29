@@ -57,6 +57,17 @@ class FactorySpecification {
 
         this.belt = null
 
+        // cargo capacity
+        this.capacity = {
+            "strength": 30,
+            "premium": 1,
+            "strengthperk": 1,
+            "truck": 0,
+            "postop": 1,
+            "trailer": 1,
+            "total": Rational.from_float(0)
+        }
+
         this.ignore = new Set()
 
         this.format = new Formatter()
@@ -92,6 +103,7 @@ class FactorySpecification {
         }
         this.belts = belts
         this.belt = belts.get(DEFAULT_BELT)
+        this.capacity.trailer = this.belt.rate.toFloat()
         this.initMinerSettings()
     }
     initMinerSettings() {
@@ -170,7 +182,7 @@ class FactorySpecification {
         return building.getCount(this, recipe, rate)
     }
     getBeltCount(rate) {
-        return rate.div(this.belt.rate)
+        return rate.div(Rational.from_float(this.capacity.total))
     }
     getPowerUsage(recipe, rate, itemCount) {
         let building = this.getBuilding(recipe)
@@ -228,7 +240,13 @@ class FactorySpecification {
     setHash() {
         window.location.hash = "#" + formatSettings()
     }
+    updateCapacity() {
+        this.capacity.total = Math.round((this.capacity.strength * this.capacity.strengthperk * this.capacity.premium) + (this.capacity.truck * this.capacity.postop * this.capacity.premium) + this.capacity.trailer)
+        let form = d3.select("#capacity").property("value", this.capacity.total)
+    }
     updateSolution() {
+        this.updateCapacity()
+
         let totals = this.solve()
         displayItems(this, totals, this.ignore)
         renderTotals(totals, this.buildTargets, this.ignore)
