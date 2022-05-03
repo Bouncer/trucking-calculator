@@ -20,9 +20,9 @@ const iconSize = 20
 
 const nodePadding = 50
 
-const columnWidth = 150
+const columnWidth = 120
 const maxNodeHeight = 100
-const minNodeHeight = 20
+const minNodeHeight = 28
 
 const colorList = [
     "#1f77b4", // blue
@@ -219,7 +219,7 @@ export function renderTotals(totals, targets, ignore) {
         }
     }
     testSVG.remove()
-    let nodeWidth = iconSize + maxTextWidth + 40
+    let nodeWidth = iconSize + maxTextWidth + 20
     let width = maxRank * (nodeWidth + columnWidth) + nodeWidth
     // The height of the display is normalized by the height of the tallest box
     // in the graph. We define it to be (approximately) maxNodeHeight pixels
@@ -267,16 +267,25 @@ export function renderTotals(totals, targets, ignore) {
         .append("image")
             .classed("ignore", d => ignore.has(d.recipe))
             .attr("x", d => d.x0 + 2)
-            .attr("y", d => ((d.y1 - d.y0 > minNodeHeight) ? (d.y0 + d.y1) / 2 : d.y0 + (minNodeHeight / 2)) - (iconSize / 2))
+            .attr("y", d => ((d.y1 - d.y0 > minNodeHeight) ? (d.y0 + d.y1) / 2 - 8 : d.y0 + 4))
             .attr("height", iconSize)
             .attr("width", iconSize)
             .attr("xlink:href", d => (d.count.isZero() ? d.count : `${d.building.iconPath()}`))
     rects.append("text")
         .attr("x", d => d.x0 + iconSize + 4)
-        .attr("y", d => (d.y1 - d.y0 > minNodeHeight) ? (d.y0 + d.y1) / 2 : d.y0 + (minNodeHeight / 2))
+        .attr("y", d => (d.y1 - d.y0 > minNodeHeight) ? (d.y0 + d.y1) / 2 - 6 : d.y0 + 8)
         .attr("dy", "0.35em")
         .attr("text-anchor", "start")
-        .text(d => (d.count.isZero() ? d.count : `${d.building.name}`))
+        .attr("class", "item-name")
+        .text(d => (d.count.isZero() ? d.count : `${d.name}`))
+    rects.filter(d => d.name != "output")
+        .append("text")
+                .attr("x", d => d.x0 + iconSize + 4)
+                .attr("y", d => ((d.y1 - d.y0 > minNodeHeight) ? (d.y0 + d.y1) / 2 + 6 : d.y0 + 20))
+                .attr("dy", "0.35em")
+                .attr("text-anchor", "start")
+                .attr("class", "item-location")
+                .text(d => (d.count.isZero() ? d.count : `${d.building.name}`))
         //.text(nodeText)
 
     // Link paths
@@ -311,13 +320,14 @@ export function renderTotals(totals, targets, ignore) {
         .attr("y", d => d.y0)
         .attr("dy", "0.35em")
         .attr("text-anchor", "start")
-        .text(d => `${d.source.name}`);
-    link.append("text")
-        .attr("x", d => d.source.x1 + 6)
-        .attr("y", d => d.y0 + 12)
-        .attr("dy", "0.35em")
-        .attr("text-anchor", "start")
-        .text(d => d.trips > 1 ? `${d.rate.ceil().toFloat().toLocaleString()}x, ${d.weight.ceil().toFloat().toLocaleString()}kg, ${d.trips} trips` : `${d.rate.ceil().toFloat().toLocaleString()}x, ${d.weight.ceil().toFloat().toLocaleString()}kg`)
+        .text(d => `${d.rate.ceil().toFloat().toLocaleString()}x, ${d.weight.ceil().toFloat().toLocaleString()}kg`)
+    link.filter(d => d.trips > 1)
+        .append("text")
+            .attr("x", d => d.source.x1 + 6)
+            .attr("y", d => d.y0 + 12)
+            .attr("dy", "0.35em")
+            .attr("text-anchor", "start")
+            .text(d => `${d.trips} trips`)
 
     // Overlay transparent rect on top of each node, for click events.
     let rectElements = svg.selectAll("g.node").nodes()

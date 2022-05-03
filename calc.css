@@ -224,6 +224,13 @@ text {
     fill: var(--foreground);
     font: 12px sans-serif;
 }
+text.item-name {
+    font-weight: bold;
+}
+text.item-location {
+    /*font-style: italic;*/
+    font-size: 11px;
+}
 /* items tab */
 #totals {
     border-collapse: collapse;
