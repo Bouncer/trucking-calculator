@@ -311,13 +311,13 @@ export function renderTotals(totals, targets, ignore) {
         .attr("y", d => d.y0)
         .attr("dy", "0.35em")
         .attr("text-anchor", "start")
-        .text(d => `${d.rate.ceil().toFloat().toLocaleString()}x ${d.source.name} (${spec.format.rate(d.weight).toFloat().toLocaleString()}kg)`);
+        .text(d => `${d.source.name}`);
     link.append("text")
         .attr("x", d => d.source.x1 + 6)
         .attr("y", d => d.y0 + 12)
         .attr("dy", "0.35em")
         .attr("text-anchor", "start")
-        .text(d => d.trips > 1 ? `${d.weight.ceil().toFloat().toLocaleString()}kg (${d.trips} trips)` : ``)
+        .text(d => d.trips > 1 ? `${d.rate.ceil().toFloat().toLocaleString()}x, ${d.weight.ceil().toFloat().toLocaleString()}kg, ${d.trips} trips` : `${d.rate.ceil().toFloat().toLocaleString()}x, ${d.weight.ceil().toFloat().toLocaleString()}kg`)
 
     // Overlay transparent rect on top of each node, for click events.
     let rectElements = svg.selectAll("g.node").nodes()

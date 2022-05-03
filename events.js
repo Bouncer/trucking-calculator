@@ -50,44 +50,46 @@ export function toggleIgnoreHandler(d) {
 // setting events
 
 export function changeStrength(event) {
+    spec.capacity.fixed = false
+
     spec.capacity.strength = Number(event.target.value)
     spec.updateSolution()
 }
 export function changePremium(event) {
+    spec.capacity.fixed = false
     if(event.target.checked) {
-        spec.capacity.premium = 1.15
+        spec.capacity.premium = 0.15
     } else {
-        spec.capacity.premium = 1
+        spec.capacity.premium = 0
     }
     spec.updateSolution()
 }
 
 export function changePerk(event) {
+    spec.capacity.fixed = false
+
     if(event.target.value == "strength") {
-        spec.capacity.strengthperk = 2; 
-        spec.capacity.postop = 1; 
+        spec.capacity.strengthperk = 1; 
+        spec.capacity.postop = 0; 
     } else if(event.target.value == "postop") {
-        spec.capacity.strengthperk = 1;
-        spec.capacity.postop = 1.15; 
+        spec.capacity.strengthperk = 0;
+        spec.capacity.postop = 0.15; 
     } else {
-        spec.capacity.strengthperk = 1;
-        spec.capacity.postop = 1; 
+        spec.capacity.strengthperk = 0;
+        spec.capacity.postop = 0;
     }
     spec.updateSolution()
 }
 
 
 export function changeTruck(event) {
+    spec.capacity.fixed = false
     spec.capacity.truck = Number(event.target.value)
     spec.updateSolution()
 }
 
 export function changeCapacity(event) {
+    spec.capacity.fixed = true
     spec.capacity.total = Number(event.target.value)
-    spec.updateSolution()
-}
-
-export function changeCountPrecision(event) {
-    spec.format.countPrecision = Number(event.target.value)
     spec.updateSolution()
 }

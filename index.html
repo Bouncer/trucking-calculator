@@ -18,7 +18,7 @@
         var handlers = {}
     </script>
     <script type="module">
-        import { plusHandler, clickTab, changeStrength, changePremium, changePerk, changeTruck, changeCapacity, changeCountPrecision } from "./events.js"
+        import { plusHandler, clickTab, changeStrength, changePremium, changePerk, changeTruck, changeCapacity } from "./events.js"
         import { init } from "./init.js"
         handlers.plusHandler = plusHandler
         handlers.clickTab = clickTab
@@ -27,7 +27,6 @@
         handlers.changePerk = changePerk
         handlers.changeTruck = changeTruck
         handlers.changeCapacity = changeCapacity
-        handlers.changeCountPrecision = changeCountPrecision
         handlers.init = init
     </script>
 </head>
@@ -74,15 +73,15 @@ limitations under the License.-->
         <tfoot>
             <tr>
                 <td class="right-align power-label"><b>cost: </b></td>
-                <td class="right-align pad"><tt></tt></td>
+                <td class="right-align pad"><tt id="total_cost"></tt></td>
             </tr>
             <tr>
                 <td class="right-align power-label"><b>revenue: </b></td>
-                <td class="right-align pad"><tt></tt></td>
+                <td class="right-align pad"><tt id="total_revenue"></tt></td>
             </tr>
             <tr>
                 <td class="right-align power-label"><b>profit: </b></td>
-                <td class="right-align pad"><tt></tt></td>
+                <td class="right-align pad"><tt id="total_profit"></tt></td>
             </tr>
         </tfoot>
         </table>

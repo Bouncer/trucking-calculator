@@ -22,12 +22,14 @@ export class Ingredient {
 }
 
 class Recipe {
-    constructor(key, name, category, time, ingredients, product) {
+    constructor(key, name, category, time, ingredients, product, cost, pays) {
         this.key = key
         this.name = name
         this.category = category
         this.time = time
         this.ingredients = ingredients
+        this.cost = cost;
+        this.pays = pays;
         for (let ing of ingredients) {
             ing.item.addUse(this)
         }
@@ -55,12 +57,12 @@ function makeRecipe(data, items, d) {
         let item = items.get(item_key)
         ingredients.push(new Ingredient(item, Rational.from_float(amount)))
     }
-    return new Recipe(d.key_name, d.name, d.category, time, ingredients, product)
+    return new Recipe(d.key_name, d.name, d.category, time, ingredients, product, d.cost, d.pays)
 }
 
 class ResourceRecipe extends Recipe {
-    constructor(item, category) {
-        super(item.key, item.name, category, zero, [], new Ingredient(item, one))
+    constructor(item, category, cost) {
+        super(item.key, item.name, category, zero, [], new Ingredient(item, one), cost, zero)
     }
 }
 
@@ -68,7 +70,14 @@ export function getRecipes(data, items) {
     let recipes = new Map()
     for (let d of data.resources) {
         let item = items.get(d.key_name)
-        recipes.set(d.key_name, new ResourceRecipe(item, d.category))
+
+        // resource cost
+        let cost = zero
+        if(d.cost) {
+            cost = d.cost
+        }
+
+        recipes.set(d.key_name, new ResourceRecipe(item, d.category, cost))
     }
     for (let d of data.recipes) {
         recipes.set(d.key_name, makeRecipe(data, items, d))

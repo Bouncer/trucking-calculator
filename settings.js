@@ -149,6 +149,7 @@ function renderPrecisions(settings) {
 
 function beltHandler(belt) {
     spec.belt = belt
+    spec.capacity.fixed = false
     spec.capacity.trailer = belt.rate.toFloat()
     //spec.updateCapacity()
     spec.updateSolution()

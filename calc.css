@@ -228,12 +228,26 @@ text {
 #totals {
     border-collapse: collapse;
 }
+#totals th {
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+td.building {
+    padding-left: 5px !important;
+}
 tr.display-row td.pad, th.pad {
     padding-left: 1em;
+    padding-right: 0px;
 }
 tr.display-row td {
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-top: 1px solid #666;
+}
+
 }
 input.overclock {
     width: 4em;

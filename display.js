@@ -43,11 +43,13 @@ let displayedItems = []
 
 export function displayItems(spec, totals, ignore) {
     let headers = [
-        new Header("Cargo",2),///" + spec.format.rateName, 2),
-        new Header("Trips", 2),
+        new Header("Item",1),
+        new Header("Amount", 1),
+        new Header("Weight", 1),
+        new Header("Trips", 1),
+        new Header("Cost", 1),
+        new Header("Revenue", 1),
         new Header("Location", 2),
-        new Header("", 1),
-        new Header("", 1),
     ]
     let totalCols = 0
     for (let header of headers) {
@@ -59,6 +61,12 @@ export function displayItems(spec, totals, ignore) {
     }
     let totalAveragePower = zero
     let totalPeakPower = zero
+    
+    // totals
+    let totalCost = 0
+    let totalRevenue = 0
+    let totalProfit = 0
+
     for (let i = 0; i < totals.topo.length; i++) {
         let recipe = totals.topo[i]
         let display = displayedItems[i]
@@ -70,9 +78,21 @@ export function displayItems(spec, totals, ignore) {
         let {average, peak} = spec.getPowerUsage(recipe, rate, totals.topo.length)
         totalAveragePower = totalAveragePower.add(average)
         totalPeakPower = totalPeakPower.add(peak)
+        
+        // item data
         display.item = item
         display.itemRate = itemRate
-        //display.weight = rate.mul(ing.item.weight)
+        display.weight = itemRate.mul(item.weight)
+        let beltCountExact = spec.getBeltCount(display.weight);
+        let beltCount = beltCountExact.toFloat();
+        display.trips = Math.ceil(beltCount);
+        display.cost = parseInt(recipe.cost) * rate
+        display.pays = parseInt(recipe.pays)
+
+        // totals sum
+        totalCost += display.cost
+        totalRevenue += display.pays
+        totalProfit = totalRevenue - totalCost
 
         display.recipe = recipe
         display.ignore = ignore.has(recipe)
@@ -100,31 +120,44 @@ export function displayItems(spec, totals, ignore) {
     let row = rows.enter()
         .append("tr")
             .classed("display-row", true)
-    // items/m
-    row.append("td")
-        .append("img")
-            .classed("icon item-icon", true)
-            .attr("width", 32)
-            .attr("height", 32)
-            .on("click", toggleIgnoreHandler)
+    // items
     row.append("td")
         .classed("left-align", true)
         .append("tt")
-            .classed("item-rate", true)
-    // belts
-    let beltCell = row.append("td")
-        .classed("pad", true)
-    /*
-    beltCell.append("img")
-        .classed("icon belt-icon", true)
-        .attr("width", 32)
-        .attr("height", 32)
-    */
-    beltCell.append(d => new Text(" \u00d7"))
+            .classed("item", true)
+            .on("click", toggleIgnoreHandler)
+
+    // amount
     row.append("td")
         .classed("right-align", true)
         .append("tt")
-            .classed("belt-count", true)
+            .classed("amount", true)
+
+    // weight
+    row.append("td")
+        .classed("right-align", true)
+        .append("tt")
+            .classed("weight", true)
+
+    // trips
+    row.append("td")
+        .classed("right-align", true)
+        .append("tt")
+            .classed("trips", true)
+
+    // cost
+    row.append("td")
+        .classed("right-align", true)
+        .append("tt")
+            .classed("cost", true)
+
+    // revenue
+    row.append("td")
+        .classed("right-align", true)
+        .append("tt")
+            .classed("revenue", true)
+
+
     // buildings
     let buildingCell = row.append("td")
         .classed("pad building", true)
@@ -136,7 +169,8 @@ export function displayItems(spec, totals, ignore) {
     row.append("td")
         .classed("left-align building", true)
         .append("tt")
-            .classed("building-count", true)
+            .classed("source", true)
+    
     /*
     row.filter(d => d.building === null)
         .append("td")
@@ -168,29 +202,46 @@ export function displayItems(spec, totals, ignore) {
         .classed("ignore", d => d.ignore)
         .attr("src", d => d.item.iconPath())
         .attr("title", d => d.item.name)
-    row.selectAll("tt.item-rate")
+
+    row.selectAll("tt.item")
         .text(d => d.item.name)
-//    row.selectAll("img.belt-icon")
-//        .attr("src", spec.belt.iconPath())
-//        .attr("title", spec.belt.name)
-    row.selectAll("tt.belt-count")
-        .text(d => `${spec.format.rate(d.rate)}x`)
+
+    row.selectAll("tt.amount")
+        .text(d => `${d.itemRate.ceil().toFloat().toLocaleString()}x`)
+
+    row.selectAll("tt.weight")
+        .text(d => `${d.weight.ceil().toFloat().toLocaleString()}kg`)
+
+    row.selectAll("tt.trips")
+        .text(d => `${d.trips}x`)
+
+    row.selectAll("tt.cost")
+        .text(d => d.cost > 0 ? `$ ${d.cost.toLocaleString()}` : `-`)
+
+    row.selectAll("tt.revenue")
+        .text(d => d.pays > 0 ? `$ ${d.pays }` : `-`)
+
+
+
+
     let buildingRow = row.filter(d => d.building !== null)
     buildingRow.selectAll("img.building-icon")
         .attr("src", d => d.building.iconPath())
         .attr("title", d => d.building.name)
-    buildingRow.selectAll("tt.building-count")
+    buildingRow.selectAll("tt.source")
         .text(d => d.building.name)
+
+
+
     buildingRow.selectAll("input.overclock")
         .attr("value", d => d.overclock)
     buildingRow.selectAll("tt.power")
         .text(d => spec.format.alignCount(d.average) + " MW")
     
-    let totalPower = [totalAveragePower, totalPeakPower]
-    let footerRow = table.selectAll("tfoot tr")
-    footerRow.select("td.power-label")
-        .attr("colspan", totalCols - 1)
-    footerRow.select("tt")
-        .data(totalPower)
-        .text(d => spec.format.alignCount(d) + "")
+    d3.select("tt#total_cost")
+        .text(`$ ${totalCost.toLocaleString()}`)
+    d3.select("tt#total_revenue")
+        .text(`$ ${totalRevenue.toLocaleString()}`)
+    d3.select("tt#total_profit")
+        .text(`$ ${totalProfit.toLocaleString()}`)
 }

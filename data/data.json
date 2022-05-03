@@ -1777,7 +1777,8 @@
         },
         {
             "key_name": "logs",
-            "category": "log-camp"
+            "category": "log-camp",
+            "cost": 7500
         },
         {
             "key_name": "unfiltered-water",

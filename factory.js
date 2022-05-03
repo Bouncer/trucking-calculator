@@ -59,12 +59,13 @@ class FactorySpecification {
 
         // cargo capacity
         this.capacity = {
+            "fixed": false,
             "strength": 30,
-            "premium": 1,
-            "strengthperk": 1,
+            "premium": 0,
+            "strengthperk": 0,
             "truck": 0,
-            "postop": 1,
-            "trailer": 1,
+            "postop": 0,
+            "trailer": 0,
             "total": Rational.from_float(0)
         }
 
@@ -241,11 +242,13 @@ class FactorySpecification {
         window.location.hash = "#" + formatSettings()
     }
     updateCapacity() {
-        this.capacity.total = Math.round((this.capacity.strength * this.capacity.strengthperk * this.capacity.premium) + (this.capacity.truck * this.capacity.postop * this.capacity.premium) + this.capacity.trailer)
+        this.capacity.total = Math.round((this.capacity.strength * (1 + this.capacity.strengthperk + this.capacity.premium)) + (this.capacity.truck * (1 + this.capacity.postop + this.capacity.premium)) + (this.capacity.trailer * (1 + this.capacity.premium + this.capacity.postop)))
         let form = d3.select("#capacity").property("value", this.capacity.total)
     }
     updateSolution() {
-        this.updateCapacity()
+        if(!this.capacity.fixed) {
+            this.updateCapacity()
+        }
 
         let totals = this.solve()
         displayItems(this, totals, this.ignore)
