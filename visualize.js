@@ -15,6 +15,7 @@ import { toggleIgnoreHandler } from "./events.js"
 import { spec } from "./factory.js"
 import { Rational, zero, one } from "./rational.js"
 import { Ingredient } from "./recipe.js"
+import { colors } from "./colors.js"
 
 const iconSize = 20
 
@@ -25,16 +26,20 @@ const maxNodeHeight = 100
 const minNodeHeight = 28
 
 const colorList = [
-    "#1f77b4", // blue
-    "#8c564b", // brown
-    "#2ca02c", // green
-    "#d62728", // red
-    "#9467bd", // purple
-    "#e377c2", // pink
-    "#17becf", // cyan
-    "#7f7f7f", // gray
-    "#bcbd22", // yellow
-    "#ff7f0e", // orange
+    colors.Red[700], // base
+    colors.Blue[700], // foundry
+    colors.Purple[800], // factory
+    colors.Green[700], // sorting
+    colors.Yellow[800], // filtering
+    colors.Brown[600], // quarry
+    colors.Orange[700], // sawmill
+    colors.Cyan[700], // treated water
+    colors.Pink[700], // house
+    colors["Deep Purple"][700], // illegal
+    colors["Blue Grey"][700], // oil
+    colors["Light Green"][700], // food
+    colors.Orange[700], // logs
+    colors.Cyan[800], // water
 ]
 
 function makeGraph(totals, targets, ignore) {
@@ -261,8 +266,8 @@ export function renderTotals(totals, targets, ignore) {
         .attr("y", d => d.y0)
         .attr("height", d => Math.max(d.y1 - d.y0, minNodeHeight))
         .attr("width", d => d.x1 - d.x0)
-        .attr("fill", d => d3.color(color(d.name)).darker())
-        .attr("stroke", d => d3.color(color(d.name)))
+        .attr("fill", d => d.name == "output" ? d3.rgb("#AAAAAA").darker() : d3.rgb(colorList[d.building.color]).darker())
+        .attr("stroke", d => d.name == "output" ? d3.rgb("#AAAAAA") : d3.color(colorList[d.building.color]))
     rects.filter(d => d.name != "output")
         .append("image")
             .classed("ignore", d => ignore.has(d.recipe))
@@ -299,7 +304,7 @@ export function renderTotals(totals, targets, ignore) {
         .attr("fill", "none")
         .attr("stroke-opacity", 0.3)
         .attr("d", d3.sankeyLinkHorizontal())
-        .attr("stroke", d => color(d.source.name))
+        .attr("stroke", d => d3.color(colorList[d.source.building.color]).brighter())
         .attr("stroke-width", d => Math.max(1, d.width))
     // Don't draw belts if we have less than three pixels per belt.
     if (beltDensity >= 3) {

@@ -73,225 +73,248 @@
     ],
     "buildings": [
         {
-            "name": "Water Treatment Plant",
-            "key_name": "water-treatment-plant",
-            "category": "water-treatment-plant",
-            "power": "1",
-            "max": "1"
-        },
-        {
-            "name": "Sorting Facility",
-            "key_name": "sorting-facility",
-            "category": "sorting-facility",
-            "power": "1",
-            "max": "1"
-        },
-        {
-            "name": "Sawmill",
-            "key_name": "sawmill",
-            "category": "sawmill",
-            "power": "1",
-            "max": "1"
-        },
-        {
-            "name": "Refinery",
-            "key_name": "refinery",
-            "category": "refinery",
-            "power": "1",
-            "max": "1"
-        },
-        {
-            "name": "Quarry",
-            "key_name": "quarry",
-            "category": "quarry",
-            "power": "1",
-            "max": "1"
-        },
-        {
-            "name": "Oil Depository",
-            "key_name": "oil-depository",
-            "category": "oil-depository",
-            "power": "1",
-            "max": "1"
-        },
-        {
-            "name": "Mineral Mine",
-            "key_name": "mineral-mine",
-            "category": "mineral-mine",
-            "power": "1",
-            "max": "1"
-        },
-        {
-            "name": "Military Workshop",
-            "key_name": "military-workshop",
-            "category": "military-workshop",
-            "power": "1",
-            "max": "1"
-        },
-        {
-            "name": "LS Foundry",
-            "key_name": "ls-foundry",
-            "category": "ls-foundry",
-            "power": "1",
-            "max": "1"
-        },
-        {
-            "name": "LS Factory",
-            "key_name": "ls-factory",
-            "category": "ls-factory",
-            "power": "1",
-            "max": "1"
-        },
-        {
-            "name": "GSD Mine",
-            "key_name": "gsd-mine",
-            "category": "gsd-mine",
-            "power": "1",
-            "max": "1"
-        },
-        {
-            "name": "Fridgit Co.",
-            "key_name": "fridgit-co.",
-            "category": "fridgit-co.",
-            "power": "1",
-            "max": "1"
-        },
-        {
-            "name": "Filtering Plant",
-            "key_name": "filtering-plant",
-            "category": "filtering-plant",
-            "power": "1",
-            "max": "1"
-        },
-        {
-            "name": "Deep Quarry",
-            "key_name": "deep-quarry",
-            "category": "deep-quarry",
-            "power": "1",
-            "max": "1"
+            "name": "Chemical Laboratories",
+            "key_name": "chemical-laboratories",
+            "category": "chemical-laboratories",
+            "power": 1,
+            "max": 1,
+            "color": 10
         },
         {
             "name": "Clucking Bell Farms",
             "key_name": "clucking-bell-farms",
             "category": "clucking-bell-farms",
-            "power": "1",
-            "max": "1"
+            "power": 1,
+            "max": 1,
+            "color": 11
         },
         {
-            "name": "Chemical Laboratories",
-            "key_name": "chemical-laboratories",
-            "category": "chemical-laboratories",
-            "power": "1",
-            "max": "1"
+            "name": "Deep Quarry",
+            "key_name": "deep-quarry",
+            "category": "deep-quarry",
+            "power": 1,
+            "max": 1,
+            "color": 5
         },
         {
-            "name": "Jewelry Store",
-            "key-name": "jewelry-store",
-            "category": "jewelry-store",
-            "power": "1",
-            "max": "1"
+            "name": "Filtering Plant",
+            "key_name": "filtering-plant",
+            "category": "filtering-plant",
+            "power": 1,
+            "max": 1,
+            "color": 4
+        },
+        {
+            "name": "Fridgit Co.",
+            "key_name": "fridgit-co.",
+            "category": "fridgit-co.",
+            "power": 1,
+            "max": 1,
+            "color": 11
+        },
+        {
+            "name": "GSD Mine",
+            "key_name": "gsd-mine",
+            "category": "gsd-mine",
+            "power": 1,
+            "max": 1,
+            "color": 5
+        },
+        {
+            "name": "LS Factory",
+            "key_name": "ls-factory",
+            "category": "ls-factory",
+            "power": 1,
+            "max": 1,
+            "color": 2
+        },
+        {
+            "name": "LS Foundry",
+            "key_name": "ls-foundry",
+            "category": "ls-foundry",
+            "power": 1,
+            "max": 1,
+            "color": 1
+        },
+        {
+            "name": "Military Workshop",
+            "key_name": "military-workshop",
+            "category": "military-workshop",
+            "power": 1,
+            "max": 1,
+            "color": 10
+        },
+        {
+            "name": "Mineral Mine",
+            "key_name": "mineral-mine",
+            "category": "mineral-mine",
+            "power": 1,
+            "max": 1,
+            "color": 5
+        },
+        {
+            "name": "Oil Depository",
+            "key_name": "oil-depository",
+            "category": "oil-depository",
+            "power": 1,
+            "max": 1,
+            "color": 10
+        },
+        {
+            "name": "Quarry",
+            "key_name": "quarry",
+            "category": "quarry",
+            "power": 1,
+            "max": 1,
+            "color": 5
+        },
+        {
+            "name": "Refinery",
+            "key_name": "refinery",
+            "category": "refinery",
+            "power": 1,
+            "max": 1,
+            "color": 10
+        },
+        {
+            "name": "Sawmill",
+            "key_name": "sawmill",
+            "category": "sawmill",
+            "power": 1,
+            "max": 1,
+            "color": 6
+        },
+        {
+            "name": "Sorting Facility",
+            "key_name": "sorting-facility",
+            "category": "sorting-facility",
+            "power": 1,
+            "max": 1,
+            "color": 3
+        },
+        {
+            "name": "Water Treatment Plant",
+            "key_name": "water-treatment-plant",
+            "category": "water-treatment-plant",
+            "power": 1,
+            "max": 1,
+            "color": 7
         },
         {
             "name": "House Construction Site",
-            "key-name": "house-construction-site",
+            "key_name": "house-construction-site",
             "category": "house-construction-site",
-            "power": "1",
-            "max": "1"
+            "power": 1,
+            "max": 1,
+            "color": 8
         },
         {
             "name": "Pop's Pills",
-            "key-name": "pops-pills",
+            "key_name": "pops-pills",
             "category": "pops-pills",
-            "power": "1",
-            "max": "1"
+            "power": 1,
+            "max": 1,
+            "color": 9
         },
         {
             "name": "Humane Labs",
             "key-name": "humane-labs",
             "category": "humane-labs",
             "power": "1",
-            "max": "1"
+            "max": "1",
+            "color": 9
         }
     ],
     "miners": [
-    {
-        "name": "Recycling Center",
-        "key-name": "recycling-center",
-        "category": "recycling-center",
-        "base-rate": "1",
-        "power": "5"
-    },
-    {
-        "name": "Quarry",
-        "key-name": "quarry",
-        "category": "quarry-resource",
-        "base-rate": "1",
-        "power": "5"
-    },
-    {
-        "name": "LSIA Waste Depot ",
-        "key-name": "lsia-waste-depot",
-        "category": "lsia-waste-depot",
-        "base-rate": "1",
-        "power": "5"
-    },
-    {
-        "name": "LS Oil Pumping Station",
-        "key-name": "ls-oil-pumping-station",
-        "category": "ls-oil-pumping-station",
-        "base-rate": "1",
-        "power": "5"
-    },
-    {
-        "name": "Log Camp",
-        "key-name": "log-camp",
-        "category": "log-camp",
-        "base-rate": "1",
-        "power": "5"
-    },
-    {
-        "name": "Land Act Reservoir ",
-        "key-name": "land-act-reservoir",
-        "category": "land-act-reservoir",
-        "base-rate": "1",
-        "power": "5"
-    },
-    {
-        "name": "GSD Gas Pumping Station",
-        "key-name": "gsd-gas-pumping-station",
-        "category": "gsd-gas-pumping-station",
-        "base-rate": "1",
-        "power": "5"
-    },
-    {
-        "name": "Great Chaprral Farming ",
-        "key-name": "great-chaprral-farming",
-        "category": "great-chaprral-farming",
-        "base-rate": "1",
-        "power": "5"
-    },
-    {
-        "name": "Grapeseed Farm",
-        "key-name": "grapeseed-farm",
-        "category": "grapeseed-farm",
-        "base-rate": "1",
-        "power": "5"
-    },
-    {
-        "name": "Electronics Store",
-        "key-name": "electronics-store",
-        "category": "electronics-store",
-        "base-rate": "1",
-        "power": "5"
-    },
-    {
-        "name": "Liquor Ace",
-        "key-name": "liquor-ace",
-        "category": "liquor-ace",
-        "base-rate": "1",
-        "power": "5"
-    }
-],
+        {
+            "name": "Recycling Center",
+            "key-name": "recycling-center",
+            "category": "recycling-center",
+            "base-rate": 1,
+            "power": 5,
+            "color": 0
+        },
+        {
+            "name": "Quarry",
+            "key-name": "quarry-resource",
+            "category": "quarry-resource",
+            "base-rate": 1,
+            "power": 5,
+            "color": 5
+        },
+        {
+            "name": "LSIA Waste Depot",
+            "key-name": "lsia-waste-depot",
+            "category": "lsia-waste-depot",
+            "base-rate": 1,
+            "power": 5,
+            "color": 0
+        },
+        {
+            "name": "LS Oil Pumping Station",
+            "key-name": "ls-oil-pumping-station",
+            "category": "ls-oil-pumping-station",
+            "base-rate": 1,
+            "power": 5,
+            "color": 10
+        },
+        {
+            "name": "Log Camp",
+            "key-name": "log-camp",
+            "category": "log-camp",
+            "base-rate": 1,
+            "power": 5,
+            "color": 12
+        },
+        {
+            "name": "Land Act Reservoir",
+            "key-name": "land-act-reservoir",
+            "category": "land-act-reservoir",
+            "base-rate": 1,
+            "power": 5,
+            "color": 13
+        },
+        {
+            "name": "GSD Gas Pumping Station",
+            "key-name": "gsd-gas-pumping-station",
+            "category": "gsd-gas-pumping-station",
+            "base-rate": 1,
+            "power": 5,
+            "color": 10
+        },
+        {
+            "name": "Great Chaprral Farming",
+            "key-name": "great-chaprral-farming",
+            "category": "great-chaprral-farming",
+            "base-rate": 1,
+            "power": 5,
+            "color": 11
+        },
+        {
+            "name": "Grapeseed Farm",
+            "key-name": "grapeseed-farm",
+            "category": "grapeseed-farm",
+            "base-rate": 1,
+            "power": 5,
+            "color": 11
+        },
+        {
+            "name": "Electronics Store",
+            "key-name": "electronics-store",
+            "category": "electronics-store",
+            "base-rate": 1,
+            "power": 5,
+            "color": 0
+        },
+        {
+            "name": "Liquour Ace",
+            "key_name": "liquor-ace",
+            "category": "liquor-ace",
+            "power": 1,
+            "max": 1,
+            "color": 9
+        }
+    ],
     "items": [
     {
         "name": "Acid",
