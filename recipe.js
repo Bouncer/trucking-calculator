@@ -76,7 +76,6 @@ export function getRecipes(data, items) {
         if(d.cost) {
             cost = d.cost
         }
-
         recipes.set(d.key_name, new ResourceRecipe(item, d.category, cost))
     }
     for (let d of data.recipes) {

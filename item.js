@@ -19,7 +19,7 @@ export class Item {
         this.key = key
         this.name = name
         this.tier = tier
-        this.weight = Rational.from_string(weight)
+        this.weight = Rational.from_float(weight)
         this.recipes = []
         this.uses = []
     }

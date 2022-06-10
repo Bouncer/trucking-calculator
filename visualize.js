@@ -64,6 +64,7 @@ function makeGraph(totals, targets, ignore) {
         "count": one,
         "rate": null,
     }]
+    
     let nodeMap = new Map()
     nodeMap.set("output", nodes[0])
 
@@ -184,6 +185,10 @@ function beltPath(d) {
 
 let color = d3.scaleOrdinal(colorList)
 
+function buildingColor(color) {
+    return d3.color("rgb("+color+")")
+}
+
 export function renderTotals(totals, targets, ignore) {
     let data = makeGraph(totals, targets, ignore)
 
@@ -266,8 +271,8 @@ export function renderTotals(totals, targets, ignore) {
         .attr("y", d => d.y0)
         .attr("height", d => Math.max(d.y1 - d.y0, minNodeHeight))
         .attr("width", d => d.x1 - d.x0)
-        .attr("fill", d => d.name == "output" ? d3.rgb("#AAAAAA").darker() : d3.rgb(colorList[d.building.color]).darker())
-        .attr("stroke", d => d.name == "output" ? d3.rgb("#AAAAAA") : d3.color(colorList[d.building.color]))
+        .attr("fill", d => d.name == "output" ? d3.rgb("#AAAAAA").darker() : d3.color(buildingColor(d.building.color)).darker())
+        .attr("stroke", d => d.name == "output" ? d3.rgb("#AAAAAA") : d3.color(buildingColor(d.building.color)))
     rects.filter(d => d.name != "output")
         .append("image")
             .classed("ignore", d => ignore.has(d.recipe))
@@ -304,7 +309,7 @@ export function renderTotals(totals, targets, ignore) {
         .attr("fill", "none")
         .attr("stroke-opacity", 0.3)
         .attr("d", d3.sankeyLinkHorizontal())
-        .attr("stroke", d => d3.color(colorList[d.source.building.color]).brighter())
+        .attr("stroke", d => buildingColor(d.source.building.color).brighter())
         .attr("stroke-width", d => Math.max(1, d.width))
     // Don't draw belts if we have less than three pixels per belt.
     if (beltDensity >= 3) {

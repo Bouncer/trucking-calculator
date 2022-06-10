@@ -40,6 +40,7 @@ class FactorySpecification {
         this.recipes = null
         this.buildings = null
         this.belts = null
+        this.outputs = null
 
         this.itemTiers = []
 

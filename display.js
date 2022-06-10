@@ -87,7 +87,7 @@ export function displayItems(spec, totals, ignore) {
         let beltCount = beltCountExact.toFloat();
         display.trips = Math.ceil(beltCount);
         display.cost = parseInt(recipe.cost) * rate
-        display.pays = parseInt(recipe.pays)
+        display.pays = parseInt(recipe.pays) * rate
 
         // totals sum
         totalCost += display.cost

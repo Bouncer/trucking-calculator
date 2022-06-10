@@ -30,6 +30,8 @@ class Building {
         return recipe.time.reciprocate().mul(overclock)
     }
     iconPath() {
+        // todo: add categories fallback
+        return "images/ls-factory.png"
         return "images/" + this.category + ".png"
     }
 }
