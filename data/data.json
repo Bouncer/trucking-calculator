@@ -78,7 +78,9 @@
             "category": "chemical-laboratories",
             "power": 1,
             "max": 1,
-            "color": 10
+            "color": 10,
+            "x": 3462.9860839844,
+            "y": 3682.5251464844
         },
         {
             "name": "Clucking Bell Farms",
@@ -86,7 +88,9 @@
             "category": "clucking-bell-farms",
             "power": 1,
             "max": 1,
-            "color": 11
+            "color": 11,
+            "x": 31.669704437256,
+            "y": 6286.98828125
         },
         {
             "name": "Deep Quarry",
@@ -94,7 +98,9 @@
             "category": "deep-quarry",
             "power": 1,
             "max": 1,
-            "color": 5
+            "color": 5,
+            "x": 2962.6967773438,
+            "y": 2746.5168457031
         },
         {
             "name": "Filtering Plant",
@@ -102,7 +108,9 @@
             "category": "filtering-plant",
             "power": 1,
             "max": 1,
-            "color": 4
+            "color": 4,
+            "x": 270.10818481445,
+            "y": 2851.9851074219
         },
         {
             "name": "Fridgit Co.",
@@ -110,7 +118,9 @@
             "category": "fridgit-co.",
             "power": 1,
             "max": 1,
-            "color": 11
+            "color": 11,
+            "x": 918.49694824219,
+            "y": -1556.5446777344
         },
         {
             "name": "GSD Mine",
@@ -118,7 +128,9 @@
             "category": "gsd-mine",
             "power": 1,
             "max": 1,
-            "color": 5
+            "color": 5,
+            "x": 588.97094726563,
+            "y": 2904.5051269531
         },
         {
             "name": "LS Factory",
@@ -126,7 +138,9 @@
             "category": "ls-factory",
             "power": 1,
             "max": 1,
-            "color": 2
+            "color": 2,
+            "x": 233.826171875,
+            "y": -2210.671875
         },
         {
             "name": "LS Foundry",
@@ -134,7 +148,9 @@
             "category": "ls-foundry",
             "power": 1,
             "max": 1,
-            "color": 1
+            "color": 1,
+            "x": 1066.192871,
+            "y": -1962.365356
         },
         {
             "name": "Military Workshop",
@@ -142,7 +158,9 @@
             "category": "military-workshop",
             "power": 1,
             "max": 1,
-            "color": 10
+            "color": 10,
+            "x": -1759.1031494141,
+            "y": 3062.0981445313
         },
         {
             "name": "Mineral Mine",
@@ -150,7 +168,9 @@
             "category": "mineral-mine",
             "power": 1,
             "max": 1,
-            "color": 5
+            "color": 5,
+            "x": 1025.0187988281,
+            "y": 2909.7883300781
         },
         {
             "name": "Oil Depository",
@@ -158,7 +178,9 @@
             "category": "oil-depository",
             "power": 1,
             "max": 1,
-            "color": 10
+            "color": 10,
+            "x": 1589.0988769531,
+            "y": -1713.2185058594
         },
         {
             "name": "Quarry",
@@ -166,7 +188,9 @@
             "category": "quarry",
             "power": 1,
             "max": 1,
-            "color": 5
+            "color": 5,        
+            "x": 2682.7861328125,
+            "y": 2817.8293457031
         },
         {
             "name": "Refinery",
@@ -174,7 +198,9 @@
             "category": "refinery",
             "power": 1,
             "max": 1,
-            "color": 10
+            "color": 10,
+            "x": 2809.6357421875,
+            "y": 1551.9398193359
         },
         {
             "name": "Sawmill",
@@ -182,7 +208,9 @@
             "category": "sawmill",
             "power": 1,
             "max": 1,
-            "color": 6
+            "color": 6,
+            "x": -559.0625,
+            "y": 5262.0502929688
         },
         {
             "name": "Sorting Facility",
@@ -190,7 +218,9 @@
             "category": "sorting-facility",
             "power": 1,
             "max": 1,
-            "color": 3
+            "color": 3,
+            "x": 1712.436035,
+            "y": 3771.523926
         },
         {
             "name": "Water Treatment Plant",
@@ -198,7 +228,9 @@
             "category": "water-treatment-plant",
             "power": 1,
             "max": 1,
-            "color": 7
+            "color": 7,
+            "x": 156.2195892334,
+            "y": -2409.0537109375
         },
         {
             "name": "House Construction Site",
@@ -206,7 +238,9 @@
             "category": "house-construction-site",
             "power": 1,
             "max": 1,
-            "color": 8
+            "color": 8,
+            "x": 98.938095092773,
+            "y": -386.93804931641
         },
         {
             "name": "Pop's Pills",
@@ -214,7 +248,9 @@
             "category": "pops-pills",
             "power": 1,
             "max": 1,
-            "color": 9
+            "color": 9,
+            "x": 138.28372192383,
+            "y": 6650.0546875
         },
         {
             "name": "Humane Labs",
@@ -222,7 +258,9 @@
             "category": "humane-labs",
             "power": "1",
             "max": "1",
-            "color": 9
+            "color": 9,
+            "x": 3614.3928222656,
+            "y": 3734.4885253906
         }
     ],
     "miners": [
@@ -232,7 +270,9 @@
             "category": "recycling-center",
             "base-rate": 1,
             "power": 5,
-            "color": 0
+            "color": 0,
+            "x": -345.93292236328,
+            "y": -1562.4621582031
         },
         {
             "name": "Quarry",
@@ -240,7 +280,9 @@
             "category": "quarry-resource",
             "base-rate": 1,
             "power": 5,
-            "color": 5
+            "color": 5,        
+            "x": 2682.7861328125,
+            "y": 2817.8293457031
         },
         {
             "name": "LSIA Waste Depot",
@@ -248,7 +290,9 @@
             "category": "lsia-waste-depot",
             "base-rate": 1,
             "power": 5,
-            "color": 0
+            "color": 0,
+            "x": 264.68194580078,
+            "y": -3022.201171875
         },
         {
             "name": "LS Oil Pumping Station",
@@ -256,7 +300,9 @@
             "category": "ls-oil-pumping-station",
             "base-rate": 1,
             "power": 5,
-            "color": 10
+            "color": 10,
+            "x": 1358.9661865234,
+            "y": -1854.6618652344
         },
         {
             "name": "Log Camp",
@@ -264,7 +310,9 @@
             "category": "log-camp",
             "base-rate": 1,
             "power": 5,
-            "color": 12
+            "color": 12,
+            "x": -961.28234863281,
+            "y": 4173.1274414063
         },
         {
             "name": "Land Act Reservoir",
@@ -272,7 +320,9 @@
             "category": "land-act-reservoir",
             "base-rate": 1,
             "power": 5,
-            "color": 13
+            "color": 13,
+            "x": 1534.3098144531,
+            "y": 834.60900878906
         },
         {
             "name": "GSD Gas Pumping Station",
@@ -280,7 +330,9 @@
             "category": "gsd-gas-pumping-station",
             "base-rate": 1,
             "power": 5,
-            "color": 10
+            "color": 10,
+            "x": 588.97094726563,
+            "y": 2904.5051269531
         },
         {
             "name": "Great Chaprral Farming",
@@ -288,7 +340,9 @@
             "category": "great-chaprral-farming",
             "base-rate": 1,
             "power": 5,
-            "color": 11
+            "color": 11,
+            "x": -63.728096008301,
+            "y": 1880.1964111328
         },
         {
             "name": "Grapeseed Farm",
@@ -296,7 +350,9 @@
             "category": "grapeseed-farm",
             "base-rate": 1,
             "power": 5,
-            "color": 11
+            "color": 11,
+            "x": 1912.9744873047,
+            "y": 4940.7841796875
         },
         {
             "name": "Electronics Store",
@@ -304,7 +360,9 @@
             "category": "electronics-store",
             "base-rate": 1,
             "power": 5,
-            "color": 0
+            "color": 0,
+            "x": -15.820581,
+            "y": 6455.52832
         },
         {
             "name": "Liquour Ace",
@@ -312,7 +370,9 @@
             "category": "liquor-ace",
             "power": 1,
             "max": 1,
-            "color": 9
+            "color": 9,
+            "x": 1373.3714599609,
+            "y": 3615.49609375
         }
     ],
     "items": [

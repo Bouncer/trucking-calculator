@@ -14,13 +14,15 @@ limitations under the License.*/
 import { Rational } from "./rational.js"
 
 class Building {
-    constructor(key, name, category, power, max, color) {
+    constructor(key, name, category, power, max, color, x, y) {
         this.key = key
         this.name = name
         this.category = category
         this.power = power
         this.max = max
         this.color = color
+        this.x = x
+        this.y = y
     }
     getCount(spec, recipe, rate) {
         return rate.div(this.getRecipeRate(spec, recipe)).ceil()
@@ -35,8 +37,8 @@ class Building {
 }
 
 class Miner extends Building {
-    constructor(key, name, category, power, baseRate, color) {
-        super(key, name, category, power, null, color)
+    constructor(key, name, category, power, baseRate, color, x, y) {
+        super(key, name, category, power, null, color, x, y)
         this.baseRate = baseRate
     }
     getRecipeRate(spec, recipe) {
@@ -56,7 +58,9 @@ export function getBuildings(data) {
             d.category,
             Rational.from_float(d.power),
             d.max,
-            d.color
+            d.color,
+            d.x,
+            d.y
         ))
     }
     for (let d of data.miners) {
@@ -66,7 +70,9 @@ export function getBuildings(data) {
             d.category,
             Rational.from_float(d.power),
             Rational.from_float(d.base_rate).div(Rational.from_float(1)),
-            d.color
+            d.color,
+            d.x,
+            d.y
         ))
     }
     return buildings

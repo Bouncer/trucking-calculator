@@ -16,6 +16,7 @@ import { spec } from "./factory.js"
 import { Rational, zero, one } from "./rational.js"
 import { Ingredient } from "./recipe.js"
 import { colors } from "./colors.js"
+import { updateMap } from "./map.js"
 
 const iconSize = 20
 
@@ -148,6 +149,7 @@ function rankHeightEstimate(rank, valueFactor) {
 
 function nodeText(d) {
     return d.name;
+    /*
     if (d.count.isZero()) {
         if (d.rate === null) {
             return ""
@@ -157,6 +159,7 @@ function nodeText(d) {
     } else {
         return "\u00d7 " + spec.format.count(d.count)
     }
+    */
 }
 
 // This is basically an educated guess, but seems to match whatever Chrome and
@@ -351,6 +354,10 @@ export function renderTotals(totals, targets, ignore) {
         }
     }
     graphTab.style("display", origDisplay)
+
+
+    // update map
+    updateMap(links)
 
     /*
     svg.append("g")

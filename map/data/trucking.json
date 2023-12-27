@@ -1,0 +1,5610 @@
+{
+    "AM Petroleum": {
+        "job": "liberty",
+        "x": -4083.6000976563,
+        "y": 7206.6787109375,
+        "location": "-4083.6000976563, 7206.6787109375",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.liberty"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Tokens to Kerosene x10": {
+                "reagents": {
+                    "liberty_token": 10
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Liberty Token -> Kerosene",
+                "products": {
+                    "petrochem_kerosene": 10
+                }
+            },
+            "Tokens to Kerosene": {
+                "reagents": {
+                    "liberty_token": 1
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Liberty Token -> Kerosene",
+                "products": {
+                    "petrochem_kerosene": 1
+                }
+            }
+        },
+        "export": {}
+    },
+    "Alta Construction Site": {
+        "job": "trucker",
+        "x": 98.938095092773,
+        "y": -386.93804931641,
+        "location": "98.938095092773, -386.93804931641",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {},
+        "export": {
+            "Deliver Rebar": {
+                "reagents": {
+                    "crafted_rebar": 1
+                },
+                "out_money": 230000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 2.03,
+                    "physical.strength": 2.03,
+                    "player.player": 2.03
+                },
+                "description": "Deliver Rebar to the construction site",
+                "products": []
+            },
+            "Deliver Concrete": {
+                "reagents": {
+                    "crafted_concrete": 1
+                },
+                "description": "Deliver Concrete to the construction site",
+                "out_money": 800000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 10.91,
+                    "physical.strength": 10.91,
+                    "player.player": 10.91
+                },
+                "products": []
+            },
+            "Deliver Asphalt Concrete": {
+                "permissionsText": "Asphalt Concrete Refining Secret",
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 5.81,
+                    "physical.strength": 5.81,
+                    "player.player": 5.81
+                },
+                "products": [],
+                "secret": true,
+                "description": "Deliver Asphalt Concrete",
+                "reagents": {
+                    "petrochem_asphalt": 5
+                },
+                "permissions": [
+                    "sd.trucking.asphalt"
+                ],
+                "out_money": 25000
+            },
+            "Deliver Rebar x5": {
+                "reagents": {
+                    "crafted_rebar": 5
+                },
+                "out_money": 1150000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 10.14999999999999,
+                    "physical.strength": 10.14999999999999,
+                    "player.player": 10.14999999999999
+                },
+                "description": "Deliver Rebar to the construction site",
+                "products": []
+            },
+            "Deliver Concrete x2": {
+                "reagents": {
+                    "crafted_concrete": 2
+                },
+                "description": "Deliver Concrete to the construction site",
+                "out_money": 1600000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 21.82,
+                    "physical.strength": 21.82,
+                    "player.player": 21.82
+                },
+                "products": []
+            },
+            "Deliver Asphalt Concrete x5": {
+                "permissionsText": "Asphalt Concrete Refining Secret",
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 29.04999999999999,
+                    "physical.strength": 29.04999999999999,
+                    "player.player": 29.04999999999999
+                },
+                "products": [],
+                "secret": true,
+                "description": "Deliver Asphalt Concrete x5",
+                "reagents": {
+                    "petrochem_asphalt": 25
+                },
+                "permissions": [
+                    "sd.trucking.asphalt"
+                ],
+                "out_money": 125000
+            }
+        }
+    },
+    "Auto Yard": {
+        "job": "liberty",
+        "x": -1931.2093505859,
+        "y": 7343.478515625,
+        "location": "-1931.2093505859, 7343.478515625",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.liberty"
+        ],
+        "color": "255,125,0",
+        "pickup": {
+            "Salvage Auto Parts x3": {
+                "reagents": [],
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Auto Parts",
+                "products": {
+                    "liberty_autopart": 3
+                }
+            },
+            "Salvage Auto Parts": {
+                "reagents": [],
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Auto Parts",
+                "products": {
+                    "liberty_autopart": 1
+                }
+            }
+        },
+        "recipes": {},
+        "export": {}
+    },
+    "Bristols Fuel Storage": {
+        "job": "petrochem",
+        "x": 544.26892089844,
+        "y": -2731.8520507813,
+        "location": "544.26892089844, -2731.8520507813",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.petrochem"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {},
+        "export": {
+            "Sell Diesel x10": {
+                "reagents": {
+                    "petrochem_diesel": 10
+                },
+                "out_money": 120000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 3.9,
+                    "physical.strength": 3.9,
+                    "player.player": 3.9
+                },
+                "description": "Sell Diesel",
+                "products": []
+            },
+            "Sell Kerosene x10": {
+                "reagents": {
+                    "petrochem_kerosene": 10
+                },
+                "out_money": 150000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 3.9,
+                    "physical.strength": 3.9,
+                    "player.player": 3.9
+                },
+                "description": "Sell Kerosene",
+                "products": []
+            },
+            "Sell Kerosene": {
+                "reagents": {
+                    "petrochem_kerosene": 1
+                },
+                "out_money": 15000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 0.39,
+                    "physical.strength": 0.39,
+                    "player.player": 0.39
+                },
+                "description": "Sell Kerosene",
+                "products": []
+            },
+            "Sell Petrol": {
+                "reagents": {
+                    "petrochem_petrol": 1
+                },
+                "out_money": 8000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 0.39,
+                    "physical.strength": 0.39,
+                    "player.player": 0.39
+                },
+                "description": "Sell Petrol",
+                "products": []
+            },
+            "Sell Empty Jerry Cans": {
+                "reagents": {
+                    "jerry_can_empty": 10
+                },
+                "out_money": 4000,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Sell Empty Jerry Cans",
+                "products": []
+            },
+            "Sell Diesel": {
+                "reagents": {
+                    "petrochem_diesel": 1
+                },
+                "out_money": 12000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 0.39,
+                    "physical.strength": 0.39,
+                    "player.player": 0.39
+                },
+                "description": "Sell Diesel",
+                "products": []
+            },
+            "Sell Petrol x10": {
+                "reagents": {
+                    "petrochem_petrol": 10
+                },
+                "out_money": 80000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 3.9,
+                    "physical.strength": 3.9,
+                    "player.player": 3.9
+                },
+                "description": "Sell Petrol",
+                "products": []
+            }
+        }
+    },
+    "Cargo Buyer: Erasers": {
+        "job": "trucker",
+        "x": -1132.5842285156,
+        "y": 2697.7170410156,
+        "location": "-1132.5842285156, 2697.7170410156",
+        "rate": 1000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {},
+        "export": {
+            "Sell: Erasers x10": {
+                "in_money": 0,
+                "out_money": 6000,
+                "description": "Sell your Erasers in bulks of 10",
+                "aptitudes": {
+                    "trucking.trucking": 4.0,
+                    "physical.strength": 4.0,
+                    "player.player": 4.0
+                },
+                "reagents": {
+                    "tcargosmall": 10
+                },
+                "products": []
+            },
+            "Sell: Erasers": {
+                "in_money": 0,
+                "out_money": 600,
+                "description": "Sell your Erasers",
+                "aptitudes": {
+                    "trucking.trucking": 0.4,
+                    "physical.strength": 0.4,
+                    "player.player": 0.4
+                },
+                "reagents": {
+                    "tcargosmall": 1
+                },
+                "products": []
+            },
+            "Sell: Erasers x100": {
+                "in_money": 0,
+                "out_money": 60000,
+                "description": "Sell your Erasers in bulks of 100",
+                "aptitudes": {
+                    "trucking.trucking": 40.0,
+                    "physical.strength": 40.0,
+                    "player.player": 40.0
+                },
+                "reagents": {
+                    "tcargosmall": 100
+                },
+                "products": []
+            }
+        }
+    },
+    "Cargo Buyer: Tools": {
+        "job": "trucker",
+        "x": -3164.8996582031,
+        "y": 1122.8239746094,
+        "location": "-3164.8996582031, 1122.8239746094",
+        "rate": 1000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {},
+        "export": {
+            "Sell: Tools": {
+                "in_money": 0,
+                "out_money": 200,
+                "description": "Sell your Tools",
+                "aptitudes": {
+                    "trucking.trucking": 0.1,
+                    "physical.strength": 0.1,
+                    "player.player": 0.1
+                },
+                "reagents": {
+                    "pucargosmall": 1
+                },
+                "products": []
+            },
+            "Sell: Tools x100": {
+                "in_money": 0,
+                "out_money": 20000,
+                "description": "Sell your Tools in bulks of 100",
+                "aptitudes": {
+                    "trucking.trucking": 10.0,
+                    "physical.strength": 10.0,
+                    "player.player": 10.0
+                },
+                "reagents": {
+                    "pucargosmall": 100
+                },
+                "products": []
+            },
+            "Sell: Tools x10": {
+                "in_money": 0,
+                "out_money": 2000,
+                "description": "Sell your Tools in bulks of 10",
+                "aptitudes": {
+                    "trucking.trucking": 1.0,
+                    "physical.strength": 1.0,
+                    "player.player": 1.0
+                },
+                "reagents": {
+                    "pucargosmall": 10
+                },
+                "products": []
+            }
+        }
+    },
+    "Cargo Seller: Erasers": {
+        "job": "trucker",
+        "x": 837.52331542969,
+        "y": -1932.3474121094,
+        "location": "837.52331542969, -1932.3474121094",
+        "rate": 1000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job"
+        ],
+        "color": "255,125,0",
+        "pickup": {
+            "Buy: Erasers": {
+                "in_money": 200,
+                "out_money": 0,
+                "description": "Buy Erasers that can be sold at the Eraser Buyer<br/><em style='color:yellow'>Can only be stored in the Speedo Express and up to the MK4 trailer</em>",
+                "aptitudes": [],
+                "reagents": [],
+                "products": {
+                    "tcargosmall": 1
+                }
+            },
+            "Buy: Erasers x100": {
+                "in_money": 20000,
+                "out_money": 0,
+                "description": "Buy Erasers in bulks of 100 that can be sold at the Eraser Buyer<br/><em style='color:yellow'>Can only be stored in the Speedo Express and up to the MK4 trailer</em>",
+                "aptitudes": [],
+                "reagents": [],
+                "products": {
+                    "tcargosmall": 100
+                }
+            },
+            "Buy: Erasers x10": {
+                "in_money": 2000,
+                "out_money": 0,
+                "description": "Buy Erasers in bulks of 10 that can be sold at the Eraser Buyer<br/><em style='color:yellow'>Can only be stored in the Speedo Express and up to the MK4 trailer</em>",
+                "aptitudes": [],
+                "reagents": [],
+                "products": {
+                    "tcargosmall": 10
+                }
+            }
+        },
+        "recipes": {},
+        "export": {}
+    },
+    "Cargo Seller: Tools": {
+        "job": "trucker",
+        "x": 834.75408935547,
+        "y": -1988.6525878906,
+        "location": "834.75408935547, -1988.6525878906",
+        "rate": 1000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job"
+        ],
+        "color": "255,125,0",
+        "pickup": {
+            "Buy: Tools": {
+                "in_money": 100,
+                "out_money": 0,
+                "description": "Buy Tools that can be sold at the Tool Buyer<br/><em style='color:yellow'>Can only be stored in the Speedo Express and up to the MK4 trailer</em>",
+                "aptitudes": [],
+                "reagents": [],
+                "products": {
+                    "pucargosmall": 1
+                }
+            },
+            "Buy: Tools x10": {
+                "reagents": [],
+                "permissionsText": "Trucking Level 5",
+                "description": "Buy Tools in bulks of 10 that can be sold at the Tool Buyer<br/><em style='color:yellow'>Can only be stored in the Speedo Express and up to the MK4 trailer</em>",
+                "out_money": 0,
+                "in_money": 1000,
+                "aptitudes": [],
+                "permissions": [
+                    "@trucking.trucking.>4"
+                ],
+                "products": {
+                    "pucargosmall": 10
+                }
+            },
+            "Buy: Tools x100": {
+                "reagents": [],
+                "permissionsText": "Trucking Level 10",
+                "description": "Buy Tools in bulks of 100 that can be sold at the Tool Buyer<br/><em style='color:yellow'>Can only be stored in the Speedo Express and up to the MK4 trailer</em>",
+                "out_money": 0,
+                "in_money": 10000,
+                "aptitudes": [],
+                "permissions": [
+                    "@trucking.trucking.>9"
+                ],
+                "products": {
+                    "pucargosmall": 100
+                }
+            }
+        },
+        "recipes": {},
+        "export": {}
+    },
+    "Chemical Laboratories": {
+        "job": "petrochem",
+        "x": 3462.9860839844,
+        "y": 3682.5251464844,
+        "location": "3462.9860839844, 3682.5251464844",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.petrochem"
+        ],
+        "color": "255,125,0",
+        "pickup": {
+            "Pick up Toxic Waste x3": {
+                "reagents": [],
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Pick up Toxic Waste, bring it to a filtering facility.",
+                "products": {
+                    "recycled_waste": 3
+                }
+            },
+            "Pick up Toxic Waste": {
+                "reagents": [],
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Pick up Toxic Waste, bring it to a filtering facility.",
+                "products": {
+                    "recycled_waste": 1
+                }
+            }
+        },
+        "recipes": {
+            "Refine Chemicals x10": {
+                "reagents": {
+                    "military_chemicals": 10
+                },
+                "out_money": 0,
+                "in_money": 25000,
+                "aptitudes": {
+                    "trucking.trucking": 10.0,
+                    "physical.strength": 10.0,
+                    "player.player": 10.0
+                },
+                "description": "Refine Chemicals x10",
+                "products": {
+                    "scrap_acid": 40
+                }
+            },
+            "Refine Chemicals": {
+                "reagents": {
+                    "military_chemicals": 1
+                },
+                "out_money": 0,
+                "in_money": 2500,
+                "aptitudes": {
+                    "trucking.trucking": 1.0,
+                    "physical.strength": 1.0,
+                    "player.player": 1.0
+                },
+                "description": "Refine Chemicals",
+                "products": {
+                    "scrap_acid": 4
+                }
+            }
+        },
+        "export": {}
+    },
+    "Chinatown": {
+        "job": "liberty",
+        "x": -2071.1101074219,
+        "y": 6625.369140625,
+        "location": "-2071.1101074219, 6625.369140625",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.liberty"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Deliver Portland Broadcast x10": {
+                "reagents": {
+                    "liberty_broadcast_portland": 10
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 2.4,
+                    "physical.strength": 2.4,
+                    "player.player": 2.4
+                },
+                "description": "Portland Broadcast",
+                "products": {
+                    "liberty_voucher_portland": 10
+                }
+            },
+            "Deliver Portland Broadcast": {
+                "reagents": {
+                    "liberty_broadcast_portland": 1
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 0.24,
+                    "physical.strength": 0.24,
+                    "player.player": 0.24
+                },
+                "description": "Portland Broadcast",
+                "products": {
+                    "liberty_voucher_portland": 1
+                }
+            }
+        },
+        "export": {}
+    },
+    "Clucking Bell Farms": {
+        "job": "fridge",
+        "x": 31.669704437256,
+        "y": 6286.98828125,
+        "location": "31.669704437256, 6286.98828125",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.fridge"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Pack Meat x10": {
+                "reagents": {
+                    "meat": 300
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Pack Meat",
+                "products": {
+                    "fridge_meat": 10
+                }
+            },
+            "Pack Fish Meat": {
+                "reagents": {
+                    "fish_meat": 150
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Pack Fish Meat",
+                "products": {
+                    "fridge_meat": 1
+                }
+            },
+            "Pack Fish Meat x10": {
+                "reagents": {
+                    "fish_meat": 1500
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Pack Fish Meat x10",
+                "products": {
+                    "fridge_meat": 10
+                }
+            },
+            "Pack Crispy Meat x10": {
+                "permissionsText": "Crispy Meat Secret",
+                "in_money": 0,
+                "aptitudes": [],
+                "products": {
+                    "fridge_meat": 10
+                },
+                "secret": true,
+                "description": "Pack Crispy Meat x10",
+                "reagents": {
+                    "meat": 200,
+                    "tcargodust": 20
+                },
+                "permissions": [
+                    "sd.trucking.clucking.meat"
+                ],
+                "out_money": 0
+            },
+            "Pack Crispy Fish Meat x10": {
+                "permissionsText": "Crispy Fish Secret",
+                "in_money": 0,
+                "aptitudes": [],
+                "products": {
+                    "fridge_meat": 10
+                },
+                "secret": true,
+                "description": "Pack Crispy Fish Meat x10",
+                "reagents": {
+                    "fish_meat": 1000,
+                    "tcargodust": 20
+                },
+                "permissions": [
+                    "sd.trucking.clucking.fish"
+                ],
+                "out_money": 0
+            },
+            "Pack Meat": {
+                "reagents": {
+                    "meat": 30
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Pack Meat",
+                "products": {
+                    "fridge_meat": 1
+                }
+            }
+        },
+        "export": {}
+    },
+    "Cochrane Dam": {
+        "job": "liberty",
+        "x": -4255.0014648438,
+        "y": 7696.3461914063,
+        "location": "-4255.0014648438, 7696.3461914063",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.liberty"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Process Military Goods x3": {
+                "reagents": {
+                    "liberty_military_goods": 3
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 6.0,
+                    "physical.strength": 6.0,
+                    "player.player": 6.0
+                },
+                "description": "Military Goods -> Export Goods",
+                "products": {
+                    "liberty_export_goods": 3
+                }
+            },
+            "Process Military Goods": {
+                "reagents": {
+                    "liberty_military_goods": 1
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 2.0,
+                    "physical.strength": 2.0,
+                    "player.player": 2.0
+                },
+                "description": "Military Goods -> Export Goods",
+                "products": {
+                    "liberty_export_goods": 1
+                }
+            }
+        },
+        "export": {}
+    },
+    "Davis Mega Mall": {
+        "job": "petrochem",
+        "x": 101.41888427734,
+        "y": -1824.4812011719,
+        "location": "101.41888427734, -1824.4812011719",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.petrochem"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {},
+        "export": {
+            "Sell Propane x10": {
+                "reagents": {
+                    "petrochem_propane": 10
+                },
+                "out_money": 100000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 0.72,
+                    "physical.strength": 0.72,
+                    "player.player": 0.72
+                },
+                "description": "Sell Propane",
+                "products": []
+            },
+            "Sell Propane": {
+                "reagents": {
+                    "petrochem_propane": 1
+                },
+                "out_money": 10000,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Sell Propane",
+                "products": []
+            }
+        }
+    },
+    "Deep Quarry": {
+        "job": "military",
+        "x": 2962.6967773438,
+        "y": 2746.5168457031,
+        "location": "2962.6967773438, 2746.5168457031",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.military"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Gravel Pulverizing": {
+                "permissionsText": "Gravel Pulverizing Secret",
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 13.35,
+                    "physical.strength": 13.35,
+                    "player.player": 13.35
+                },
+                "products": {
+                    "refined_sand": 100
+                },
+                "secret": true,
+                "description": "Gravel Pulverizing",
+                "reagents": {
+                    "scrap_gravel": 20,
+                    "military_explosives": 1
+                },
+                "permissions": [
+                    "sd.trucking.quarry.gravel"
+                ],
+                "out_money": 0
+            },
+            "Recycle Ore Mix": {
+                "permissionsText": "Ore Mix Recycling Secret",
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 13.35,
+                    "physical.strength": 13.35,
+                    "player.player": 13.35
+                },
+                "products": {
+                    "refined_sand": 90
+                },
+                "secret": true,
+                "description": "Recycle Ore Mix",
+                "reagents": {
+                    "military_explosives": 1,
+                    "scrap_ore": 15
+                },
+                "permissions": [
+                    "sd.trucking.quarry.ore"
+                ],
+                "out_money": 0
+            },
+            "Use Explosives": {
+                "reagents": {
+                    "military_explosives": 1
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 13.35,
+                    "physical.strength": 13.35,
+                    "player.player": 13.35
+                },
+                "description": "Use Explosives",
+                "products": {
+                    "scrap_gravel": 30,
+                    "refined_sand": 20
+                }
+            }
+        },
+        "export": {}
+    },
+    "Defib Kit Charging": {
+        "job": "trucker",
+        "x": 661.08178710938,
+        "y": 169.87127685547,
+        "location": "661.08178710938, 169.87127685547",
+        "rate": 200,
+        "max": 1035,
+        "permissions": [
+            "trucker.job",
+            "@trucking.trucking.>16"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Charge Empty Defib Kit": {
+                "in_money": 5000,
+                "aptitudes": {
+                    "player.player": 0.1,
+                    "trucking.trucking": 0.5
+                },
+                "products": {
+                    "defibkit": 1
+                },
+                "onSelect": false,
+                "reagents": {
+                    "e_defibkit": 1
+                },
+                "out_money": 0,
+                "description": "Charged Defib Kits",
+                "onLeave": false,
+                "onTransform": false,
+                "cost": 1
+            }
+        },
+        "export": {}
+    },
+    "Electronics Store": {
+        "job": "trucker",
+        "x": -15.820581,
+        "y": 6455.52832,
+        "location": "-15.820581, 6455.52832",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job"
+        ],
+        "color": "255,125,0",
+        "pickup": {
+            "<span sort='B'></span>Pick up Recycled Electronics x2": {
+                "reagents": [],
+                "description": "Pick up Recycled Electronics, bring it to the sorting facility.",
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "permissions": [],
+                "products": {
+                    "recycled_electronics": 2
+                }
+            },
+            "<span sort='A'></span>Pick up Recycled Electronics": {
+                "reagents": [],
+                "description": "Pick up Recycled Electronics, bring it to the sorting facility.",
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "permissions": [],
+                "products": {
+                    "recycled_electronics": 1
+                }
+            }
+        },
+        "recipes": {},
+        "export": {
+            "Deliver Amalgam x10": {
+                "reagents": {
+                    "refined_amalgam": 10
+                },
+                "out_money": 350000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 3.1,
+                    "physical.strength": 3.1,
+                    "player.player": 3.1
+                },
+                "description": "Deliver amalgam in bulks of 10",
+                "products": []
+            },
+            "Deliver Solder": {
+                "reagents": {
+                    "refined_solder": 1
+                },
+                "out_money": 5200,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 0.23,
+                    "physical.strength": 0.23,
+                    "player.player": 0.23
+                },
+                "description": "Deliver solder",
+                "products": []
+            },
+            "Deliver Fiberglass Spool x10": {
+                "reagents": {
+                    "crafted_fiberglass": 10
+                },
+                "out_money": 600000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 4.0,
+                    "physical.strength": 4.0,
+                    "player.player": 4.0
+                },
+                "description": "Deliver a shipment of fiberglass.",
+                "products": []
+            },
+            "Deliver Amalgam": {
+                "reagents": {
+                    "refined_amalgam": 1
+                },
+                "out_money": 35000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 0.31,
+                    "physical.strength": 0.31,
+                    "player.player": 0.31
+                },
+                "description": "Deliver amalgam",
+                "products": []
+            },
+            "Deliver Circuit Boards x10": {
+                "reagents": {
+                    "crafted_circuit": 10
+                },
+                "out_money": 900000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 5.69999999999999,
+                    "physical.strength": 5.69999999999999,
+                    "player.player": 5.69999999999999
+                },
+                "description": "Sell Circuit Boards",
+                "products": []
+            },
+            "Deliver Copper Wire Spool": {
+                "reagents": {
+                    "crafted_copperwire": 1
+                },
+                "out_money": 55000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 0.35,
+                    "physical.strength": 0.35,
+                    "player.player": 0.35
+                },
+                "description": "Deliver a shipment of copper wire.",
+                "products": []
+            },
+            "Deliver Fiberglass Spool": {
+                "reagents": {
+                    "crafted_fiberglass": 1
+                },
+                "out_money": 60000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 0.4,
+                    "physical.strength": 0.4,
+                    "player.player": 0.4
+                },
+                "description": "Deliver a shipment of fiberglass.",
+                "products": []
+            },
+            "Deliver Copper Wire Spool x10": {
+                "reagents": {
+                    "crafted_copperwire": 10
+                },
+                "out_money": 550000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 3.5,
+                    "physical.strength": 3.5,
+                    "player.player": 3.5
+                },
+                "description": "Deliver a shipment of copper wire.",
+                "products": []
+            },
+            "Deliver Circuit Boards": {
+                "reagents": {
+                    "crafted_circuit": 1
+                },
+                "out_money": 90000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 0.57,
+                    "physical.strength": 0.57,
+                    "player.player": 0.57
+                },
+                "description": "Sell Circuit Boards",
+                "products": []
+            },
+            "Deliver Solder x10": {
+                "reagents": {
+                    "refined_solder": 10
+                },
+                "out_money": 52000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 2.3,
+                    "physical.strength": 2.3,
+                    "player.player": 2.3
+                },
+                "description": "Deliver solder in bulks of 10",
+                "products": []
+            }
+        }
+    },
+    "Elysian Island Waste Deposit": {
+        "job": "trucker",
+        "x": 264.68194580078,
+        "y": -3022.201171875,
+        "location": "264.68194580078, -3022.201171875",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job"
+        ],
+        "color": "255,125,0",
+        "pickup": {
+            "<span sort='B'></span>Toxic Waste x3": {
+                "reagents": [],
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Pick up Toxic Waste, bring it to a filtering facility.",
+                "products": {
+                    "recycled_waste": 3
+                }
+            },
+            "<span sort='A'></span>Toxic Waste": {
+                "reagents": [],
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Pick up Toxic Waste, bring it to a filtering facility.",
+                "products": {
+                    "recycled_waste": 1
+                }
+            }
+        },
+        "recipes": {
+            "<span sort='C'></span>Exchange Copper": {
+                "reagents": {
+                    "mining_token_copper": 1
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Exchange Copper",
+                "products": {
+                    "scrap_ore": 1
+                }
+            },
+            "<span sort='D'></span>Exchange Copper x10": {
+                "reagents": {
+                    "mining_token_copper": 10
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Exchange Copper x10",
+                "products": {
+                    "scrap_ore": 10
+                }
+            },
+            "<span sort='F'></span>Exchange Iron x10": {
+                "reagents": {
+                    "mining_token_iron": 10
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Exchange Iron x10",
+                "products": {
+                    "scrap_ore": 10
+                }
+            },
+            "<span sort='E'></span>Exchange Iron": {
+                "reagents": {
+                    "mining_token_iron": 1
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Exchange Iron",
+                "products": {
+                    "scrap_ore": 1
+                }
+            }
+        },
+        "export": {}
+    },
+    "Filtering Plant": {
+        "job": "trucker",
+        "x": 270.10818481445,
+        "y": 2851.9851074219,
+        "location": "270.10818481445, 2851.9851074219",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Filter Gravel": {
+                "reagents": {
+                    "scrap_gravel": 10
+                },
+                "out_money": 0,
+                "in_money": 15000,
+                "aptitudes": {
+                    "trucking.trucking": 0.24,
+                    "physical.strength": 0.24,
+                    "player.player": 0.24
+                },
+                "description": "Filter materials out of the gravel.",
+                "products": {
+                    "refined_flint": 4,
+                    "refined_sand": 6
+                }
+            },
+            "Filter Toxic Waste x3": {
+                "reagents": {
+                    "recycled_waste": 3
+                },
+                "out_money": 0,
+                "in_money": 45000,
+                "aptitudes": {
+                    "trucking.trucking": 17.64,
+                    "physical.strength": 17.64,
+                    "player.player": 17.64
+                },
+                "description": "Filter waste materials out of the waste.",
+                "products": {
+                    "scrap_mercury": 6,
+                    "scrap_lead": 6,
+                    "scrap_acid": 12
+                }
+            },
+            "Filter Toxic Waste": {
+                "reagents": {
+                    "recycled_waste": 1
+                },
+                "out_money": 0,
+                "in_money": 15000,
+                "aptitudes": {
+                    "trucking.trucking": 5.88,
+                    "physical.strength": 5.88,
+                    "player.player": 5.88
+                },
+                "description": "Filter waste materials out of the waste.",
+                "products": {
+                    "scrap_mercury": 2,
+                    "scrap_lead": 2,
+                    "scrap_acid": 4
+                }
+            },
+            "Mix Concrete x2": {
+                "reagents": {
+                    "liquid_water": 2,
+                    "crafted_cement": 10
+                },
+                "out_money": 0,
+                "in_money": 30000,
+                "aptitudes": {
+                    "trucking.trucking": 21.7,
+                    "physical.strength": 21.7,
+                    "player.player": 21.7
+                },
+                "description": "Mix a batch of concrete",
+                "products": {
+                    "crafted_concrete": 2
+                }
+            },
+            "Filter Quarry Rubble": {
+                "reagents": {
+                    "recycled_rubble": 1
+                },
+                "out_money": 0,
+                "in_money": 15000,
+                "aptitudes": {
+                    "trucking.trucking": 2.45,
+                    "physical.strength": 2.45,
+                    "player.player": 2.45
+                },
+                "description": "Filter materials out of the rubble.",
+                "products": {
+                    "scrap_ore": 4,
+                    "scrap_gravel": 12,
+                    "scrap_emerald": 1
+                }
+            },
+            "Mix Concrete": {
+                "reagents": {
+                    "liquid_water": 1,
+                    "crafted_cement": 5
+                },
+                "out_money": 0,
+                "in_money": 15000,
+                "aptitudes": {
+                    "trucking.trucking": 10.85,
+                    "physical.strength": 10.85,
+                    "player.player": 10.85
+                },
+                "description": "Mix a batch of concrete",
+                "products": {
+                    "crafted_concrete": 1
+                }
+            },
+            "Filter Quarry Rubble x2": {
+                "reagents": {
+                    "recycled_rubble": 2
+                },
+                "out_money": 0,
+                "in_money": 30000,
+                "aptitudes": {
+                    "trucking.trucking": 4.9,
+                    "physical.strength": 4.9,
+                    "player.player": 4.9
+                },
+                "description": "Filter materials out of the rubble.",
+                "products": {
+                    "scrap_ore": 8,
+                    "scrap_gravel": 24,
+                    "scrap_emerald": 2
+                }
+            },
+            "Filter Gravel x6": {
+                "reagents": {
+                    "scrap_gravel": 60
+                },
+                "out_money": 0,
+                "in_money": 90000,
+                "aptitudes": {
+                    "trucking.trucking": 1.44,
+                    "physical.strength": 1.44,
+                    "player.player": 1.44
+                },
+                "description": "Filter materials out of the gravel.",
+                "products": {
+                    "refined_flint": 24,
+                    "refined_sand": 36
+                }
+            }
+        },
+        "export": {}
+    },
+    "Fish Factory": {
+        "job": "liberty",
+        "x": -2202.697265625,
+        "y": 6753.4174804688,
+        "location": "-2202.697265625, 6753.4174804688",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.liberty"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Package Fish x2": {
+                "reagents": {
+                    "liberty_fish_shoreside": 2,
+                    "liberty_fish_portland": 2
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 6.6,
+                    "physical.strength": 6.6,
+                    "player.player": 6.6
+                },
+                "description": "Package Fish",
+                "products": {
+                    "liberty_fish_export": 2
+                }
+            },
+            "Package Fish": {
+                "reagents": {
+                    "liberty_fish_shoreside": 1,
+                    "liberty_fish_portland": 1
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 3.3,
+                    "physical.strength": 3.3,
+                    "player.player": 3.3
+                },
+                "description": "Package Fish",
+                "products": {
+                    "liberty_fish_export": 1
+                }
+            }
+        },
+        "export": {}
+    },
+    "Francis Intl. Airport": {
+        "job": "liberty",
+        "x": -3939.3083496094,
+        "y": 6844.8818359375,
+        "location": "-3939.3083496094, 6844.8818359375",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.liberty"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Deliver Liberty Goods x3": {
+                "reagents": {
+                    "liberty_goods": 3
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 15.75,
+                    "physical.strength": 15.75,
+                    "player.player": 15.75
+                },
+                "description": "Liberty Goods",
+                "products": {
+                    "liberty_voucher_islands": 3
+                }
+            },
+            "Deliver Liberty Goods": {
+                "reagents": {
+                    "liberty_goods": 1
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 5.25,
+                    "physical.strength": 5.25,
+                    "player.player": 5.25
+                },
+                "description": "Liberty Goods",
+                "products": {
+                    "liberty_voucher_islands": 1
+                }
+            }
+        },
+        "export": {}
+    },
+    "Fridgit Co.": {
+        "job": "fridge",
+        "x": 918.49694824219,
+        "y": -1556.5446777344,
+        "location": "918.49694824219, -1556.5446777344",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.fridge"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Create Airline Meal x10": {
+                "reagents": {
+                    "fridge_veggies": 10,
+                    "fridge_meat": 10,
+                    "fridge_dairy": 10
+                },
+                "out_money": 0,
+                "in_money": 25000,
+                "aptitudes": {
+                    "trucking.trucking": 52.4,
+                    "physical.strength": 52.4,
+                    "player.player": 52.4
+                },
+                "description": "Create Airline Meal x10",
+                "products": {
+                    "fridge_airline_meal": 40
+                }
+            },
+            "Create Vegetables Shipment": {
+                "reagents": {
+                    "fridge_veggies": 4
+                },
+                "out_money": 0,
+                "in_money": 2500,
+                "aptitudes": {
+                    "trucking.trucking": 3.74,
+                    "physical.strength": 3.74,
+                    "player.player": 3.74
+                },
+                "description": "Veggies to Food Shipment",
+                "products": {
+                    "fridge_store_delivery": 5
+                }
+            },
+            "Create Meat Shipment": {
+                "reagents": {
+                    "fridge_meat": 4
+                },
+                "out_money": 0,
+                "in_money": 2500,
+                "aptitudes": {
+                    "trucking.trucking": 2.33,
+                    "physical.strength": 2.33,
+                    "player.player": 2.33
+                },
+                "description": "Meat to Food Shipment",
+                "products": {
+                    "fridge_store_delivery": 5
+                }
+            },
+            "Create Vegetables Shipment x10": {
+                "reagents": {
+                    "fridge_veggies": 40
+                },
+                "out_money": 0,
+                "in_money": 25000,
+                "aptitudes": {
+                    "trucking.trucking": 37.4,
+                    "physical.strength": 37.4,
+                    "player.player": 37.4
+                },
+                "description": "Veggies to Food Shipment x10",
+                "products": {
+                    "fridge_store_delivery": 50
+                }
+            },
+            "Create Dairy Shipment x10": {
+                "reagents": {
+                    "fridge_dairy": 40
+                },
+                "out_money": 0,
+                "in_money": 25000,
+                "aptitudes": {
+                    "trucking.trucking": 32.59999999999999,
+                    "physical.strength": 32.59999999999999,
+                    "player.player": 32.59999999999999
+                },
+                "description": "Dairy to Food Shipment x10",
+                "products": {
+                    "fridge_store_delivery": 50
+                }
+            },
+            "Create Airline Meal": {
+                "reagents": {
+                    "fridge_veggies": 1,
+                    "fridge_meat": 1,
+                    "fridge_dairy": 1
+                },
+                "out_money": 0,
+                "in_money": 2500,
+                "aptitudes": {
+                    "trucking.trucking": 5.24,
+                    "physical.strength": 5.24,
+                    "player.player": 5.24
+                },
+                "description": "Create Airline Meal",
+                "products": {
+                    "fridge_airline_meal": 4
+                }
+            },
+            "Create Dairy Shipment": {
+                "reagents": {
+                    "fridge_dairy": 4
+                },
+                "out_money": 0,
+                "in_money": 2500,
+                "aptitudes": {
+                    "trucking.trucking": 3.26,
+                    "physical.strength": 3.26,
+                    "player.player": 3.26
+                },
+                "description": "Dairy to Food Shipment",
+                "products": {
+                    "fridge_store_delivery": 5
+                }
+            },
+            "Create Meat Shipment x10": {
+                "reagents": {
+                    "fridge_meat": 40
+                },
+                "out_money": 0,
+                "in_money": 25000,
+                "aptitudes": {
+                    "trucking.trucking": 23.3,
+                    "physical.strength": 23.3,
+                    "player.player": 23.3
+                },
+                "description": "Meat to Food Shipment x10",
+                "products": {
+                    "fridge_store_delivery": 50
+                }
+            }
+        },
+        "export": {}
+    },
+    "GSD Gas Pumping Station": {
+        "job": "petrochem",
+        "x": 588.97094726563,
+        "y": 2904.5051269531,
+        "location": "588.97094726563, 2904.5051269531",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.petrochem"
+        ],
+        "color": "255,125,0",
+        "pickup": {
+            "Extract Raw Gas": {
+                "reagents": [],
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Extract Raw Gas",
+                "products": {
+                    "petrochem_gas": 1
+                }
+            },
+            "Extract Raw Gas x2": {
+                "reagents": [],
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Extract Raw Gas x2",
+                "products": {
+                    "petrochem_gas": 2
+                }
+            }
+        },
+        "recipes": {},
+        "export": {}
+    },
+    "GSD Mine": {
+        "job": "military",
+        "x": 1025.0187988281,
+        "y": 2909.7883300781,
+        "location": "1025.0187988281, 2909.7883300781",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.military"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Use Explosives": {
+                "reagents": {
+                    "military_explosives": 1
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 11.5,
+                    "physical.strength": 11.5,
+                    "player.player": 11.5
+                },
+                "description": "Use Explosives",
+                "products": {
+                    "military_titanium_ore": 4,
+                    "scrap_gold": 10
+                }
+            }
+        },
+        "export": {}
+    },
+    "Grapeseed Farms": {
+        "job": "fridge",
+        "x": 1912.9744873047,
+        "y": 4940.7841796875,
+        "location": "1912.9744873047, 4940.7841796875",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.fridge"
+        ],
+        "color": "255,125,0",
+        "pickup": {
+            "Pick up Dairy x10": {
+                "reagents": [],
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Pick up Dairy",
+                "products": {
+                    "fridge_dairy": 10
+                }
+            },
+            "Pick up Dairy": {
+                "reagents": [],
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Pick up Dairy",
+                "products": {
+                    "fridge_dairy": 1
+                }
+            }
+        },
+        "recipes": {},
+        "export": {}
+    },
+    "Great Chaparral Farm": {
+        "job": "fridge",
+        "x": -63.728096008301,
+        "y": 1880.1964111328,
+        "location": "-63.728096008301, 1880.1964111328",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.fridge"
+        ],
+        "color": "255,125,0",
+        "pickup": {
+            "Pick up Vegetables x10": {
+                "reagents": [],
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Pick up Vegetables",
+                "products": {
+                    "fridge_veggies": 10
+                }
+            },
+            "Pick up Vegetables": {
+                "reagents": [],
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Pick up Vegetables",
+                "products": {
+                    "fridge_veggies": 1
+                }
+            }
+        },
+        "recipes": {},
+        "export": {}
+    },
+    "Harmony Shopping Center": {
+        "job": "fridge",
+        "x": 597.67004394531,
+        "y": 2798.603515625,
+        "location": "597.67004394531, 2798.603515625",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.fridge"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {},
+        "export": {
+            "Deliver Food Shipment x10": {
+                "reagents": {
+                    "fridge_store_delivery": 10
+                },
+                "out_money": 12000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 3.8,
+                    "physical.strength": 3.8,
+                    "player.player": 3.8
+                },
+                "description": "Deliver Food Shipment",
+                "products": []
+            },
+            "Deliver Food Shipment x30": {
+                "reagents": {
+                    "fridge_store_delivery": 30
+                },
+                "out_money": 36000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 11.4,
+                    "physical.strength": 11.4,
+                    "player.player": 11.4
+                },
+                "description": "Deliver Food Shipment",
+                "products": []
+            },
+            "Deliver Food Shipment": {
+                "reagents": {
+                    "fridge_store_delivery": 1
+                },
+                "out_money": 1200,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 0.38,
+                    "physical.strength": 0.38,
+                    "player.player": 0.38
+                },
+                "description": "Deliver Food Shipment",
+                "products": []
+            }
+        }
+    },
+    "House Construction Site": {
+        "job": "trucker",
+        "x": 1376.887939,
+        "y": -739.772034,
+        "location": "1376.887939, -739.772034",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {},
+        "export": {
+            "House Construction": {
+                "reagents": {
+                    "refined_planks": 2,
+                    "crafted_concrete": 1,
+                    "crafted_ceramictiles": 4,
+                    "crafted_copperwire": 1,
+                    "crafted_computer": 1,
+                    "crafted_rebar": 1
+                },
+                "description": "Construct a House",
+                "out_money": 2350000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 87.49,
+                    "physical.strength": 87.49,
+                    "player.player": 87.49
+                },
+                "products": []
+            }
+        }
+    },
+    "Humane Labs": {
+        "job": "trucker",
+        "x": 3614.3928222656,
+        "y": 3734.4885253906,
+        "location": "3614.3928222656, 3734.4885253906",
+        "rate": 10,
+        "max": 51,
+        "permissions": [
+            "trucker.job",
+            "@trucking.trucking.>16"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Craft Pills": {
+                "in_money": 100000,
+                "aptitudes": {
+                    "trucking.trucking": 6.0,
+                    "physical.strength": 6.0,
+                    "player.player": 6.0
+                },
+                "products": {
+                    "pills": 1
+                },
+                "onSelect": false,
+                "reagents": {
+                    "illegal_meth": 8,
+                    "illegal_crate": 3
+                },
+                "out_money": 0,
+                "description": "Methamphetamine",
+                "onLeave": false,
+                "onTransform": false,
+                "cost": 1
+            }
+        },
+        "export": {}
+    },
+    "Jewelry Store": {
+        "job": "trucker",
+        "x": -637.30340576172,
+        "y": -241.26341247559,
+        "location": "-637.30340576172, -241.26341247559",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {},
+        "export": {
+            "Deliver Raw Emeralds x10": {
+                "reagents": {
+                    "scrap_emerald": 10
+                },
+                "out_money": 250000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 3.2,
+                    "physical.strength": 3.2,
+                    "player.player": 3.2
+                },
+                "description": "Deliver raw emeralds",
+                "products": []
+            },
+            "Deliver Raw Emeralds": {
+                "reagents": {
+                    "scrap_emerald": 1
+                },
+                "out_money": 25000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 0.32,
+                    "physical.strength": 0.32,
+                    "player.player": 0.32
+                },
+                "description": "Deliver raw emeralds",
+                "products": []
+            },
+            "Deliver Jewelry": {
+                "reagents": {
+                    "crafted_jewelry": 1
+                },
+                "out_money": 95000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 2.0,
+                    "physical.strength": 2.0,
+                    "player.player": 2.0
+                },
+                "description": "Deliver Jewelry.",
+                "products": []
+            },
+            "Deliver Refined Gold": {
+                "reagents": {
+                    "refined_gold": 1
+                },
+                "out_money": 31000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 1.71,
+                    "physical.strength": 1.71,
+                    "player.player": 1.71
+                },
+                "description": "Deliver Gold.",
+                "products": []
+            }
+        }
+    },
+    "LCFD": {
+        "job": "liberty",
+        "x": -3157.9516601563,
+        "y": 6836.3637695313,
+        "location": "-3157.9516601563, 6836.3637695313",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.liberty"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Tokens to Treated Water x3": {
+                "reagents": {
+                    "liberty_token": 3
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Liberty Token -> Treated Water",
+                "products": {
+                    "liquid_water": 3
+                }
+            },
+            "Tokens to Treated Water": {
+                "reagents": {
+                    "liberty_token": 1
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Liberty Token -> Treated Water",
+                "products": {
+                    "liquid_water": 1
+                }
+            }
+        },
+        "export": {}
+    },
+    "LS Factory": {
+        "job": "trucker",
+        "x": 233.826171875,
+        "y": -2210.671875,
+        "location": "233.826171875, -2210.671875",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Create Circuit Boards x10": {
+                "reagents": {
+                    "refined_solder": 20,
+                    "crafted_copperwire": 10,
+                    "scrap_plastic": 100
+                },
+                "out_money": 0,
+                "in_money": 50000,
+                "aptitudes": {
+                    "trucking.trucking": 26.8,
+                    "physical.strength": 26.8,
+                    "player.player": 26.8
+                },
+                "description": "Make 10 Circuit Boards",
+                "products": {
+                    "crafted_circuit": 20
+                }
+            },
+            "Create Batteries": {
+                "reagents": {
+                    "refined_solder": 4,
+                    "scrap_acid": 8,
+                    "refined_zinc": 2
+                },
+                "out_money": 0,
+                "in_money": 5000,
+                "aptitudes": {
+                    "trucking.trucking": 2.98,
+                    "physical.strength": 2.98,
+                    "player.player": 2.98
+                },
+                "description": "Combine magic with metals to store power inside.",
+                "products": {
+                    "crafted_batteries": 2
+                }
+            },
+            "Create Cardboard": {
+                "permissionsText": "Cardboard Manufacturing Secret",
+                "in_money": 5000,
+                "aptitudes": {
+                    "trucking.trucking": 3.81,
+                    "physical.strength": 3.81,
+                    "player.player": 3.81
+                },
+                "products": {
+                    "crafted_cardboard": 5
+                },
+                "secret": true,
+                "description": "Create Cardboard",
+                "reagents": {
+                    "tcargodust": 50,
+                    "liquid_water": 1
+                },
+                "permissions": [
+                    "sd.trucking.cardboard"
+                ],
+                "out_money": 0
+            },
+            "Create Circuit Boards": {
+                "reagents": {
+                    "refined_solder": 2,
+                    "crafted_copperwire": 1,
+                    "scrap_plastic": 10
+                },
+                "out_money": 0,
+                "in_money": 5000,
+                "aptitudes": {
+                    "trucking.trucking": 2.68,
+                    "physical.strength": 2.68,
+                    "player.player": 2.68
+                },
+                "description": "Make Circuit Boards",
+                "products": {
+                    "crafted_circuit": 2
+                }
+            },
+            "Create Computer": {
+                "reagents": {
+                    "crafted_circuit": 1,
+                    "crafted_batteries": 1,
+                    "scrap_gold": 2
+                },
+                "out_money": 0,
+                "in_money": 5000,
+                "aptitudes": {
+                    "trucking.trucking": 3.81,
+                    "physical.strength": 3.81,
+                    "player.player": 3.81
+                },
+                "description": "Make Computers",
+                "products": {
+                    "crafted_computer": 2
+                }
+            },
+            "Create Fiberglass Spool": {
+                "reagents": {
+                    "refined_planks": 1,
+                    "scrap_plastic": 8,
+                    "refined_glass": 4
+                },
+                "out_money": 0,
+                "in_money": 5000,
+                "aptitudes": {
+                    "trucking.trucking": 1.81,
+                    "physical.strength": 1.81,
+                    "player.player": 1.81
+                },
+                "description": "Create spools of fiberglass",
+                "products": {
+                    "crafted_fiberglass": 2
+                }
+            },
+            "Create Batteries x5": {
+                "reagents": {
+                    "refined_solder": 20,
+                    "scrap_acid": 40,
+                    "refined_zinc": 10
+                },
+                "out_money": 0,
+                "in_money": 25000,
+                "aptitudes": {
+                    "trucking.trucking": 14.9,
+                    "physical.strength": 14.9,
+                    "player.player": 14.9
+                },
+                "description": "Combine magic with metals to store power inside.",
+                "products": {
+                    "crafted_batteries": 10
+                }
+            },
+            "Create Jewelry": {
+                "reagents": {
+                    "scrap_emerald": 1,
+                    "refined_gold": 2
+                },
+                "out_money": 0,
+                "in_money": 5000,
+                "aptitudes": {
+                    "trucking.trucking": 2.8,
+                    "physical.strength": 2.8,
+                    "player.player": 2.8
+                },
+                "description": "Combine valuable items into even more valuable jewelry.",
+                "products": {
+                    "crafted_jewelry": 2
+                }
+            },
+            "Create Copper Wire Spool x5": {
+                "reagents": {
+                    "refined_planks": 5,
+                    "refined_copper": 20
+                },
+                "out_money": 0,
+                "in_money": 25000,
+                "aptitudes": {
+                    "trucking.trucking": 14.5,
+                    "physical.strength": 14.5,
+                    "player.player": 14.5
+                },
+                "description": "Create spools of copper wire",
+                "products": {
+                    "crafted_copperwire": 10
+                }
+            },
+            "Titanium Jewelry": {
+                "permissionsText": "Titanium Jewelry Secret",
+                "in_money": 5000,
+                "aptitudes": {
+                    "trucking.trucking": 4.79,
+                    "physical.strength": 4.79,
+                    "player.player": 4.79
+                },
+                "products": {
+                    "crafted_jewelry": 4
+                },
+                "secret": true,
+                "description": "Combine valuable items into even more valuable jewelry.",
+                "reagents": {
+                    "military_titanium": 1,
+                    "refined_gold": 4
+                },
+                "permissions": [
+                    "sd.trucking.factory.jewelry"
+                ],
+                "out_money": 0
+            },
+            "Create Computer x10": {
+                "reagents": {
+                    "crafted_circuit": 10,
+                    "crafted_batteries": 10,
+                    "scrap_gold": 20
+                },
+                "out_money": 0,
+                "in_money": 50000,
+                "aptitudes": {
+                    "trucking.trucking": 38.1,
+                    "physical.strength": 38.1,
+                    "player.player": 38.1
+                },
+                "description": "Make 10 Computers",
+                "products": {
+                    "crafted_computer": 20
+                }
+            },
+            "Create Fiberglass Spool x10": {
+                "reagents": {
+                    "refined_planks": 10,
+                    "scrap_plastic": 80,
+                    "refined_glass": 40
+                },
+                "out_money": 0,
+                "in_money": 50000,
+                "aptitudes": {
+                    "trucking.trucking": 18.1,
+                    "physical.strength": 18.1,
+                    "player.player": 18.1
+                },
+                "description": "Create spools of fiberglass",
+                "products": {
+                    "crafted_fiberglass": 20
+                }
+            },
+            "Titanium Reinforcement": {
+                "permissionsText": "Titanium Reinforcement Secret",
+                "in_money": 5000,
+                "aptitudes": {
+                    "trucking.trucking": 4.79,
+                    "physical.strength": 4.79,
+                    "player.player": 4.79
+                },
+                "products": {
+                    "crafted_rebar": 2
+                },
+                "secret": true,
+                "description": "Clean Waste Water",
+                "reagents": {
+                    "military_titanium": 6
+                },
+                "permissions": [
+                    "sd.trucking.factory.titanium"
+                ],
+                "out_money": 0
+            },
+            "Create Rebar": {
+                "reagents": {
+                    "refined_bronze": 2,
+                    "refined_amalgam": 6
+                },
+                "out_money": 0,
+                "in_money": 5000,
+                "aptitudes": {
+                    "trucking.trucking": 4.79,
+                    "physical.strength": 4.79,
+                    "player.player": 4.79
+                },
+                "description": "Create a shipment of rebar",
+                "products": {
+                    "crafted_rebar": 2
+                }
+            },
+            "Create Rebar x2": {
+                "reagents": {
+                    "refined_bronze": 4,
+                    "refined_amalgam": 12
+                },
+                "out_money": 0,
+                "in_money": 10000,
+                "aptitudes": {
+                    "trucking.trucking": 9.58,
+                    "physical.strength": 9.58,
+                    "player.player": 9.58
+                },
+                "description": "Create a shipment of rebar",
+                "products": {
+                    "crafted_rebar": 4
+                }
+            },
+            "Create Copper Wire Spool": {
+                "reagents": {
+                    "refined_planks": 1,
+                    "refined_copper": 4
+                },
+                "out_money": 0,
+                "in_money": 5000,
+                "aptitudes": {
+                    "trucking.trucking": 2.9,
+                    "physical.strength": 2.9,
+                    "player.player": 2.9
+                },
+                "description": "Create spools of copper wire",
+                "products": {
+                    "crafted_copperwire": 2
+                }
+            }
+        },
+        "export": {}
+    },
+    "LS Foundry": {
+        "job": "trucker",
+        "x": 1066.192871,
+        "y": -1962.365356,
+        "location": "1066.192871, -1962.365356",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Ceramic Tiles": {
+                "reagents": {
+                    "refined_flint": 10,
+                    "refined_sand": 2
+                },
+                "out_money": 0,
+                "in_money": 1000,
+                "aptitudes": {
+                    "trucking.trucking": 2.88,
+                    "physical.strength": 2.88,
+                    "player.player": 2.88
+                },
+                "description": "Make Ceramic Tiles",
+                "products": {
+                    "crafted_ceramictiles": 2
+                }
+            },
+            "Refine Titanium x1": {
+                "reagents": {
+                    "military_titanium_ore": 1
+                },
+                "out_money": 0,
+                "in_money": 1000,
+                "aptitudes": {
+                    "trucking.trucking": 0.87,
+                    "physical.strength": 0.87,
+                    "player.player": 0.87
+                },
+                "description": "Refine Titanium",
+                "products": {
+                    "military_titanium": 1
+                }
+            },
+            "Refine Tin x10": {
+                "reagents": {
+                    "scrap_tin": 20
+                },
+                "out_money": 0,
+                "in_money": 10000,
+                "aptitudes": {
+                    "trucking.trucking": 2.6,
+                    "physical.strength": 2.6,
+                    "player.player": 2.6
+                },
+                "description": "Refine scrap tin into refined tin",
+                "products": {
+                    "refined_tin": 10
+                }
+            },
+            "Refine Copper x20": {
+                "reagents": {
+                    "scrap_copper": 40
+                },
+                "out_money": 0,
+                "in_money": 20000,
+                "aptitudes": {
+                    "trucking.trucking": 5.2,
+                    "physical.strength": 5.2,
+                    "player.player": 5.2
+                },
+                "description": "Refine scrap copper into refined copper",
+                "products": {
+                    "refined_copper": 20
+                }
+            },
+            "Refine Bronze Alloy x1": {
+                "reagents": {
+                    "scrap_aluminum": 1,
+                    "scrap_tin": 1,
+                    "scrap_copper": 2
+                },
+                "out_money": 0,
+                "in_money": 1000,
+                "aptitudes": {
+                    "trucking.trucking": 0.84,
+                    "physical.strength": 0.84,
+                    "player.player": 0.84
+                },
+                "description": "Mix multiple metals into bronze alloy",
+                "products": {
+                    "refined_bronze": 2
+                }
+            },
+            "Refine Titanium x10": {
+                "reagents": {
+                    "military_titanium_ore": 10
+                },
+                "out_money": 0,
+                "in_money": 10000,
+                "aptitudes": {
+                    "trucking.trucking": 8.7,
+                    "physical.strength": 8.7,
+                    "player.player": 8.7
+                },
+                "description": "Refine Titanium x10",
+                "products": {
+                    "military_titanium": 10
+                }
+            },
+            "Refine Amalgam": {
+                "reagents": {
+                    "scrap_mercury": 2,
+                    "refined_tin": 2
+                },
+                "out_money": 0,
+                "in_money": 1000,
+                "aptitudes": {
+                    "trucking.trucking": 1.56,
+                    "physical.strength": 1.56,
+                    "player.player": 1.56
+                },
+                "description": "A valuable alloy made from mercury and tin",
+                "products": {
+                    "refined_amalgam": 2
+                }
+            },
+            "Refine Gold x10": {
+                "reagents": {
+                    "scrap_gold": 10
+                },
+                "out_money": 0,
+                "in_money": 1000,
+                "aptitudes": {
+                    "trucking.trucking": 3.3,
+                    "physical.strength": 3.3,
+                    "player.player": 3.3
+                },
+                "description": "Refine scrap gold into refined gold",
+                "products": {
+                    "refined_gold": 5
+                }
+            },
+            "Zinc Alloy": {
+                "permissionsText": "Zinc Alloy Secret",
+                "in_money": 10000,
+                "aptitudes": {
+                    "trucking.trucking": 10.0,
+                    "physical.strength": 10.0,
+                    "player.player": 10.0
+                },
+                "products": {
+                    "refined_zinc": 20
+                },
+                "secret": true,
+                "description": "Zinc Alloy",
+                "reagents": {
+                    "petrochem_propane": 2,
+                    "scrap_ore": 20
+                },
+                "permissions": [
+                    "sd.trucking.foundry.zinc"
+                ],
+                "out_money": 0
+            },
+            "Refine Aluminum x1": {
+                "reagents": {
+                    "scrap_aluminum": 2
+                },
+                "out_money": 0,
+                "in_money": 1000,
+                "aptitudes": {
+                    "trucking.trucking": 0.33,
+                    "physical.strength": 0.33,
+                    "player.player": 0.33
+                },
+                "description": "Refine scrap aluminum into refined aluminum",
+                "products": {
+                    "refined_aluminum": 1
+                }
+            },
+            "Substitute Gold": {
+                "permissionsText": "Substitute Gold Secret",
+                "in_money": 1000,
+                "aptitudes": {
+                    "trucking.trucking": 10.0,
+                    "physical.strength": 10.0,
+                    "player.player": 10.0
+                },
+                "products": {
+                    "scrap_gold": 40
+                },
+                "secret": true,
+                "description": "Substitute Gold",
+                "reagents": {
+                    "petrochem_petrol": 2,
+                    "petrochem_sulfur": 10,
+                    "refined_bronze": 25
+                },
+                "permissions": [
+                    "sd.trucking.foundry.gold"
+                ],
+                "out_money": 0
+            },
+            "Refine Bronze Alloy x10": {
+                "reagents": {
+                    "scrap_aluminum": 10,
+                    "scrap_tin": 10,
+                    "scrap_copper": 20
+                },
+                "out_money": 0,
+                "in_money": 10000,
+                "aptitudes": {
+                    "trucking.trucking": 8.4,
+                    "physical.strength": 8.4,
+                    "player.player": 8.4
+                },
+                "description": "Mix multiple metals into bronze alloy",
+                "products": {
+                    "refined_bronze": 20
+                }
+            },
+            "Refine Raw Ore Mix x10": {
+                "reagents": {
+                    "scrap_ore": 20
+                },
+                "out_money": 0,
+                "in_money": 10000,
+                "aptitudes": {
+                    "trucking.trucking": 10.9,
+                    "physical.strength": 10.9,
+                    "player.player": 10.9
+                },
+                "description": "Smelt down and separate different metals from the raw ore mix",
+                "products": {
+                    "refined_copper": 10,
+                    "refined_zinc": 10
+                }
+            },
+            "Refine Copper x10": {
+                "reagents": {
+                    "scrap_copper": 20
+                },
+                "out_money": 0,
+                "in_money": 10000,
+                "aptitudes": {
+                    "trucking.trucking": 2.6,
+                    "physical.strength": 2.6,
+                    "player.player": 2.6
+                },
+                "description": "Refine scrap copper into refined copper",
+                "products": {
+                    "refined_copper": 10
+                }
+            },
+            "Refine Raw Ore Mix x1": {
+                "reagents": {
+                    "scrap_ore": 2
+                },
+                "out_money": 0,
+                "in_money": 1000,
+                "aptitudes": {
+                    "trucking.trucking": 1.09,
+                    "physical.strength": 1.09,
+                    "player.player": 1.09
+                },
+                "description": "Smelt down and separate different metals from the raw ore mix",
+                "products": {
+                    "refined_copper": 1,
+                    "refined_zinc": 1
+                }
+            },
+            "Refine Solder": {
+                "reagents": {
+                    "scrap_lead": 2,
+                    "refined_aluminum": 2
+                },
+                "out_money": 0,
+                "in_money": 1000,
+                "aptitudes": {
+                    "trucking.trucking": 1.84,
+                    "physical.strength": 1.84,
+                    "player.player": 1.84
+                },
+                "description": "Mix aluminum and lead to make solder",
+                "products": {
+                    "refined_solder": 8
+                }
+            },
+            "Refine Solder x4": {
+                "reagents": {
+                    "scrap_lead": 8,
+                    "refined_aluminum": 8
+                },
+                "out_money": 0,
+                "in_money": 4000,
+                "aptitudes": {
+                    "trucking.trucking": 7.36,
+                    "physical.strength": 7.36,
+                    "player.player": 7.36
+                },
+                "description": "Mix aluminum and lead to make solder",
+                "products": {
+                    "refined_solder": 32
+                }
+            },
+            "Refine Glass x10": {
+                "reagents": {
+                    "refined_sand": 10
+                },
+                "out_money": 0,
+                "in_money": 10000,
+                "aptitudes": {
+                    "trucking.trucking": 2.9,
+                    "physical.strength": 2.9,
+                    "player.player": 2.9
+                },
+                "description": "Create glass out of that rich sand",
+                "products": {
+                    "refined_glass": 10
+                }
+            },
+            "Ceramic Tiles x10": {
+                "reagents": {
+                    "refined_flint": 100,
+                    "refined_sand": 20
+                },
+                "out_money": 0,
+                "in_money": 10000,
+                "aptitudes": {
+                    "trucking.trucking": 28.79999999999999,
+                    "physical.strength": 28.79999999999999,
+                    "player.player": 28.79999999999999
+                },
+                "description": "Make 10 Ceramic Tiles",
+                "products": {
+                    "crafted_ceramictiles": 20
+                }
+            },
+            "Refine Glass x1": {
+                "reagents": {
+                    "refined_sand": 1
+                },
+                "out_money": 0,
+                "in_money": 1000,
+                "aptitudes": {
+                    "trucking.trucking": 0.29,
+                    "physical.strength": 0.29,
+                    "player.player": 0.29
+                },
+                "description": "Create glass out of that rich sand",
+                "products": {
+                    "refined_glass": 1
+                }
+            },
+            "Refine Tin x1": {
+                "reagents": {
+                    "scrap_tin": 2
+                },
+                "out_money": 0,
+                "in_money": 1000,
+                "aptitudes": {
+                    "trucking.trucking": 0.26,
+                    "physical.strength": 0.26,
+                    "player.player": 0.26
+                },
+                "description": "Refine scrap tin into refined tin",
+                "products": {
+                    "refined_tin": 1
+                }
+            },
+            "Refine Copper x1": {
+                "reagents": {
+                    "scrap_copper": 2
+                },
+                "out_money": 0,
+                "in_money": 1000,
+                "aptitudes": {
+                    "trucking.trucking": 0.26,
+                    "physical.strength": 0.26,
+                    "player.player": 0.26
+                },
+                "description": "Refine scrap copper into refined copper",
+                "products": {
+                    "refined_copper": 1
+                }
+            },
+            "Copper Alloy": {
+                "permissionsText": "Copper Alloy Secret",
+                "in_money": 10000,
+                "aptitudes": {
+                    "trucking.trucking": 10.0,
+                    "physical.strength": 10.0,
+                    "player.player": 10.0
+                },
+                "products": {
+                    "refined_copper": 20
+                },
+                "secret": true,
+                "description": "Copper Alloy",
+                "reagents": {
+                    "petrochem_sulfur": 10,
+                    "scrap_ore": 20
+                },
+                "permissions": [
+                    "sd.trucking.foundry.copper"
+                ],
+                "out_money": 0
+            },
+            "Refine Amalgam x10": {
+                "reagents": {
+                    "scrap_mercury": 20,
+                    "refined_tin": 20
+                },
+                "out_money": 0,
+                "in_money": 10000,
+                "aptitudes": {
+                    "trucking.trucking": 15.6,
+                    "physical.strength": 15.6,
+                    "player.player": 15.6
+                },
+                "description": "A valuable alloy made from mercury and tin",
+                "products": {
+                    "refined_amalgam": 20
+                }
+            },
+            "Refine Tin x20": {
+                "reagents": {
+                    "scrap_tin": 40
+                },
+                "out_money": 0,
+                "in_money": 20000,
+                "aptitudes": {
+                    "trucking.trucking": 5.2,
+                    "physical.strength": 5.2,
+                    "player.player": 5.2
+                },
+                "description": "Refine scrap tin into refined tin",
+                "products": {
+                    "refined_tin": 20
+                }
+            },
+            "Refine Aluminum x10": {
+                "reagents": {
+                    "scrap_aluminum": 20
+                },
+                "out_money": 0,
+                "in_money": 10000,
+                "aptitudes": {
+                    "trucking.trucking": 3.3,
+                    "physical.strength": 3.3,
+                    "player.player": 3.3
+                },
+                "description": "Refine scrap aluminum into refined aluminum",
+                "products": {
+                    "refined_aluminum": 10
+                }
+            }
+        },
+        "export": {}
+    },
+    "LS Oil Pumping Station": {
+        "job": "petrochem",
+        "x": 1358.9661865234,
+        "y": -1854.6618652344,
+        "location": "1358.9661865234, -1854.6618652344",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.petrochem"
+        ],
+        "color": "255,125,0",
+        "pickup": {
+            "Extract Crude Oil": {
+                "reagents": [],
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Extract Crude Oil",
+                "products": {
+                    "petrochem_oil": 1
+                }
+            },
+            "Extract Crude Oil x2": {
+                "reagents": [],
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Extract Crude Oil x2",
+                "products": {
+                    "petrochem_oil": 2
+                }
+            }
+        },
+        "recipes": {},
+        "export": {}
+    },
+    "LS Port Export": {
+        "job": "trucker",
+        "x": -410.74948120117,
+        "y": -2691.0700683594,
+        "location": "-410.74948120117, -2691.0700683594",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {},
+        "export": {
+            "Ceramic Tiles": {
+                "reagents": {
+                    "crafted_ceramictiles": 1
+                },
+                "out_money": 40000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 0.29,
+                    "physical.strength": 0.29,
+                    "player.player": 0.29
+                },
+                "description": "Sell Ceramic Tiles",
+                "products": []
+            },
+            "<span sort='B'></span>Export Sawdust x10": {
+                "reagents": {
+                    "tcargodust": 10
+                },
+                "out_money": 18000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 1.6,
+                    "physical.strength": 1.6,
+                    "player.player": 1.6
+                },
+                "description": "Export sawdust in bulks of 10",
+                "products": []
+            },
+            "<span sort='A'></span>Export Sawdust x1": {
+                "reagents": {
+                    "tcargodust": 1
+                },
+                "out_money": 1800,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 0.16,
+                    "physical.strength": 0.16,
+                    "player.player": 0.16
+                },
+                "description": "Export sawdust",
+                "products": []
+            },
+            "Export Rubber": {
+                "reagents": {
+                    "mechanicals_rubber": 1
+                },
+                "out_money": 10000,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Export Rubber",
+                "products": []
+            },
+            "Export Zinc x1": {
+                "reagents": {
+                    "refined_zinc": 1
+                },
+                "out_money": 11600,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 0.21,
+                    "physical.strength": 0.21,
+                    "player.player": 0.21
+                },
+                "description": "Export zinc",
+                "products": []
+            },
+            "Export Refined Bronze Alloy x1": {
+                "reagents": {
+                    "refined_bronze": 1
+                },
+                "out_money": 32000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 0.33,
+                    "physical.strength": 0.33,
+                    "player.player": 0.33
+                },
+                "description": "Export bronze",
+                "products": []
+            },
+            "Export Copper x1": {
+                "reagents": {
+                    "refined_copper": 1
+                },
+                "out_money": 10000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 0.3,
+                    "physical.strength": 0.3,
+                    "player.player": 0.2
+                },
+                "description": "Export copper",
+                "products": []
+            },
+            "Export Planks x1": {
+                "reagents": {
+                    "refined_planks": 1
+                },
+                "out_money": 14400,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 0.25,
+                    "physical.strength": 0.25,
+                    "player.player": 0.25
+                },
+                "description": "Export planks",
+                "products": []
+            },
+            "Export Acid x1": {
+                "reagents": {
+                    "scrap_acid": 1
+                },
+                "out_money": 12800,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 0.17,
+                    "physical.strength": 0.17,
+                    "player.player": 0.17
+                },
+                "description": "Export acid",
+                "products": []
+            },
+            "Export Zinc x10": {
+                "reagents": {
+                    "refined_zinc": 10
+                },
+                "out_money": 116000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 2.1,
+                    "physical.strength": 2.1,
+                    "player.player": 2.1
+                },
+                "description": "Export zinc in bulks of 10",
+                "products": []
+            },
+            "Computer x10": {
+                "reagents": {
+                    "crafted_computer": 10
+                },
+                "out_money": 2100000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 14.1,
+                    "physical.strength": 14.1,
+                    "player.player": 14.1
+                },
+                "description": "Sell Computers",
+                "products": []
+            },
+            "Export Refined Glass x1": {
+                "reagents": {
+                    "refined_glass": 1
+                },
+                "out_money": 10000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 0.17,
+                    "physical.strength": 0.17,
+                    "player.player": 0.17
+                },
+                "description": "Export glass",
+                "products": []
+            },
+            "Export Copper x10": {
+                "reagents": {
+                    "refined_copper": 10
+                },
+                "out_money": 100000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 3.0,
+                    "physical.strength": 3.0,
+                    "player.player": 2.0
+                },
+                "description": "Export copper in bulks of 10",
+                "products": []
+            },
+            "Export Planks x10": {
+                "reagents": {
+                    "refined_planks": 10
+                },
+                "out_money": 144000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 2.5,
+                    "physical.strength": 2.5,
+                    "player.player": 2.5
+                },
+                "description": "Export planks in bulks of 10",
+                "products": []
+            },
+            "Export Aluminum x1": {
+                "reagents": {
+                    "refined_aluminum": 1
+                },
+                "out_money": 8400,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 0.21,
+                    "physical.strength": 0.21,
+                    "player.player": 0.21
+                },
+                "description": "Export aluminum",
+                "products": []
+            },
+            "Export Tin x1": {
+                "reagents": {
+                    "refined_tin": 1
+                },
+                "out_money": 8400,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 0.21,
+                    "physical.strength": 0.21,
+                    "player.player": 0.21
+                },
+                "description": "Export tin",
+                "products": []
+            },
+            "Export Rubber x10": {
+                "reagents": {
+                    "mechanicals_rubber": 10
+                },
+                "out_money": 100000,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Export Rubber x10",
+                "products": []
+            },
+            "Export Aluminum x10": {
+                "reagents": {
+                    "refined_aluminum": 10
+                },
+                "out_money": 84000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 2.1,
+                    "physical.strength": 2.1,
+                    "player.player": 2.1
+                },
+                "description": "Export aluminum in bulks of 10",
+                "products": []
+            },
+            "Export Batteries x10": {
+                "reagents": {
+                    "crafted_batteries": 10
+                },
+                "out_money": 1500000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 8.0,
+                    "physical.strength": 8.0,
+                    "player.player": 8.0
+                },
+                "description": "Export batteries",
+                "products": []
+            },
+            "Export Tin x10": {
+                "reagents": {
+                    "refined_tin": 10
+                },
+                "out_money": 84000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 2.1,
+                    "physical.strength": 2.1,
+                    "player.player": 2.1
+                },
+                "description": "Export tin in bulks of 10",
+                "products": []
+            },
+            "Export Acid x10": {
+                "reagents": {
+                    "scrap_acid": 10
+                },
+                "out_money": 128000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 1.7,
+                    "physical.strength": 1.7,
+                    "player.player": 1.7
+                },
+                "description": "Export acid in bulks of 10",
+                "products": []
+            },
+            "Export Refined Glass x10": {
+                "reagents": {
+                    "refined_glass": 10
+                },
+                "out_money": 100000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 1.7,
+                    "physical.strength": 1.7,
+                    "player.player": 1.7
+                },
+                "description": "Export glass in bulks of 10",
+                "products": []
+            },
+            "Export Batteries x1": {
+                "reagents": {
+                    "crafted_batteries": 1
+                },
+                "out_money": 150000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 0.8,
+                    "physical.strength": 0.8,
+                    "player.player": 0.8
+                },
+                "description": "Export batteries",
+                "products": []
+            },
+            "Export Refined Bronze Alloy x10": {
+                "reagents": {
+                    "refined_bronze": 10
+                },
+                "out_money": 320000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 3.3,
+                    "physical.strength": 3.3,
+                    "player.player": 3.3
+                },
+                "description": "Export bronze in bulks of 10",
+                "products": []
+            },
+            "Ceramic Tiles x10": {
+                "reagents": {
+                    "crafted_ceramictiles": 10
+                },
+                "out_money": 400000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 2.9,
+                    "physical.strength": 2.9,
+                    "player.player": 2.9
+                },
+                "description": "Sell Ceramic Tiles",
+                "products": []
+            },
+            "Export Vehicle Framework": {
+                "reagents": {
+                    "mechanicals_vehicle_framework": 1
+                },
+                "out_money": 350000,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Export Vehicle Framework",
+                "products": []
+            },
+            "Computer": {
+                "reagents": {
+                    "crafted_computer": 1
+                },
+                "out_money": 210000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 1.41,
+                    "physical.strength": 1.41,
+                    "player.player": 1.41
+                },
+                "description": "Sell Computers",
+                "products": []
+            }
+        }
+    },
+    "LSIA Shipments": {
+        "job": "fridge",
+        "x": -1155.6400146484,
+        "y": -2188.1518554688,
+        "location": "-1155.6400146484, -2188.1518554688",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.fridge"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {},
+        "export": {
+            "Deliver Airline Meal x30": {
+                "reagents": {
+                    "fridge_airline_meal": 30
+                },
+                "out_money": 195000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 15.9,
+                    "physical.strength": 15.9,
+                    "player.player": 15.9
+                },
+                "description": "Deliver Airline Meal",
+                "products": []
+            },
+            "Deliver Airline Meal x10": {
+                "reagents": {
+                    "fridge_airline_meal": 10
+                },
+                "out_money": 65000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 5.3,
+                    "physical.strength": 5.3,
+                    "player.player": 5.3
+                },
+                "description": "Deliver Airline Meal",
+                "products": []
+            },
+            "Deliver Airline Meal": {
+                "reagents": {
+                    "fridge_airline_meal": 1
+                },
+                "out_money": 6500,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 0.53,
+                    "physical.strength": 0.53,
+                    "player.player": 0.53
+                },
+                "description": "Deliver Airline Meal",
+                "products": []
+            }
+        }
+    },
+    "Land Act Reservoir": {
+        "job": "trucker",
+        "x": 1534.3098144531,
+        "y": 834.60900878906,
+        "location": "1534.3098144531, 834.60900878906",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job"
+        ],
+        "color": "255,125,0",
+        "pickup": {
+            "Pick up Unfiltered Water x3": {
+                "reagents": [],
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Pick up some unfiltered water",
+                "products": {
+                    "liquid_water_raw": 3
+                }
+            },
+            "Pick up Unfiltered Water": {
+                "reagents": [],
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Pick up some unfiltered water",
+                "products": {
+                    "liquid_water_raw": 1
+                }
+            }
+        },
+        "recipes": {},
+        "export": {}
+    },
+    "Liquor Ace": {
+        "job": "trucker",
+        "x": 1373.3714599609,
+        "y": 3615.49609375,
+        "location": "1373.3714599609, 3615.49609375",
+        "rate": 200,
+        "max": 1035,
+        "permissions": [
+            "trucker.job",
+            "@trucking.trucking.>16"
+        ],
+        "color": "255,125,0",
+        "pickup": {
+            "Pick up methamphetamine x10": {
+                "in_money": 100000,
+                "aptitudes": [],
+                "products": {
+                    "illegal_meth": 10
+                },
+                "onSelect": false,
+                "reagents": [],
+                "out_money": 0,
+                "description": "Methamphetamine x10",
+                "onLeave": false,
+                "onTransform": false,
+                "cost": 10
+            },
+            "Pick up methamphetamine": {
+                "in_money": 10000,
+                "aptitudes": [],
+                "products": {
+                    "illegal_meth": 1
+                },
+                "onSelect": false,
+                "reagents": [],
+                "out_money": 0,
+                "description": "Methamphetamine",
+                "onLeave": false,
+                "onTransform": false,
+                "cost": 1
+            }
+        },
+        "recipes": {
+            "Fill empty pill box": {
+                "in_money": 5000,
+                "aptitudes": [],
+                "products": {
+                    "full_box_capsules": 1
+                },
+                "onSelect": false,
+                "reagents": {
+                    "empty_box_capsules": 1
+                },
+                "out_money": 0,
+                "description": "Methamphetamine",
+                "onLeave": false,
+                "onTransform": false,
+                "cost": 1
+            }
+        },
+        "export": {}
+    },
+    "Logging Camp": {
+        "job": "@trucking.trucking.>5",
+        "x": -961.28234863281,
+        "y": 4173.1274414063,
+        "location": "-961.28234863281, 4173.1274414063",
+        "rate": 120,
+        "max": 1200,
+        "permissions": [
+            "trucker.job",
+            "@trucking.trucking.>5"
+        ],
+        "color": "255,125,0",
+        "pickup": {
+            "Collect Logs": {
+                "permissionsText": "",
+                "in_money": 7500,
+                "aptitudes": [],
+                "products": {
+                    "tcargologs": 1
+                },
+                "reagents": [],
+                "onSelect": false,
+                "permissions": false,
+                "out_money": 0,
+                "description": "Collect Logs from the Logging Camp",
+                "onLeave": false,
+                "onTransform": false,
+                "cost": 1
+            },
+            "Collect Logs x5": {
+                "permissionsText": "",
+                "in_money": 37500,
+                "aptitudes": [],
+                "products": {
+                    "tcargologs": 5
+                },
+                "reagents": [],
+                "onSelect": false,
+                "permissions": false,
+                "out_money": 0,
+                "description": "Collect Logs from the Logging Camp",
+                "onLeave": false,
+                "onTransform": false,
+                "cost": 5
+            },
+            "Collect Logs x10": {
+                "permissionsText": "",
+                "in_money": 75000,
+                "aptitudes": [],
+                "products": {
+                    "tcargologs": 10
+                },
+                "reagents": [],
+                "onSelect": false,
+                "permissions": false,
+                "out_money": 0,
+                "description": "Collect Logs from the Logging Camp",
+                "onLeave": false,
+                "onTransform": false,
+                "cost": 10
+            }
+        },
+        "recipes": {},
+        "export": {}
+    },
+    "McKenzie Export": {
+        "job": "trucker",
+        "x": 2148.071533,
+        "y": 4806.387207,
+        "location": "2148.071533, 4806.387207",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {},
+        "export": {
+            "Export Flint": {
+                "reagents": {
+                    "refined_flint": 1
+                },
+                "out_money": 4250,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 0.16,
+                    "physical.strength": 0.16,
+                    "player.player": 0.16
+                },
+                "description": "Export the flint",
+                "products": []
+            },
+            "Export Cardboard": {
+                "permissionsText": "Cardboard Manufacturing Secret",
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 2.81,
+                    "physical.strength": 2.81,
+                    "player.player": 2.81
+                },
+                "products": [],
+                "secret": true,
+                "description": "Export Cardboard",
+                "reagents": {
+                    "crafted_cardboard": 1
+                },
+                "permissions": [
+                    "sd.trucking.cardboard"
+                ],
+                "out_money": 60000
+            },
+            "Export Flint x10": {
+                "reagents": {
+                    "refined_flint": 10
+                },
+                "out_money": 42500,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 1.6,
+                    "physical.strength": 1.6,
+                    "player.player": 1.6
+                },
+                "description": "Export the flint",
+                "products": []
+            },
+            "Export Cardboard x5": {
+                "permissionsText": "Cardboard Manufacturing Secret",
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 14.05,
+                    "physical.strength": 14.05,
+                    "player.player": 14.05
+                },
+                "products": [],
+                "secret": true,
+                "description": "Export Cardboard x5",
+                "reagents": {
+                    "crafted_cardboard": 5
+                },
+                "permissions": [
+                    "sd.trucking.cardboard"
+                ],
+                "out_money": 300000
+            },
+            "Export Scrap Plastic x100": {
+                "permissionsText": "Plastic Export Contact Secret",
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 22.0,
+                    "physical.strength": 22.0,
+                    "player.player": 22.0
+                },
+                "products": [],
+                "secret": true,
+                "description": "Export the scrap plastic by hundreds",
+                "reagents": {
+                    "scrap_plastic": 100
+                },
+                "permissions": [
+                    "sd.trucking.mckenzie.plastic"
+                ],
+                "out_money": 360000
+            },
+            "Export Scrap Plastic x10": {
+                "reagents": {
+                    "scrap_plastic": 10
+                },
+                "out_money": 36000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 2.2,
+                    "physical.strength": 2.2,
+                    "player.player": 2.2
+                },
+                "description": "Export the scrap plastic by tens",
+                "products": []
+            },
+            "Export Flint x100": {
+                "reagents": {
+                    "refined_flint": 100
+                },
+                "out_money": 425000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 16.0,
+                    "physical.strength": 16.0,
+                    "player.player": 16.0
+                },
+                "description": "Export the flint",
+                "products": []
+            },
+            "Export Scrap Plastic": {
+                "reagents": {
+                    "scrap_plastic": 1
+                },
+                "out_money": 3600,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 0.22,
+                    "physical.strength": 0.22,
+                    "player.player": 0.22
+                },
+                "description": "Export the scrap plastic",
+                "products": []
+            }
+        }
+    },
+    "Military Workshop": {
+        "job": "military",
+        "x": -1759.1031494141,
+        "y": 3062.0981445313,
+        "location": "-1759.1031494141, 3062.0981445313",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.military"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Create Explosives": {
+                "reagents": {
+                    "petrochem_sulfur": 10,
+                    "petrochem_kerosene": 8
+                },
+                "out_money": 0,
+                "in_money": 9500,
+                "aptitudes": {
+                    "trucking.trucking": 8.34,
+                    "physical.strength": 8.34,
+                    "player.player": 8.34
+                },
+                "description": "Create Explosives",
+                "products": {
+                    "military_explosives": 1
+                }
+            }
+        },
+        "export": {
+            "Deliver Titanium": {
+                "reagents": {
+                    "military_titanium": 1
+                },
+                "out_money": 75000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 2.65,
+                    "physical.strength": 2.65,
+                    "player.player": 2.65
+                },
+                "description": "Deliver Titanium",
+                "products": []
+            }
+        }
+    },
+    "Oil Depository": {
+        "job": "petrochem",
+        "x": 1589.0988769531,
+        "y": -1713.2185058594,
+        "location": "1589.0988769531, -1713.2185058594",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.petrochem"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Fill Petrol Cans": {
+                "reagents": {
+                    "petrochem_petrol": 1
+                },
+                "out_money": 4000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 1.9,
+                    "physical.strength": 1.9,
+                    "player.player": 1.9
+                },
+                "description": "Fill Petrol Cans",
+                "products": {
+                    "jerry_can|DIESEL|Petrol": 10
+                }
+            },
+            "Fill Boat Cans": {
+                "reagents": {
+                    "petrochem_diesel": 1
+                },
+                "out_money": 8000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 1.9,
+                    "physical.strength": 1.9,
+                    "player.player": 1.9
+                },
+                "description": "Fill Boat Cans",
+                "products": {
+                    "jerry_can|BOAT|Boat": 10
+                }
+            },
+            "Fill Plane Cans": {
+                "reagents": {
+                    "petrochem_kerosene": 1
+                },
+                "out_money": 11000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 1.9,
+                    "physical.strength": 1.9,
+                    "player.player": 1.9
+                },
+                "description": "Fill Plane Cans",
+                "products": {
+                    "jerry_can|PLANE|Plane": 10
+                }
+            },
+            "Fill Diesel Cans": {
+                "reagents": {
+                    "petrochem_diesel": 1
+                },
+                "out_money": 8000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 1.9,
+                    "physical.strength": 1.9,
+                    "player.player": 1.9
+                },
+                "description": "Fill Diesel Cans",
+                "products": {
+                    "jerry_can|HEAVY|Diesel": 10
+                }
+            },
+            "Fill Helicoper Cans": {
+                "reagents": {
+                    "petrochem_kerosene": 1
+                },
+                "out_money": 11000,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 1.9,
+                    "physical.strength": 1.9,
+                    "player.player": 1.9
+                },
+                "description": "Fill Helicoper Cans",
+                "products": {
+                    "jerry_can|HELICOPTER|Helicopter": 10
+                }
+            }
+        },
+        "export": {}
+    },
+    "Plastic Molding": {
+        "job": "trucker",
+        "x": -1014.5861816406,
+        "y": -2234.5297851563,
+        "location": "-1014.5861816406, -2234.5297851563",
+        "rate": 200,
+        "max": 1035,
+        "permissions": [
+            "trucker.job",
+            "@trucking.trucking.>16"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Craft Empty Defib Kit": {
+                "in_money": 10000,
+                "aptitudes": {
+                    "player.player": 0.1,
+                    "trucking.trucking": 0.5
+                },
+                "products": {
+                    "e_defibkit": 5
+                },
+                "onSelect": false,
+                "reagents": {
+                    "scrap_plastic": 10
+                },
+                "out_money": 0,
+                "description": "Defib Kits",
+                "onLeave": false,
+                "onTransform": false,
+                "cost": 1
+            },
+            "Craft Empty Pill Capsule": {
+                "in_money": 1000,
+                "aptitudes": {
+                    "player.player": 0.1,
+                    "trucking.trucking": 0.5
+                },
+                "products": {
+                    "empty_box_capsules": 5
+                },
+                "onSelect": false,
+                "reagents": {
+                    "scrap_plastic": 10
+                },
+                "out_money": 0,
+                "description": "Pills Capsule",
+                "onLeave": false,
+                "onTransform": false,
+                "cost": 1
+            }
+        },
+        "export": {}
+    },
+    "Pop's Pills ": {
+        "job": "trucker",
+        "x": 138.28372192383,
+        "y": 6650.0546875,
+        "location": "138.28372192383, 6650.0546875",
+        "rate": 10,
+        "max": 258,
+        "permissions": [
+            "trucker.job",
+            "@trucking.trucking.>16"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Pick up pills crate x10": {
+                "in_money": 100000,
+                "aptitudes": [],
+                "products": {
+                    "illegal_crate": 10
+                },
+                "onSelect": false,
+                "reagents": {
+                    "refined_planks": 10,
+                    "scrap_plastic": 50
+                },
+                "out_money": 0,
+                "description": "Pills Crate x10",
+                "onLeave": false,
+                "onTransform": false,
+                "cost": 10
+            },
+            "Pick up pills crate": {
+                "in_money": 10000,
+                "aptitudes": [],
+                "products": {
+                    "illegal_crate": 1
+                },
+                "onSelect": false,
+                "reagents": {
+                    "refined_planks": 1,
+                    "scrap_plastic": 5
+                },
+                "out_money": 0,
+                "description": "Pills Crate",
+                "onLeave": false,
+                "onTransform": false,
+                "cost": 1
+            }
+        },
+        "export": {}
+    },
+    "Portland Docks": {
+        "job": "liberty",
+        "x": -1559.1865234375,
+        "y": 6439.8857421875,
+        "location": "-1559.1865234375, 6439.8857421875",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.liberty"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Export Goods x3": {
+                "reagents": {
+                    "liberty_export_goods": 3
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 6.42,
+                    "physical.strength": 6.42,
+                    "player.player": 6.42
+                },
+                "description": "Export Goods",
+                "products": {
+                    "liberty_voucher_goods": 3,
+                    "liberty_token": 3
+                }
+            },
+            "Export Goods": {
+                "reagents": {
+                    "liberty_export_goods": 1
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 2.14,
+                    "physical.strength": 2.14,
+                    "player.player": 2.14
+                },
+                "description": "Export Goods",
+                "products": {
+                    "liberty_voucher_goods": 1,
+                    "liberty_token": 1
+                }
+            }
+        },
+        "export": {}
+    },
+    "Quarry": {
+        "job": "trucker",
+        "x": 2682.7861328125,
+        "y": 2817.8293457031,
+        "location": "2682.7861328125, 2817.8293457031",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job"
+        ],
+        "color": "255,125,0",
+        "pickup": {
+            "Pick up Quarry Rubble x2": {
+                "reagents": [],
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Pick up Quarry Rubble, bring it to a filtering facility.",
+                "products": {
+                    "recycled_rubble": 2
+                }
+            },
+            "Pick up Quarry Rubble": {
+                "reagents": [],
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Pick up Quarry Rubble, bring it to a filtering facility.",
+                "products": {
+                    "recycled_rubble": 1
+                }
+            }
+        },
+        "recipes": {
+            "Create Cement": {
+                "reagents": {
+                    "tcargodust": 2,
+                    "refined_sand": 5
+                },
+                "out_money": 0,
+                "in_money": 1500,
+                "aptitudes": {
+                    "trucking.trucking": 0.71,
+                    "physical.strength": 0.71,
+                    "player.player": 0.71
+                },
+                "description": "Mix together a cement mix",
+                "products": {
+                    "crafted_cement": 1
+                }
+            },
+            "Create Cement x10": {
+                "reagents": {
+                    "tcargodust": 20,
+                    "refined_sand": 50
+                },
+                "out_money": 0,
+                "in_money": 15000,
+                "aptitudes": {
+                    "trucking.trucking": 7.1,
+                    "physical.strength": 7.1,
+                    "player.player": 7.1
+                },
+                "description": "Mix together a cement mix",
+                "products": {
+                    "crafted_cement": 10
+                }
+            }
+        },
+        "export": {
+            "Deliver Sand": {
+                "reagents": {
+                    "refined_sand": 1
+                },
+                "out_money": 1500,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 1.37,
+                    "physical.strength": 1.37,
+                    "player.player": 1.37
+                },
+                "description": "Deliver Sand.",
+                "products": []
+            }
+        }
+    },
+    "Radio Station": {
+        "job": "liberty",
+        "x": -2107.5363769531,
+        "y": 7250.9057617188,
+        "location": "-2107.5363769531, 7250.9057617188",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.liberty"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Spread Broadcast": {
+                "reagents": {
+                    "liberty_broadcast": 1
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 2.37,
+                    "physical.strength": 2.37,
+                    "player.player": 2.37
+                },
+                "description": "Broadcast",
+                "products": {
+                    "liberty_broadcast_portland": 1,
+                    "liberty_broadcast_staunton": 1,
+                    "liberty_broadcast_shoreside": 1
+                }
+            },
+            "Spread Broadcast x3": {
+                "reagents": {
+                    "liberty_broadcast": 3
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 7.11,
+                    "physical.strength": 7.11,
+                    "player.player": 7.11
+                },
+                "description": "Broadcast",
+                "products": {
+                    "liberty_broadcast_portland": 3,
+                    "liberty_broadcast_staunton": 3,
+                    "liberty_broadcast_shoreside": 3
+                }
+            }
+        },
+        "export": {}
+    },
+    "Raven Slaughterhouse": {
+        "job": "trucker",
+        "x": 957.52685546875,
+        "y": -2115.6027832031,
+        "location": "957.52685546875, -2115.6027832031",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "hunting.convert"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Rabbit x10": {
+                "in_money": 20000,
+                "aptitudes": {
+                    "hunting.skill": 3.0
+                },
+                "products": {
+                    "meat": 20
+                },
+                "onSelect": false,
+                "reagents": {
+                    "hide_rabbit": 10
+                },
+                "out_money": 0,
+                "description": "Rabbit x10",
+                "onLeave": false,
+                "onTransform": false,
+                "cost": 10
+            },
+            "Leopard x10": {
+                "in_money": 20000,
+                "aptitudes": {
+                    "hunting.skill": 30.0
+                },
+                "products": {
+                    "meat": 200
+                },
+                "onSelect": false,
+                "reagents": {
+                    "hide_leopard": 10
+                },
+                "out_money": 0,
+                "description": "Leopard x10",
+                "onLeave": false,
+                "onTransform": false,
+                "cost": 10
+            },
+            "Cougar x10": {
+                "in_money": 20000,
+                "aptitudes": {
+                    "hunting.skill": 15.0
+                },
+                "products": {
+                    "meat": 100
+                },
+                "onSelect": false,
+                "reagents": {
+                    "hide_mtlion": 10
+                },
+                "out_money": 0,
+                "description": "Cougar x10",
+                "onLeave": false,
+                "onTransform": false,
+                "cost": 10
+            },
+            "Rat x1": {
+                "in_money": 2000,
+                "aptitudes": {
+                    "hunting.skill": 0.15
+                },
+                "products": {
+                    "meat": 1
+                },
+                "onSelect": false,
+                "reagents": {
+                    "hide_rat": 1
+                },
+                "out_money": 0,
+                "description": "Rat x1",
+                "onLeave": false,
+                "onTransform": false,
+                "cost": 1
+            },
+            "Brown Bear x1": {
+                "in_money": 2000,
+                "aptitudes": {
+                    "hunting.skill": 6.0
+                },
+                "products": {
+                    "meat": 40
+                },
+                "onSelect": false,
+                "reagents": {
+                    "hide_bear": 1
+                },
+                "out_money": 0,
+                "description": "Brown Bear x1",
+                "onLeave": false,
+                "onTransform": false,
+                "cost": 1
+            },
+            "Boar x10": {
+                "in_money": 20000,
+                "aptitudes": {
+                    "hunting.skill": 30.0
+                },
+                "products": {
+                    "meat": 200
+                },
+                "onSelect": false,
+                "reagents": {
+                    "hide_boar": 10
+                },
+                "out_money": 0,
+                "description": "Boar x10",
+                "onLeave": false,
+                "onTransform": false,
+                "cost": 10
+            },
+            "Rat x10": {
+                "in_money": 20000,
+                "aptitudes": {
+                    "hunting.skill": 1.5
+                },
+                "products": {
+                    "meat": 10
+                },
+                "onSelect": false,
+                "reagents": {
+                    "hide_rat": 10
+                },
+                "out_money": 0,
+                "description": "Rat x10",
+                "onLeave": false,
+                "onTransform": false,
+                "cost": 10
+            },
+            "Deer x1": {
+                "in_money": 2000,
+                "aptitudes": {
+                    "hunting.skill": 1.79999999999999
+                },
+                "products": {
+                    "meat": 12
+                },
+                "onSelect": false,
+                "reagents": {
+                    "hide_deer": 1
+                },
+                "out_money": 0,
+                "description": "Deer x1",
+                "onLeave": false,
+                "onTransform": false,
+                "cost": 1
+            },
+            "Lion x10": {
+                "in_money": 20000,
+                "aptitudes": {
+                    "hunting.skill": 30.0
+                },
+                "products": {
+                    "meat": 200
+                },
+                "onSelect": false,
+                "reagents": {
+                    "hide_lion": 10
+                },
+                "out_money": 0,
+                "description": "Lion x10",
+                "onLeave": false,
+                "onTransform": false,
+                "cost": 10
+            },
+            "Brown Bear x10": {
+                "in_money": 20000,
+                "aptitudes": {
+                    "hunting.skill": 60.0
+                },
+                "products": {
+                    "meat": 400
+                },
+                "onSelect": false,
+                "reagents": {
+                    "hide_bear": 10
+                },
+                "out_money": 0,
+                "description": "Brown Bear x10",
+                "onLeave": false,
+                "onTransform": false,
+                "cost": 10
+            },
+            "Cougar x1": {
+                "in_money": 2000,
+                "aptitudes": {
+                    "hunting.skill": 1.5
+                },
+                "products": {
+                    "meat": 10
+                },
+                "onSelect": false,
+                "reagents": {
+                    "hide_mtlion": 1
+                },
+                "out_money": 0,
+                "description": "Cougar x1",
+                "onLeave": false,
+                "onTransform": false,
+                "cost": 1
+            },
+            "Lion x1": {
+                "in_money": 2000,
+                "aptitudes": {
+                    "hunting.skill": 3.0
+                },
+                "products": {
+                    "meat": 20
+                },
+                "onSelect": false,
+                "reagents": {
+                    "hide_lion": 1
+                },
+                "out_money": 0,
+                "description": "Lion x1",
+                "onLeave": false,
+                "onTransform": false,
+                "cost": 1
+            },
+            "Wolf x10": {
+                "in_money": 20000,
+                "aptitudes": {
+                    "hunting.skill": 30.0
+                },
+                "products": {
+                    "meat": 200
+                },
+                "onSelect": false,
+                "reagents": {
+                    "hide_wolf": 10
+                },
+                "out_money": 0,
+                "description": "Wolf x10",
+                "onLeave": false,
+                "onTransform": false,
+                "cost": 10
+            },
+            "Wolf x1": {
+                "in_money": 2000,
+                "aptitudes": {
+                    "hunting.skill": 3.0
+                },
+                "products": {
+                    "meat": 20
+                },
+                "onSelect": false,
+                "reagents": {
+                    "hide_wolf": 1
+                },
+                "out_money": 0,
+                "description": "Wolf x1",
+                "onLeave": false,
+                "onTransform": false,
+                "cost": 1
+            },
+            "Coyote x1": {
+                "in_money": 2000,
+                "aptitudes": {
+                    "hunting.skill": 0.89999999999999
+                },
+                "products": {
+                    "meat": 6
+                },
+                "onSelect": false,
+                "reagents": {
+                    "hide_coyote": 1
+                },
+                "out_money": 0,
+                "description": "Coyote x1",
+                "onLeave": false,
+                "onTransform": false,
+                "cost": 1
+            },
+            "Leopard x1": {
+                "in_money": 2000,
+                "aptitudes": {
+                    "hunting.skill": 3.0
+                },
+                "products": {
+                    "meat": 20
+                },
+                "onSelect": false,
+                "reagents": {
+                    "hide_leopard": 1
+                },
+                "out_money": 0,
+                "description": "Leopard x1",
+                "onLeave": false,
+                "onTransform": false,
+                "cost": 1
+            },
+            "Boar x1": {
+                "in_money": 2000,
+                "aptitudes": {
+                    "hunting.skill": 3.0
+                },
+                "products": {
+                    "meat": 20
+                },
+                "onSelect": false,
+                "reagents": {
+                    "hide_boar": 1
+                },
+                "out_money": 0,
+                "description": "Boar x1",
+                "onLeave": false,
+                "onTransform": false,
+                "cost": 1
+            },
+            "Deer x10": {
+                "in_money": 20000,
+                "aptitudes": {
+                    "hunting.skill": 18.0
+                },
+                "products": {
+                    "meat": 120
+                },
+                "onSelect": false,
+                "reagents": {
+                    "hide_deer": 10
+                },
+                "out_money": 0,
+                "description": "Deer x10",
+                "onLeave": false,
+                "onTransform": false,
+                "cost": 10
+            },
+            "Rabbit x1": {
+                "in_money": 2000,
+                "aptitudes": {
+                    "hunting.skill": 0.3
+                },
+                "products": {
+                    "meat": 2
+                },
+                "onSelect": false,
+                "reagents": {
+                    "hide_rabbit": 1
+                },
+                "out_money": 0,
+                "description": "Rabbit x1",
+                "onLeave": false,
+                "onTransform": false,
+                "cost": 1
+            },
+            "Coyote x10": {
+                "in_money": 20000,
+                "aptitudes": {
+                    "hunting.skill": 9.0
+                },
+                "products": {
+                    "meat": 60
+                },
+                "onSelect": false,
+                "reagents": {
+                    "hide_coyote": 10
+                },
+                "out_money": 0,
+                "description": "Coyote x10",
+                "onLeave": false,
+                "onTransform": false,
+                "cost": 10
+            }
+        },
+        "export": {}
+    },
+    "Recycling Center": {
+        "job": "trucker",
+        "x": -345.93292236328,
+        "y": -1562.4621582031,
+        "location": "-345.93292236328, -1562.4621582031",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job"
+        ],
+        "color": "255,125,0",
+        "pickup": {
+            "Pick up Recycled Trash x3": {
+                "reagents": [],
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Pick up Recycled Trash, bring it to the sorting facility.",
+                "products": {
+                    "recycled_trash": 3
+                }
+            },
+            "Pick up Recycled Trash": {
+                "reagents": [],
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Pick up Recycled Trash, bring it to the sorting facility.",
+                "products": {
+                    "recycled_trash": 1
+                }
+            }
+        },
+        "recipes": {},
+        "export": {}
+    },
+    "Refinery": {
+        "job": "petrochem",
+        "x": 2809.6357421875,
+        "y": 1551.9398193359,
+        "location": "2809.6357421875, 1551.9398193359",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.petrochem"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Refine Raw Gas x2": {
+                "reagents": {
+                    "petrochem_gas": 2
+                },
+                "out_money": 0,
+                "in_money": 20500,
+                "aptitudes": {
+                    "trucking.trucking": 12.64,
+                    "physical.strength": 12.64,
+                    "player.player": 12.64
+                },
+                "description": "Refine Raw Gas x2",
+                "products": {
+                    "petrochem_propane": 4,
+                    "military_chemicals": 4,
+                    "petrochem_waste": 2
+                }
+            },
+            "Refine Rubber": {
+                "reagents": {
+                    "petrochem_oil": 4
+                },
+                "out_money": 0,
+                "in_money": 41000,
+                "aptitudes": [],
+                "description": "Refine Rubber",
+                "products": {
+                    "mechanicals_rubber": 4,
+                    "petrochem_diesel": 2,
+                    "petrochem_petrol": 4,
+                    "petrochem_kerosene": 2
+                }
+            },
+            "Refine Crude Oil x2": {
+                "reagents": {
+                    "petrochem_oil": 2
+                },
+                "out_money": 0,
+                "in_money": 20500,
+                "aptitudes": {
+                    "trucking.trucking": 12.9,
+                    "physical.strength": 12.9,
+                    "player.player": 12.9
+                },
+                "description": "Refine Crude Oil x2",
+                "products": {
+                    "petrochem_diesel": 2,
+                    "petrochem_petrol": 4,
+                    "petrochem_kerosene": 2
+                }
+            },
+            "Refine Diluted Fuel": {
+                "permissionsText": "Diluted Fuel Refining Secret",
+                "in_money": 10250,
+                "aptitudes": {
+                    "trucking.trucking": 8.81,
+                    "physical.strength": 8.81,
+                    "player.player": 8.81
+                },
+                "products": {
+                    "petrochem_diesel": 3,
+                    "petrochem_petrol": 3,
+                    "petrochem_kerosene": 20
+                },
+                "secret": true,
+                "description": "Refine Diluted Fuel",
+                "reagents": {
+                    "petrochem_oil": 3,
+                    "liquid_water": 2
+                },
+                "permissions": [
+                    "sd.trucking.dilutedfuel"
+                ],
+                "out_money": 0
+            },
+            "Refine Raw Gas": {
+                "reagents": {
+                    "petrochem_gas": 1
+                },
+                "out_money": 0,
+                "in_money": 10250,
+                "aptitudes": {
+                    "trucking.trucking": 6.32,
+                    "physical.strength": 6.32,
+                    "player.player": 6.32
+                },
+                "description": "Refine Raw Gas",
+                "products": {
+                    "petrochem_propane": 2,
+                    "military_chemicals": 2,
+                    "petrochem_waste": 1
+                }
+            },
+            "Create Asphalt": {
+                "permissionsText": "Asphalt Concrete Refining Secret",
+                "in_money": 10250,
+                "aptitudes": {
+                    "trucking.trucking": 8.81,
+                    "physical.strength": 8.81,
+                    "player.player": 8.81
+                },
+                "products": {
+                    "petrochem_asphalt": 20
+                },
+                "secret": true,
+                "description": "Create Asphalt",
+                "reagents": {
+                    "petrochem_oil": 1,
+                    "scrap_gravel": 20
+                },
+                "permissions": [
+                    "sd.trucking.asphalt"
+                ],
+                "out_money": 0
+            },
+            "Refine Crude Oil": {
+                "reagents": {
+                    "petrochem_oil": 1
+                },
+                "out_money": 0,
+                "in_money": 10250,
+                "aptitudes": {
+                    "trucking.trucking": 6.45,
+                    "physical.strength": 6.45,
+                    "player.player": 6.45
+                },
+                "description": "Refine Crude Oil",
+                "products": {
+                    "petrochem_diesel": 1,
+                    "petrochem_petrol": 2,
+                    "petrochem_kerosene": 1
+                }
+            }
+        },
+        "export": {}
+    },
+    "Rooftop": {
+        "job": "liberty",
+        "x": -2979.8818359375,
+        "y": 5741.8139648438,
+        "location": "-2979.8818359375, 5741.8139648438",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.liberty"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Trade for Rainbow Voucher": {
+                "reagents": {
+                    "liberty_voucher_portland": 1,
+                    "liberty_voucher_shoreside": 1,
+                    "liberty_voucher_staunton": 1,
+                    "liberty_voucher_islands": 1
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Rainbow Voucher",
+                "products": {
+                    "rainbow_voucher": 1
+                }
+            }
+        },
+        "export": {}
+    },
+    "Sawmill": {
+        "job": "trucker",
+        "x": -559.0625,
+        "y": 5262.0502929688,
+        "location": "-559.0625, 5262.0502929688",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Grind Sawdust x5": {
+                "reagents": {
+                    "tcargologs": 5
+                },
+                "out_money": 0,
+                "in_money": 2500,
+                "aptitudes": {
+                    "trucking.trucking": 18.15,
+                    "physical.strength": 18.15,
+                    "player.player": 18.15
+                },
+                "description": "Grind a bulk of 5 Logs into Sawdust",
+                "products": {
+                    "tcargodust": 50
+                }
+            },
+            "Grind Sawdust x1": {
+                "reagents": {
+                    "tcargologs": 1
+                },
+                "out_money": 0,
+                "in_money": 500,
+                "aptitudes": {
+                    "trucking.trucking": 3.63,
+                    "physical.strength": 3.63,
+                    "player.player": 3.63
+                },
+                "description": "Grind Logs into Sawdust",
+                "products": {
+                    "tcargodust": 10
+                }
+            },
+            "Mill Planks x1": {
+                "reagents": {
+                    "tcargologs": 1
+                },
+                "out_money": 0,
+                "in_money": 500,
+                "aptitudes": {
+                    "trucking.trucking": 3.63,
+                    "physical.strength": 3.63,
+                    "player.player": 3.63
+                },
+                "description": "Make high quality planks out of the logs",
+                "products": {
+                    "refined_planks": 1,
+                    "tcargodust": 2
+                }
+            },
+            "Mill Planks x5": {
+                "reagents": {
+                    "tcargologs": 5
+                },
+                "out_money": 0,
+                "in_money": 2500,
+                "aptitudes": {
+                    "trucking.trucking": 18.15,
+                    "physical.strength": 18.15,
+                    "player.player": 18.15
+                },
+                "description": "Make high quality planks out of the bulk of 5 logs",
+                "products": {
+                    "refined_planks": 5,
+                    "tcargodust": 10
+                }
+            },
+            "Chipboard Planks": {
+                "permissionsText": "Chipboard Planks Secret",
+                "in_money": 2500,
+                "aptitudes": {
+                    "trucking.trucking": 18.15,
+                    "physical.strength": 18.15,
+                    "player.player": 18.15
+                },
+                "products": {
+                    "refined_planks": 15
+                },
+                "secret": true,
+                "description": "Make high quality planks out of the bulk of 5 logs",
+                "reagents": {
+                    "tcargodust": 30,
+                    "tcargologs": 5
+                },
+                "permissions": [
+                    "sd.trucking.sawmill.plank"
+                ],
+                "out_money": 0
+            },
+            "Sawdust Filler Exploit": {
+                "permissionsText": "Sawdust Filler Exploit Secret",
+                "in_money": 2500,
+                "aptitudes": {
+                    "trucking.trucking": 36.3,
+                    "physical.strength": 36.3,
+                    "player.player": 36.3
+                },
+                "products": {
+                    "tcargodust": 100
+                },
+                "secret": true,
+                "description": "Grind a bulk of 5 Logs into Sawdust",
+                "reagents": {
+                    "tcargologs": 5,
+                    "refined_sand": 10
+                },
+                "permissions": [
+                    "sd.trucking.sawmill.sawdust"
+                ],
+                "out_money": 0
+            }
+        },
+        "export": {}
+    },
+    "Shoreside Apartments": {
+        "job": "liberty",
+        "x": -3758.060546875,
+        "y": 7388.93359375,
+        "location": "-3758.060546875, 7388.93359375",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.liberty"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Deliver Shoreside Broadcast": {
+                "reagents": {
+                    "liberty_broadcast_shoreside": 1
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 0.51,
+                    "physical.strength": 0.51,
+                    "player.player": 0.51
+                },
+                "description": "Shoreside Broadcast",
+                "products": {
+                    "liberty_voucher_shoreside": 1
+                }
+            },
+            "Deliver Shoreside Broadcast x10": {
+                "reagents": {
+                    "liberty_broadcast_shoreside": 10
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 5.1,
+                    "physical.strength": 5.1,
+                    "player.player": 5.1
+                },
+                "description": "Shoreside Broadcast",
+                "products": {
+                    "liberty_voucher_shoreside": 10
+                }
+            }
+        },
+        "export": {}
+    },
+    "Sorting Facility": {
+        "job": "trucker",
+        "x": 1712.436035,
+        "y": 3771.523926,
+        "location": "1712.436035, 3771.523926",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Sort Recycled Electronics x2": {
+                "reagents": {
+                    "recycled_electronics": 2
+                },
+                "out_money": 0,
+                "in_money": 50000,
+                "aptitudes": {
+                    "trucking.trucking": 6.02,
+                    "physical.strength": 6.02,
+                    "player.player": 6.02
+                },
+                "description": "Break down your recycled components",
+                "products": {
+                    "scrap_plastic": 24,
+                    "scrap_copper": 16,
+                    "scrap_gold": 2
+                }
+            },
+            "Sort Recycled Electronics": {
+                "reagents": {
+                    "recycled_electronics": 1
+                },
+                "out_money": 0,
+                "in_money": 25000,
+                "aptitudes": {
+                    "trucking.trucking": 3.01,
+                    "physical.strength": 3.01,
+                    "player.player": 3.01
+                },
+                "description": "Break down your recycled components",
+                "products": {
+                    "scrap_plastic": 12,
+                    "scrap_copper": 8,
+                    "scrap_gold": 1
+                }
+            },
+            "Sort Recycled Trash x3": {
+                "reagents": {
+                    "recycled_trash": 3
+                },
+                "out_money": 0,
+                "in_money": 75000,
+                "aptitudes": {
+                    "trucking.trucking": 9.81,
+                    "physical.strength": 9.81,
+                    "player.player": 9.81
+                },
+                "description": "Break down your recycled components",
+                "products": {
+                    "scrap_plastic": 24,
+                    "scrap_aluminum": 12,
+                    "scrap_tin": 12
+                }
+            },
+            "Sort Recycled Trash": {
+                "reagents": {
+                    "recycled_trash": 1
+                },
+                "out_money": 0,
+                "in_money": 25000,
+                "aptitudes": {
+                    "trucking.trucking": 3.27,
+                    "physical.strength": 3.27,
+                    "player.player": 3.27
+                },
+                "description": "Break down your recycled components",
+                "products": {
+                    "scrap_plastic": 8,
+                    "scrap_aluminum": 4,
+                    "scrap_tin": 4
+                }
+            }
+        },
+        "export": {}
+    },
+    "Staunton Business Center": {
+        "job": "liberty",
+        "x": -2847.7797851563,
+        "y": 6247.693359375,
+        "location": "-2847.7797851563, 6247.693359375",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.liberty"
+        ],
+        "color": "255,125,0",
+        "pickup": {
+            "Pick up Broadcast x3": {
+                "reagents": [],
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Broadcast",
+                "products": {
+                    "liberty_broadcast": 3
+                }
+            },
+            "Pick up Broadcast": {
+                "reagents": [],
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Broadcast",
+                "products": {
+                    "liberty_broadcast": 1
+                }
+            }
+        },
+        "recipes": {},
+        "export": {}
+    },
+    "Staunton Casino": {
+        "job": "liberty",
+        "x": -2628.431640625,
+        "y": 5877.154296875,
+        "location": "-2628.431640625, 5877.154296875",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.liberty"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Deliver Staunton Broadcast x10": {
+                "reagents": {
+                    "liberty_broadcast_staunton": 10
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 4.6,
+                    "physical.strength": 4.6,
+                    "player.player": 4.6
+                },
+                "description": "Staunton Broadcast",
+                "products": {
+                    "liberty_voucher_staunton": 10
+                }
+            },
+            "Deliver Staunton Broadcast": {
+                "reagents": {
+                    "liberty_broadcast_staunton": 1
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 0.46,
+                    "physical.strength": 0.46,
+                    "player.player": 0.46
+                },
+                "description": "Staunton Broadcast",
+                "products": {
+                    "liberty_voucher_staunton": 1
+                }
+            }
+        },
+        "export": {}
+    },
+    "Staunton Docks": {
+        "job": "liberty",
+        "x": -2631.7390136719,
+        "y": 6508.0190429688,
+        "location": "-2631.7390136719, 6508.0190429688",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.liberty"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Export Fish x3": {
+                "reagents": {
+                    "liberty_fish_export": 3
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 5.72999999999999,
+                    "physical.strength": 5.72999999999999,
+                    "player.player": 5.72999999999999
+                },
+                "description": "Export Fish",
+                "products": {
+                    "liberty_voucher_fish": 3,
+                    "liberty_token": 3
+                }
+            },
+            "Export Fish": {
+                "reagents": {
+                    "liberty_fish_export": 1
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 1.91,
+                    "physical.strength": 1.91,
+                    "player.player": 1.91
+                },
+                "description": "Export Fish",
+                "products": {
+                    "liberty_voucher_fish": 1,
+                    "liberty_token": 1
+                }
+            }
+        },
+        "export": {}
+    },
+    "Staunton Mall": {
+        "job": "liberty",
+        "x": -2894.3967285156,
+        "y": 6678.9565429688,
+        "location": "-2894.3967285156, 6678.9565429688",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.liberty"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Trade for Liberty Goods": {
+                "reagents": {
+                    "liberty_voucher_fish": 1,
+                    "liberty_voucher_goods": 1
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Liberty Goods",
+                "products": {
+                    "liberty_goods": 1
+                }
+            },
+            "Trade for Liberty Goods x3": {
+                "reagents": {
+                    "liberty_voucher_fish": 3,
+                    "liberty_voucher_goods": 3
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Liberty Goods",
+                "products": {
+                    "liberty_goods": 3
+                }
+            }
+        },
+        "export": {}
+    },
+    "Staunton Military Facility": {
+        "job": "liberty",
+        "x": -2915.3051757813,
+        "y": 7508.7041015625,
+        "location": "-2915.3051757813, 7508.7041015625",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.liberty"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Process Auto Parts x3": {
+                "reagents": {
+                    "liberty_autopart": 3
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 5.28,
+                    "physical.strength": 5.28,
+                    "player.player": 5.28
+                },
+                "description": "Auto Parts -> Military Goods",
+                "products": {
+                    "liberty_military_goods": 3
+                }
+            },
+            "Process Auto Parts": {
+                "reagents": {
+                    "liberty_autopart": 1
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": {
+                    "trucking.trucking": 1.76,
+                    "physical.strength": 1.76,
+                    "player.player": 1.76
+                },
+                "description": "Auto Parts -> Military Goods",
+                "products": {
+                    "liberty_military_goods": 1
+                }
+            }
+        },
+        "export": {}
+    },
+    "The Undercover Storage Co.": {
+        "job": "liberty",
+        "x": -4300.4321289063,
+        "y": 7407.4287109375,
+        "location": "-4300.4321289063, 7407.4287109375",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.liberty"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Tokens to Fridge Store Delivery": {
+                "reagents": {
+                    "liberty_token": 1
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Liberty Token -> Fridge Store Delivery",
+                "products": {
+                    "fridge_store_delivery": 1
+                }
+            },
+            "Tokens to Airline Meal": {
+                "reagents": {
+                    "liberty_token": 1
+                },
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Liberty Token -> Airline Meal",
+                "products": {
+                    "fridge_airline_meal": 1
+                }
+            }
+        },
+        "export": {}
+    },
+    "Turtle Head Fishing Co. Portland": {
+        "job": "liberty",
+        "x": -2104.8134765625,
+        "y": 6205.3720703125,
+        "location": "-2104.8134765625, 6205.3720703125",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.liberty"
+        ],
+        "color": "255,125,0",
+        "pickup": {
+            "Pick up Portland Fish": {
+                "reagents": [],
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Portland Fish",
+                "products": {
+                    "liberty_fish_portland": 1
+                }
+            },
+            "Pick up Portland Fish x4": {
+                "reagents": [],
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Portland Fish",
+                "products": {
+                    "liberty_fish_portland": 4
+                }
+            }
+        },
+        "recipes": {},
+        "export": {}
+    },
+    "Turtle Head Fishing Co. Shoreside Vale": {
+        "job": "liberty",
+        "x": -3989.7124023438,
+        "y": 7098.4057617188,
+        "location": "-3989.7124023438, 7098.4057617188",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "trucker.liberty"
+        ],
+        "color": "255,125,0",
+        "pickup": {
+            "Pick up Shoreside Fish": {
+                "reagents": [],
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Shoreside Fish",
+                "products": {
+                    "liberty_fish_shoreside": 1
+                }
+            },
+            "Pick up Shoreside Fish x4": {
+                "reagents": [],
+                "out_money": 0,
+                "in_money": 0,
+                "aptitudes": [],
+                "description": "Shoreside Fish",
+                "products": {
+                    "liberty_fish_shoreside": 4
+                }
+            }
+        },
+        "recipes": {},
+        "export": {}
+    },
+    "Vehicle Factory": {
+        "job": "premium.trucking",
+        "x": 484.86874389648,
+        "y": -1978.7556152344,
+        "location": "484.86874389648, -1978.7556152344",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "premium.trucking",
+            "@trucking.trucking.>99"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "HVY Nightshark": {
+                "reagents": {
+                    "liquid_water": 1,
+                    "mechanicals_wheels": 4,
+                    "crafted_fiberglass": 25,
+                    "military_titanium": 60,
+                    "mechanicals_vehicle_framework": 2,
+                    "mechanicals_battery": 2,
+                    "mechanicals_chassis": 2,
+                    "crafted_circuit": 12,
+                    "refined_glass": 15,
+                    "refined_amalgam": 40,
+                    "liberty_military_goods": 4
+                },
+                "description": "HVY Nightshark",
+                "out_money": 0,
+                "in_money": 13780000,
+                "aptitudes": {
+                    "trucking.trucking": 13.0,
+                    "physical.strength": 13.0,
+                    "player.player": 12.0
+                },
+                "products": {
+                    "vehicle_shipment|nightshark|HVY Nightshark|car": 1
+                }
+            },
+            "Karin Futo": {
+                "reagents": {
+                    "mechanicals_chassis": 1,
+                    "mechanicals_wheels": 4,
+                    "crafted_fiberglass": 15,
+                    "refined_amalgam": 50,
+                    "crafted_circuit": 5,
+                    "mechanicals_battery": 1,
+                    "refined_glass": 25,
+                    "mechanicals_vehicle_framework": 1
+                },
+                "description": "Karin Futo",
+                "out_money": 0,
+                "in_money": 220000,
+                "aptitudes": {
+                    "trucking.trucking": 13.0,
+                    "physical.strength": 13.0,
+                    "player.player": 12.0
+                },
+                "products": {
+                    "vehicle_shipment|futo|Karin Futo|car": 1
+                }
+            },
+            "Coil Savanna": {
+                "reagents": {
+                    "mechanicals_battery": 1,
+                    "crafted_fiberglass": 35,
+                    "refined_amalgam": 50,
+                    "crafted_circuit": 5,
+                    "mechanicals_chassis": 1,
+                    "refined_glass": 25,
+                    "mechanicals_wheels": 4,
+                    "mechanicals_battery_evb": 3,
+                    "mechanicals_vehicle_framework": 1
+                },
+                "description": "Coil Savanna",
+                "out_money": 0,
+                "in_money": 8380000,
+                "aptitudes": {
+                    "trucking.trucking": 13.0,
+                    "physical.strength": 13.0,
+                    "player.player": 12.0
+                },
+                "products": {
+                    "vehicle_shipment|savanna|Coil Savanna|car": 1
+                }
+            },
+            "Annis ZR-350": {
+                "reagents": {
+                    "mechanicals_chassis": 1,
+                    "mechanicals_wheels": 4,
+                    "crafted_fiberglass": 15,
+                    "refined_amalgam": 50,
+                    "crafted_circuit": 5,
+                    "mechanicals_battery": 1,
+                    "refined_glass": 25,
+                    "mechanicals_vehicle_framework": 1
+                },
+                "description": "Annis ZR-350",
+                "out_money": 0,
+                "in_money": 1620000,
+                "aptitudes": {
+                    "trucking.trucking": 13.0,
+                    "physical.strength": 13.0,
+                    "player.player": 12.0
+                },
+                "products": {
+                    "vehicle_shipment|zr350|Annis ZR-350|car": 1
+                }
+            },
+            "Hijak Vertice": {
+                "reagents": {
+                    "mechanicals_chassis": 1,
+                    "mechanicals_wheels": 4,
+                    "crafted_fiberglass": 15,
+                    "refined_amalgam": 50,
+                    "crafted_circuit": 5,
+                    "mechanicals_battery": 1,
+                    "refined_glass": 25,
+                    "mechanicals_vehicle_framework": 1
+                },
+                "description": "Hijak Vertice",
+                "out_money": 0,
+                "in_money": 320000,
+                "aptitudes": {
+                    "trucking.trucking": 13.0,
+                    "physical.strength": 13.0,
+                    "player.player": 12.0
+                },
+                "products": {
+                    "vehicle_shipment|vertice|Hijak Vertice|car": 1
+                }
+            },
+            "Coil Rocket Voltic": {
+                "reagents": {
+                    "mechanicals_wheels": 4,
+                    "crafted_fiberglass": 15,
+                    "petrochem_kerosene": 100,
+                    "mechanicals_chassis": 1,
+                    "refined_amalgam": 50,
+                    "refined_glass": 25,
+                    "mechanicals_battery": 1,
+                    "crafted_circuit": 5,
+                    "mechanicals_vehicle_framework": 1
+                },
+                "description": "Coil Rocket Voltic",
+                "out_money": 0,
+                "in_money": 90110000,
+                "aptitudes": {
+                    "trucking.trucking": 13.0,
+                    "physical.strength": 13.0,
+                    "player.player": 12.0
+                },
+                "products": {
+                    "upgrade_kit_voltic2": 1
+                }
+            },
+            "Landstalker XL": {
+                "permissionsText": "Landstalker XL Blueprints Secret",
+                "in_money": 32000000,
+                "aptitudes": {
+                    "trucking.trucking": 130.0,
+                    "physical.strength": 130.0,
+                    "player.player": 120.0
+                },
+                "products": {
+                    "vehicle_shipment|landstalker2|Landstalker XL|car": 1
+                },
+                "secret": true,
+                "description": "Landstalker XL",
+                "reagents": {
+                    "mechanicals_chassis": 1,
+                    "mechanicals_wheels": 4,
+                    "crafted_fiberglass": 30,
+                    "refined_amalgam": 100,
+                    "crafted_circuit": 10,
+                    "mechanicals_battery": 2,
+                    "refined_glass": 50,
+                    "mechanicals_vehicle_framework": 1
+                },
+                "permissions": [
+                    "sd.trucking.shipment.landstalker2"
+                ],
+                "out_money": 0
+            }
+        },
+        "export": {}
+    },
+    "Vehicle Parts": {
+        "job": "premium.trucking",
+        "x": -64.931816101074,
+        "y": 6396.3369140625,
+        "location": "-64.931816101074, 6396.3369140625",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job",
+            "premium.trucking",
+            "@trucking.trucking.>99"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Temporary Repair Shop": {
+                "reagents": {
+                    "military_titanium": 2,
+                    "mechanicals_wheels": 2,
+                    "pucargosmall": 2,
+                    "mechanicals_chassis": 2
+                },
+                "out_money": 0,
+                "in_money": 1500000,
+                "aptitudes": {
+                    "trucking.trucking": 13.0,
+                    "physical.strength": 13.0,
+                    "player.player": 12.0
+                },
+                "description": "Temporary Repair Shop",
+                "products": {
+                    "repair_shop": 1
+                }
+            },
+            "Vehicle Framework": {
+                "reagents": {
+                    "refined_amalgam": 25
+                },
+                "out_money": 0,
+                "in_money": 250000,
+                "aptitudes": {
+                    "trucking.trucking": 13.0,
+                    "physical.strength": 13.0,
+                    "player.player": 12.0
+                },
+                "description": "Vehicle Framework",
+                "products": {
+                    "mechanicals_vehicle_framework": 1
+                }
+            },
+            "Traction Battery": {
+                "reagents": {
+                    "mechanicals_battery": 6
+                },
+                "out_money": 0,
+                "in_money": 120000,
+                "aptitudes": {
+                    "trucking.trucking": 13.0,
+                    "physical.strength": 13.0,
+                    "player.player": 12.0
+                },
+                "description": "Traction Battery",
+                "products": {
+                    "mechanicals_battery_evb": 1
+                }
+            },
+            "Car Battery": {
+                "reagents": {
+                    "crafted_batteries": 2
+                },
+                "out_money": 0,
+                "in_money": 35000,
+                "aptitudes": {
+                    "trucking.trucking": 13.0,
+                    "physical.strength": 13.0,
+                    "player.player": 12.0
+                },
+                "description": "Car Battery",
+                "products": {
+                    "mechanicals_battery": 1
+                }
+            },
+            "Wheels": {
+                "reagents": {
+                    "mechanicals_rubber": 10,
+                    "refined_aluminum": 1
+                },
+                "out_money": 0,
+                "in_money": 20000,
+                "aptitudes": {
+                    "trucking.trucking": 13.0,
+                    "physical.strength": 13.0,
+                    "player.player": 12.0
+                },
+                "description": "Wheels",
+                "products": {
+                    "mechanicals_wheels": 1
+                }
+            },
+            "Chassis": {
+                "reagents": {
+                    "refined_amalgam": 15
+                },
+                "out_money": 0,
+                "in_money": 100000,
+                "aptitudes": {
+                    "trucking.trucking": 13.0,
+                    "physical.strength": 13.0,
+                    "player.player": 12.0
+                },
+                "description": "Chassis",
+                "products": {
+                    "mechanicals_chassis": 1
+                }
+            }
+        },
+        "export": {}
+    },
+    "Water Treatment Plant": {
+        "job": "trucker",
+        "x": 156.2195892334,
+        "y": -2409.0537109375,
+        "location": "156.2195892334, -2409.0537109375",
+        "rate": 10000,
+        "max": 10000,
+        "permissions": [
+            "trucker.job"
+        ],
+        "color": "255,125,0",
+        "pickup": {},
+        "recipes": {
+            "Treat Unfiltered Water x2": {
+                "reagents": {
+                    "scrap_acid": 2,
+                    "liquid_water_raw": 2
+                },
+                "out_money": 0,
+                "in_money": 10000,
+                "aptitudes": {
+                    "trucking.trucking": 13.34,
+                    "physical.strength": 13.34,
+                    "player.player": 13.34
+                },
+                "description": "Filter out the germs of that nasty water",
+                "products": {
+                    "liquid_water": 2
+                }
+            },
+            "Treat Waste Water": {
+                "reagents": {
+                    "petrochem_waste": 1
+                },
+                "out_money": 0,
+                "in_money": 5000,
+                "aptitudes": {
+                    "trucking.trucking": 2.92,
+                    "physical.strength": 2.92,
+                    "player.player": 2.92
+                },
+                "description": "Treat Waste Water",
+                "products": {
+                    "petrochem_sulfur": 5
+                }
+            },
+            "Treat Unfiltered Water": {
+                "reagents": {
+                    "scrap_acid": 1,
+                    "liquid_water_raw": 1
+                },
+                "out_money": 0,
+                "in_money": 5000,
+                "aptitudes": {
+                    "trucking.trucking": 6.67,
+                    "physical.strength": 6.67,
+                    "player.player": 6.67
+                },
+                "description": "Filter out the germs of that nasty water",
+                "products": {
+                    "liquid_water": 1
+                }
+            },
+            "Treat Waste Water x2": {
+                "reagents": {
+                    "petrochem_waste": 2
+                },
+                "out_money": 0,
+                "in_money": 10000,
+                "aptitudes": {
+                    "trucking.trucking": 5.84,
+                    "physical.strength": 5.84,
+                    "player.player": 5.84
+                },
+                "description": "Treat Waste Water x2",
+                "products": {
+                    "petrochem_sulfur": 10
+                }
+            },
+            "Clean Waste Water": {
+                "permissionsText": "Waste Water Cleaning Secret",
+                "in_money": 5000,
+                "aptitudes": {
+                    "trucking.trucking": 6.67,
+                    "physical.strength": 6.67,
+                    "player.player": 6.67
+                },
+                "products": {
+                    "liquid_water": 1
+                },
+                "secret": true,
+                "description": "Clean Waste Water",
+                "reagents": {
+                    "petrochem_waste": 2
+                },
+                "permissions": [
+                    "sd.trucking.treatment.waste"
+                ],
+                "out_money": 0
+            }
+        },
+        "export": {}
+    }
+}

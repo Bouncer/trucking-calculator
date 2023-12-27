@@ -1,7 +1,8 @@
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Trucking Calculator for FiveM Transport Tycoon</title>
+    <title>Bouncers Trucking Calculator for FiveM Transport Tycoon</title>
     <link rel="stylesheet" type="text/css" href="calc.css">
     <link rel="stylesheet" type="text/css" href="dropdown.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-W9113B2HZ7"></script>
@@ -29,6 +30,12 @@
         handlers.changeCapacity = changeCapacity
         handlers.init = init
     </script>
+    <meta name="theme-color" content="#000000" />
+    <link rel="shortcut icon" href="./images/tt_logov2_small.png" type="image/png">
+    <link rel="preload" href="./images/arrow_open.gif" as="image">
+    <link rel="preload" href="./images/arrow_close.gif" as="image">
+    <link rel="stylesheet" href="./css/leaflet@1.7.1.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <!--
@@ -57,6 +64,7 @@ limitations under the License.-->
 
     <div class="tabs">
         <button class="tab_button" id="graph_button" onclick="handlers.clickTab('graph')">Planner</button>
+        <button class="tab_button" id="map_button" onclick="handlers.clickTab('map')">Map</button>
         <button class="tab_button" id="totals_button" onclick="handlers.clickTab('totals')">Items</button>
         <button class="tab_button" id="settings_button" onclick="handlers.clickTab('settings')">Settings</button>
         <button class="tab_button" id="about_button" onclick="handlers.clickTab('about')">About</button>
@@ -64,6 +72,10 @@ limitations under the License.-->
 
     <div id="graph_tab" class="tab graph">
         <svg id="graph"><g /></svg>
+    </div>
+
+    <div id="map_tab" class="tab map">
+        <iframe src="./map/index.html" width="1200" height="800" style="max-width: 100%; max-height: 90vh; box-sizing: border-box;"></iframe>
     </div>
 
     <div id="totals_tab" class="tab">
@@ -169,10 +181,13 @@ limitations under the License.-->
 
     <div id="about_tab" class="tab">
     <div class = "about-content">
-        This calculator was created for Transport Tycoon by Bouncer, based on the original calculator for Satisfactory by Kirk McDonald. It is licensed under the Apache License 2.0, and its source may be <a href="https://github.com/bouncer/trucking-calculator">found on github, here</a>.
-        <p>
-        Please report any issues to Bouncer on Discord.
-        </p>
+        <p>This calculator was created by Bouncer for the FiveM Transport Tycoon server. It is based on a calculator for Satisfactory by Kirk McDonald.</p>
+        <p>The map was created by <a href="https://github.com/supernovaplus/">Nova+</a> using Leaflet, a JS library for interactive maps, (c) 2010-2019 Vladimir Agafonkin, (c) 2010-2011 CloudMade. Leaflet.ContinuousZoom.js - Written by Ilya Zverev, licensed WTFPL.</p>
+        <p>Most emojis are designed by <a href="https://openmoji.org/">OpenMoji</a> – the open-source emoji and icon project. License: CC BY-SA 4.0.</p>
+        <p>Data provided by <a href="https://github.com/glitchdetector">glitchdetector</a></p>
+        
+        <p>The source code can be found at <a href="https://github.com/bouncer/trucking-calculator">https://github.com/bouncer/trucking-calculator</a>. This project is licensed under the Apache License 2.0.</p>
+        <p>Please report any issues to Bouncer on Discord.</p>
     </div>
     </div>
 </body>
