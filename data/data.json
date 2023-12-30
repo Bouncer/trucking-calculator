@@ -1839,6 +1839,141 @@
         "weight": 40,
         "cost": 10000,
         "pays": 0
+    },
+    {
+        "name": "Waste Water",
+        "key_name": "waste-water",
+        "category": "refinery",
+        "time": 1,
+        "ingredients": [
+            [
+                "raw-gas",
+                1
+            ]
+        ],
+        "product": [
+            "waste-water",
+            1
+        ],
+        "weight": 50,
+        "cost": 10250,
+        "pays": 0
+    },
+    {
+        "name": "Chemicals",
+        "key_name": "chemicals",
+        "category": "refinery",
+        "time": 1,
+        "ingredients": [
+            [
+                "raw-gas",
+                1
+            ]
+        ],
+        "product": [
+            "chemicals",
+            2
+        ],
+        "weight": 25,
+        "cost": 10250,
+        "pays": 0
+    },
+    {
+        "name": "Propane",
+        "key_name": "propane",
+        "category": "refinery",
+        "time": 1,
+        "ingredients": [
+            [
+                "raw-gas",
+                1
+            ]
+        ],
+        "product": [
+            "propane",
+            2
+        ],
+        "weight": 25,
+        "cost": 10250,
+        "pays": 0
+    },
+    {
+        "name": "Diesel",
+        "key_name": "diesel",
+        "category": "refinery",
+        "time": 1,
+        "ingredients": [
+            [
+                "crude-oil",
+                1
+            ]
+        ],
+        "product": [
+            "diesel",
+            1
+        ],
+        "weight": 25,
+        "cost": 10250,
+        "pays": 0
+    },
+    {
+        "name": "Kerosene",
+        "key_name": "kerosene",
+        "category": "refinery",
+        "time": 1,
+        "ingredients": [
+            [
+                "crude-oil",
+                1
+            ]
+        ],
+        "product": [
+            "kerosene",
+            1
+        ],
+        "weight": 25,
+        "cost": 10250,
+        "pays": 0
+    },
+    {
+        "name": "Petrol",
+        "key_name": "petrol",
+        "category": "refinery",
+        "time": 1,
+        "ingredients": [
+            [
+                "crude-oil",
+                1
+            ]
+        ],
+        "product": [
+            "petrol",
+            2
+        ],
+        "weight": 25,
+        "cost": 10250,
+        "pays": 0
+    },
+    {
+        "name": "Explosives",
+        "key_name": "explosives",
+        "category": "military-workshop",
+        "time": 1,
+        "ingredients": [
+            [
+                "kerosene",8
+            ],
+            [
+                "sulfur",10
+            ]
+        ],
+        "product": [
+            "explosives",
+            1
+        ],
+        "weight": 250,
+        "cost": 9500,
+        "pays": 0
     }
 ],
     "resources": [
