@@ -87,7 +87,7 @@ export function displayItems(spec, totals, ignore) {
         let beltCount = beltCountExact.toFloat();
         display.trips = Math.ceil(beltCount);
         display.cost = parseInt(recipe.cost) * rate
-        display.pays = parseInt(recipe.pays)
+        display.pays = parseInt(recipe.pays) * rate
 
         // totals sum
         totalCost += display.cost
@@ -219,7 +219,7 @@ export function displayItems(spec, totals, ignore) {
         .text(d => d.cost > 0 ? `$ ${d.cost.toLocaleString()}` : `-`)
 
     row.selectAll("tt.revenue")
-        .text(d => d.pays > 0 ? `$ ${d.pays }` : `-`)
+        .text(d => d.pays > 0 ? `$ ${d.pays.toLocaleString() }` : `-`)
 
 
 
