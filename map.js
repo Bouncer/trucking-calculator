@@ -19,8 +19,6 @@ const colorList = [
 
 export function updateMap(totals) {
 
-    console.log(totals);
-
     // reset lines
     document.getElementsByTagName("iframe")[0].contentWindow.resetLines();
 

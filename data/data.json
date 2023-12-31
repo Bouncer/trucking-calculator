@@ -261,6 +261,16 @@
             "color": 9,
             "x": 3614.3928222656,
             "y": 3734.4885253906
+        },
+        {
+            "name": "Raven Slaughterhouse",
+            "key-name": "raven-slaughterhouse",
+            "category": "raven-slaughterhouse",
+            "power": "1",
+            "max": "1",
+            "color": 9,
+            "x": 957.52685546875,
+            "y": -2115.6027832031
         }
     ],
     "miners": [
@@ -373,13 +383,23 @@
             "color": 9,
             "x": 1373.3714599609,
             "y": 3615.49609375
+        },
+        {
+            "name": "Hunting",
+            "key-name": "hunting",
+            "category": "hunting",
+            "power": 1,
+            "max": 1,
+            "color": 9,
+            "x": -1030.6,
+            "y": 4956.0
         }
     ],
     "items": [
     {
         "name": "Acid",
         "key_name": "acid",
-        "tier": "2",
+        "tier": "1",
         "category": "commercial",
         "weight": "5",
         "stack_size": "1800"
@@ -425,9 +445,9 @@
         "stack_size": "225"
     },
     {
-        "name": "Cermaic Tiles",
-        "key_name": "cermaic-tiles",
-        "tier": "4",
+        "name": "Ceramic Tiles",
+        "key_name": "ceramic-tiles",
+        "tier": "3",
         "category": "commercial",
         "weight": "10",
         "stack_size": "900"
@@ -483,7 +503,7 @@
     {
         "name": "Copper Wire",
         "key_name": "copper-wire",
-        "tier": "4",
+        "tier": "3",
         "category": "special",
         "weight": "20",
         "stack_size": "450"
@@ -553,6 +573,22 @@
         "stack_size": "600"
     },
     {
+        "name": "Meat",
+        "key_name": "meat",
+        "tier": "6",
+        "category": "refridgerated",
+        "weight": "0.5",
+        "stack_size": "600"
+    },
+    {
+        "name": "Hide",
+        "key_name": "hide",
+        "tier": "6",
+        "category": "refridgerated",
+        "weight": "1",
+        "stack_size": "600"
+    },
+    {
         "name": "Glass",
         "key_name": "glass",
         "tier": "3",
@@ -577,17 +613,9 @@
         "stack_size": "27"
     },
     {
-        "name": "Jerry Can",
-        "key_name": "jerry-can",
-        "tier": "7",
-        "category": "petrochem",
-        "weight": "2",
-        "stack_size": "4500"
-    },
-    {
         "name": "Jewelry",
         "key_name": "jewelry",
-        "tier": "4",
+        "tier": "3",
         "category": "commercial",
         "weight": "5",
         "stack_size": "1800"
@@ -651,7 +679,7 @@
     {
         "name": "Raw Emeralds",
         "key_name": "raw-emeralds",
-        "tier": "2",
+        "tier": "1",
         "category": "commercial",
         "weight": "10",
         "stack_size": "900"
@@ -707,7 +735,7 @@
     {
         "name": "Refined Aluminium",
         "key_name": "refined-aluminium",
-        "tier": "3",
+        "tier": "2",
         "category": "commercial",
         "weight": "10",
         "stack_size": "900"
@@ -723,7 +751,7 @@
     {
         "name": "Refined Copper",
         "key_name": "refined-copper",
-        "tier": "3",
+        "tier": "2",
         "category": "commercial",
         "weight": "10",
         "stack_size": "900"
@@ -731,7 +759,7 @@
     {
         "name": "Refined Gold",
         "key_name": "refined-gold",
-        "tier": "3",
+        "tier": "2",
         "category": "commercial",
         "weight": "20",
         "stack_size": "450"
@@ -747,7 +775,7 @@
     {
         "name": "Refined Tin",
         "key_name": "refined-tin",
-        "tier": "3",
+        "tier": "2",
         "category": "commercial",
         "weight": "10",
         "stack_size": "900"
@@ -755,7 +783,7 @@
     {
         "name": "Refined Zinc",
         "key_name": "refined-zinc",
-        "tier": "3",
+        "tier": "2",
         "category": "commercial",
         "weight": "10",
         "stack_size": "900"
@@ -779,7 +807,7 @@
     {
         "name": "Scrap Aluminium",
         "key_name": "scrap-aluminium",
-        "tier": "2",
+        "tier": "1",
         "category": "commercial",
         "weight": "5",
         "stack_size": "1800"
@@ -787,7 +815,7 @@
     {
         "name": "Scrap Copper",
         "key_name": "scrap-copper",
-        "tier": "2",
+        "tier": "1",
         "category": "commercial",
         "weight": "5",
         "stack_size": "1800"
@@ -795,7 +823,7 @@
     {
         "name": "Scrap Gold",
         "key_name": "scrap-gold",
-        "tier": "2",
+        "tier": "1",
         "category": "commercial",
         "weight": "10",
         "stack_size": "900"
@@ -803,7 +831,7 @@
     {
         "name": "Scrap Lead",
         "key_name": "scrap-lead",
-        "tier": "2",
+        "tier": "1",
         "category": "commercial",
         "weight": "15",
         "stack_size": "600"
@@ -811,7 +839,7 @@
     {
         "name": "Scrap Mercury",
         "key_name": "scrap-mercury",
-        "tier": "2",
+        "tier": "1",
         "category": "commercial",
         "weight": "15",
         "stack_size": "600"
@@ -819,7 +847,7 @@
     {
         "name": "Scrap Plastic",
         "key_name": "scrap-plastic",
-        "tier": "2",
+        "tier": "1",
         "category": "commercial",
         "weight": "5",
         "stack_size": "1800"
@@ -827,14 +855,6 @@
     {
         "name": "Scrap Tin",
         "key_name": "scrap-tin",
-        "tier": "2",
-        "category": "commercial",
-        "weight": "5",
-        "stack_size": "1800"
-    },
-    {
-        "name": "Sulfur",
-        "key_name": "sulfur",
         "tier": "1",
         "category": "commercial",
         "weight": "5",
@@ -843,8 +863,8 @@
     {
         "name": "Sulfur",
         "key_name": "sulfur",
-        "tier": "1",
-        "category": "petrochem",
+        "tier": "7",
+        "category": "commercial",
         "weight": "5",
         "stack_size": "1800"
     },
@@ -954,7 +974,7 @@
             4
         ],
         "weight": 0,
-        "cost": 0,
+        "cost": 15000,
         "pays": 0
     },
     {
@@ -1238,7 +1258,7 @@
             12
         ],
         "weight": 0,
-        "cost": 0,
+        "cost": 15000,
         "pays": 0
     },
     {
@@ -1441,7 +1461,7 @@
             1
         ],
         "weight": 0,
-        "cost": 0,
+        "cost": 1000,
         "pays": 0
     },
     {
@@ -1540,7 +1560,7 @@
             6
         ],
         "weight": 0,
-        "cost": 0,
+        "cost": 15000,
         "pays": 0
     },
     {
@@ -1560,25 +1580,6 @@
         ],
         "weight": 30,
         "cost": 500,
-        "pays": 0
-    },
-    {
-        "name": "Sawdust",
-        "key_name": "sawdust",
-        "category": "sawmill",
-        "time": 1,
-        "ingredients": [
-            [
-                "logs",
-                1
-            ]
-        ],
-        "product": [
-            "sawdust",
-            2
-        ],
-        "weight": 0,
-        "cost": 0,
         "pays": 0
     },
     {
@@ -1616,7 +1617,7 @@
             8
         ],
         "weight": 0,
-        "cost": 0,
+        "cost": 25000,
         "pays": 0
     },
     {
@@ -1635,7 +1636,7 @@
             1
         ],
         "weight": 0,
-        "cost": 0,
+        "cost": 25000,
         "pays": 0
     },
     {
@@ -1673,7 +1674,7 @@
             2
         ],
         "weight": 0,
-        "cost": 0,
+        "cost": 15000,
         "pays": 0
     },
     {
@@ -1711,7 +1712,7 @@
             8
         ],
         "weight": 0,
-        "cost": 0,
+        "cost": 25000,
         "pays": 0
     },
     {
@@ -1730,7 +1731,7 @@
             4
         ],
         "weight": 0,
-        "cost": 0,
+        "cost": 25000,
         "pays": 0
     },
     {
@@ -1769,6 +1770,44 @@
         ],
         "weight": 20,
         "cost": 1000,
+        "pays": 0
+    },
+    {
+        "name": "Titanium Ore",
+        "key_name": "titanium-ore",
+        "category": "gsd-mine",
+        "time": 1,
+        "ingredients": [
+            [
+                "explosives",
+                1
+            ]
+        ],
+        "product": [
+            "titanium-ore",
+            4
+        ],
+        "weight": 25,
+        "cost": 0,
+        "pays": 0
+    },
+    {
+        "name": "Scrap Gold",
+        "key_name": "scrap-gold",
+        "category": "gsd-mine",
+        "time": 1,
+        "ingredients": [
+            [
+                "explosives",
+                1
+            ]
+        ],
+        "product": [
+            "titanium-ore",
+            10
+        ],
+        "weight": 25,
+        "cost": 25000,
         "pays": 0
     },
     {
@@ -1974,6 +2013,84 @@
         "weight": 250,
         "cost": 9500,
         "pays": 0
+    },
+    {
+        "name": "Airline Meal",
+        "key_name": "airline-meal",
+        "category": "fridgit-co.",
+        "time": 1,
+        "ingredients": [
+            [
+                "dairy-products",1
+            ],
+            [
+                "frozen-raw-meat",1
+            ],
+            [
+                "vegetables",1
+            ]
+        ],
+        "product": [
+            "airline-meal",
+            4
+        ],
+        "weight": 250,
+        "cost": 2500,
+        "pays": 0
+    },
+    {
+        "name": "Frozen Raw Meat",
+        "key_name": "frozen-raw-meat",
+        "category": "clucking-bell-farms",
+        "time": 1,
+        "ingredients": [
+            [
+                "meat",30
+            ]
+        ],
+        "product": [
+            "frozen-raw-meat",
+            1
+        ],
+        "weight": 15,
+        "cost": 0,
+        "pays": 0
+    },
+    {
+        "name": "Meat",
+        "key_name": "meat",
+        "category": "raven-slaughterhouse",
+        "time": 1,
+        "ingredients": [
+            [
+                "hide",1
+            ]
+        ],
+        "product": [
+            "meat",
+            20
+        ],
+        "weight": 0.5,
+        "cost": 2000,
+        "pays": 0
+    },
+    {
+        "name": "Food Shipment",
+        "key_name": "food-shipment",
+        "category": "fridgit-co.",
+        "time": 1,
+        "ingredients": [
+            [
+                "dairy-products",4
+            ]
+        ],
+        "product": [
+            "food-shipment",
+            5
+        ],
+        "weight": 10,
+        "cost": 2500,
+        "pays": 0
     }
 ],
     "resources": [
@@ -2021,6 +2138,10 @@
         {
             "key_name": "methamphetamine",
             "category": "liquor-ace"
+        },
+        {
+            "key_name": "hide",
+            "category": "hunting"
         }
     ]
 }
