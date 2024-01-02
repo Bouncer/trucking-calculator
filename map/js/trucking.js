@@ -10,9 +10,9 @@ function resetLines() {
 function addLine(source, target, color) {
     var polyline = L.polyline([source,target], {
         color: color,
-        opacity: 0.9,
-        weight: 10,
+        opacity: 0.6,
+        weight: 12,
         clickable: false
-    }).addTo(window.mainMap);
+    }).arrowheads({size:"8px", frequency: "12px", offset: {start: "10px", end: "10px"}, fill: "true", opacity: 0}).addTo(window.mainMap);
     polylines.push(polyline);
 };

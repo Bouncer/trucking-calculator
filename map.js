@@ -17,7 +17,28 @@ const colorList = [
     colors.Cyan[800], // water
 ]
 
+var offsets = {};
+
+function offset(pos) {
+    var name = pos.building.category.replace("-resource","");
+    if(!(name in offsets)) {
+        offsets[name] = [pos.index];
+    }
+    if(!offsets[name].includes(pos.index)) {
+        offsets[name].push(pos.index)
+    }
+    var offset = offsets[name].indexOf(pos.index);
+    // alternate
+    if(offset % 2 === 0) {
+        return offset * -10
+    } else {
+        return offset * 10;
+    }
+}
+
 export function updateMap(totals) {
+
+    offsets = {};
 
     // reset lines
     document.getElementsByTagName("iframe")[0].contentWindow.resetLines();
@@ -25,7 +46,7 @@ export function updateMap(totals) {
     // add lines
     totals.forEach(function(i) {
         if(i.target.building.name !== "Output" && i.source.building.x !== undefined && i.target.building.x !== undefined) {
-           document.getElementsByTagName("iframe")[0].contentWindow.addLine([i.source.building.x, i.source.building.y], [i.target.building.x, i.target.building.y], colorList[i.source.building.color]);
+           document.getElementsByTagName("iframe")[0].contentWindow.addLine([i.source.building.x + offset(i.source), i.source.building.y + offset(i.source)], [i.target.building.x + offset(i.target), i.target.building.y + offset(i.target)], colorList[i.source.building.color]);
         }
     });
 }
