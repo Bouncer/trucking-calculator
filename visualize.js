@@ -17,6 +17,7 @@ import { Rational, zero, one } from "./rational.js"
 import { Ingredient } from "./recipe.js"
 import { colors } from "./colors.js"
 import { updateMap } from "./map.js"
+import { isExportable } from "./settings.js"
 
 const iconSize = 20
 
@@ -55,18 +56,27 @@ function makeGraph(totals, targets, ignore) {
         rates.set(target.item, rate)
     }
     for (let [item, rate] of rates) {
-        let ing = new Ingredient(item, rate)
-        outputs.push(ing)
+        // only add output on export
+        if(!isExportable(item.key)) {
+            let ing = new Ingredient(item, rate)
+            outputs.push(ing)
+        }
     }
-    let nodes = [{
-        "name": "output",
-        "ingredients": outputs,
-        "building": {"name":"Output"},
-        "count": one,
-        "rate": null,
-    }]
+
+    // only add output on export
+    let nodes = []
+    if(outputs.length > 0) {
+        nodes[0] = {
+            "name": "output",
+            "ingredients": outputs,
+            "building": {"name":"Storage"},
+            "count": one,
+            "rate": null,
+        }
+    }
+
     let nodeMap = new Map()
-    nodeMap.set("output", nodes[0])
+    //nodeMap.set("output", nodes[0])
 
     for (let [recipe, rate] of totals.rates) {
         let building = spec.getBuilding(recipe)
@@ -279,15 +289,14 @@ export function renderTotals(totals, targets, ignore) {
             .attr("height", iconSize)
             .attr("width", iconSize)
             .attr("xlink:href", d => (d.count.isZero() ? d.count : `${d.building.iconPath()}`))
-    rects.append("text")
+    rects.filter(d => d.name != "output").append("text")
         .attr("x", d => d.x0 + iconSize + 4)
         .attr("y", d => (d.y1 - d.y0 > minNodeHeight) ? (d.y0 + d.y1) / 2 - 6 : d.y0 + 8)
         .attr("dy", "0.35em")
         .attr("text-anchor", "start")
         .attr("class", "item-name")
         .text(d => (d.count.isZero() ? d.count : `${d.name}`))
-    rects.filter(d => d.name != "output")
-        .append("text")
+    rects.append("text")
                 .attr("x", d => d.x0 + iconSize + 4)
                 .attr("y", d => ((d.y1 - d.y0 > minNodeHeight) ? (d.y0 + d.y1) / 2 + 6 : d.y0 + 20))
                 .attr("dy", "0.35em")

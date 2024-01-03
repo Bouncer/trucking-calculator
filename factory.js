@@ -18,6 +18,7 @@ import { Rational, zero, half, one } from "./rational.js"
 import { BuildTarget } from "./target.js"
 import { Totals } from "./totals.js"
 import { renderTotals } from "./visualize.js"
+import { isExportable } from "./settings.js"
 
 const DEFAULT_ITEM_KEY = "concrete"
 
@@ -77,12 +78,15 @@ class FactorySpecification {
         this.items = items
         let tierMap = new Map()
         for (let [itemKey, item] of items) {
-            let tier = tierMap.get(item.tier)
-            if (tier === undefined) {
-                tier = []
-                tierMap.set(item.tier, tier)
+            // ignore -1
+            if(item.tier >= 0) {
+                let tier = tierMap.get(item.tier)
+                if (tier === undefined) {
+                    tier = []
+                    tierMap.set(item.tier, tier)
+                }
+                tier.push(item)
             }
-            tier.push(item)
         }
         this.itemTiers = []
         for (let [tier, tierItems] of tierMap) {
@@ -210,7 +214,11 @@ class FactorySpecification {
         if (itemKey === undefined) {
             itemKey = DEFAULT_ITEM_KEY
         }
-        let item = this.items.get(itemKey)
+
+        var item = this.items.get(itemKey)
+
+
+
         let target = new BuildTarget(this.buildTargets.length, itemKey, item, this.itemTiers)
         this.buildTargets.push(target)
         d3.select("#targets").insert(() => target.element, "#plusButton")
@@ -245,11 +253,22 @@ class FactorySpecification {
         this.capacity.total = Math.round((this.capacity.strength * (1 + this.capacity.strengthperk + this.capacity.premium)) + (this.capacity.truck * (1 + this.capacity.postop + this.capacity.premium)) + (this.capacity.trailer * (1 + this.capacity.premium + this.capacity.postop)))
         let form = d3.select("#capacity").property("value", this.capacity.total)
     }
+    addExports() {
+        
+        // is it exportable?
+        for (const target in this.buildTargets) {
+            if(isExportable(this.buildTargets[target].itemKey)) {
+                //this.buildTargets[target] = "x";
+            }
+        }
+
+    }
     updateSolution() {
         if(!this.capacity.fixed) {
             this.updateCapacity()
         }
 
+        this.addExports();
         let totals = this.solve()
         displayItems(this, totals, this.ignore)
         renderTotals(totals, this.buildTargets, this.ignore)

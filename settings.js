@@ -36,6 +36,15 @@ function renderTab(settings) {
     clickTab(tabName)
 }
 
+export function isExportable(item) {
+    let items = ["concrete"]
+    if(items.includes(item)) {
+        return true 
+    } else {
+        return false
+    }
+}
+
 // build targets
 
 function renderTargets(settings) {

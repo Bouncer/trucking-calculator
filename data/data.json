@@ -281,6 +281,16 @@
             "color": 8,
             "x": 957.52685546875,
             "y": -2115.6027832031
+        },
+        {
+            "name": "LS Port Export",
+            "key-name": "ls-port-export",
+            "category": "ls-port-export",
+            "power": "1",
+            "max": "1",
+            "color": 8,
+            "x": -410.74948120117,
+            "y": -2691.0700683594
         }
     ],
     "miners": [
@@ -403,6 +413,26 @@
             "color": 9,
             "x": -1030.6,
             "y": 4956.0
+        },
+        {
+            "name": "Mineshaft",
+            "key-name": "mineshaft",
+            "category": "mineshaft",
+            "power": 1,
+            "max": 1,
+            "color": 5,
+            "x": -607.1,
+            "y": 2100.1
+        },
+        {
+            "name": "Vehicle Factory",
+            "key-name": "vehicle-factory",
+            "category": "vehicle-factory",
+            "power": 1,
+            "max": 1,
+            "color": 5,
+            "x": 484.86874389648,
+            "y": -1978.7556152344
         }
     ],
     "items": [
@@ -481,7 +511,7 @@
     {
         "name": "Computer",
         "key_name": "computer",
-        "tier": "5",
+        "tier": "4",
         "category": "commercial",
         "weight": "35",
         "stack_size": "257"
@@ -489,15 +519,15 @@
     {
         "name": "Computer",
         "key_name": "computer",
-        "tier": "5",
+        "tier": "4",
         "category": "special",
         "weight": "35",
         "stack_size": "257"
     },
     {
-        "name": "Concrete",
-        "key_name": "concrete",
-        "tier": "4",
+        "name": "Export Concrete",
+        "key_name": "export-concrete",
+        "tier": "-1",
         "category": "commercial",
         "weight": "160",
         "stack_size": "56"
@@ -506,7 +536,7 @@
         "name": "Concrete",
         "key_name": "concrete",
         "tier": "4",
-        "category": "special",
+        "category": "commercial",
         "weight": "160",
         "stack_size": "56"
     },
@@ -617,7 +647,7 @@
     {
         "name": "House",
         "key_name": "house",
-        "tier": "5",
+        "tier": "4",
         "category": "special",
         "weight": "0",
         "stack_size": "27"
@@ -964,6 +994,30 @@
         "tier": "8",
         "category": "illegal",
         "weight": "40",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Hardened Steel",
+        "key_name": "hardened-steel",
+        "tier": "5",
+        "category": "vehicle",
+        "weight": "0",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Shipping Container",
+        "key_name": "shipping-container",
+        "tier": "5",
+        "category": "vehicle",
+        "weight": "100",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Iron Ore Voucher",
+        "key_name": "iron-ore-voucher",
+        "tier": "-1",
+        "category": "mining",
+        "weight": "100",
         "stack_size": "1000"
     }
 ],
@@ -2101,6 +2155,66 @@
         "weight": 10,
         "cost": 2500,
         "pays": 0
+    },
+    {
+        "name": "Export Concrete",
+        "key_name": "export-concrete",
+        "category": "alta-construction-site",
+        "time": 1,
+        "ingredients": [
+            [
+                "concrete",1
+            ]
+        ],
+        "product": [
+            "export-concrete",
+            1
+        ],
+        "weight": 10,
+        "cost": 0,
+        "pays": 800000
+    },
+    {
+        "name": "Hardened Steel",
+        "key_name": "hardened-steel",
+        "category": "ls-foundry",
+        "time": 1,
+        "ingredients": [
+            [
+                "iron-ore-voucher",5
+            ],
+            [
+                "titanium",1
+            ]
+        ],
+        "product": [
+            "hardened-steel",
+            1
+        ],
+        "weight": 10,
+        "cost": 1000,
+        "pays": 0
+    },
+    {
+        "name": "Shipping Container",
+        "key_name": "shipping-container",
+        "category": "vehicle-factory",
+        "time": 1,
+        "ingredients": [
+            [
+                "planks",10
+            ],
+            [
+                "hardened-steel",10
+            ]
+        ],
+        "product": [
+            "shipping-container",
+            1
+        ],
+        "weight": 100,
+        "cost": 1000000,
+        "pays": 0
     }
 ],
     "resources": [
@@ -2152,6 +2266,10 @@
         {
             "key_name": "hide",
             "category": "hunting"
+        },
+        {
+            "key_name": "iron-ore-voucher",
+            "category": "mineshaft"
         }
     ]
 }
