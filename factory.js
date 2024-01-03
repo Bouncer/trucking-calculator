@@ -90,6 +90,7 @@ class FactorySpecification {
         }
         this.itemTiers = []
         for (let [tier, tierItems] of tierMap) {
+            tierItems = tierItems.sort((a, b) => a.key > b.key)
             this.itemTiers.push(tierItems)
         }
         this.itemTiers.sort((a, b) => a[0].tier - b[0].tier)

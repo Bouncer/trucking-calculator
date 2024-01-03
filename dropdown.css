@@ -83,6 +83,9 @@
     display: inline-block;
     pointer-events: none;
 }
+#alt_recipe_settings .dropdownWrapper:not(.open) .dropdown input[type="radio"]:checked + label .alt-recipe-box {
+    display:none;
+}
 .dropdownWrapper.open .dropdown input[type="radio"]:checked + label {
     background-color: var(--light);
     pointer-events: auto;
@@ -92,4 +95,51 @@
 }
 .menu-item {
     padding: 2px;
+}
+.alt-recipe-label {
+    float:left;
+}
+.alt-recipe-label label {
+    padding:10px;
+}
+.alt-recipe-box {
+    margin-top:10px;
+    font-size:14px;
+}
+.alt-recipe-title {
+    font-weight: bold;
+}
+.alt-ingredients {
+    display:inline-block;
+    vertical-align: middle;
+    margin-top:6px;
+}
+
+.alt-ingredients .ingredient {
+    margin-bottom:4px;
+}
+
+.alt-recipe-location {
+    height:24px;
+}
+
+.alt-recipe-location span {
+    margin-left:6px;
+    float: left;
+    margin-top: 5px;
+}
+
+#alt_recipe_settings .dropdownWrapper.open .dropdown input[type="radio"] + label img {
+    width:20px;
+    height:20px;
+    float:left;
+}
+#alt_recipe_settings .dropdownWrapper:not(.open) .dropdown input[type="radio"]:checked + label div.is-alt {
+    color: var(--accent);
+}
+.alt-recipe-button {
+    float:left;
+}
+#alt_recipe_settings {
+    max-width:400px;
 }

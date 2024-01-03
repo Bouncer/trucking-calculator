@@ -208,12 +208,7 @@ function changeAltRecipe(recipe) {
 function renderIngredient(ingSpan) {
     ingSpan.classed("ingredient", true)
         .attr("title", d => d.item.name)
-        .append("img")
-            .classed("icon", true)
-            .attr("src", d => d.item.iconPath())
-    ingSpan.append("span")
-        .classed("count", true)
-        .text(d => spec.format.count(d.amount))
+        .text(d => spec.format.count(d.amount) + "x " + d.item.name)
 }
 
 function renderAltRecipes(settings) {
@@ -240,7 +235,7 @@ function renderAltRecipes(settings) {
 
     let dropdowns = div.selectAll("div")
         .data(items)
-        .enter().append("div")
+        .enter().append("div").classed("alt-recipe-button", true)
     let recipeLabel = dropdown(
         dropdowns,
         d => d.recipes,
@@ -249,19 +244,43 @@ function renderAltRecipes(settings) {
         changeAltRecipe,
     )
 
-    let productSpan = recipeLabel.append("span")
-        .selectAll("span")
-        .data(d => [d.product])
-        .join("span")
-    renderIngredient(productSpan)
-    recipeLabel.append("span")
-        .classed("arrow", true)
-        .text("\u21d0")
-    let ingredientSpan = recipeLabel.append("span")
+    dropdowns.selectAll(".dropdown").selectAll("div").classed('alt-recipe-label',true)
+
+    recipeLabel.append("div")
+        .classed("alt-recipe-title", true)
+        .text(d => d.name)
+        .filter((d, i) => i > 0)
+            .classed('is-alt',true)
+    
+    let recipebox = recipeLabel.append("div").classed("alt-recipe-box",true)
+
+    recipebox.append("div")
+        .classed("alt-recipe-cost", true)
+        .text(d => d.cost > 0 ? `$ ${d.cost.toLocaleString()}` : `Free`)
+    
+    var locationbox = recipebox.append("div")
+        .classed("alt-recipe-location", true)
+    locationbox.append("img")
+        .attr("src", d => spec.buildings.get(d.category)[0].iconPath())
+        .attr("title", d => spec.buildings.get(d.category)[0].name)
+    locationbox.append("span")
+        .text(d => spec.buildings.get(d.category)[0].name)
+    let ingredientSpan = recipebox.append("span")
+        .classed("alt-ingredients", true)
         .selectAll("span")
         .data(d => d.ingredients)
-        .join("span")
+        .join("div")
     renderIngredient(ingredientSpan)
+    recipebox.append("span")
+        .classed("arrow", true)
+        .text(" \u2192 ")
+    let productSpan = recipebox.append("span")
+        .classed("alt-ingredients", true)
+        .selectAll("span")
+        .data(d => [d.product])
+        .join("div")
+    renderIngredient(productSpan)
+
 }
 
 // miners

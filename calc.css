@@ -160,7 +160,6 @@ table.resource input[type="radio"]:checked + label {
 }
 #alt_recipe_settings .ingredient {
     position: relative;
-    display: inline-block;
 }
 #alt_recipe_settings .count {
     position: absolute;
@@ -255,7 +254,6 @@ tr.display-row td {
     border-top: 1px solid #666;
 }
 
-}
 input.overclock {
     width: 4em;
 }

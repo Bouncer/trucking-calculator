@@ -433,6 +433,16 @@
             "color": 5,
             "x": 484.86874389648,
             "y": -1978.7556152344
+        },
+        {
+            "name": "Fishing",
+            "key-name": "fishing",
+            "category": "fishing",
+            "power": "1",
+            "max": "1",
+            "color": 8,
+            "x": -290.8,
+            "y": -2753.1
         }
     ],
     "items": [
@@ -1018,6 +1028,38 @@
         "tier": "-1",
         "category": "mining",
         "weight": "100",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Copper Ore Voucher",
+        "key_name": "copper-ore-voucher",
+        "tier": "-1",
+        "category": "mining",
+        "weight": "100",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Asphalt",
+        "key_name": "asphalt",
+        "tier": "3",
+        "category": "trucking",
+        "weight": "100",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Cardboard",
+        "key_name": "cardboard",
+        "tier": "3",
+        "category": "trucking",
+        "weight": "1",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Fish Meat",
+        "key_name": "fish-meat",
+        "tier": "6",
+        "category": "refridgerated",
+        "weight": "1",
         "stack_size": "1000"
     }
 ],
@@ -1856,7 +1898,7 @@
         "pays": 0
     },
     {
-        "name": "Scrap Gold",
+        "name": "Explosive Gold",
         "key_name": "scrap-gold",
         "category": "gsd-mine",
         "time": 1,
@@ -1867,7 +1909,7 @@
             ]
         ],
         "product": [
-            "titanium-ore",
+            "scrap-gold",
             10
         ],
         "weight": 25,
@@ -2215,6 +2257,458 @@
         "weight": 100,
         "cost": 1000000,
         "pays": 0
+    },
+    {
+        "name": "Substitute Gold",
+        "key_name": "substitute-gold",
+        "category": "ls-foundry",
+        "time": 1,
+        "ingredients": [
+            [
+                "petrol",
+                2
+            ],
+            [
+                "sulfur",
+                10
+            ],
+            [
+                "bronze-alloy",
+                25
+            ]
+        ],
+        "product": [
+            "scrap-gold",
+            40
+        ],
+        "weight": 80,
+        "cost": 1000,
+        "pays": 0
+    },
+    {
+        "name": "Sawdust Filler Exploit",
+        "key_name": "sawdust-filler-exploit",
+        "category": "sawmill",
+        "time": 1,
+        "ingredients": [
+            [
+                "sand",
+                10
+            ],
+            [
+                "logs",
+                5
+            ]
+        ],
+        "product": [
+            "sawdust",
+            100
+        ],
+        "weight": 80,
+        "cost": 2500,
+        "pays": 0
+    },
+    {
+        "name": "Asphalt",
+        "key_name": "asphalt",
+        "category": "refinery",
+        "time": 1,
+        "ingredients": [
+            [
+                "crude-oil",
+                1
+            ],
+            [
+                "gravel",
+                20
+            ]
+        ],
+        "product": [
+            "asphalt",
+            20
+        ],
+        "weight": 0,
+        "cost": 10250,
+        "pays": 0
+    },
+    {
+        "name": "Cardboard",
+        "key_name": "cardboard",
+        "category": "ls-factory",
+        "time": 1,
+        "ingredients": [
+            [
+                "treated-water",
+                1
+            ],
+            [
+                "sawdust",
+                50
+            ]
+        ],
+        "product": [
+            "cardboard",
+            5
+        ],
+        "weight": 0,
+        "cost": 5000,
+        "pays": 0
+    },
+    {
+        "name": "Copper Alloy",
+        "key_name": "copper-alloy",
+        "category": "ls-foundry",
+        "time": 1,
+        "ingredients": [
+            [
+                "sulfur",
+                10
+            ],
+            [
+                "raw-ore-mix",
+                20
+            ]
+        ],
+        "product": [
+            "refined-copper",
+            20
+        ],
+        "weight": 0,
+        "cost": 10000,
+        "pays": 0
+    },
+    {
+        "name": "Crispy Meat",
+        "key_name": "crispy-meat",
+        "category": "clucking-bell-farms",
+        "time": 1,
+        "ingredients": [
+            [
+                "meat",
+                200
+            ],
+            [
+                "sawdust",
+                20
+            ]
+        ],
+        "product": [
+            "frozen-raw-meat",
+            10
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 0
+    },
+    {
+        "name": "Fish Meat",
+        "key_name": "frozen-fish-meat",
+        "category": "clucking-bell-farms",
+        "time": 1,
+        "ingredients": [
+            [
+                "fish-meat",
+                150
+            ]
+        ],
+        "product": [
+            "frozen-raw-meat",
+            1
+        ],
+        "weight": 1,
+        "cost": 0,
+        "pays": 0
+    },
+    {
+        "name": "Crispy Fish Meat",
+        "key_name": "crispy-fish-meat",
+        "category": "clucking-bell-farms",
+        "time": 1,
+        "ingredients": [
+            [
+                "fish-meat",
+                1000
+            ],
+            [
+                "sawdust",
+                20
+            ]
+        ],
+        "product": [
+            "frozen-raw-meat",
+            10
+        ],
+        "weight": 1,
+        "cost": 0,
+        "pays": 0
+    },
+    {
+        "name": "Diluted Diesel",
+        "key_name": "diluted-fuel",
+        "category": "refinery",
+        "time": 1,
+        "ingredients": [
+            [
+                "treated-water",
+                2
+            ],
+            [
+                "crude-oil",
+                3
+            ]
+        ],
+        "product": [
+            "diesel",
+            3
+        ],
+        "weight": 1,
+        "cost": 10250,
+        "pays": 0
+    },
+    {
+        "name": "Diluted Kerosene",
+        "key_name": "diluted-fuel",
+        "category": "refinery",
+        "time": 1,
+        "ingredients": [
+            [
+                "treated-water",
+                2
+            ],
+            [
+                "crude-oil",
+                3
+            ]
+        ],
+        "product": [
+            "kerosene",
+            20
+        ],
+        "weight": 1,
+        "cost": 10250,
+        "pays": 0
+    },
+    {
+        "name": "Diluted Petrol",
+        "key_name": "diluted-fuel",
+        "category": "refinery",
+        "time": 1,
+        "ingredients": [
+            [
+                "treated-water",
+                2
+            ],
+            [
+                "crude-oil",
+                3
+            ]
+        ],
+        "product": [
+            "petrol",
+            3
+        ],
+        "weight": 1,
+        "cost": 10250,
+        "pays": 0
+    },
+    {
+        "name": "Gravel Pulverizing",
+        "key_name": "gravel-pulverizing",
+        "category": "deep-quarry",
+        "time": 1,
+        "ingredients": [
+            [
+                "explosives",
+                1
+            ],
+            [
+                "gravel",
+                20
+            ]
+        ],
+        "product": [
+            "sand",
+            100
+        ],
+        "weight": 1,
+        "cost": 0,
+        "pays": 0
+    },
+    {
+        "name": "Recycled Ore Mix",
+        "key_name": "recycled-ore-mix",
+        "category": "deep-quarry",
+        "time": 1,
+        "ingredients": [
+            [
+                "explosives",
+                1
+            ],
+            [
+                "raw-ore-mix",
+                15
+            ]
+        ],
+        "product": [
+            "sand",
+            90
+        ],
+        "weight": 1,
+        "cost": 0,
+        "pays": 0
+    },
+    {
+        "name": "Titanium Jewelry",
+        "key_name": "titanium-jewelry",
+        "category": "ls-factory",
+        "time": 1,
+        "ingredients": [
+            [
+                "titanium",
+                1
+            ],
+            [
+                "refined-gold",
+                4
+            ]
+        ],
+        "product": [
+            "jewelry",
+            4
+        ],
+        "weight": 1,
+        "cost": 5000,
+        "pays": 0
+    },
+    {
+        "name": "Titanium Reinforcement",
+        "key_name": "titanium-reinforcement",
+        "category": "ls-factory",
+        "time": 1,
+        "ingredients": [
+            [
+                "titanium",
+                6
+            ]
+        ],
+        "product": [
+            "rebar",
+            2
+        ],
+        "weight": 1,
+        "cost": 5000,
+        "pays": 0
+    },
+    {
+        "name": "Clean Waste Water",
+        "key_name": "clean-waste-water",
+        "category": "water-treatment-plant",
+        "time": 1,
+        "ingredients": [
+            [
+                "waste-water",
+                2
+            ]
+        ],
+        "product": [
+            "treated-water",
+            1
+        ],
+        "weight": 1,
+        "cost": 5000,
+        "pays": 0
+    },
+    {
+        "name": "Zinc Alloy",
+        "key_name": "zinc-alloy",
+        "category": "ls-foundry",
+        "time": 1,
+        "ingredients": [
+            [
+                "propane",
+                2
+            ],
+            [
+                "raw-ore-mix",
+                20
+            ]
+        ],
+        "product": [
+            "refined-zinc",
+            20
+        ],
+        "weight": 0,
+        "cost": 10000,
+        "pays": 0
+    },
+    {
+        "name": "Conveyor Filtering",
+        "key_name": "conveyor-filtering",
+        "category": "filtering-plant",
+        "time": 1,
+        "ingredients": [
+            [
+                "copper-ore-voucher",
+                1
+            ],
+            [
+                "iron-ore-voucher",
+                1
+            ]
+        ],
+        "product": [
+            "gravel",
+            10
+        ],
+        "weight": 0,
+        "cost": 30000,
+        "pays": 0
+    },
+    {
+        "name": "Conveyor Filtering",
+        "key_name": "conveyor-filtering",
+        "category": "filtering-plant",
+        "time": 1,
+        "ingredients": [
+            [
+                "copper-ore-voucher",
+                1
+            ],
+            [
+                "iron-ore-voucher",
+                1
+            ]
+        ],
+        "product": [
+            "raw-emeralds",
+            1
+        ],
+        "weight": 0,
+        "cost": 30000,
+        "pays": 0
+    },
+    {
+        "name": "Conveyor Filtering",
+        "key_name": "conveyor-filtering",
+        "category": "filtering-plant",
+        "time": 1,
+        "ingredients": [
+            [
+                "copper-ore-voucher",
+                1
+            ],
+            [
+                "iron-ore-voucher",
+                1
+            ]
+        ],
+        "product": [
+            "raw-ore-mix",
+            3
+        ],
+        "weight": 0,
+        "cost": 30000,
+        "pays": 0
     }
 ],
     "resources": [
@@ -2270,6 +2764,14 @@
         {
             "key_name": "iron-ore-voucher",
             "category": "mineshaft"
+        },
+        {
+            "key_name": "copper-ore-voucher",
+            "category": "mineshaft"
+        },
+        {
+            "key_name": "fish-meat",
+            "category": "fishing"
         }
     ]
 }
