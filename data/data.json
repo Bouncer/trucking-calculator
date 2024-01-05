@@ -469,7 +469,7 @@
         "key_name": "airline-meal",
         "tier": "6",
         "category": "refridgerated",
-        "weight": "0.1",
+        "weight": "3",
         "stack_size": "3000"
     },
     {
@@ -477,7 +477,7 @@
         "key_name": "export-airline-meal",
         "tier": "-1",
         "category": "refridgerated",
-        "weight": "0.1",
+        "weight": "3",
         "stack_size": "3000"
     },
     {
@@ -1077,7 +1077,7 @@
         "key_name": "fish-meat",
         "tier": "6",
         "category": "refridgerated",
-        "weight": "1",
+        "weight": "0.1",
         "stack_size": "1000"
     }
 ],
@@ -2158,7 +2158,7 @@
             "airline-meal",
             4
         ],
-        "weight": 0.1,
+        "weight": 3,
         "cost": 2500,
         "pays": 0
     },
@@ -2176,7 +2176,7 @@
             "export-airline-meal",
             1
         ],
-        "weight": 0.1,
+        "weight": 3,
         "cost": 0,
         "pays": 6500
     },
