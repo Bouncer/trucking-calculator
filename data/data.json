@@ -298,7 +298,7 @@
             "category": "buyer-erasers",
             "power": "1",
             "max": "1",
-            "color": 8,
+            "color": 3,
             "x": -1132.5842285156,
             "y": 2697.7170410156
         },
@@ -308,7 +308,7 @@
             "category": "buyer-tools",
             "power": "1",
             "max": "1",
-            "color": 8,
+            "color": 3,
             "x": -3164.8996582031,
             "y": 1122.8239746094
         }
@@ -490,7 +490,7 @@
             "category": "seller-erasers",
             "power": "1",
             "max": "1",
-            "color": 8,
+            "color": 12,
             "x": 837.52331542969,
             "y": -1932.3474121094
         },
@@ -500,7 +500,7 @@
             "category": "seller-tools",
             "power": "1",
             "max": "1",
-            "color": 8,
+            "color": 12,
             "x": 834.75408935547,
             "y": -1988.6525878906
         }
@@ -1182,6 +1182,22 @@
         "name": "Erasers",
         "key_name": "erasers",
         "tier": "0",
+        "category": "commercial",
+        "weight": "3",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Tools",
+        "key_name": "export-tools",
+        "tier": "-1",
+        "category": "commercial",
+        "weight": "1",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Erasers",
+        "key_name": "export-erasers",
+        "tier": "-1",
         "category": "commercial",
         "weight": "3",
         "stack_size": "1000"
@@ -2930,7 +2946,7 @@
     },
     {
         "name": "Tools",
-        "key_name": "tools",
+        "key_name": "export-tools",
         "category": "buyer-tools",
         "time": 1,
         "ingredients": [
@@ -2940,12 +2956,31 @@
             ]
         ],
         "product": [
-            "tools",
+            "export-tools",
             1
         ],
         "weight": 0,
         "cost": 0,
         "pays": 200
+    },
+    {
+        "name": "Erasers",
+        "key_name": "export-erasers",
+        "category": "buyer-erasers",
+        "time": 1,
+        "ingredients": [
+            [
+                "erasers",
+                1
+            ]
+        ],
+        "product": [
+            "export-erasers",
+            1
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 600
     }
 ],
     "resources": [
@@ -3009,6 +3044,16 @@
         {
             "key_name": "fish-meat",
             "category": "fishing"
+        },
+        {
+            "key_name": "tools",
+            "category": "seller-tools",
+            "cost": 100
+        },
+        {
+            "key_name": "erasers",
+            "category": "seller-erasers",
+            "cost": 200
         }
     ]
 }
