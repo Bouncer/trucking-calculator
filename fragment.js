@@ -38,10 +38,11 @@ export function formatSettings() {
     let targetStrings = []
     for (let target of spec.buildTargets) {
         let targetString = ""
+        let itemKey = target.itemKey.replace("export-","")
         if (target.changedBuilding) {
-            targetString = `${target.itemKey}:f:${target.buildingInput.value}`
+            targetString = `${itemKey}:f:${target.buildingInput.value}`
         } else {
-            targetString = `${target.itemKey}:r:${target.rate.mul(spec.format.rateFactor).toString()}`
+            targetString = `${itemKey}:r:${target.rate.mul(spec.format.rateFactor).toString()}`
         }
         targetStrings.push(targetString)
     }

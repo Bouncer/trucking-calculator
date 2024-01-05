@@ -279,8 +279,8 @@
             "power": "1",
             "max": "1",
             "color": 8,
-            "x": 957.52685546875,
-            "y": -2115.6027832031
+            "x": 98.938095092773,
+            "y": -386.93804931641
         },
         {
             "name": "LS Port Export",
@@ -443,6 +443,16 @@
             "color": 8,
             "x": -290.8,
             "y": -2753.1
+        },
+        {
+            "name": "LSIA Shipments",
+            "key-name": "lsia-shipments",
+            "category": "lsia-shipments",
+            "power": "1",
+            "max": "1",
+            "color": 8,
+            "x": -1155.6400146484,
+            "y": -2188.1518554688
         }
     ],
     "items": [
@@ -459,7 +469,15 @@
         "key_name": "airline-meal",
         "tier": "6",
         "category": "refridgerated",
-        "weight": "3",
+        "weight": "0.1",
+        "stack_size": "3000"
+    },
+    {
+        "name": "Export Airline Meal",
+        "key_name": "export-airline-meal",
+        "tier": "-1",
+        "category": "refridgerated",
+        "weight": "0.1",
         "stack_size": "3000"
     },
     {
@@ -535,17 +553,17 @@
         "stack_size": "257"
     },
     {
-        "name": "Export Concrete",
-        "key_name": "export-concrete",
-        "tier": "-1",
+        "name": "Concrete",
+        "key_name": "concrete",
+        "tier": "4",
         "category": "commercial",
         "weight": "160",
         "stack_size": "56"
     },
     {
-        "name": "Concrete",
-        "key_name": "concrete",
-        "tier": "4",
+        "name": "Export Concrete",
+        "key_name": "export-concrete",
+        "tier": "-1",
         "category": "commercial",
         "weight": "160",
         "stack_size": "56"
@@ -2140,9 +2158,27 @@
             "airline-meal",
             4
         ],
-        "weight": 250,
+        "weight": 0.1,
         "cost": 2500,
         "pays": 0
+    },
+    {
+        "name": "Export Airline Meal",
+        "key_name": "export-airline-meal",
+        "category": "lsia-shipments",
+        "time": 1,
+        "ingredients": [
+            [
+                "airline-meal",1
+            ]
+        ],
+        "product": [
+            "export-airline-meal",
+            1
+        ],
+        "weight": 0.1,
+        "cost": 0,
+        "pays": 6500
     },
     {
         "name": "Frozen Raw Meat",

@@ -257,10 +257,19 @@ tr.display-row td {
 input.overclock {
     width: 4em;
 }
-tr.nobuilding td.building {
+tr.nobuilding img {
     display: none;
 }
 /* about */
 .about-content {
     max-width: 40em;
+}
+#totals small {
+    font-size:10px;
+}
+.padded-cell {
+  padding-top: 14px;
+  padding-bottom: 4px;
+  padding-left: 20px;
+  padding-right: 20px;
 }

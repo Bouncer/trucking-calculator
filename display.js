@@ -44,9 +44,11 @@ let displayedItems = []
 export function displayItems(spec, totals, ignore) {
     let headers = [
         new Header("Item",1),
+        new Header("Weight",1),
         new Header("Amount", 1),
-        new Header("Weight", 1),
+        new Header("Trip Capacity", 1),
         new Header("Trips", 1),
+        new Header("Total Weight", 1),
         new Header("Cost", 1),
         new Header("Revenue", 1),
         new Header("Location", 2),
@@ -66,6 +68,9 @@ export function displayItems(spec, totals, ignore) {
     let totalCost = 0
     let totalRevenue = 0
     let totalProfit = 0
+    let totalAmount = 0
+    let totalWeight = 0
+    let totalTrips = 0
 
     for (let i = 0; i < totals.topo.length; i++) {
         let recipe = totals.topo[i]
@@ -81,11 +86,13 @@ export function displayItems(spec, totals, ignore) {
         
         // item data
         display.item = item
-        display.itemRate = itemRate
-        display.weight = itemRate.mul(item.weight)
-        let beltCountExact = spec.getBeltCount(display.weight);
+        display.itemRate = itemRate.toFloat();
+        display.itemWeight = item.weight.toFloat();
+        display.weight = itemRate.mul(item.weight).toFloat()
+        let beltCountExact = spec.getBeltCount(item.weight);
         let beltCount = beltCountExact.toFloat();
         display.trips = Math.ceil(beltCount);
+        display.pertrip = spec.getPerTrip(item.weight)
         display.cost = parseInt(recipe.cost) * rate
         display.pays = parseInt(recipe.pays) * rate
 
@@ -93,6 +100,9 @@ export function displayItems(spec, totals, ignore) {
         totalCost += display.cost
         totalRevenue += display.pays
         totalProfit = totalRevenue - totalCost
+        totalAmount += display.itemRate
+        totalWeight += display.weight
+        totalTrips += display.trips
 
         display.recipe = recipe
         display.ignore = ignore.has(recipe)
@@ -103,6 +113,21 @@ export function displayItems(spec, totals, ignore) {
         display.average = average
         display.peak = peak
     }
+
+    displayedItems.push({
+        item: {
+            name: "<i><b>Total</b></i>"
+        },
+        itemRate: totalAmount,
+        itemWeight: 0,
+        weight: totalWeight,
+        trips: totalTrips,
+        pertrip: 0,
+        cost: totalCost,
+        pays: totalRevenue,
+        building: null
+    });
+
 
     let table = d3.select("table#totals")
 
@@ -127,23 +152,36 @@ export function displayItems(spec, totals, ignore) {
             .classed("item", true)
             .on("click", toggleIgnoreHandler)
 
+
+    // amount
+    row.append("td")
+        .classed("right-align", true)
+        .append("tt")
+            .classed("itemWeight", true)
+
     // amount
     row.append("td")
         .classed("right-align", true)
         .append("tt")
             .classed("amount", true)
 
-    // weight
+    // per trip
     row.append("td")
         .classed("right-align", true)
         .append("tt")
-            .classed("weight", true)
+            .classed("per-trip", true)
 
     // trips
     row.append("td")
         .classed("right-align", true)
         .append("tt")
             .classed("trips", true)
+
+    // weight
+    row.append("td")
+        .classed("right-align", true)
+        .append("tt")
+            .classed("weight", true)
 
     // cost
     row.append("td")
@@ -204,16 +242,22 @@ export function displayItems(spec, totals, ignore) {
         .attr("title", d => d.item.name)
 
     row.selectAll("tt.item")
-        .text(d => d.item.name)
+        .html(d => d.item.name)
 
     row.selectAll("tt.amount")
-        .text(d => `${d.itemRate.ceil().toFloat().toLocaleString()}x`)
+        .html(d => `${d.itemRate.toLocaleString()}<small>x</small>`)
+
+    row.selectAll("tt.itemWeight")
+        .html(d => d.itemWeight > 0 ? `${d.itemWeight.toLocaleString()} <small>kg</small>` : ``)
 
     row.selectAll("tt.weight")
-        .text(d => `${d.weight.ceil().toFloat().toLocaleString()}kg`)
+        .html(d => `${d.weight.toLocaleString()} <small>kg</small>`)
 
     row.selectAll("tt.trips")
-        .text(d => `${d.trips}x`)
+        .html(d => `${d.trips}<small>x</small>`)
+
+    row.selectAll("tt.per-trip")
+        .html(d => d.pertrip > 0 ? `${d.pertrip.toLocaleString()}<small>x</small>` : ``)
 
     row.selectAll("tt.cost")
         .text(d => d.cost > 0 ? `$ ${d.cost.toLocaleString()}` : `-`)
@@ -238,10 +282,6 @@ export function displayItems(spec, totals, ignore) {
     buildingRow.selectAll("tt.power")
         .text(d => spec.format.alignCount(d.average) + " MW")
     
-    d3.select("tt#total_cost")
-        .text(`$ ${totalCost.toLocaleString()}`)
-    d3.select("tt#total_revenue")
-        .text(`$ ${totalRevenue.toLocaleString()}`)
     d3.select("tt#total_profit")
         .text(`$ ${totalProfit.toLocaleString()}`)
 }

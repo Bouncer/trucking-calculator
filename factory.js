@@ -190,6 +190,9 @@ class FactorySpecification {
     getBeltCount(rate) {
         return rate.div(Rational.from_float(this.capacity.total))
     }
+    getPerTrip(weight) {
+        return Math.floor(this.capacity.total / weight.toFloat());
+    }
     getPowerUsage(recipe, rate, itemCount) {
         let building = this.getBuilding(recipe)
         if (building === null) {
@@ -216,9 +219,11 @@ class FactorySpecification {
             itemKey = DEFAULT_ITEM_KEY
         }
 
-        var item = this.items.get(itemKey)
-
-
+        // if it can be exported, use that instead
+        var item = this.items.get("export-"+itemKey)
+        if(item === undefined) {
+            item = this.items.get(itemKey)
+        }
 
         let target = new BuildTarget(this.buildTargets.length, itemKey, item, this.itemTiers)
         this.buildTargets.push(target)
@@ -258,9 +263,8 @@ class FactorySpecification {
         
         // is it exportable?
         for (const target in this.buildTargets) {
-            if(isExportable(this.buildTargets[target].itemKey)) {
-                //this.buildTargets[target] = "x";
-            }
+            // extend exportable targets
+
         }
 
     }
@@ -268,8 +272,7 @@ class FactorySpecification {
         if(!this.capacity.fixed) {
             this.updateCapacity()
         }
-
-        this.addExports();
+        //this.addExports();
         let totals = this.solve()
         displayItems(this, totals, this.ignore)
         renderTotals(totals, this.buildTargets, this.ignore)

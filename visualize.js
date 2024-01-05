@@ -65,6 +65,15 @@ function makeGraph(totals, targets, ignore) {
 
     // only add output on export
     let nodes = []
+    // if output is exportable, remove it from output list.
+    var filteredOutputs = [];
+    for(let output of outputs) {
+        if(!output.item.key.startsWith("export-") && output.item.key != "house") {
+            filteredOutputs.push(output);
+        }
+    }
+    outputs = filteredOutputs;
+
     if(outputs.length > 0) {
         nodes[0] = {
             "name": "output",
@@ -366,6 +375,7 @@ export function renderTotals(totals, targets, ignore) {
 
 
     // update map
+    //console.log(links);
     updateMap(links)
 
     /*

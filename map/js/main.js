@@ -37,7 +37,7 @@ const options = {
     timestamp: 0,
 
     markers: { //marker defaults
-        "business": true,
+        "business": false,
         "garages": false,
         "self_storage": false,
         "houses": false,

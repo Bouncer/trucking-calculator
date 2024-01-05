@@ -10,7 +10,7 @@ function resetLines() {
 function addLine(source, target, color) {
     var polyline = L.polyline([source,target], {
         color: color,
-        opacity: 0.6,
+        opacity: 0.7,
         weight: 12,
         clickable: false
     }).arrowheads({size:"8px", frequency: "12px", offset: {start: "10px", end: "10px"}, fill: "true", opacity: 0}).addTo(window.mainMap);

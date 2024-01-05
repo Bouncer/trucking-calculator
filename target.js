@@ -21,8 +21,13 @@ const SELECTED_INPUT = "selected"
 
 function itemHandler(target) {
     return function(item) {
-        target.itemKey = item.key
-        target.item = item
+        // if it can be exported, use that instead
+        target.itemKey = "export-"+item.key
+        target.item = spec.items.get(target.itemKey);
+        if(target.item === undefined) {
+            target.itemKey = item.key
+            target.item = item
+        }
         spec.updateSolution()
     }
 }
@@ -59,6 +64,12 @@ export class BuildTarget {
         this.buildings = one
         this.rate = zero
 
+        // if item is an export, we change to non-export
+        let itemSelector = item
+        if(item.key.startsWith("export-")) {
+            itemSelector = spec.items.get(itemKey)
+        }
+
         let element = d3.create("li")
             .classed("target", true)
         element.append("button")
@@ -79,7 +90,7 @@ export class BuildTarget {
         let itemLabel = addInputs(
             itemSpan,
             `target-${targetCount}`,
-            d => d === item,
+            d => d === itemSelector,
             itemHandler(this),
         )
 

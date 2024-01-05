@@ -15,13 +15,14 @@ import { Totals } from "./totals.js"
 import { Rational, zero, one } from "./rational.js"
 
 export class Item {
-    constructor(key, name, tier, weight) {
+    constructor(key, name, tier, weight, sell) {
         this.key = key
         this.name = name
         this.tier = tier
         this.weight = Rational.from_string(weight)
         this.recipes = []
         this.uses = []
+        this.sell = sell
     }
     addRecipe(recipe) {
         this.recipes.push(recipe)
@@ -54,7 +55,10 @@ export class Item {
 export function getItems(data) {
     let items = new Map()
     for (let d of data.items) {
-        items.set(d.key_name, new Item(d.key_name, d.name, d.tier, d.weight))
+        if(d.sell === undefined) {
+            d.sell = false;
+        }
+        items.set(d.key_name, new Item(d.key_name, d.name, d.tier, d.weight, d.sell))
     }
     return items
 }
