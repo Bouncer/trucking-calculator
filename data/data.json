@@ -503,6 +503,16 @@
             "color": 12,
             "x": 834.75408935547,
             "y": -1988.6525878906
+        },
+        {
+            "name": "Vehicle Parts",
+            "key-name": "vehicle-parts",
+            "category": "vehicle-parts",
+            "power": "1",
+            "max": "1",
+            "color": 5,
+            "x": -64.931816101074,
+            "y": 6396.3369140625
         }
     ],
     "items": [
@@ -765,6 +775,14 @@
     {
         "name": "Petrol",
         "key_name": "petrol",
+        "tier": "7",
+        "category": "petrochem",
+        "weight": "25",
+        "stack_size": "360"
+    },
+    {
+        "name": "Rubber",
+        "key_name": "rubber",
         "tier": "7",
         "category": "petrochem",
         "weight": "25",
@@ -1095,7 +1113,7 @@
         "key_name": "hardened-steel",
         "tier": "5",
         "category": "vehicle",
-        "weight": "0",
+        "weight": "10",
         "stack_size": "1000"
     },
     {
@@ -1111,7 +1129,7 @@
         "key_name": "iron-ore-voucher",
         "tier": "-1",
         "category": "mining",
-        "weight": "100",
+        "weight": "0",
         "stack_size": "1000"
     },
     {
@@ -1119,7 +1137,7 @@
         "key_name": "copper-ore-voucher",
         "tier": "-1",
         "category": "mining",
-        "weight": "100",
+        "weight": "0",
         "stack_size": "1000"
     },
     {
@@ -1192,6 +1210,30 @@
         "tier": "-1",
         "category": "commercial",
         "weight": "3",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Mechanic Wrench",
+        "key_name": "mechanic-wrench",
+        "tier": "5",
+        "category": "commercial",
+        "weight": "5",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Mechanic Hammer",
+        "key_name": "mechanic-hammer",
+        "tier": "5",
+        "category": "commercial",
+        "weight": "5",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Jumper Cable",
+        "key_name": "jumper-cable",
+        "tier": "5",
+        "category": "commercial",
+        "weight": "5",
         "stack_size": "1000"
     }
 ],
@@ -2194,6 +2236,25 @@
         "pays": 0
     },
     {
+        "name": "Rubber",
+        "key_name": "rubber",
+        "category": "refinery",
+        "time": 1,
+        "ingredients": [
+            [
+                "crude-oil",
+                4
+            ]
+        ],
+        "product": [
+            "rubber",
+            4
+        ],
+        "weight": 25,
+        "cost": 41000,
+        "pays": 0
+    },
+    {
         "name": "Kerosene",
         "key_name": "kerosene",
         "category": "refinery",
@@ -2991,6 +3052,71 @@
         "weight": 0,
         "cost": 0,
         "pays": 600
+    },
+    {
+        "name": "Mechanic Wrench",
+        "key_name": "mechanic-wrench",
+        "category": "seller-tools",
+        "time": 1,
+        "ingredients": [
+            [
+                "hardened-steel",
+                2
+            ]
+        ],
+        "product": [
+            "mechanic-wrench",
+            1
+        ],
+        "weight": 5,
+        "cost": 10000,
+        "pays": 0
+    },
+    {
+        "name": "Mechanic Hammer",
+        "key_name": "mechanic-hammer",
+        "category": "seller-tools",
+        "time": 1,
+        "ingredients": [
+            [
+                "hardened-steel",
+                1
+            ],
+            [
+                "planks",
+                1
+            ]
+        ],
+        "product": [
+            "mechanic-hammer",
+            1
+        ],
+        "weight": 5,
+        "cost": 10000,
+        "pays": 0
+    },
+    {
+        "name": "Jumper Cable",
+        "key_name": "jumper-cable",
+        "category": "vehicle-parts",
+        "time": 1,
+        "ingredients": [
+            [
+                "rubber",
+                1
+            ],
+            [
+                "copper-wire",
+                1
+            ]
+        ],
+        "product": [
+            "jumper-cable",
+            1
+        ],
+        "weight": 5,
+        "cost": 3000,
+        "pays": 0
     }
 ],
     "resources": [
