@@ -843,14 +843,6 @@
         "stack_size": "200"
     },
     {
-        "name": "Rebar",
-        "key_name": "rebar",
-        "tier": "4",
-        "category": "special",
-        "weight": "45",
-        "stack_size": "200"
-    },
-    {
         "name": "Recycled Electronics",
         "key_name": "recycled-electronics",
         "tier": "0",
@@ -2373,6 +2365,24 @@
         "weight": 10,
         "cost": 0,
         "pays": 800000
+    },
+    {
+        "name": "Deliver Rebar",
+        "key_name": "export-rebar",
+        "category": "alta-construction-site",
+        "time": 1,
+        "ingredients": [
+            [
+                "rebar",1
+            ]
+        ],
+        "product": [
+            "export-rebar",
+            1
+        ],
+        "weight": 45,
+        "cost": 0,
+        "pays": 230000
     },
     {
         "name": "Hardened Steel",
