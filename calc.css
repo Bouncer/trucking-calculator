@@ -273,3 +273,6 @@ tr.nobuilding img {
   padding-left: 20px;
   padding-right: 20px;
 }
+#totals .footer td {
+    padding-top:10px;
+}

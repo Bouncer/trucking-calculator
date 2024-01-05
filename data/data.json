@@ -291,6 +291,26 @@
             "color": 8,
             "x": -410.74948120117,
             "y": -2691.0700683594
+        },
+        {
+            "name": "Cargo Buyer: Erasers",
+            "key-name": "buyer-erasers",
+            "category": "buyer-erasers",
+            "power": "1",
+            "max": "1",
+            "color": 8,
+            "x": -1132.5842285156,
+            "y": 2697.7170410156
+        },
+        {
+            "name": "Cargo Buyer: Tools",
+            "key-name": "buyer-tools",
+            "category": "buyer-tools",
+            "power": "1",
+            "max": "1",
+            "color": 8,
+            "x": -3164.8996582031,
+            "y": 1122.8239746094
         }
     ],
     "miners": [
@@ -453,6 +473,36 @@
             "color": 8,
             "x": -1155.6400146484,
             "y": -2188.1518554688
+        },
+        {
+            "name": "McKenzie Export",
+            "key-name": "mckenzie-export",
+            "category": "mckenzie-export",
+            "power": "1",
+            "max": "1",
+            "color": 5,
+            "x": 2148.071533,
+            "y": 4806.387207
+        },
+        {
+            "name": "Cargo Seller: Erasers",
+            "key-name": "seller-erasers",
+            "category": "seller-erasers",
+            "power": "1",
+            "max": "1",
+            "color": 8,
+            "x": 837.52331542969,
+            "y": -1932.3474121094
+        },
+        {
+            "name": "Cargo Seller: Tools",
+            "key-name": "seller-tools",
+            "category": "seller-tools",
+            "power": "1",
+            "max": "1",
+            "color": 8,
+            "x": 834.75408935547,
+            "y": -1988.6525878906
         }
     ],
     "items": [
@@ -561,7 +611,7 @@
         "stack_size": "56"
     },
     {
-        "name": "Export Concrete",
+        "name": "Deliver Concrete",
         "key_name": "export-concrete",
         "tier": "-1",
         "category": "commercial",
@@ -620,6 +670,14 @@
         "name": "Flint",
         "key_name": "flint",
         "tier": "2",
+        "category": "commercial",
+        "weight": "5",
+        "stack_size": "1800"
+    },
+    {
+        "name": "Export Flint",
+        "key_name": "export-flint",
+        "tier": "-1",
         "category": "commercial",
         "weight": "5",
         "stack_size": "1800"
@@ -777,6 +835,14 @@
         "stack_size": "200"
     },
     {
+        "name": "Deliver Rebar",
+        "key_name": "export-rebar",
+        "tier": "-1",
+        "category": "commercial",
+        "weight": "45",
+        "stack_size": "200"
+    },
+    {
         "name": "Rebar",
         "key_name": "rebar",
         "tier": "4",
@@ -916,6 +982,14 @@
         "name": "Scrap Plastic",
         "key_name": "scrap-plastic",
         "tier": "1",
+        "category": "commercial",
+        "weight": "5",
+        "stack_size": "1800"
+    },
+    {
+        "name": "Export Scrap Plastic",
+        "key_name": "export-scrap-plastic",
+        "tier": "-1",
         "category": "commercial",
         "weight": "5",
         "stack_size": "1800"
@@ -1065,9 +1139,25 @@
         "stack_size": "1000"
     },
     {
+        "name": "Deliver Asphalt",
+        "key_name": "export-asphalt",
+        "tier": "-1",
+        "category": "trucking",
+        "weight": "100",
+        "stack_size": "1000"
+    },
+    {
         "name": "Cardboard",
         "key_name": "cardboard",
         "tier": "3",
+        "category": "trucking",
+        "weight": "1",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Export Cardboard",
+        "key_name": "export-cardboard",
+        "tier": "-1",
         "category": "trucking",
         "weight": "1",
         "stack_size": "1000"
@@ -1078,6 +1168,22 @@
         "tier": "6",
         "category": "refridgerated",
         "weight": "0.1",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Tools",
+        "key_name": "tools",
+        "tier": "0",
+        "category": "commercial",
+        "weight": "1",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Erasers",
+        "key_name": "erasers",
+        "tier": "0",
+        "category": "commercial",
+        "weight": "3",
         "stack_size": "1000"
     }
 ],
@@ -2235,7 +2341,7 @@
         "pays": 0
     },
     {
-        "name": "Export Concrete",
+        "name": "Deliver Concrete",
         "key_name": "export-concrete",
         "category": "alta-construction-site",
         "time": 1,
@@ -2745,6 +2851,101 @@
         "weight": 0,
         "cost": 30000,
         "pays": 0
+    },
+    {
+        "name": "Deliver Asphalt",
+        "key_name": "export-asphalt",
+        "category": "alta-construction-site",
+        "time": 1,
+        "ingredients": [
+            [
+                "asphalt",
+                5
+            ]
+        ],
+        "product": [
+            "export-asphalt",
+            1
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 25000
+    },
+    {
+        "name": "Export Cardboard",
+        "key_name": "export-cardboard",
+        "category": "mckenzie-export",
+        "time": 1,
+        "ingredients": [
+            [
+                "cardboard",
+                1
+            ]
+        ],
+        "product": [
+            "export-cardboard",
+            1
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 60000
+    },
+    {
+        "name": "Export Flint",
+        "key_name": "export-flint",
+        "category": "mckenzie-export",
+        "time": 1,
+        "ingredients": [
+            [
+                "flint",
+                1
+            ]
+        ],
+        "product": [
+            "export-flint",
+            1
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 4250
+    },
+    {
+        "name": "Export Scrap Plastic",
+        "key_name": "export-scrap-plastic",
+        "category": "mckenzie-export",
+        "time": 1,
+        "ingredients": [
+            [
+                "scrap-plastic",
+                1
+            ]
+        ],
+        "product": [
+            "export-scrap-plastic",
+            1
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 3600
+    },
+    {
+        "name": "Tools",
+        "key_name": "tools",
+        "category": "buyer-tools",
+        "time": 1,
+        "ingredients": [
+            [
+                "tools",
+                1
+            ]
+        ],
+        "product": [
+            "tools",
+            1
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 200
     }
 ],
     "resources": [

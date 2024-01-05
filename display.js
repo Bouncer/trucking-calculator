@@ -114,21 +114,6 @@ export function displayItems(spec, totals, ignore) {
         display.peak = peak
     }
 
-    displayedItems.push({
-        item: {
-            name: "<i><b>Total</b></i>"
-        },
-        itemRate: totalAmount,
-        itemWeight: 0,
-        weight: totalWeight,
-        trips: totalTrips,
-        pertrip: 0,
-        cost: totalCost,
-        pays: totalRevenue,
-        building: null
-    });
-
-
     let table = d3.select("table#totals")
 
     let headerRow = table.selectAll("thead tr").selectAll("th")
@@ -281,7 +266,11 @@ export function displayItems(spec, totals, ignore) {
         .attr("value", d => d.overclock)
     buildingRow.selectAll("tt.power")
         .text(d => spec.format.alignCount(d.average) + " MW")
-    
-    d3.select("tt#total_profit")
-        .text(`$ ${totalProfit.toLocaleString()}`)
+
+    d3.select("tt#total_amount").html(`${totalAmount.toLocaleString()}<small>x</small>`)
+    d3.select("tt#total_weight").html(`${totalWeight.toLocaleString()} <small>kg</small>`)
+    d3.select("tt#total_trips").html(`${totalTrips}<small>x</small>`)
+    d3.select("tt#total_cost").text(totalCost > 0 ? `$ ${totalCost.toLocaleString()}` : `-`)
+    d3.select("tt#total_revenue").text(totalRevenue > 0 ? `$ ${totalRevenue.toLocaleString() }` : `-`)
+    d3.select("tt#total_profit").text(`$ ${totalProfit.toLocaleString()}`)
 }
