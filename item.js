@@ -15,14 +15,13 @@ import { Totals } from "./totals.js"
 import { Rational, zero, one } from "./rational.js"
 
 export class Item {
-    constructor(key, name, tier, weight, sell) {
+    constructor(key, name, tier, weight) {
         this.key = key
         this.name = name
         this.tier = tier
         this.weight = Rational.from_string(weight)
         this.recipes = []
         this.uses = []
-        this.sell = sell
     }
     addRecipe(recipe) {
         this.recipes.push(recipe)
@@ -30,18 +29,21 @@ export class Item {
     addUse(recipe) {
         this.uses.push(recipe)
     }
-    produce(spec, rate, ignore) {
+    produce(spec, rate, ignore, itemRates, parent) {
         let totals = new Totals()
+        totals.itemRates = itemRates
         let recipe = spec.getRecipe(this)
         let gives = recipe.gives(this)
+        totals.addItemRate(this.key, rate.toFloat(), parent)
         rate = rate.div(gives).ceil()
+        // keep track of item rates to combine them
         totals.add(recipe, rate)
         totals.updateHeight(recipe, 0)
         if (ignore.has(recipe)) {
             return totals
         }
         for (let ing of recipe.ingredients) {
-            let subtotals = ing.item.produce(spec, rate.mul(ing.amount), ignore)
+            let subtotals = ing.item.produce(spec, rate.mul(ing.amount), ignore, totals.itemRates, this.key)
             totals.combine(subtotals)
         }
         return totals
@@ -55,10 +57,7 @@ export class Item {
 export function getItems(data) {
     let items = new Map()
     for (let d of data.items) {
-        if(d.sell === undefined) {
-            d.sell = false;
-        }
-        items.set(d.key_name, new Item(d.key_name, d.name, d.tier, d.weight, d.sell))
+        items.set(d.key_name, new Item(d.key_name, d.name, d.tier, d.weight))
     }
     return items
 }

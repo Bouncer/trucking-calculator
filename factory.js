@@ -18,7 +18,6 @@ import { Rational, zero, half, one } from "./rational.js"
 import { BuildTarget } from "./target.js"
 import { Totals } from "./totals.js"
 import { renderTotals } from "./visualize.js"
-import { isExportable } from "./settings.js"
 
 const DEFAULT_ITEM_KEY = "concrete"
 
@@ -59,6 +58,7 @@ class FactorySpecification {
         this.belt = null
 
         // cargo capacity
+        
         this.capacity = {
             "fixed": false,
             "strength": 30,
@@ -70,6 +70,10 @@ class FactorySpecification {
             "total": Rational.from_float(0)
         }
 
+        if(localStorage.capacity) {
+            this.capacity = JSON.parse(localStorage.getItem("capacity"))
+        }
+        this.updateCapacity()
         this.ignore = new Set()
 
         this.format = new Formatter()
@@ -108,6 +112,7 @@ class FactorySpecification {
             }
         }
         this.belts = belts
+        this.updateCapacity()
         this.belt = belts.get(DEFAULT_BELT)
         this.capacity.trailer = this.belt.rate.toFloat()
         this.initMinerSettings()
@@ -247,7 +252,13 @@ class FactorySpecification {
     solve() {
         let totals = new Totals()
         for (let target of this.buildTargets) {
-            let subtotals = target.item.produce(this, target.getRate(), this.ignore)
+            let subtotals = target.item.produce(this, target.getRate(), this.ignore, totals.itemRates, target.item.key)
+            //if(totals.rates.has(target.recipe))
+            /*
+            if(totals.topo[target.item.key]) {
+                console.log(target.item.key)
+            }
+            */
             totals.combine(subtotals)
         }
         return totals
@@ -256,23 +267,16 @@ class FactorySpecification {
         window.location.hash = "#" + formatSettings()
     }
     updateCapacity() {
-        this.capacity.total = Math.round((this.capacity.strength * (1 + this.capacity.strengthperk + this.capacity.premium)) + (this.capacity.truck * (1 + this.capacity.postop + this.capacity.premium)) + (this.capacity.trailer * (1 + this.capacity.premium + this.capacity.postop)))
-        let form = d3.select("#capacity").property("value", this.capacity.total)
-    }
-    addExports() {
+        this.capacity.total = Math.round((this.capacity.strength * 10 * (1 + this.capacity.strengthperk + this.capacity.premium)) + (this.capacity.truck * (1 + this.capacity.postop + this.capacity.premium)) + (this.capacity.trailer * (1 + this.capacity.premium + this.capacity.postop)))
         
-        // is it exportable?
-        for (const target in this.buildTargets) {
-            // extend exportable targets
-
-        }
-
+        localStorage.setItem("capacity", JSON.stringify(this.capacity));
+        
+        let form = d3.select("#capacity").property("value", this.capacity.total)
     }
     updateSolution() {
         if(!this.capacity.fixed) {
             this.updateCapacity()
         }
-        //this.addExports();
         let totals = this.solve()
         displayItems(this, totals, this.ignore)
         renderTotals(totals, this.buildTargets, this.ignore)

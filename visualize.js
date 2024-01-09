@@ -17,11 +17,10 @@ import { Rational, zero, one } from "./rational.js"
 import { Ingredient } from "./recipe.js"
 import { colors } from "./colors.js"
 import { updateMap } from "./map.js"
-import { isExportable } from "./settings.js"
 
 const iconSize = 20
 
-const nodePadding = 50
+const nodePadding = 80
 
 const columnWidth = 120
 const maxNodeHeight = 100
@@ -56,11 +55,8 @@ function makeGraph(totals, targets, ignore) {
         rates.set(target.item, rate)
     }
     for (let [item, rate] of rates) {
-        // only add output on export
-        if(!isExportable(item.key)) {
-            let ing = new Ingredient(item, rate)
-            outputs.push(ing)
-        }
+        let ing = new Ingredient(item, rate)
+        outputs.push(ing)
     }
 
     // only add output on export
@@ -86,7 +82,6 @@ function makeGraph(totals, targets, ignore) {
 
     let nodeMap = new Map()
     //nodeMap.set("output", nodes[0])
-
     for (let [recipe, rate] of totals.rates) {
         let building = spec.getBuilding(recipe)
         let count = spec.getCount(recipe, rate)
@@ -110,19 +105,29 @@ function makeGraph(totals, targets, ignore) {
         }
         for (let ing of node.ingredients) {
             let rate
-            if (node.name == "output") {
-                rate = ing.amount
-            } else {
-                rate = totals.rates.get(recipe).mul(ing.amount)
-                //rate = rate.mul(ing.item.weight)
-            }
+            var totalRate = zero
             for (let subRecipe of ing.item.recipes) {
                 if (totals.rates.has(subRecipe)) {
+                    totalRate = totalRate.add(totals.rates.get(subRecipe).mul(subRecipe.gives(ing.item, spec)))
+                }
+            }
+            //console.log(totalRate)
+            for (let subRecipe of ing.item.recipes) {
+                if (totals.rates.has(subRecipe)) {
+                    if (node.name == "output") {
+                        rate = ing.amount
+                    } else {
+                        rate = totals.rates.get(recipe).mul(ing.amount)
+                        //rate = rate.mul(ing.item.weight)
+                    }
+                    var ratio = rate.div(totalRate)
+                    var subRate = totals.rates.get(subRecipe).mul(subRecipe.gives(ing.item, spec)).mul(ratio)
                     let link = {
+                        "name": ing.item.name,
                         "source": nodeMap.get(subRecipe.name),
                         "target": node,
-                        "value": rate.mul(ing.item.weight).toFloat(),
-                        "rate": rate,
+                        "value": Math.min(500,Math.max(40,rate.mul(ing.item.weight).toFloat())),
+                        "rate": subRate,
                         "weight": rate.mul(ing.item.weight),
                         "amount": ing.amount
                     }
@@ -150,7 +155,7 @@ function recipeValue(recipe, rate, ignore) {
             inputValue = inputValue.add(rate.mul(ing.amount))
         }
     }
-    let outputValue = rate.mul(recipe.product.amount)
+    let outputValue = rate.mul(recipe.products[0].amount)
     if (inputValue.less(outputValue)) {
         return outputValue
     } else {
@@ -259,10 +264,10 @@ export function renderTotals(totals, targets, ignore) {
             largestEstimate = estimate
         }
     }
-    let height = largestEstimate
+    let height = largestEstimate * Math.min(1.5,maxRank/2)
 
     let svg = d3.select("svg#graph")
-        .attr("viewBox", `0,0,${width+20},${height+20}`)
+        .attr("viewBox", `0,0,${width+20},${height+50}`)
         .style("width", width+20)
         .style("height", height+50)
 
@@ -272,7 +277,7 @@ export function renderTotals(totals, targets, ignore) {
         .nodeWidth(nodeWidth)
         .nodePadding(nodePadding)
         .nodeAlign(d3.sankeyRight)
-        .extent([[10, 10], [width + 10, height + 10]])
+        .extent([[10, 10], [width + 10, height + 20]])
     let {nodes, links} = sankey(data)
 
     // Node rects
@@ -326,7 +331,7 @@ export function renderTotals(totals, targets, ignore) {
         .attr("stroke-opacity", 0.3)
         .attr("d", d3.sankeyLinkHorizontal())
         .attr("stroke", d => d3.color(colorList[d.source.building.color]).brighter())
-        .attr("stroke-width", d => Math.max(1, d.width))
+        .attr("stroke-width", d => Math.max(2, d.width) - 1)
     // Don't draw belts if we have less than three pixels per belt.
     if (beltDensity >= 3) {
         link.append("g")
@@ -346,14 +351,15 @@ export function renderTotals(totals, targets, ignore) {
         .attr("y", d => d.y0)
         .attr("dy", "0.35em")
         .attr("text-anchor", "start")
-        .text(d => `${d.rate.ceil().toFloat().toLocaleString()}x, ${d.weight.ceil().toFloat().toLocaleString()}kg`)
-    link.filter(d => d.trips > 1)
+        .text(d => d.name + ' ' + d.rate.ceil().toFloat().toLocaleString() + 'x, ' + (d.weight > 1000 ? Math.round(d.weight.ceil().toFloat()/1000).toLocaleString() + 't' : d.weight.ceil().toFloat().toLocaleString() + 'kg') + (d.trips > 1 ? ', ' + d.trips + ' trips' : ''))
+    /*link.filter(d => d.trips > 1)
         .append("text")
             .attr("x", d => d.source.x1 + 6)
             .attr("y", d => d.y0 + 12)
             .attr("dy", "0.35em")
             .attr("text-anchor", "start")
             .text(d => `${d.trips} trips`)
+            */
 
     // Overlay transparent rect on top of each node, for click events.
     let rectElements = svg.selectAll("g.node").nodes()

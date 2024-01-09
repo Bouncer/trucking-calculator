@@ -22,47 +22,57 @@ export class Ingredient {
 }
 
 class Recipe {
-    constructor(key, name, category, time, ingredients, product, cost, pays) {
+    constructor(key, name, category, time, ingredients, products, cost, pays) {
         this.key = key
         this.name = name
         this.category = category
         this.time = time
+
         this.ingredients = ingredients
-        this.cost = cost;
-        this.pays = pays;
         for (let ing of ingredients) {
             ing.item.addUse(this)
         }
-        this.product = product
-        product.item.addRecipe(this)
+
+        this.products = products
+        for (let prod of products) {
+            prod.item.addRecipe(this)
+        }
+
+        this.cost = cost;
+        this.pays = pays;
     }
     gives(item) {
-        if (this.product.item === item) {
-            return this.product.amount
+        for(let prod of this.products) {
+            if (prod.item === item) {
+                return prod.amount
+            }
         }
         return null
     }
     iconPath() {
-        return this.product.item.iconPath()
+        return this.products[0].item.iconPath()
     }
 }
 
 function makeRecipe(data, items, d) {
     let time = Rational.from_float(d.time)
-    let [item_key, amount] = d.product
-    let item = items.get(item_key)
-    let product = new Ingredient(item, Rational.from_float(amount))
+    let products = []
+    for (let [item_key, amount] of d.product) {
+        let item = items.get(item_key)
+        products.push(new Ingredient(item, Rational.from_float(amount)))
+    }
+
     let ingredients = []
     for (let [item_key, amount] of d.ingredients) {
         let item = items.get(item_key)
         ingredients.push(new Ingredient(item, Rational.from_float(amount)))
     }
-    return new Recipe(d.key_name, d.name, d.category, time, ingredients, product, d.cost, d.pays)
+    return new Recipe(d.key_name, d.name, d.category, time, ingredients, products, d.cost, d.pays)
 }
 
 class ResourceRecipe extends Recipe {
     constructor(item, category, cost) {
-        super(item.key, item.name, category, zero, [], new Ingredient(item, one), cost, zero)
+        super(item.key, item.name, category, zero, [], [new Ingredient(item, one)], cost, zero)
     }
 }
 

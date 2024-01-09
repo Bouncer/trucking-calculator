@@ -1,6 +1,11 @@
 {
     "belts": [
         {
+            "name": "None",
+            "key_name": "none",
+            "rate": 0
+        },
+        {
             "name": "MK1",
             "key_name": "mk1",
             "rate": 400
@@ -311,6 +316,66 @@
             "color": 3,
             "x": -3164.8996582031,
             "y": 1122.8239746094
+        },
+        {
+            "name": "Vehicle Parts",
+            "key-name": "vehicle-parts",
+            "category": "vehicle-parts",
+            "power": "1",
+            "max": "1",
+            "color": 13,
+            "x": -64.931816101074,
+            "y": 6396.3369140625
+        },
+        {
+            "name": "Plastic Molding",
+            "key-name": "plastic-molding",
+            "category": "plastic-molding",
+            "power": "1",
+            "max": "1",
+            "color": 13,
+            "x": -1014.5861816406,
+            "y": -2234.5297851563
+        },
+        {
+            "name": "Defib Kit Charging",
+            "key-name": "defib-kit-charging",
+            "category": "defib-kit-charging",
+            "power": "1",
+            "max": "1",
+            "color": 13,
+            "x": 661.08178710938,
+            "y": 169.87127685547
+        },
+        {
+            "name": "Defib Kit Charging",
+            "key-name": "defib-kit-charging",
+            "category": "defib-kit-charging",
+            "power": "1",
+            "max": "1",
+            "color": 13,
+            "x": 661.08178710938,
+            "y": 169.87127685547
+        },
+        {
+            "name": "Jewelry Store",
+            "key-name": "jewelry-store",
+            "category": "jewelry-store",
+            "power": "1",
+            "max": "1",
+            "color": 8,
+            "x": -637.30340576172,
+            "y": -241.26341247559
+        },
+        {
+            "name": "Harmony Shopping Center",
+            "key-name": "harmony-shopping-center",
+            "category": "harmony-shopping-center",
+            "power": "1",
+            "max": "1",
+            "color": 8,
+            "x": 597.67004394531,
+            "y": 2798.603515625
         }
     ],
     "miners": [
@@ -335,7 +400,7 @@
             "y": 2817.8293457031
         },
         {
-            "name": "LSIA Waste Depot",
+            "name": "Elysian Island Waste Deposit",
             "key-name": "lsia-waste-depot",
             "category": "lsia-waste-depot",
             "base-rate": 1,
@@ -370,7 +435,7 @@
             "category": "land-act-reservoir",
             "base-rate": 1,
             "power": 5,
-            "color": 13,
+            "color": 7,
             "x": 1534.3098144531,
             "y": 834.60900878906
         },
@@ -450,7 +515,7 @@
             "category": "vehicle-factory",
             "power": 1,
             "max": 1,
-            "color": 5,
+            "color": 13,
             "x": 484.86874389648,
             "y": -1978.7556152344
         },
@@ -480,7 +545,7 @@
             "category": "mckenzie-export",
             "power": "1",
             "max": "1",
-            "color": 5,
+            "color": 8,
             "x": 2148.071533,
             "y": 4806.387207
         },
@@ -503,16 +568,6 @@
             "color": 12,
             "x": 834.75408935547,
             "y": -1988.6525878906
-        },
-        {
-            "name": "Vehicle Parts",
-            "key-name": "vehicle-parts",
-            "category": "vehicle-parts",
-            "power": "1",
-            "max": "1",
-            "color": 5,
-            "x": -64.931816101074,
-            "y": 6396.3369140625
         }
     ],
     "items": [
@@ -520,6 +575,14 @@
         "name": "Acid",
         "key_name": "acid",
         "tier": "1",
+        "category": "commercial",
+        "weight": "5",
+        "stack_size": "1800"
+    },
+    {
+        "name": "Export Acid",
+        "key_name": "export-acid",
+        "tier": "-1",
         "category": "commercial",
         "weight": "5",
         "stack_size": "1800"
@@ -549,9 +612,25 @@
         "stack_size": "300"
     },
     {
+        "name": "Export Batteries",
+        "key_name": "export-battery",
+        "tier": "-1",
+        "category": "commercial",
+        "weight": "30",
+        "stack_size": "300"
+    },
+    {
         "name": "Bronze Alloy",
         "key_name": "bronze-alloy",
         "tier": "3",
+        "category": "commercial",
+        "weight": "10",
+        "stack_size": "900"
+    },
+    {
+        "name": "Export Bronze Alloy",
+        "key_name": "export-bronze-alloy",
+        "tier": "-1",
         "category": "commercial",
         "weight": "10",
         "stack_size": "900"
@@ -581,6 +660,14 @@
         "stack_size": "900"
     },
     {
+        "name": "Export Ceramic Tiles",
+        "key_name": "export-ceramic-tiles",
+        "tier": "-1",
+        "category": "commercial",
+        "weight": "10",
+        "stack_size": "900"
+    },
+    {
         "name": "Chemicals",
         "key_name": "chemicals",
         "tier": "7",
@@ -597,6 +684,14 @@
         "stack_size": "450"
     },
     {
+        "name": "Deliver Circuit Board",
+        "key_name": "export-circuit-board",
+        "tier": "-1",
+        "category": "commercial",
+        "weight": "20",
+        "stack_size": "450"
+    },
+    {
         "name": "Computer",
         "key_name": "computer",
         "tier": "4",
@@ -605,10 +700,10 @@
         "stack_size": "257"
     },
     {
-        "name": "Computer",
-        "key_name": "computer",
-        "tier": "4",
-        "category": "special",
+        "name": "Export Computer",
+        "key_name": "export-computer",
+        "tier": "-1",
+        "category": "commercial",
         "weight": "35",
         "stack_size": "257"
     },
@@ -632,6 +727,14 @@
         "name": "Copper Wire",
         "key_name": "copper-wire",
         "tier": "3",
+        "category": "special",
+        "weight": "20",
+        "stack_size": "450"
+    },
+    {
+        "name": "Deliver Copper Wire",
+        "key_name": "export-copper-wire",
+        "tier": "-1",
         "category": "special",
         "weight": "20",
         "stack_size": "450"
@@ -677,6 +780,14 @@
         "stack_size": "450"
     },
     {
+        "name": "Deliver Fiberglass Spool",
+        "key_name": "export-fiberglass-spool",
+        "tier": "-1",
+        "category": "commercial",
+        "weight": "20",
+        "stack_size": "450"
+    },
+    {
         "name": "Flint",
         "key_name": "flint",
         "tier": "2",
@@ -696,6 +807,14 @@
         "name": "Food Shipment",
         "key_name": "food-shipment",
         "tier": "6",
+        "category": "refridgerated",
+        "weight": "10",
+        "stack_size": "900"
+    },
+    {
+        "name": "Deliver Food Shipment",
+        "key_name": "export-food-shipment",
+        "tier": "-1",
         "category": "refridgerated",
         "weight": "10",
         "stack_size": "900"
@@ -733,6 +852,14 @@
         "stack_size": "1800"
     },
     {
+        "name": "Export Glass",
+        "key_name": "export-glass",
+        "tier": "-1",
+        "category": "commercial",
+        "weight": "5",
+        "stack_size": "1800"
+    },
+    {
         "name": "Gravel",
         "key_name": "gravel",
         "tier": "1",
@@ -752,6 +879,14 @@
         "name": "Jewelry",
         "key_name": "jewelry",
         "tier": "3",
+        "category": "commercial",
+        "weight": "5",
+        "stack_size": "1800"
+    },
+    {
+        "name": "Deliver Jewelry",
+        "key_name": "export-jewelry",
+        "tier": "-1",
         "category": "commercial",
         "weight": "5",
         "stack_size": "1800"
@@ -789,6 +924,14 @@
         "stack_size": "360"
     },
     {
+        "name": "Export Rubber",
+        "key_name": "export-rubber",
+        "tier": "-1",
+        "category": "petrochem",
+        "weight": "25",
+        "stack_size": "360"
+    },
+    {
         "name": "Planks",
         "key_name": "planks",
         "tier": "1",
@@ -800,6 +943,14 @@
         "name": "Planks",
         "key_name": "planks",
         "tier": "1",
+        "category": "special",
+        "weight": "30",
+        "stack_size": "300"
+    },
+    {
+        "name": "Export Planks",
+        "key_name": "export-planks",
+        "tier": "-1",
         "category": "special",
         "weight": "30",
         "stack_size": "300"
@@ -824,6 +975,14 @@
         "name": "Raw Emeralds",
         "key_name": "raw-emeralds",
         "tier": "1",
+        "category": "commercial",
+        "weight": "10",
+        "stack_size": "900"
+    },
+    {
+        "name": "Deliver Raw Emeralds",
+        "key_name": "export-raw-emeralds",
+        "tier": "-1",
         "category": "commercial",
         "weight": "10",
         "stack_size": "900"
@@ -885,9 +1044,25 @@
         "stack_size": "900"
     },
     {
+        "name": "Export Aluminium",
+        "key_name": "export-refined-aluminium",
+        "tier": "-1",
+        "category": "commercial",
+        "weight": "10",
+        "stack_size": "900"
+    },
+    {
         "name": "Refined Amalgam",
         "key_name": "refined-amalgam",
         "tier": "3",
+        "category": "commercial",
+        "weight": "15",
+        "stack_size": "600"
+    },
+    {
+        "name": "Deliver Amalgam",
+        "key_name": "export-refined-amalgam",
+        "tier": "-1",
         "category": "commercial",
         "weight": "15",
         "stack_size": "600"
@@ -901,9 +1076,25 @@
         "stack_size": "900"
     },
     {
+        "name": "Export Copper",
+        "key_name": "export-refined-copper",
+        "tier": "-1",
+        "category": "commercial",
+        "weight": "10",
+        "stack_size": "900"
+    },
+    {
         "name": "Refined Gold",
         "key_name": "refined-gold",
         "tier": "2",
+        "category": "commercial",
+        "weight": "20",
+        "stack_size": "450"
+    },
+    {
+        "name": "Deliver Refined Gold",
+        "key_name": "export-refined-gold",
+        "tier": "-1",
         "category": "commercial",
         "weight": "20",
         "stack_size": "450"
@@ -917,6 +1108,14 @@
         "stack_size": "1800"
     },
     {
+        "name": "Deliver Solder",
+        "key_name": "export-refined-solder",
+        "tier": "-1",
+        "category": "commercial",
+        "weight": "5",
+        "stack_size": "1800"
+    },
+    {
         "name": "Refined Tin",
         "key_name": "refined-tin",
         "tier": "2",
@@ -925,9 +1124,25 @@
         "stack_size": "900"
     },
     {
+        "name": "Export Tin",
+        "key_name": "export-refined-tin",
+        "tier": "-1",
+        "category": "commercial",
+        "weight": "10",
+        "stack_size": "900"
+    },
+    {
         "name": "Refined Zinc",
         "key_name": "refined-zinc",
         "tier": "2",
+        "category": "commercial",
+        "weight": "10",
+        "stack_size": "900"
+    },
+    {
+        "name": "Export Zinc",
+        "key_name": "export-refined-zinc",
+        "tier": "-1",
         "category": "commercial",
         "weight": "10",
         "stack_size": "900"
@@ -944,6 +1159,14 @@
         "name": "Sawdust",
         "key_name": "sawdust",
         "tier": "1",
+        "category": "commercial",
+        "weight": "3",
+        "stack_size": "3000"
+    },
+    {
+        "name": "Export Sawdust",
+        "key_name": "export-sawdust",
+        "tier": "-1",
         "category": "commercial",
         "weight": "3",
         "stack_size": "3000"
@@ -1235,28 +1458,57 @@
         "category": "commercial",
         "weight": "5",
         "stack_size": "1000"
+    },
+    {
+        "name": "Vehicle Framework",
+        "key_name": "vehicle-framework",
+        "tier": "5",
+        "category": "commercial",
+        "weight": "200",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Export Vehicle Framework",
+        "key_name": "export-vehicle-framework",
+        "tier": "-1",
+        "category": "commercial",
+        "weight": "200",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Box of Full Pill Capsules",
+        "key_name": "box-full-pill-capsules",
+        "tier": "8",
+        "category": "illegal",
+        "weight": "5",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Box of Empty Pill Capsules",
+        "key_name": "box-empty-pill-capsules",
+        "tier": "8",
+        "category": "illegal",
+        "weight": "5",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Defib Kit",
+        "key_name": "defib-kit",
+        "tier": "8",
+        "category": "illegal",
+        "weight": "5",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Empty Defib Kit",
+        "key_name": "empty-defib-kit",
+        "tier": "8",
+        "category": "illegal",
+        "weight": "5",
+        "stack_size": "1000"
     }
 ],
     "recipes": [
-    {
-        "name": "Acid",
-        "key_name": "acid",
-        "category": "filtering-plant",
-        "time": 1,
-        "ingredients": [
-            [
-                "toxic-waste",
-                1
-            ]
-        ],
-        "product": [
-            "acid",
-            4
-        ],
-        "weight": 0,
-        "cost": 15000,
-        "pays": 0
-    },
     {
         "name": "Battery",
         "key_name": "battery",
@@ -1277,8 +1529,8 @@
             ]
         ],
         "product": [
-            "battery",
-            2
+            ["battery",
+            2]
         ],
         "weight": 60,
         "cost": 5000,
@@ -1304,15 +1556,15 @@
             ]
         ],
         "product": [
-            "bronze-alloy",
-            2
+            ["bronze-alloy",
+            2]
         ],
         "weight": 20,
         "cost": 1000,
         "pays": 0
     },
     {
-        "name": "Cement Mix",
+        "name": "Create Cement",
         "key_name": "cement-mix",
         "category": "quarry",
         "time": 1,
@@ -1327,8 +1579,8 @@
             ]
         ],
         "product": [
-            "cement-mix",
-            1
+            ["cement-mix",
+            1]
         ],
         "weight": 25,
         "cost": 1500,
@@ -1350,8 +1602,8 @@
             ]
         ],
         "product": [
-            "ceramic-tiles",
-            2
+            ["ceramic-tiles",
+            2]
         ],
         "weight": 20,
         "cost": 1000,
@@ -1377,8 +1629,8 @@
             ]
         ],
         "product": [
-            "circuit-board",
-            2
+            ["circuit-board",
+            2]
         ],
         "weight": 40,
         "cost": 5000,
@@ -1404,15 +1656,15 @@
             ]
         ],
         "product": [
-            "computer",
-            2
+            ["computer",
+            2]
         ],
         "weight": 70,
         "cost": 5000,
         "pays": 0
     },
     {
-        "name": "Concrete",
+        "name": "Mix Concrete",
         "key_name": "concrete",
         "category": "filtering-plant",
         "time": 1,
@@ -1427,8 +1679,8 @@
             ]
         ],
         "product": [
-            "concrete",
-            1
+            ["concrete",
+            1]
         ],
         "weight": 160,
         "cost": 15000,
@@ -1450,8 +1702,8 @@
             ]
         ],
         "product": [
-            "copper-wire",
-            2
+            ["copper-wire",
+            2]
         ],
         "weight": 40,
         "cost": 5000,
@@ -1477,15 +1729,15 @@
             ]
         ],
         "product": [
-            "fiberglass-spool",
-            2
+            ["fiberglass-spool",
+            2]
         ],
         "weight": 40,
         "cost": 5000,
         "pays": 0
     },
     {
-        "name": "Flint",
+        "name": "Filter Gravel",
         "key_name": "flint",
         "category": "filtering-plant",
         "time": 1,
@@ -1496,8 +1748,8 @@
             ]
         ],
         "product": [
-            "flint",
-            4
+            ["flint",4],
+            ["sand",6]
         ],
         "weight": 50,
         "cost": 15000,
@@ -1515,30 +1767,11 @@
             ]
         ],
         "product": [
-            "glass",
-            1
+            ["glass",
+            1]
         ],
         "weight": 5,
         "cost": 1000,
-        "pays": 0
-    },
-    {
-        "name": "Gravel",
-        "key_name": "gravel",
-        "category": "filtering-plant",
-        "time": 1,
-        "ingredients": [
-            [
-                "quarry-rubble",
-                1
-            ]
-        ],
-        "product": [
-            "gravel",
-            12
-        ],
-        "weight": 0,
-        "cost": 15000,
         "pays": 0
     },
     {
@@ -1573,8 +1806,8 @@
             ]
         ],
         "product": [
-            "house",
-            1
+            ["house",
+            1]
         ],
         "weight": 0,
         "cost": 0,
@@ -1596,15 +1829,34 @@
             ]
         ],
         "product": [
-            "jewelry",
-            2
+            ["jewelry",
+            2]
         ],
         "weight": 10,
         "cost": 5000,
         "pays": 0
     },
     {
-        "name": "Planks",
+        "name": "Grind Sawdust",
+        "key_name": "sawdust",
+        "category": "sawmill",
+        "time": 1,
+        "ingredients": [
+            [
+                "logs",
+                1
+            ]
+        ],
+        "product": [
+            ["sawdust",
+            10]
+        ],
+        "weight": 30,
+        "cost": 500,
+        "pays": 0
+    },
+    {
+        "name": "Mill Planks",
         "key_name": "planks",
         "category": "sawmill",
         "time": 1,
@@ -1615,34 +1867,15 @@
             ]
         ],
         "product": [
-            "planks",
-            1
+            ["planks",1],
+            ["sawdust",2]
         ],
         "weight": 21,
         "cost": 500,
         "pays": 0
     },
     {
-        "name": "Raw Emeralds",
-        "key_name": "raw-emeralds",
-        "category": "filtering-plant",
-        "time": 1,
-        "ingredients": [
-            [
-                "quarry-rubble",
-                1
-            ]
-        ],
-        "product": [
-            "raw-emeralds",
-            1
-        ],
-        "weight": 0,
-        "cost": 0,
-        "pays": 0
-    },
-    {
-        "name": "Raw Ore Mix",
+        "name": "Filter Quarry Rubble",
         "key_name": "raw-ore-mix",
         "category": "filtering-plant",
         "time": 1,
@@ -1653,8 +1886,9 @@
             ]
         ],
         "product": [
-            "raw-ore-mix",
-            4
+            ["raw-emeralds",1],
+            ["gravel",12],
+            ["raw-ore-mix",4]
         ],
         "weight": 130,
         "cost": 15000,
@@ -1676,8 +1910,8 @@
             ]
         ],
         "product": [
-            "rebar",
-            2
+            ["rebar",
+            2]
         ],
         "weight": 90,
         "cost": 5000,
@@ -1695,8 +1929,8 @@
             ]
         ],
         "product": [
-            "refined-aluminium",
-            1
+            ["refined-aluminium",
+            1]
         ],
         "weight": 10,
         "cost": 1000,
@@ -1718,15 +1952,15 @@
             ]
         ],
         "product": [
-            "refined-amalgam",
-            2
+            ["refined-amalgam",
+            2]
         ],
         "weight": 30,
         "cost": 1000,
         "pays": 0
     },
     {
-        "name": "Refined Copper",
+        "name": "Refine Raw Ore Mix",
         "key_name": "refined-copper",
         "category": "ls-foundry",
         "time": 1,
@@ -1737,8 +1971,8 @@
             ]
         ],
         "product": [
-            "refined-copper",
-            1
+            ["refined-copper",1],
+            ["refined-zinc",1]
         ],
         "weight": 0,
         "cost": 1000,
@@ -1756,8 +1990,8 @@
             ]
         ],
         "product": [
-            "refined-gold",
-            5
+            ["refined-gold",
+            5]
         ],
         "weight": 100,
         "cost": 1000,
@@ -1779,8 +2013,8 @@
             ]
         ],
         "product": [
-            "refined-solder",
-            8
+            ["refined-solder",
+            8]
         ],
         "weight": 40,
         "cost": 1000,
@@ -1798,72 +2032,15 @@
             ]
         ],
         "product": [
-            "refined-tin",
-            1
+            ["refined-tin",
+            1]
         ],
         "weight": 10,
         "cost": 1000,
         "pays": 0
     },
     {
-        "name": "Refined Zinc",
-        "key_name": "refined-zinc",
-        "category": "ls-foundry",
-        "time": 1,
-        "ingredients": [
-            [
-                "raw-ore-mix",
-                2
-            ]
-        ],
-        "product": [
-            "refined-zinc",
-            1
-        ],
-        "weight": 20,
-        "cost": 1000,
-        "pays": 0
-    },
-    {
-        "name": "Sand",
-        "key_name": "sand",
-        "category": "filtering-plant",
-        "time": 1,
-        "ingredients": [
-            [
-                "gravel",
-                10
-            ]
-        ],
-        "product": [
-            "sand",
-            6
-        ],
-        "weight": 0,
-        "cost": 15000,
-        "pays": 0
-    },
-    {
-        "name": "Sawdust",
-        "key_name": "sawdust",
-        "category": "sawmill",
-        "time": 1,
-        "ingredients": [
-            [
-                "logs",
-                1
-            ]
-        ],
-        "product": [
-            "sawdust",
-            10
-        ],
-        "weight": 30,
-        "cost": 500,
-        "pays": 0
-    },
-    {
-        "name": "Scrap Aluminium",
+        "name": "Sort Recycled Trash",
         "key_name": "scrap-aluminium",
         "category": "sorting-facility",
         "time": 1,
@@ -1874,15 +2051,16 @@
             ]
         ],
         "product": [
-            "scrap-aluminium",
-            4
+            ["scrap-aluminium",4],
+            ["scrap-plastic",8],
+            ["scrap-tin",4]
         ],
         "weight": 80,
         "cost": 25000,
         "pays": 0
     },
     {
-        "name": "Scrap Copper",
+        "name": "Sort Recycled Electronics",
         "key_name": "scrap-copper",
         "category": "sorting-facility",
         "time": 1,
@@ -1893,34 +2071,16 @@
             ]
         ],
         "product": [
-            "scrap-copper",
-            8
+            ["scrap-copper",8],
+            ["scrap-gold",1],
+            ["scrap-plastic",12]
         ],
         "weight": 0,
         "cost": 25000,
         "pays": 0
     },
     {
-        "name": "Scrap Gold",
-        "key_name": "scrap-gold",
-        "category": "sorting-facility",
-        "time": 1,
-        "ingredients": [
-            [
-                "recycled-electronics",
-                1
-            ]
-        ],
-        "product": [
-            "scrap-gold",
-            1
-        ],
-        "weight": 0,
-        "cost": 25000,
-        "pays": 0
-    },
-    {
-        "name": "Scrap Lead",
+        "name": "Filter Toxic Waste",
         "key_name": "scrap-lead",
         "category": "filtering-plant",
         "time": 1,
@@ -1931,87 +2091,12 @@
             ]
         ],
         "product": [
-            "scrap-lead",
-            2
+            ["acid",4],
+            ["scrap-lead",2],
+            ["scrap-mercury",2]
         ],
         "weight": 80,
         "cost": 15000,
-        "pays": 0
-    },
-    {
-        "name": "Scrap Mercury",
-        "key_name": "scrap-mercury",
-        "category": "filtering-plant",
-        "time": 1,
-        "ingredients": [
-            [
-                "toxic-waste",
-                1
-            ]
-        ],
-        "product": [
-            "scrap-mercury",
-            2
-        ],
-        "weight": 0,
-        "cost": 15000,
-        "pays": 0
-    },
-    {
-        "name": "Scrap Plastic",
-        "key_name": "scrap-plastic",
-        "category": "sorting-facility",
-        "time": 1,
-        "ingredients": [
-            [
-                "recycled-electronics",
-                1
-            ]
-        ],
-        "product": [
-            "scrap-plastic",
-            12
-        ],
-        "weight": 110,
-        "cost": 25000,
-        "pays": 0
-    },
-    {
-        "name": "Scrap Plastic",
-        "key_name": "scrap-plastic",
-        "category": "sorting-facility",
-        "time": 1,
-        "ingredients": [
-            [
-                "recycled-trash",
-                1
-            ]
-        ],
-        "product": [
-            "scrap-plastic",
-            8
-        ],
-        "weight": 0,
-        "cost": 25000,
-        "pays": 0
-    },
-    {
-        "name": "Scrap Tin",
-        "key_name": "scrap-tin",
-        "category": "sorting-facility",
-        "time": 1,
-        "ingredients": [
-            [
-                "recycled-trash",
-                1
-            ]
-        ],
-        "product": [
-            "scrap-tin",
-            4
-        ],
-        "weight": 0,
-        "cost": 25000,
         "pays": 0
     },
     {
@@ -2026,8 +2111,8 @@
             ]
         ],
         "product": [
-            "sulfur",
-            5
+            ["sulfur",
+            5]
         ],
         "weight": 25,
         "cost": 5000,
@@ -2045,15 +2130,15 @@
             ]
         ],
         "product": [
-            "titanium",
-            1
+            ["titanium",
+            1]
         ],
         "weight": 20,
         "cost": 1000,
         "pays": 0
     },
     {
-        "name": "Titanium Ore",
+        "name": "Use Explosives",
         "key_name": "titanium-ore",
         "category": "gsd-mine",
         "time": 1,
@@ -2064,15 +2149,15 @@
             ]
         ],
         "product": [
-            "titanium-ore",
-            4
+            ["titanium-ore",4],
+            ["raw-emeralds",10]
         ],
         "weight": 25,
         "cost": 0,
         "pays": 0
     },
     {
-        "name": "Explosive Gold",
+        "name": "Use Explosives",
         "key_name": "scrap-gold",
         "category": "gsd-mine",
         "time": 1,
@@ -2083,15 +2168,15 @@
             ]
         ],
         "product": [
-            "scrap-gold",
-            10
+            ["scrap-gold",10],
+            ["titanium-ore",4]
         ],
         "weight": 25,
-        "cost": 25000,
+        "cost": 0,
         "pays": 0
     },
     {
-        "name": "Treated Water",
+        "name": "Treat Unfiltered Water ",
         "key_name": "treated-water",
         "category": "water-treatment-plant",
         "time": 1,
@@ -2106,8 +2191,8 @@
             ]
         ],
         "product": [
-            "treated-water",
-            1
+            ["treated-water",
+            1]
         ],
         "weight": 100,
         "cost": 5000,
@@ -2129,8 +2214,8 @@
             ]
         ],
         "product": [
-            "pills",
-            1
+            ["pills",
+            1]
         ],
         "weight": 0,
         "cost": 100000,
@@ -2152,15 +2237,15 @@
             ]
         ],
         "product": [
-            "pills-crate",
-            1
+            ["pills-crate",
+            1]
         ],
         "weight": 40,
         "cost": 10000,
         "pays": 0
     },
     {
-        "name": "Waste Water",
+        "name": "Refine Raw Gas",
         "key_name": "waste-water",
         "category": "refinery",
         "time": 1,
@@ -2171,53 +2256,16 @@
             ]
         ],
         "product": [
-            "waste-water",
-            1
+            ["waste-water",1],
+            ["chemicals",2],
+            ["propane",2]
         ],
         "weight": 50,
         "cost": 10250,
         "pays": 0
     },
     {
-        "name": "Chemicals",
-        "key_name": "chemicals",
-        "category": "refinery",
-        "time": 1,
-        "ingredients": [
-            [
-                "raw-gas",
-                1
-            ]
-        ],
-        "product": [
-            "chemicals",
-            2
-        ],
-        "weight": 25,
-        "cost": 10250,
-        "pays": 0
-    },
-    {
-        "name": "Propane",
-        "key_name": "propane",
-        "category": "refinery",
-        "time": 1,
-        "ingredients": [
-            [
-                "raw-gas",
-                1
-            ]
-        ],
-        "product": [
-            "propane",
-            2
-        ],
-        "weight": 25,
-        "cost": 10250,
-        "pays": 0
-    },
-    {
-        "name": "Diesel",
+        "name": "Refine Crude Oil",
         "key_name": "diesel",
         "category": "refinery",
         "time": 1,
@@ -2228,15 +2276,16 @@
             ]
         ],
         "product": [
-            "diesel",
-            1
+            ["diesel",1],
+            ["kerosene",1],
+            ["petrol",2]
         ],
         "weight": 25,
         "cost": 10250,
         "pays": 0
     },
     {
-        "name": "Rubber",
+        "name": "Refine Rubber",
         "key_name": "rubber",
         "category": "refinery",
         "time": 1,
@@ -2247,49 +2296,13 @@
             ]
         ],
         "product": [
-            "rubber",
-            4
+            ["rubber",4],
+            ["diesel",2],
+            ["kerosene",2],
+            ["petrol",2]
         ],
         "weight": 25,
         "cost": 41000,
-        "pays": 0
-    },
-    {
-        "name": "Kerosene",
-        "key_name": "kerosene",
-        "category": "refinery",
-        "time": 1,
-        "ingredients": [
-            [
-                "crude-oil",
-                1
-            ]
-        ],
-        "product": [
-            "kerosene",
-            1
-        ],
-        "weight": 25,
-        "cost": 10250,
-        "pays": 0
-    },
-    {
-        "name": "Petrol",
-        "key_name": "petrol",
-        "category": "refinery",
-        "time": 1,
-        "ingredients": [
-            [
-                "crude-oil",
-                1
-            ]
-        ],
-        "product": [
-            "petrol",
-            2
-        ],
-        "weight": 25,
-        "cost": 10250,
         "pays": 0
     },
     {
@@ -2306,8 +2319,8 @@
             ]
         ],
         "product": [
-            "explosives",
-            1
+            ["explosives",
+            1]
         ],
         "weight": 250,
         "cost": 9500,
@@ -2330,8 +2343,8 @@
             ]
         ],
         "product": [
-            "airline-meal",
-            4
+            ["airline-meal",
+            4]
         ],
         "weight": 3,
         "cost": 2500,
@@ -2348,8 +2361,8 @@
             ]
         ],
         "product": [
-            "export-airline-meal",
-            1
+            ["export-airline-meal",
+            1]
         ],
         "weight": 3,
         "cost": 0,
@@ -2366,8 +2379,8 @@
             ]
         ],
         "product": [
-            "frozen-raw-meat",
-            1
+            ["frozen-raw-meat",
+            1]
         ],
         "weight": 15,
         "cost": 0,
@@ -2384,8 +2397,8 @@
             ]
         ],
         "product": [
-            "meat",
-            20
+            ["meat",
+            20]
         ],
         "weight": 0.5,
         "cost": 2000,
@@ -2402,8 +2415,8 @@
             ]
         ],
         "product": [
-            "food-shipment",
-            5
+            ["food-shipment",
+            5]
         ],
         "weight": 10,
         "cost": 2500,
@@ -2420,8 +2433,8 @@
             ]
         ],
         "product": [
-            "export-concrete",
-            1
+            ["export-concrete",
+            1]
         ],
         "weight": 10,
         "cost": 0,
@@ -2438,8 +2451,8 @@
             ]
         ],
         "product": [
-            "export-rebar",
-            1
+            ["export-rebar",
+            1]
         ],
         "weight": 45,
         "cost": 0,
@@ -2459,8 +2472,8 @@
             ]
         ],
         "product": [
-            "hardened-steel",
-            1
+            ["hardened-steel",
+            1]
         ],
         "weight": 10,
         "cost": 1000,
@@ -2480,8 +2493,8 @@
             ]
         ],
         "product": [
-            "shipping-container",
-            1
+            ["shipping-container",
+            1]
         ],
         "weight": 100,
         "cost": 1000000,
@@ -2507,8 +2520,8 @@
             ]
         ],
         "product": [
-            "scrap-gold",
-            40
+            ["scrap-gold",
+            40]
         ],
         "weight": 80,
         "cost": 1000,
@@ -2530,8 +2543,8 @@
             ]
         ],
         "product": [
-            "sawdust",
-            100
+            ["sawdust",
+            100]
         ],
         "weight": 80,
         "cost": 2500,
@@ -2553,8 +2566,8 @@
             ]
         ],
         "product": [
-            "asphalt",
-            20
+            ["asphalt",
+            20]
         ],
         "weight": 0,
         "cost": 10250,
@@ -2576,8 +2589,8 @@
             ]
         ],
         "product": [
-            "cardboard",
-            5
+            ["cardboard",
+            5]
         ],
         "weight": 0,
         "cost": 5000,
@@ -2599,8 +2612,8 @@
             ]
         ],
         "product": [
-            "refined-copper",
-            20
+            ["refined-copper",
+            20]
         ],
         "weight": 0,
         "cost": 10000,
@@ -2622,8 +2635,8 @@
             ]
         ],
         "product": [
-            "frozen-raw-meat",
-            10
+            ["frozen-raw-meat",
+            10]
         ],
         "weight": 0,
         "cost": 0,
@@ -2641,8 +2654,8 @@
             ]
         ],
         "product": [
-            "frozen-raw-meat",
-            1
+            ["frozen-raw-meat",
+            1]
         ],
         "weight": 1,
         "cost": 0,
@@ -2664,15 +2677,15 @@
             ]
         ],
         "product": [
-            "frozen-raw-meat",
-            10
+            ["frozen-raw-meat",
+            10]
         ],
         "weight": 1,
         "cost": 0,
         "pays": 0
     },
     {
-        "name": "Diluted Diesel",
+        "name": "Refine Diluted Fuel",
         "key_name": "diluted-fuel",
         "category": "refinery",
         "time": 1,
@@ -2687,54 +2700,9 @@
             ]
         ],
         "product": [
-            "diesel",
-            3
-        ],
-        "weight": 1,
-        "cost": 10250,
-        "pays": 0
-    },
-    {
-        "name": "Diluted Kerosene",
-        "key_name": "diluted-fuel",
-        "category": "refinery",
-        "time": 1,
-        "ingredients": [
-            [
-                "treated-water",
-                2
-            ],
-            [
-                "crude-oil",
-                3
-            ]
-        ],
-        "product": [
-            "kerosene",
-            20
-        ],
-        "weight": 1,
-        "cost": 10250,
-        "pays": 0
-    },
-    {
-        "name": "Diluted Petrol",
-        "key_name": "diluted-fuel",
-        "category": "refinery",
-        "time": 1,
-        "ingredients": [
-            [
-                "treated-water",
-                2
-            ],
-            [
-                "crude-oil",
-                3
-            ]
-        ],
-        "product": [
-            "petrol",
-            3
+            ["diesel",3],
+            ["petrol",3],
+            ["kerosene",20]
         ],
         "weight": 1,
         "cost": 10250,
@@ -2756,8 +2724,8 @@
             ]
         ],
         "product": [
-            "sand",
-            100
+            ["sand",
+            100]
         ],
         "weight": 1,
         "cost": 0,
@@ -2779,8 +2747,8 @@
             ]
         ],
         "product": [
-            "sand",
-            90
+            ["sand",
+            90]
         ],
         "weight": 1,
         "cost": 0,
@@ -2802,8 +2770,8 @@
             ]
         ],
         "product": [
-            "jewelry",
-            4
+            ["jewelry",
+            4]
         ],
         "weight": 1,
         "cost": 5000,
@@ -2821,8 +2789,8 @@
             ]
         ],
         "product": [
-            "rebar",
-            2
+            ["rebar",
+            2]
         ],
         "weight": 1,
         "cost": 5000,
@@ -2840,8 +2808,8 @@
             ]
         ],
         "product": [
-            "treated-water",
-            1
+            ["treated-water",
+            1]
         ],
         "weight": 1,
         "cost": 5000,
@@ -2863,15 +2831,15 @@
             ]
         ],
         "product": [
-            "refined-zinc",
-            20
+            ["refined-zinc",
+            20]
         ],
         "weight": 0,
         "cost": 10000,
         "pays": 0
     },
     {
-        "name": "Conveyor Filtering",
+        "name": "Conveyor Rental",
         "key_name": "conveyor-filtering",
         "category": "filtering-plant",
         "time": 1,
@@ -2886,54 +2854,9 @@
             ]
         ],
         "product": [
-            "gravel",
-            10
-        ],
-        "weight": 0,
-        "cost": 30000,
-        "pays": 0
-    },
-    {
-        "name": "Conveyor Filtering",
-        "key_name": "conveyor-filtering",
-        "category": "filtering-plant",
-        "time": 1,
-        "ingredients": [
-            [
-                "copper-ore-voucher",
-                1
-            ],
-            [
-                "iron-ore-voucher",
-                1
-            ]
-        ],
-        "product": [
-            "raw-emeralds",
-            1
-        ],
-        "weight": 0,
-        "cost": 30000,
-        "pays": 0
-    },
-    {
-        "name": "Conveyor Filtering",
-        "key_name": "conveyor-filtering",
-        "category": "filtering-plant",
-        "time": 1,
-        "ingredients": [
-            [
-                "copper-ore-voucher",
-                1
-            ],
-            [
-                "iron-ore-voucher",
-                1
-            ]
-        ],
-        "product": [
-            "raw-ore-mix",
-            3
+            ["raw-emeralds",1],
+            ["gravel",10],
+            ["raw-ore-mix",3]
         ],
         "weight": 0,
         "cost": 30000,
@@ -2951,8 +2874,8 @@
             ]
         ],
         "product": [
-            "export-asphalt",
-            1
+            ["export-asphalt",
+            1]
         ],
         "weight": 0,
         "cost": 0,
@@ -2970,8 +2893,8 @@
             ]
         ],
         "product": [
-            "export-cardboard",
-            1
+            ["export-cardboard",
+            1]
         ],
         "weight": 0,
         "cost": 0,
@@ -2989,8 +2912,8 @@
             ]
         ],
         "product": [
-            "export-flint",
-            1
+            ["export-flint",
+            1]
         ],
         "weight": 0,
         "cost": 0,
@@ -3008,8 +2931,8 @@
             ]
         ],
         "product": [
-            "export-scrap-plastic",
-            1
+            ["export-scrap-plastic",
+            1]
         ],
         "weight": 0,
         "cost": 0,
@@ -3027,8 +2950,8 @@
             ]
         ],
         "product": [
-            "export-tools",
-            1
+            ["export-tools",
+            1]
         ],
         "weight": 0,
         "cost": 0,
@@ -3046,8 +2969,8 @@
             ]
         ],
         "product": [
-            "export-erasers",
-            1
+            ["export-erasers",
+            1]
         ],
         "weight": 0,
         "cost": 0,
@@ -3065,8 +2988,8 @@
             ]
         ],
         "product": [
-            "mechanic-wrench",
-            1
+            ["mechanic-wrench",
+            1]
         ],
         "weight": 5,
         "cost": 10000,
@@ -3088,8 +3011,8 @@
             ]
         ],
         "product": [
-            "mechanic-hammer",
-            1
+            ["mechanic-hammer",
+            1]
         ],
         "weight": 5,
         "cost": 10000,
@@ -3111,12 +3034,544 @@
             ]
         ],
         "product": [
-            "jumper-cable",
-            1
+            ["jumper-cable",
+            1]
         ],
         "weight": 5,
         "cost": 3000,
         "pays": 0
+    },
+    {
+        "name": "Charge Defib Kit",
+        "key_name": "defib-kit",
+        "category": "defib-kit-charging",
+        "time": 1,
+        "ingredients": [
+            [
+                "empty-defib-kit",
+                1
+            ]
+        ],
+        "product": [
+            ["defib-kit",
+            1]
+        ],
+        "weight": 5,
+        "cost": 5000,
+        "pays": 0
+    },
+    {
+        "name": "Empty Defib Kit",
+        "key_name": "empty-defib-kit",
+        "category": "plastic-molding",
+        "time": 1,
+        "ingredients": [
+            [
+                "scrap-plastic",
+                10
+            ]
+        ],
+        "product": [
+            ["empty-defib-kit",
+            5]
+        ],
+        "weight": 5,
+        "cost": 10000,
+        "pays": 0
+    },
+    {
+        "name": "Fill Empty Pill Box",
+        "key_name": "box-full-pill-capsules",
+        "category": "liquor-ace",
+        "time": 1,
+        "ingredients": [
+            [
+                "box-empty-pill-capsules",
+                1
+            ]
+        ],
+        "product": [
+            ["box-full-pill-capsules",
+            1]
+        ],
+        "weight": 5,
+        "cost": 5000,
+        "pays": 0
+    },
+    {
+        "name": "Empty Pill Capsule",
+        "key_name": "box-empty-pill-capsules",
+        "category": "plastic-molding",
+        "time": 1,
+        "ingredients": [
+            [
+                "scrap-plastic",
+                10
+            ]
+        ],
+        "product": [
+            ["box-empty-pill-capsules",
+            5]
+        ],
+        "weight": 5,
+        "cost": 1000,
+        "pays": 0
+    },
+    {
+        "name": "Vehicle Framework",
+        "key_name": "vehicle-framework",
+        "category": "vehicle-parts",
+        "time": 1,
+        "ingredients": [
+            [
+                "refined-amalgam",
+                25
+            ]
+        ],
+        "product": [
+            ["vehicle-framework",
+            1]
+        ],
+        "weight": 5,
+        "cost": 250000,
+        "pays": 0
+    },
+    {
+        "name": "Export Vehicle Framework",
+        "key_name": "export-vehicle-framework",
+        "category": "ls-port-export",
+        "time": 1,
+        "ingredients": [
+            [
+                "vehicle-framework",
+                1
+            ]
+        ],
+        "product": [
+            ["export-vehicle-framework",
+            1]
+        ],
+        "weight": 5,
+        "cost": 0,
+        "pays": 350000
+    },
+    {
+        "name": "Export Sawdust",
+        "key_name": "export-sawdust",
+        "category": "ls-port-export",
+        "time": 1,
+        "ingredients": [
+            [
+                "sawdust",
+                1
+            ]
+        ],
+        "product": [
+            ["export-sawdust",
+            1]
+        ],
+        "weight": 5,
+        "cost": 0,
+        "pays": 1800
+    },
+    {
+        "name": "Export Ceramic Tiles",
+        "key_name": "export-ceramic-tiles",
+        "category": "ls-port-export",
+        "time": 1,
+        "ingredients": [
+            [
+                "ceramic-tiles",
+                1
+            ]
+        ],
+        "product": [
+            ["export-ceramic-tiles",
+            1]
+        ],
+        "weight": 5,
+        "cost": 0,
+        "pays": 40000
+    },
+    {
+        "name": "Export Computer",
+        "key_name": "export-computer",
+        "category": "ls-port-export",
+        "time": 1,
+        "ingredients": [
+            [
+                "computer",
+                1
+            ]
+        ],
+        "product": [
+            ["export-computer",
+            1]
+        ],
+        "weight": 5,
+        "cost": 0,
+        "pays": 210000
+    },
+    {
+        "name": "Export Acid",
+        "key_name": "export-acid",
+        "category": "ls-port-export",
+        "time": 1,
+        "ingredients": [
+            [
+                "acid",
+                1
+            ]
+        ],
+        "product": [
+            ["export-acid",
+            1]
+        ],
+        "weight": 5,
+        "cost": 0,
+        "pays": 12800
+    },
+    {
+        "name": "Export Aluminium",
+        "key_name": "export-refined-aluminium",
+        "category": "ls-port-export",
+        "time": 1,
+        "ingredients": [
+            [
+                "refined-aluminium",
+                1
+            ]
+        ],
+        "product": [
+            ["export-refined-aluminium",
+            1]
+        ],
+        "weight": 5,
+        "cost": 0,
+        "pays": 8400
+    },
+    {
+        "name": "Export Batteries",
+        "key_name": "export-battery",
+        "category": "ls-port-export",
+        "time": 1,
+        "ingredients": [
+            [
+                "battery",
+                1
+            ]
+        ],
+        "product": [
+            ["export-battery",
+            1]
+        ],
+        "weight": 5,
+        "cost": 0,
+        "pays": 150000
+    },
+    {
+        "name": "Export Copper",
+        "key_name": "export-refined-copper",
+        "category": "ls-port-export",
+        "time": 1,
+        "ingredients": [
+            [
+                "refined-copper",
+                1
+            ]
+        ],
+        "product": [
+            ["export-refined-copper",
+            1]
+        ],
+        "weight": 5,
+        "cost": 0,
+        "pays": 10000
+    },
+    {
+        "name": "Export Planks",
+        "key_name": "export-planks",
+        "category": "ls-port-export",
+        "time": 1,
+        "ingredients": [
+            [
+                "planks",
+                1
+            ]
+        ],
+        "product": [
+            ["export-planks",
+            1]
+        ],
+        "weight": 5,
+        "cost": 0,
+        "pays": 14400
+    },
+    {
+        "name": "Export Bronze Alloy",
+        "key_name": "export-bronze-alloy",
+        "category": "ls-port-export",
+        "time": 1,
+        "ingredients": [
+            [
+                "bronze-alloy",
+                1
+            ]
+        ],
+        "product": [
+            ["export-bronze-alloy",
+            1]
+        ],
+        "weight": 5,
+        "cost": 0,
+        "pays": 32000
+    },
+    {
+        "name": "Export Glass",
+        "key_name": "export-glass",
+        "category": "ls-port-export",
+        "time": 1,
+        "ingredients": [
+            [
+                "glass",
+                1
+            ]
+        ],
+        "product": [
+            ["export-glass",
+            1]
+        ],
+        "weight": 5,
+        "cost": 0,
+        "pays": 10000
+    },
+    {
+        "name": "Export Rubber",
+        "key_name": "export-rubber",
+        "category": "ls-port-export",
+        "time": 1,
+        "ingredients": [
+            [
+                "rubber",
+                1
+            ]
+        ],
+        "product": [
+            ["export-rubber",
+            1]
+        ],
+        "weight": 5,
+        "cost": 0,
+        "pays": 10000
+    },
+    {
+        "name": "Export Tin",
+        "key_name": "export-refined-tin",
+        "category": "ls-port-export",
+        "time": 1,
+        "ingredients": [
+            [
+                "refined-tin",
+                1
+            ]
+        ],
+        "product": [
+            ["export-refined-tin",
+            1]
+        ],
+        "weight": 5,
+        "cost": 0,
+        "pays": 8400
+    },
+    {
+        "name": "Export Zinc",
+        "key_name": "export-zinc",
+        "category": "ls-port-export",
+        "time": 1,
+        "ingredients": [
+            [
+                "refined-zinc",
+                1
+            ]
+        ],
+        "product": [
+            ["export-refined-zinc",
+            1]
+        ],
+        "weight": 5,
+        "cost": 0,
+        "pays": 11600
+    },
+    {
+        "name": "Deliver Amalgam",
+        "key_name": "export-refined-amalgam",
+        "category": "electronics-store",
+        "time": 1,
+        "ingredients": [
+            [
+                "refined-amalgam",
+                1
+            ]
+        ],
+        "product": [
+            ["export-refined-amalgam",
+            1]
+        ],
+        "weight": 5,
+        "cost": 0,
+        "pays": 35000
+    },
+    {
+        "name": "Deliver Circuit Boards",
+        "key_name": "export-circuit-board",
+        "category": "electronics-store",
+        "time": 1,
+        "ingredients": [
+            [
+                "circuit-board",
+                1
+            ]
+        ],
+        "product": [
+            ["export-circuit-board",
+            1]
+        ],
+        "weight": 5,
+        "cost": 0,
+        "pays": 90000
+    },
+    {
+        "name": "Deliver Copper Wire",
+        "key_name": "export-copper-wire",
+        "category": "electronics-store",
+        "time": 1,
+        "ingredients": [
+            [
+                "copper-wire",
+                1
+            ]
+        ],
+        "product": [
+            ["export-copper-wire",
+            1]
+        ],
+        "weight": 5,
+        "cost": 0,
+        "pays": 55000
+    },
+    {
+        "name": "Deliver Fiberglass Spool",
+        "key_name": "export-fiberglass-spool",
+        "category": "electronics-store",
+        "time": 1,
+        "ingredients": [
+            [
+                "fiberglass-spool",
+                1
+            ]
+        ],
+        "product": [
+            ["export-fiberglass-spool",
+            1]
+        ],
+        "weight": 5,
+        "cost": 0,
+        "pays": 60000
+    },
+    {
+        "name": "Deliver Solder",
+        "key_name": "export-solder",
+        "category": "electronics-store",
+        "time": 1,
+        "ingredients": [
+            [
+                "refined-solder",
+                1
+            ]
+        ],
+        "product": [
+            ["export-refined-solder",
+            1]
+        ],
+        "weight": 5,
+        "cost": 0,
+        "pays": 5200
+    },
+    {
+        "name": "Deliver Jewelry",
+        "key_name": "export-jewelry",
+        "category": "jewelry-store",
+        "time": 1,
+        "ingredients": [
+            [
+                "jewelry",
+                1
+            ]
+        ],
+        "product": [
+            ["export-jewelry",
+            1]
+        ],
+        "weight": 5,
+        "cost": 0,
+        "pays": 95000
+    },
+    {
+        "name": "Deliver Raw Emeralds",
+        "key_name": "export-raw-emeralds",
+        "category": "jewelry-store",
+        "time": 1,
+        "ingredients": [
+            [
+                "raw-emeralds",
+                1
+            ]
+        ],
+        "product": [
+            ["export-raw-emeralds",
+            1]
+        ],
+        "weight": 5,
+        "cost": 0,
+        "pays": 25000
+    },
+    {
+        "name": "Deliver Refined Gold",
+        "key_name": "export-refined-gold",
+        "category": "jewelry-store",
+        "time": 1,
+        "ingredients": [
+            [
+                "refined-gold",
+                1
+            ]
+        ],
+        "product": [
+            ["export-refined-gold",
+            1]
+        ],
+        "weight": 5,
+        "cost": 0,
+        "pays": 31000
+    },
+    {
+        "name": "Deliver Food Shipment",
+        "key_name": "export-food-shipment",
+        "category": "harmony-shopping-center",
+        "time": 1,
+        "ingredients": [
+            [
+                "food-shipment",
+                1
+            ]
+        ],
+        "product": [
+            ["export-food-shipment",
+            1]
+        ],
+        "weight": 5,
+        "cost": 0,
+        "pays": 1200
     }
 ],
     "resources": [

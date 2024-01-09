@@ -253,6 +253,10 @@ tr.display-row td {
     padding-right: 20px;
     border-top: 1px solid #666;
 }
+tr.multirow td {
+    border-top:0px;
+    height:31px;
+}
 
 input.overclock {
     width: 4em;

@@ -31,7 +31,7 @@ export function formatSettings() {
         settings += "cp=" + spec.format.countPrecision + "&"
     }
     if (spec.belt.key !== DEFAULT_BELT) {
-        settings += "belt=" + spec.belt.key + "&"
+        settings += "trailer=" + spec.belt.key + "&"
     }
 
     settings += "items="

@@ -46,7 +46,7 @@ export function displayItems(spec, totals, ignore) {
         new Header("Item",1),
         new Header("Weight",1),
         new Header("Amount", 1),
-        new Header("Trip Capacity", 1),
+        new Header("Per Trip", 1),
         new Header("Trips", 1),
         new Header("Total Weight", 1),
         new Header("Cost", 1),
@@ -57,10 +57,10 @@ export function displayItems(spec, totals, ignore) {
     for (let header of headers) {
         totalCols += header.colspan
     }
-    displayedItems = displayedItems.slice(0, totals.topo.length)
-    while (displayedItems.length < totals.topo.length) {
+    displayedItems = [];//displayedItems.slice(0, totals.topo.length)
+    /*while (displayedItems.length < totals.topo.length) {
         displayedItems.push({})
-    }
+    }*/
     let totalAveragePower = zero
     let totalPeakPower = zero
     
@@ -71,47 +71,73 @@ export function displayItems(spec, totals, ignore) {
     let totalAmount = 0
     let totalWeight = 0
     let totalTrips = 0
-
     for (let i = 0; i < totals.topo.length; i++) {
         let recipe = totals.topo[i]
-        let display = displayedItems[i]
-        let rate = totals.rates.get(recipe)
-        let item = recipe.product.item
-        let itemRate = rate.mul(recipe.gives(item))
-        let overclock = spec.getOverclock(recipe)
-        let overclockString = overclock.mul(Rational.from_float(100)).toString()
-        let {average, peak} = spec.getPowerUsage(recipe, rate, totals.topo.length)
-        totalAveragePower = totalAveragePower.add(average)
-        totalPeakPower = totalPeakPower.add(peak)
-        
-        // item data
-        display.item = item
-        display.itemRate = itemRate.toFloat();
-        display.itemWeight = item.weight.toFloat();
-        display.weight = itemRate.mul(item.weight).toFloat()
-        let beltCountExact = spec.getBeltCount(item.weight);
-        let beltCount = beltCountExact.toFloat();
-        display.trips = Math.ceil(beltCount);
-        display.pertrip = spec.getPerTrip(item.weight)
-        display.cost = parseInt(recipe.cost) * rate
-        display.pays = parseInt(recipe.pays) * rate
+        for(let p in recipe.products) {
+            let product = recipe.products[p]
+            let display = {}
+            let rate = totals.rates.get(recipe)
+            let item = product.item
+            let itemRate = rate.mul(recipe.gives(item))
+            let overclock = spec.getOverclock(recipe)
+            let overclockString = overclock.mul(Rational.from_float(100)).toString()
+            let {average, peak} = spec.getPowerUsage(recipe, rate, totals.topo.length)
+            totalAveragePower = totalAveragePower.add(average)
+            totalPeakPower = totalPeakPower.add(peak)
+            
+            // item data
+            display.item = item
+            display.itemRate = itemRate.toFloat();
+            display.itemWeight = item.weight.toFloat();
+            display.weight = itemRate.mul(item.weight).toFloat()
+            let beltCountExact = spec.getBeltCount(itemRate.mul(item.weight));
+            let beltCount = beltCountExact.toFloat();
+            display.trips = Math.ceil(beltCount);
+            display.pertrip = spec.getPerTrip(item.weight)
+            if(recipe.products.length > 1) {
+                var groupWeight = zero
+                var thisRate = zero
+                for(let i of recipe.products) {
+                    if(i.item.key == item.key) {
+                        thisRate = i.amount
+                    }
+                    groupWeight = groupWeight.add(i.item.weight.mul(i.amount))
+                }
+                let groupCapacity = spec.getPerTrip(groupWeight)
+                let beltCountExact = spec.getBeltCount(groupWeight.mul(rate));
+                let beltCount = beltCountExact.toFloat();
+                display.trips = Math.ceil(beltCount);
+                display.pertrip = groupCapacity * thisRate.toFloat()
+            }
+            display.cost = parseInt(recipe.cost) * rate
+            display.pays = parseInt(recipe.pays) * rate
 
-        // totals sum
-        totalCost += display.cost
-        totalRevenue += display.pays
-        totalProfit = totalRevenue - totalCost
-        totalAmount += display.itemRate
-        totalWeight += display.weight
-        totalTrips += display.trips
+            display.multirow = false;
+            if(p > 0) {
+                display.cost = 0
+                display.pays = 0
+                display.trips = 0
+                display.multirow = true
+            }
 
-        display.recipe = recipe
-        display.ignore = ignore.has(recipe)
-        display.rate = rate
-        display.building = spec.getBuilding(recipe)
-        display.count = spec.getCount(recipe, rate)
-        display.overclock = overclockString
-        display.average = average
-        display.peak = peak
+            // totals sum
+            totalCost += display.cost
+            totalRevenue += display.pays
+            totalProfit = totalRevenue - totalCost
+            totalAmount += display.itemRate
+            totalWeight += display.weight
+            totalTrips += display.trips
+
+            display.recipe = recipe
+            display.ignore = ignore.has(recipe)
+            display.rate = rate
+            display.building = spec.getBuilding(recipe)
+            display.count = spec.getCount(recipe, rate)
+            display.overclock = overclockString
+            display.average = average
+            display.peak = peak
+            displayedItems.push(display)
+        }
     }
 
     let table = d3.select("table#totals")
@@ -124,9 +150,9 @@ export function displayItems(spec, totals, ignore) {
         .attr("colspan", d => d.colspan)
 
     // create missing rows
-    let rows = table.selectAll("tbody").selectAll("tr")
-        .data(displayedItems)
-    rows.exit().remove()
+    table.selectAll("tbody").selectAll("tr").remove()
+    let rows = table.selectAll("tbody").selectAll("tr").data(displayedItems)
+    //rows.exit().remove()
     let row = rows.enter()
         .append("tr")
             .classed("display-row", true)
@@ -180,15 +206,10 @@ export function displayItems(spec, totals, ignore) {
         .append("tt")
             .classed("revenue", true)
 
-
     // buildings
     let buildingCell = row.append("td")
         .classed("pad building", true)
-    buildingCell.append("img")
-        .classed("icon building-icon", true)
-        .attr("width", 32)
-        .attr("height", 32)
-    buildingCell.append(d => new Text(""))
+
     row.append("td")
         .classed("left-align building", true)
         .append("tt")
@@ -221,6 +242,9 @@ export function displayItems(spec, totals, ignore) {
     // update rows
     row = table.select("tbody").selectAll("tr")
         .classed("nobuilding", d => d.building === null)
+
+    row.filter(d => d.multirow).classed("multirow",true)
+
     row.selectAll("img.item-icon")
         .classed("ignore", d => d.ignore)
         .attr("src", d => d.item.iconPath())
@@ -236,28 +260,36 @@ export function displayItems(spec, totals, ignore) {
         .html(d => d.itemWeight > 0 ? `${d.itemWeight.toLocaleString()} <small>kg</small>` : ``)
 
     row.selectAll("tt.weight")
-        .html(d => `${d.weight.toLocaleString()} <small>kg</small>`)
+        .html(d => d.weight >= 1000 ? `${Math.round(d.weight/1000).toLocaleString()} <small>t</small>` : `${(d.weight).toLocaleString()} <small>kg</small>`)
 
-    row.selectAll("tt.trips")
-        .html(d => `${d.trips}<small>x</small>`)
+    row.selectAll("tt.trips").filter(d => !d.multirow)
+        .html(d => `${d.trips.toLocaleString()}<small>x</small>`)
 
     row.selectAll("tt.per-trip")
         .html(d => d.pertrip > 0 ? `${d.pertrip.toLocaleString()}<small>x</small>` : ``)
 
-    row.selectAll("tt.cost")
+    row.selectAll("tt.cost").filter(d => !d.multirow)
         .text(d => d.cost > 0 ? `$ ${d.cost.toLocaleString()}` : `-`)
 
-    row.selectAll("tt.revenue")
+    row.selectAll("tt.revenue").filter(d => !d.multirow)
         .text(d => d.pays > 0 ? `$ ${d.pays.toLocaleString() }` : `-`)
 
 
 
 
-    let buildingRow = row.filter(d => d.building !== null)
+    let buildingRow = buildingCell.filter(d => d.building !== null && !d.multirow)
+    buildingRow.append("img")
+        .classed("icon building-icon", true)
+        .attr("width", 32)
+        .attr("height", 32)
+    buildingRow.append(d => new Text(""))
+
+            
     buildingRow.selectAll("img.building-icon")
         .attr("src", d => d.building.iconPath())
         .attr("title", d => d.building.name)
-    buildingRow.selectAll("tt.source")
+
+    row.selectAll("tt.source").filter(d => !d.multirow)
         .text(d => d.building.name)
 
 
@@ -268,8 +300,8 @@ export function displayItems(spec, totals, ignore) {
         .text(d => spec.format.alignCount(d.average) + " MW")
 
     d3.select("tt#total_amount").html(`${totalAmount.toLocaleString()}<small>x</small>`)
-    d3.select("tt#total_weight").html(`${totalWeight.toLocaleString()} <small>kg</small>`)
-    d3.select("tt#total_trips").html(`${totalTrips}<small>x</small>`)
+    d3.select("tt#total_weight").html(totalWeight >= 1000 ? `${Math.round(totalWeight/1000).toLocaleString()} <small>t</small>` : `${(totalWeight).toLocaleString()} <small>kg</small>`)
+    //d3.select("tt#total_trips").html(`${totalTrips}<small>x</small>`)
     d3.select("tt#total_cost").text(totalCost > 0 ? `$ ${totalCost.toLocaleString()}` : `-`)
     d3.select("tt#total_revenue").text(totalRevenue > 0 ? `$ ${totalRevenue.toLocaleString() }` : `-`)
     d3.select("tt#total_profit").text(`$ ${totalProfit.toLocaleString()}`)

@@ -143,3 +143,6 @@
 #alt_recipe_settings {
     max-width:400px;
 }
+#alt_recipe_settings .dropdownWrapper .dropdown {
+    /*border:0px;*/
+}

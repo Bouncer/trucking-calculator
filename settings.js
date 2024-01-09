@@ -36,15 +36,6 @@ function renderTab(settings) {
     clickTab(tabName)
 }
 
-export function isExportable(item) {
-    let items = ["concrete"]
-    if(items.includes(item)) {
-        return true 
-    } else {
-        return false
-    }
-}
-
 // build targets
 
 function renderTargets(settings) {
@@ -166,10 +157,13 @@ function beltHandler(belt) {
 
 function renderBelts(settings) {
     let beltKey = DEFAULT_BELT
-    if (settings.has("belt")) {
-        beltKey = settings.get("belt")
+    if (settings.has("trailer")) {
+        beltKey = settings.get("trailer")
+        spec.belt = spec.belts.get(beltKey)
+        beltHandler(spec.belt)
+    } else {
+        spec.belt = spec.belts.get(beltKey)
     }
-    spec.belt = spec.belts.get(beltKey)
 
     let belts = []
     for (let [beltKey, belt] of spec.belts) {
@@ -224,7 +218,7 @@ function renderAltRecipes(settings) {
     let items = []
     for (let tier of spec.itemTiers) {
         for (let item of tier) {
-            if (item.recipes.length > 1) {
+            if (item.recipes.length > 1 && item.key != 'scrap-plastic') {
                 items.push(item)
             }
         }
@@ -232,15 +226,14 @@ function renderAltRecipes(settings) {
 
     let div = d3.select("#alt_recipe_settings")
     div.selectAll("*").remove()
-
     let dropdowns = div.selectAll("div")
         .data(items)
         .enter().append("div").classed("alt-recipe-button", true)
     let recipeLabel = dropdown(
         dropdowns,
         d => d.recipes,
-        d => `altrecipe-${d.product.item.key}`,
-        d => spec.getRecipe(d.product.item) === d,
+        d => `altrecipe-${d.products[0].item.key}`,
+        d => spec.getRecipe(d.products[0].item) === d,
         changeAltRecipe,
     )
 
@@ -277,7 +270,7 @@ function renderAltRecipes(settings) {
     let productSpan = recipebox.append("span")
         .classed("alt-ingredients", true)
         .selectAll("span")
-        .data(d => [d.product])
+        .data(d => d.products)
         .join("div")
     renderIngredient(productSpan)
 
