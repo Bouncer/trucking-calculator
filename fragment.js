@@ -67,7 +67,9 @@ export function formatSettings() {
 
     let alt = []
     for (let [item, recipe] of spec.altRecipes) {
-        alt.push(recipe.key)
+        if(!alt.includes(recipe.key)) {
+            alt.push(recipe.key)
+        }
     }
     if (alt.length > 0) {
         settings += "&alt=" + alt.join(",")

@@ -140,11 +140,13 @@ class FactorySpecification {
         }
     }
     setRecipe(recipe) {
-        let item = recipe.product.item
-        if (recipe === item.recipes[0]) {
-            this.altRecipes.delete(item)
-        } else {
-            this.altRecipes.set(item, recipe)
+        for(let i of recipe.products) {
+            this.altRecipes.set(i.item, recipe)
+        }
+    }
+    removeRecipe(recipe) {
+        for(let i of recipe.products) {
+            this.altRecipes.remove(i.item, recipe)
         }
     }
     getBuilding(recipe) {
