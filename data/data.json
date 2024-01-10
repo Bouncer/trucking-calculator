@@ -920,7 +920,7 @@
         "key_name": "rubber",
         "tier": "7",
         "category": "petrochem",
-        "weight": "25",
+        "weight": "8",
         "stack_size": "360"
     },
     {
@@ -928,7 +928,7 @@
         "key_name": "export-rubber",
         "tier": "-1",
         "category": "petrochem",
-        "weight": "25",
+        "weight": "8",
         "stack_size": "360"
     },
     {
