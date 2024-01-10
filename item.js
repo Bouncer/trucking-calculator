@@ -43,7 +43,7 @@ export class Item {
             return totals
         }
         for (let ing of recipe.ingredients) {
-            let subtotals = ing.item.produce(spec, rate.mul(ing.amount), ignore, totals.itemRates, this.key)
+            let subtotals = ing.item.produce(spec, rate.mul(ing.amount), ignore, totals.itemRates, this.key+"/"+parent)
             totals.combine(subtotals)
         }
         return totals
