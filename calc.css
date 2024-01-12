@@ -234,6 +234,10 @@ text.item-location {
     /*font-style: italic;*/
     font-size: 11px;
 }
+text.item-ingredient {
+    /*font-style: italic;*/
+    font-size: 11px;
+}
 /* items tab */
 #totals {
     border-collapse: collapse;

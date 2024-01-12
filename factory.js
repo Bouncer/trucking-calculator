@@ -68,6 +68,8 @@ class FactorySpecification {
             "truck": 0,
             "postop": 0,
             "trailer": 0,
+            "totaltrailer": 0,
+            "totalinv": 0,
             "total": Rational.from_float(0)
         }
 
@@ -202,6 +204,12 @@ class FactorySpecification {
     getBeltCount(rate) {
         return rate.div(Rational.from_float(this.capacity.total))
     }
+    getTrailerBeltCount(rate) {
+        return rate.div(Rational.from_float(this.capacity.totaltrailer))
+    }
+    getInvBeltCount(rate) {
+        return rate.div(Rational.from_float(this.capacity.totalinv))
+    }
     getPerTrip(weight) {
         return Math.floor(this.capacity.total / weight.toFloat());
     }
@@ -275,7 +283,8 @@ class FactorySpecification {
     }
     updateCapacity() {
         this.capacity.total = Math.round((this.capacity.strength * 10 * (1 + this.capacity.strengthperk + this.capacity.premium)) + (this.capacity.truck * (1 + this.capacity.postop + this.capacity.premium)) + (this.capacity.trailer * (1 + this.capacity.premium + this.capacity.postop)))
-        
+        this.capacity.totaltrailer = (this.capacity.trailer * (1 + this.capacity.premium + this.capacity.postop))
+        this.capacity.totalinv = (this.capacity.strength * 10 * (1 + this.capacity.strengthperk + this.capacity.premium)) + (this.capacity.truck * (1 + this.capacity.postop + this.capacity.premium))
         localStorage.setItem("capacity", JSON.stringify(this.capacity));
         
         let form = d3.select("#capacity").property("value", this.capacity.total)

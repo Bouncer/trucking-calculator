@@ -85,6 +85,33 @@ function makeGraph(totals, targets, ignore) {
     for (let [recipe, rate] of totals.rates) {
         let building = spec.getBuilding(recipe)
         let count = spec.getCount(recipe, rate)
+        let pertrip = 0
+        var weight = zero
+        for(let i of recipe.ingredients) {
+            weight = weight.add(i.item.weight.mul(i.amount))
+        }
+        // sources
+        if(recipe.ingredients.length === 0) {
+            for(let i of recipe.products) {
+                weight = weight.add(i.item.weight.mul(i.amount))
+            }
+        }
+        let groupCapacity = spec.getPerTrip(weight)
+        let beltCountExact = spec.getBeltCount(weight.mul(rate));
+        let beltCount = beltCountExact.toFloat();
+        let trips = Math.ceil(beltCount);
+        for(let i of recipe.ingredients) {
+            i.pertrip = Math.min(rate.mul(i.amount).toFloat(),groupCapacity * i.amount.toFloat())
+        }
+        if(recipe.ingredients.length === 0) {
+            pertrip = Math.min(rate.mul(recipe.products[0].amount).toFloat(),groupCapacity * recipe.products[0].amount.toFloat())
+        }
+
+        let textoffset = recipe.ingredients.length;
+        if(trips < 2) {
+            textoffset = 0;
+        }
+
         let node = {
             "name": recipe.name,
             "ingredients": recipe.ingredients,
@@ -92,6 +119,10 @@ function makeGraph(totals, targets, ignore) {
             "building": building,
             "count": count,
             "rate": rate,
+            "weight": weight,
+            "textoffset": textoffset,
+            "trips": trips,
+            "pertrip": pertrip
         }
         nodes.push(node)
         nodeMap.set(recipe.name, node)
@@ -280,6 +311,16 @@ export function renderTotals(totals, targets, ignore) {
         .extent([[10, 10], [width + 10, height + 20]])
     let {nodes, links} = sankey(data)
 
+    for(let node in nodes) {
+        for(let ing in nodes[node].ingredients) {
+            nodes[node].ingredients[ing].textoffset = nodes[node].textoffset
+            nodes[node].ingredients[ing].x0 = nodes[node].x0
+            nodes[node].ingredients[ing].x1 = nodes[node].x1
+            nodes[node].ingredients[ing].y0 = nodes[node].y0 + (ing * 10) + 10
+            nodes[node].ingredients[ing].y1 = nodes[node].y1 + (ing * 10) + 10
+        }
+    }
+    
     // Node rects
     let rects = svg.append("g")
         .classed("nodes", true)
@@ -299,25 +340,43 @@ export function renderTotals(totals, targets, ignore) {
         .append("image")
             .classed("ignore", d => ignore.has(d.recipe))
             .attr("x", d => d.x0 + 2)
-            .attr("y", d => ((d.y1 - d.y0 > minNodeHeight) ? (d.y0 + d.y1) / 2 - 8 : d.y0 + 4))
+            .attr("y", d => ((d.y1 - d.y0 > minNodeHeight) ? (d.y0 + d.y1) / 2 - 8 + (d.textoffset * -10) : d.y0 + 4))
             .attr("height", iconSize)
             .attr("width", iconSize)
             .attr("xlink:href", d => (d.count.isZero() ? d.count : `${d.building.iconPath()}`))
     rects.filter(d => d.name != "output").append("text")
         .attr("x", d => d.x0 + iconSize + 4)
-        .attr("y", d => (d.y1 - d.y0 > minNodeHeight) ? (d.y0 + d.y1) / 2 - 6 : d.y0 + 8)
+        .attr("y", d => (d.y1 - d.y0 > minNodeHeight) ? (d.y0 + d.y1) / 2 - 6 + (d.textoffset * -10) : d.y0 + 8)
         .attr("dy", "0.35em")
         .attr("text-anchor", "start")
         .attr("class", "item-name")
-        .text(d => (d.count.isZero() ? d.count : `${d.name}`))
+        .text(d => (d.count.isZero() ? d.count : `${d.rate.toFloat().toLocaleString()}x ${d.name}`))
     rects.append("text")
                 .attr("x", d => d.x0 + iconSize + 4)
-                .attr("y", d => ((d.y1 - d.y0 > minNodeHeight) ? (d.y0 + d.y1) / 2 + 6 : d.y0 + 20))
+                .attr("y", d => ((d.y1 - d.y0 > minNodeHeight) ? (d.y0 + d.y1) / 2 + 6 + (d.textoffset * -10) : d.y0 + 20))
                 .attr("dy", "0.35em")
                 .attr("text-anchor", "start")
                 .attr("class", "item-location")
                 .text(d => (d.count.isZero() ? d.count : `${d.building.name}`))
+    rects.filter(d => d.trips > 1)
+        .append("text")
+        .attr("x", d => d.x0 + iconSize + 4)
+        .attr("y", d => ((d.y1 - d.y0 > minNodeHeight) ? (d.y0 + d.y1) / 2 + 18 + (d.textoffset * -10) : d.y0 + 40))
+        .attr("dy", "0.35em")
+        .attr("text-anchor", "start")
+        .attr("class", "item-ingredient")
+        .text(d => `${d.trips} trips of max` + (d.pertrip > 0 ? ` ${d.pertrip.toLocaleString()}x` : `:`))
+    rects.filter(d => d.trips > 1).append("g").selectAll("text").data(d => d.ingredients).join("text")
+            .attr("x", d => d.x0 + iconSize + 4)
+            .attr("y", d => ((d.y1 - d.y0 > minNodeHeight) ? (d.y0 + d.y1) / 2 + 20 + (d.textoffset * -10) : d.y0 + 40))
+            .attr("dy", "0.35em")
+            .attr("class", "item-ingredient")
+            .attr("text-anchor", "start")
+            .text(d => `${d.pertrip.toLocaleString()}x ${d.item.name}`)
+        
+
         //.text(nodeText)
+
 
     // Link paths
     let link = svg.append("g")
@@ -351,7 +410,8 @@ export function renderTotals(totals, targets, ignore) {
         .attr("y", d => d.y0)
         .attr("dy", "0.35em")
         .attr("text-anchor", "start")
-        .text(d => d.name + ' ' + d.rate.ceil().toFloat().toLocaleString() + 'x, ' + (d.weight > 1000 ? Math.round(d.weight.ceil().toFloat()/1000).toLocaleString() + 't' : d.weight.ceil().toFloat().toLocaleString() + 'kg') + (d.trips > 1 ? ', ' + d.trips + ' trips' : ''))
+        .attr("class", "item-ingredient")
+        .text(d => d.name + ' ' + d.rate.ceil().toFloat().toLocaleString() + 'x, ' + (d.weight >= 1000 ? Math.round(d.weight.ceil().toFloat()/1000).toLocaleString() + 't' : d.weight.ceil().toFloat().toLocaleString() + 'kg'))
     /*link.filter(d => d.trips > 1)
         .append("text")
             .attr("x", d => d.source.x1 + 6)
