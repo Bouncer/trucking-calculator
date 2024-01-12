@@ -54,6 +54,7 @@ class FactorySpecification {
 
         // Map item to recipe
         this.altRecipes = new Map()
+        this.altRecipeList = {}
 
         this.belt = null
 
@@ -140,13 +141,17 @@ class FactorySpecification {
         }
     }
     setRecipe(recipe) {
-        for(let i of recipe.products) {
-            this.altRecipes.set(i.item, recipe)
-        }
-    }
-    removeRecipe(recipe) {
-        for(let i of recipe.products) {
-            this.altRecipes.remove(i.item, recipe)
+        // remove
+        if(recipe.key in this.altRecipeList) {
+            for(let i of recipe.products) {
+                this.altRecipes.delete(i.item, recipe)
+            }
+            delete this.altRecipeList[recipe.key]
+        } else {
+            for(let i of recipe.products) {
+                this.altRecipes.set(i.item, recipe)
+            }
+            this.altRecipeList[recipe.key] = recipe
         }
     }
     getBuilding(recipe) {

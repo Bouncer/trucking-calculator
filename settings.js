@@ -16,6 +16,7 @@ import { dropdown } from "./dropdown.js"
 import { DEFAULT_TAB, clickTab } from "./events.js"
 import { spec, resourcePurities, DEFAULT_BELT } from "./factory.js"
 import { Rational } from "./rational.js"
+import { colors } from "./colors.js"
 
 // There are several things going on with this control flow. Settings should
 // work like this:
@@ -27,6 +28,23 @@ import { Rational } from "./rational.js"
 // Remember to add the setting to fragment.js, too!
 
 // tab
+
+const colorList = [
+    colors.Red[700], // base
+    colors.Blue[700], // foundry
+    colors.Purple[800], // factory
+    colors.Green[700], // sorting
+    colors.Yellow[800], // filtering
+    colors.Brown[600], // quarry
+    colors.Orange[700], // sawmill
+    colors.Cyan[700], // treated water
+    colors.Pink[700], // house
+    colors["Deep Purple"][700], // illegal
+    colors["Blue Grey"][700], // oil
+    colors["Light Green"][700], // food
+    colors.Orange[700], // logs
+    colors.Cyan[800], // water
+]
 
 function renderTab(settings) {
     let tabName = DEFAULT_TAB
@@ -208,48 +226,90 @@ function renderIngredient(ingSpan) {
 function renderAltRecipes(settings) {
     spec.altRecipes = new Map()
     if (settings.has("alt")) {
-        let alt = settings.get("alt").split(",")
-        for (let recipeKey of alt) {
-            let recipe = spec.recipes.get(recipeKey)
-            spec.setRecipe(recipe)
+        if(settings.get("alt").length > 0) {
+            let alt = settings.get("alt").split(",")
+            for (let recipeKey of alt) {
+                let recipe = spec.recipes.get(recipeKey)
+                spec.setRecipe(recipe)
+            }
         }
     }
 
-    let items = []
+
+    // get all alt recipes and group by building
+    let buildingAltRecipes = {}
     for (let tier of spec.itemTiers) {
         for (let item of tier) {
-            if (item.recipes.length > 1 && item.key != 'scrap-plastic') {
-                items.push(item)
+            if (item.recipes.length > 1) {
+                for(let recipe of item.recipes) {
+                    let building = spec.buildings.get(recipe.category)[0]
+                    recipe.color = building.color
+
+                    if(recipe.key == "flint") {
+                        recipe.category = "deep-quarry"
+                        building = spec.buildings.get(recipe.category)[0]
+                    } else if(recipe.key == "substitute-gold") {
+                        recipe.category = "sorting-facility"
+                        building = spec.buildings.get(recipe.category)[0]
+                    }
+
+                    if(!(recipe.category in buildingAltRecipes)) {
+                        buildingAltRecipes[recipe.category] = {
+                            'building': building,
+                            'recipes': []
+                        }
+                    }
+                    if(!buildingAltRecipes[recipe.category]['recipes'].includes(recipe)) {
+                        buildingAltRecipes[recipe.category]['recipes'].push(recipe)
+                    }
+                }
             }
         }
     }
 
     let div = d3.select("#alt_recipe_settings")
     div.selectAll("*").remove()
-    let dropdowns = div.selectAll("div")
-        .data(items)
-        .enter().append("div").classed("alt-recipe-button", true)
-    let recipeLabel = dropdown(
-        dropdowns,
-        d => d.recipes,
-        d => `altrecipe-${d.products[0].item.key}`,
-        d => spec.getRecipe(d.products[0].item) === d,
-        changeAltRecipe,
-    )
+    let buildings = div.selectAll("div")
+        .data(Object.values(buildingAltRecipes))
+        .join("div")
+    var locationbox = buildings
+        .attr('class', d => 'alt-location-' + d.building.key)
+        .append('div')
+    /*
+        .classed("alt-recipe-location", true)
+    locationbox.append("img")
+            .attr("src", d => d.building.iconPath())
+            .attr("title", d => d.building.name)
+    locationbox.append("span")
+            .text(d => d.building.name)
+    */
+    var recipeboxlist = buildings.append("div")
+        .attr('class','alt-recipe-list')
+        .selectAll("div")
+        .data(d => d.recipes)
+        .join('div')
 
-    dropdowns.selectAll(".dropdown").selectAll("div").classed('alt-recipe-label',true)
+    let recipelabel = recipeboxlist.classed("alt-recipe-label",true)
+        .attr("style", d => ("background-color: " + d3.rgb(colorList[d.color]).darker())+ "; border: 1px solid " + d3.color(colorList[d.color]))
+        
+    recipelabel.append("input")
+        .on("change", function(d, i, nodes) {
+            changeAltRecipe(d)
+        })
+        .attr("id", d => "input-" + d.key)
+        .attr("name", d => d.key)
+        .attr("type", "checkbox")
+            .filter(d => d.key in spec.altRecipeList)
+            .property("checked", true)
 
-    recipeLabel.append("div")
+    let labelbox = recipelabel.append("label")
+        .attr("for", d => "input-" + d.key)
+
+    labelbox.append("div")
         .classed("alt-recipe-title", true)
         .text(d => d.name)
-        .filter((d, i) => i > 0)
-            .classed('is-alt',true)
-    
-    let recipebox = recipeLabel.append("div").classed("alt-recipe-box",true)
-
-    recipebox.append("div")
-        .classed("alt-recipe-cost", true)
-        .text(d => d.cost > 0 ? `$ ${d.cost.toLocaleString()}` : `Free`)
+    let recipebox = labelbox.append("div")
+        .classed("alt-recipe-box", true)
     
     var locationbox = recipebox.append("div")
         .classed("alt-recipe-location", true)
@@ -258,6 +318,11 @@ function renderAltRecipes(settings) {
         .attr("title", d => spec.buildings.get(d.category)[0].name)
     locationbox.append("span")
         .text(d => spec.buildings.get(d.category)[0].name)
+
+    recipebox.append("div")
+        .classed("alt-recipe-cost", true)
+        .text(d => d.cost > 0 ? `$ ${d.cost.toLocaleString()}` : `Free`)
+
     let ingredientSpan = recipebox.append("span")
         .classed("alt-ingredients", true)
         .selectAll("span")
@@ -274,6 +339,7 @@ function renderAltRecipes(settings) {
         .join("div")
     renderIngredient(productSpan)
 
+    buildings.append('hr')
 }
 
 // miners

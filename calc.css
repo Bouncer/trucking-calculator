@@ -104,9 +104,11 @@ tr.setting-section td hr {
 }
 tr.setting-row td:first-child {
     padding-left: 3em;
+    padding-right:1em;
 }
 td.setting-label {
     text-align: right;
+    max-width: 40px;
 }
 div#resource_settings, div#alt_recipe_settings {
     padding-left: 3em;
@@ -127,11 +129,13 @@ input.prec {
     cursor: pointer;
     background: var(--light);
     border-radius: 4px;
-    width: 115px;
-    height: 26;
+    width: 80px;
+    height: 24px;
     display: inline-block;
     margin: 2px;
     padding: 2px;
+    text-align:center;
+    padding-top:10px;
 }
 #belt_selector input[type="radio"] + label:hover {
     background: var(--bright);

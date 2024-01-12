@@ -66,9 +66,9 @@ export function formatSettings() {
     }
 
     let alt = []
-    for (let [item, recipe] of spec.altRecipes) {
-        if(!alt.includes(recipe.key)) {
-            alt.push(recipe.key)
+    for (let recipe in spec.altRecipeList) {
+        if(!alt.includes(recipe)) {
+            alt.push(recipe)
         }
     }
     if (alt.length > 0) {

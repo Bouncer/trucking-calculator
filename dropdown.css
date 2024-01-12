@@ -83,9 +83,6 @@
     display: inline-block;
     pointer-events: none;
 }
-#alt_recipe_settings .dropdownWrapper:not(.open) .dropdown input[type="radio"]:checked + label .alt-recipe-box {
-    display:none;
-}
 .dropdownWrapper.open .dropdown input[type="radio"]:checked + label {
     background-color: var(--light);
     pointer-events: auto;
@@ -96,15 +93,34 @@
 .menu-item {
     padding: 2px;
 }
+#alt_recipe_settings {
+    margin-top:20px;
+}
 .alt-recipe-label {
-    float:left;
+    display:inline-block;
+    margin-right:10px;
+    margin-bottom:10px;
+    border-radius: 5px;
+    border-color: var(--accent);
+    z-index: 10;
+    border: 2px solid var(--light);
+    border-radius: 5px;
+    background-color: var(--dark);
+    vertical-align: top;
 }
 .alt-recipe-label label {
-    padding:10px;
+    padding:10px 25px 0px 10px;
+    border-radius: 5px;
+    display:inline-block;
+    cursor: pointer;
+    margin:1px;
 }
 .alt-recipe-box {
-    margin-top:10px;
+    margin-top:2px;
     font-size:14px;
+}
+.alt-recipe-label input {
+    display:none;
 }
 .alt-recipe-title {
     font-weight: bold;
@@ -112,11 +128,15 @@
 .alt-ingredients {
     display:inline-block;
     vertical-align: middle;
-    margin-top:6px;
+    margin-bottom:6px;
 }
 
 .alt-ingredients .ingredient {
-    margin-bottom:4px;
+    margin-bottom:2px;
+}
+.alt-recipe-cost {
+    margin-top:2px;
+    margin-bottom:8px;   
 }
 
 .alt-recipe-location {
@@ -129,7 +149,7 @@
     margin-top: 5px;
 }
 
-#alt_recipe_settings .dropdownWrapper.open .dropdown input[type="radio"] + label img {
+.alt-recipe-location  img {
     width:20px;
     height:20px;
     float:left;
@@ -140,9 +160,20 @@
 .alt-recipe-button {
     float:left;
 }
-#alt_recipe_settings {
-    max-width:400px;
+.alt-recipe-list {
+    margin-bottom:0px;
 }
-#alt_recipe_settings .dropdownWrapper .dropdown {
-    /*border:0px;*/
+.alt-recipe-box .arrow {
+    display:inline-block;
+    padding: 0px 4px;
+    margin-bottom:12px;
+    vertical-align:middle;
+}
+.alt-recipe-label :not(input[type="checkbox"]:checked) + label{
+    background-color:#000;
+    border: 1px solid #CCC;
+    margin:0px;
+}
+#alt_recipe_settings hr {
+    margin-top: 0px;
 }
