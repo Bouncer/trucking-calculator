@@ -299,8 +299,8 @@ export function renderTotals(totals, targets, ignore) {
 
     let svg = d3.select("svg#graph")
         .attr("viewBox", `0,0,${width+20},${height+50}`)
-        .style("width", width+20)
-        .style("height", height+50)
+        .style("width", `${width+20}px`)
+        .style("height", `${height+50}px`)
 
     svg.selectAll("g").remove()
 
