@@ -245,6 +245,8 @@ function renderAltRecipes(settings) {
                     let building = spec.buildings.get(recipe.category)[0]
                     recipe.color = building.color
 
+                    /*
+                    // this breaks stuff
                     if(recipe.key == "flint") {
                         recipe.category = "deep-quarry"
                         building = spec.buildings.get(recipe.category)[0]
@@ -252,6 +254,7 @@ function renderAltRecipes(settings) {
                         recipe.category = "sorting-facility"
                         building = spec.buildings.get(recipe.category)[0]
                     }
+                    */
 
                     if(!(recipe.category in buildingAltRecipes)) {
                         buildingAltRecipes[recipe.category] = {
