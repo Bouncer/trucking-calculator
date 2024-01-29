@@ -69,12 +69,15 @@ export function changePerk(event) {
     spec.capacity.fixed = false
 
     if(event.target.value == "strength") {
+        spec.capacity.perk = "strength"
         spec.capacity.strengthperk = 1; 
         spec.capacity.postop = 0; 
     } else if(event.target.value == "postop") {
+        spec.capacity.perk = "postop"
         spec.capacity.strengthperk = 0;
         spec.capacity.postop = 0.15; 
     } else {
+        spec.capacity.perk = "none"
         spec.capacity.strengthperk = 0;
         spec.capacity.postop = 0;
     }

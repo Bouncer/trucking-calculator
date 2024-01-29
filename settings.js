@@ -166,7 +166,7 @@ function renderPrecisions(settings) {
 // belt
 
 function beltHandler(belt) {
-    spec.belt = belt
+    spec.capacity.belt = belt
     spec.capacity.fixed = false
     spec.capacity.trailer = belt.rate.toFloat()
     //spec.updateCapacity()
@@ -174,14 +174,6 @@ function beltHandler(belt) {
 }
 
 function renderBelts(settings) {
-    let beltKey = DEFAULT_BELT
-    if (settings.has("trailer")) {
-        beltKey = settings.get("trailer")
-        spec.belt = spec.belts.get(beltKey)
-        beltHandler(spec.belt)
-    } else {
-        spec.belt = spec.belts.get(beltKey)
-    }
 
     let belts = []
     for (let [beltKey, belt] of spec.belts) {
@@ -193,14 +185,14 @@ function renderBelts(settings) {
         .data(belts)
         .join("span")
     beltOption.append("input")
-        .attr("id", d => "belt." + d.key)
+        .attr("id", d => "trailer-" + d.key)
         .attr("type", "radio")
         .attr("name", "belt")
         .attr("value", d => d.key)
-        .attr("checked", d => d === spec.belt ? "" : null)
+        //.attr("checked", d => d === spec.belt ? "" : null)
         .on("change", beltHandler)
     beltOption.append("label")
-        .attr("for", d => "belt." + d.key)
+        .attr("for", d => "trailer-" + d.key)
 
 //        .append("img")
             .classed("icon", true)
@@ -347,6 +339,68 @@ function renderAltRecipes(settings) {
 
 // miners
 
+function renderConfiguration(settings) {
+
+    // load url settings or cache?
+    var loadCache = (spec.cache && (settings.size == 0 || (settings.size == 1 && settings.has("tab"))))
+    if(settings.has("strength")) {
+        d3.select("#strength").property("value", settings.get("strength"))
+        spec.capacity.strength = parseInt(settings.get("strength"))
+    } else if(loadCache) {
+        d3.select("#strength").property("value",spec.cache.strength)
+        spec.capacity.strength = spec.cache.strength
+    }
+
+    if(settings.has("truck") || (loadCache && spec.cache.truck == 6900)) {
+        d3.select("#truck-mk15").property("checked",true)
+        spec.capacity.truck = 6900
+    } else {
+        d3.select("#truck-none").property("checked",true)
+        spec.capacity.truck = 0
+    }
+
+    let beltKey = DEFAULT_BELT
+    if(settings.has("trailer")) {
+        d3.select("#trailer-"+settings.get("trailer")).property("checked",true)
+        beltKey = settings.get("trailer")
+    } else if(loadCache) {
+        d3.select("#trailer-"+spec.cache.belt.key).property("checked",true)
+        beltKey = spec.cache.belt.key
+    } else {
+        d3.select("#trailer-mk14").property("checked",true)
+    }
+    spec.capacity.belt = spec.belts.get(beltKey)
+    beltHandler(spec.capacity.belt)
+
+    if(settings.has("premium") || (loadCache && spec.cache.premium === 0)) {
+        d3.select("#premium").property("checked",false)
+        spec.capacity.premium = 0
+    } else {
+        d3.select("#premium").property("checked",true)
+        spec.capacity.premium = 0.15
+    }
+
+    if(settings.get("perk") == "strength" || (loadCache && spec.cache.perk == "strength")) {
+        d3.select("#perk-strength").property("checked",true)
+        spec.capacity.perk = "strength"
+        spec.capacity.strengthperk = 1; 
+        spec.capacity.postop = 0; 
+    } else if(settings.get("perk") == "postop" || (loadCache && spec.cache.perk == "postop")) {
+        d3.select("#perk-postop").property("checked",true)
+        spec.capacity.perk = "postop"
+        spec.capacity.strengthperk = 0;
+        spec.capacity.postop = 0.15; 
+    } else {
+        d3.select("#perk-none").property("checked",true)
+        spec.capacity.perk = "none"
+        spec.capacity.strengthperk = 0;
+        spec.capacity.postop = 0;
+    }
+    
+    spec.updateSolution()
+
+}
+
 function mineHandler(d) {
     spec.setMiner(d.recipe, d.miner, d.purity)
     spec.updateSolution()
@@ -449,5 +503,6 @@ export function renderSettings(settings) {
     renderBelts(settings)
     renderAltRecipes(settings)
     renderResources(settings)
+    renderConfiguration(settings)
     renderTab(settings)
 }

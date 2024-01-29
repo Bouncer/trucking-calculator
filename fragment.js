@@ -30,8 +30,20 @@ export function formatSettings() {
     if (spec.format.countPrecision !== DEFAULT_COUNT_PRECISION) {
         settings += "cp=" + spec.format.countPrecision + "&"
     }
-    if (spec.belt.key !== DEFAULT_BELT) {
-        settings += "trailer=" + spec.belt.key + "&"
+    if (spec.capacity.truck !== 0) {
+        settings += "truck=" + spec.capacity.truck + "&"
+    }
+    if (spec.capacity.strength !== 30) {
+        settings += "strength=" + spec.capacity.strength + "&"
+    }
+    if (spec.capacity.belt.key !== DEFAULT_BELT) {
+        settings += "trailer=" + spec.capacity.belt.key + "&"
+    }
+    if (spec.capacity.premium == 0) {
+        settings += "premium=no&"
+    }
+    if (spec.capacity.perk !== "none") {
+        settings += "perk=" + spec.capacity.perk + "&"
     }
 
     settings += "items="

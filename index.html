@@ -108,22 +108,26 @@ limitations under the License.-->
 
 
         <tr class="setting-section">
-        <td colspan="2"><span>Inventory Capacity</span><hr></td>
+        <td colspan="2"><span>Truck Settings</span><hr></td>
+        </tr>
+
+        <tr class="setting-row">
+            <td class="setting-label">Strength:</td>
+            <td><input id="strength" class="prec" type="number" value="30" max="30" min="1" onchange="handlers.changeStrength(event)"></td>
+        </tr>
+
+        <tr class="setting-row">
+            <td colspan="2"><hr /></td>
         </tr>
 
         <tr class="setting-row">
             <td class="setting-label">Truck:</td>
             <td>
                 <div id="truck_selector">
-                    <span><input id="truck.default" type="radio" name="truck" value="0" checked="checked" onchange="handlers.changeTruck(event)"><label for="truck.default" class="icon" src="images/MK1.png" width="32" height="32">Regular</label></span>
-                    <span><input id="truck.mk15" type="radio" name="truck" value="6900" onchange="handlers.changeTruck(event)"><label for="truck.mk15" class="icon" src="images/MK1.png" width="32" height="32">MK15</label></span>
+                    <span><input id="truck-none" type="radio" name="truck" checked="checked" value="0" onchange="handlers.changeTruck(event)"><label for="truck-none" class="icon" src="images/MK1.png" width="32" height="32">Regular</label></span>
+                    <span><input id="truck-mk15" type="radio" name="truck" value="6900" onchange="handlers.changeTruck(event)"><label for="truck-mk15" class="icon" src="images/MK1.png" width="32" height="32">MK15</label></span>
                 </div>
             </td>
-        </tr>
-
-        <tr class="setting-row">
-            <td class="setting-label">Strength:</td>
-            <td><input class="prec" type="number" value="30" max="30" min="1" onchange="handlers.changeStrength(event)"></td>
         </tr>
 
         <tr class="setting-row">
@@ -140,16 +144,16 @@ limitations under the License.-->
 
         <tr class="setting-row">
             <td class="setting-label">Premium:</td>
-            <td><input type="checkbox" value="1" min="0" onchange="handlers.changePremium(event)"></td>
+            <td><input id="premium" type="checkbox" value="1" min="0" onchange="handlers.changePremium(event)"> +15%</td>
         </tr>
 
         <tr class="setting-row">
             <td class="setting-label">Perk:</td>
             <td>
                 <div id="perk_selector">
-                    <span><input id="perk.none" type="radio" name="perk" value="none" checked="checked" onchange="handlers.changePerk(event)"><label for="perk.none" class="icon" src="images/MK1.png" width="32" height="32">None</label></span>
-                    <span><input id="perk.strength" type="radio" name="perk" value="strength" onchange="handlers.changePerk(event)"><label for="perk.strength" class="icon" src="images/MK1.png" width="32" height="32">Strength</label></span>
-                    <span><input id="perk.postop" type="radio" name="perk" value="postop" onchange="handlers.changePerk(event)"><label for="perk.postop" class="icon" src="images/MK1.png" width="32" height="32">PostOP</label></span>
+                    <span><input id="perk-none" type="radio" name="perk" value="none" onchange="handlers.changePerk(event)"><label for="perk-none" class="icon" src="images/MK1.png" width="32" height="32">None</label></span>
+                    <span><input id="perk-strength" type="radio" name="perk" value="strength" onchange="handlers.changePerk(event)"><label for="perk-strength" class="icon" src="images/MK1.png" width="32" height="32">Strength +100%</label></span>
+                    <span><input id="perk-postop" type="radio" name="perk" value="postop" onchange="handlers.changePerk(event)"><label for="perk-postop" class="icon" src="images/MK1.png" width="32" height="32">PostOP +15% storage</label></span>
                 </div>
             </td>
         </tr>

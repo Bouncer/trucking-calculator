@@ -56,14 +56,13 @@ class FactorySpecification {
         this.altRecipes = new Map()
         this.altRecipeList = {}
 
-        this.belt = null
-
-        // cargo capacity
-        
+        // cargo capacity settings
         this.capacity = {
             "fixed": false,
+            "belt": 0,
             "strength": 30,
             "premium": 0,
+            "perk": "none",
             "strengthperk": 0,
             "truck": 0,
             "postop": 0,
@@ -73,9 +72,13 @@ class FactorySpecification {
             "total": Rational.from_float(0)
         }
 
+                
         if(localStorage.capacity) {
-            this.capacity = JSON.parse(localStorage.getItem("capacity"))
+            this.cache = JSON.parse(localStorage.getItem("capacity"))
+        } else {
+            this.cache = false
         }
+
         this.updateCapacity()
         this.ignore = new Set()
 
@@ -116,8 +119,8 @@ class FactorySpecification {
         }
         this.belts = belts
         this.updateCapacity()
-        this.belt = belts.get(DEFAULT_BELT)
-        this.capacity.trailer = this.belt.rate.toFloat()
+        this.capacity.belt = belts.get(DEFAULT_BELT)
+        this.capacity.trailer = this.capacity.belt.rate.toFloat()
         this.initMinerSettings()
     }
     initMinerSettings() {
