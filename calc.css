@@ -254,7 +254,7 @@ tr.display-row td.pad, th.pad {
     padding-left: 1em;
     padding-right: 0px;
 }
-tr.display-row td {
+tr.display-row td, tr.storage-items {
     padding-top: 4px;
     padding-bottom: 4px;
     padding-left: 20px;
@@ -287,4 +287,45 @@ tr.nobuilding img {
 }
 #totals .footer td {
     padding-top:10px;
+}
+#api-instructions {
+    padding-bottom: 10px;
+}
+#api-valid {
+    background-color: #00CC00;
+    padding: 0px 4px;
+}
+#api-invalid {
+    background-color: #CC0000;
+    padding: 2px 8px;
+}
+#charges {
+    display: none;
+    margin-left:6px;
+}
+.api-box {
+    display:none;
+    margin-left:10px;
+    border-radius:4px;
+    color:#FFF;
+}
+button.refresh {
+    margin-left: 6px;
+    margin-right: 6px;
+}
+.storage-location {
+    width: 300px;
+    margin: 6px;
+    border: 1px solid #666;
+}
+.storage-location {
+    padding:6px;
+}
+#storage {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+#storage th {
+    text-align:left;
 }

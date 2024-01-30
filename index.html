@@ -29,11 +29,10 @@
         handlers.changeTruck = changeTruck
         handlers.changeCapacity = changeCapacity
         handlers.init = init
+        setInterval(function() { api.updateTimers() }, 1000)
     </script>
     <meta name="theme-color" content="#000000" />
     <link rel="shortcut icon" href="./images/tt_logov2_small.png" type="image/png">
-    <link rel="preload" href="./images/arrow_open.gif" as="image">
-    <link rel="preload" href="./images/arrow_close.gif" as="image">
     <link rel="stylesheet" href="./css/leaflet@1.7.1.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
@@ -64,14 +63,19 @@ limitations under the License.-->
 
     <div class="tabs">
         <button class="tab_button" id="graph_button" onclick="handlers.clickTab('graph')">Planner</button>
-        <button class="tab_button" id="map_button" onclick="handlers.clickTab('map')">Map</button>
         <button class="tab_button" id="totals_button" onclick="handlers.clickTab('totals')">Items</button>
+        <button class="tab_button" id="storage_button" onclick="handlers.clickTab('storage')">Storage</button>
+        <button class="tab_button" id="map_button" onclick="handlers.clickTab('map')">Map</button>
         <button class="tab_button" id="settings_button" onclick="handlers.clickTab('settings')">Settings</button>
         <button class="tab_button" id="about_button" onclick="handlers.clickTab('about')">About</button>
     </div>
 
     <div id="graph_tab" class="tab graph">
         <svg id="graph"><g /></svg>
+    </div>
+
+    <div id="storage_tab" class="tab">
+        You have no storage data in memory. Go to <button class="tab_button" id="settings_button" onclick="handlers.clickTab('settings')">settings</button> to retrieve your data.
     </div>
 
     <div id="map_tab" class="tab map">
@@ -167,6 +171,65 @@ limitations under the License.-->
             <td><input id="capacity" class="" type="number" value="1" min="0" onchange="handlers.changeCapacity(event)"> Note: this the combined player inventory and trailer capacity</td>
         </tr>
 
+        <tr class="setting-section">
+            <td colspan="2"><span>Server data</span><hr></td>
+        </tr>
+        <tr>
+            <td id="api-instructions" colspan="2">Add your private API key to enable features that require your data. Your key and loaded data is cached in your browser and not shared with any external services.</td>
+        </tr>
+        <tr class="setting-row">
+            <td class="setting-label">Player id:</td>
+            <td><input id="userid" class="" type="text" size="40" onpaste="api.setUserid(event)" onchange="api.setUserid(event)"></td>
+        </tr>
+        <tr class="setting-row">
+            <td class="setting-label">API Key:</td>
+            <td><input id="apikey" class="" type="password" size="40" onpaste="api.setAPIkey(event)" onchange="api.setAPIkey(event)"><div id="api-valid" class="api-box">&#10003;</div><div id="charges">0 charges</div><div id="api-invalid" class="api-box">Invalid</div></td>
+        </tr>
+        <tr class="setting-row refresh-settings">
+            <td colspan="2"><hr /></td>
+        </tr>
+        <tr class="setting-row refresh-settings">
+            <td class="setting-label"></td>
+            <td>Load Data</td>
+        </tr>
+        <tr class="setting-row refresh-settings">
+            <td class="setting-label">Storage:</td>
+            <td>
+                <select id="autorefresh-storage" name="refresh-storage" disabled="disabled">
+                    <option value="0">Auto refresh not available</option>
+                    <option value="60">1 minute</option>
+                    <option value="120">2 minutes</option>
+                    <option value="360">5 minutes</option>
+                    <option value="360">10 minutes</option>
+                    <option value="360">20 minutes</option>
+                    <option value="360">30 minutes</option>
+                    <option value="360">1 hour</option>
+                    <option value="360">2 hours</option>
+                    <option value="360">5 hours</option>
+                </select>
+                <button id="refresh-storage" class="refresh" onclick="api.getStorage(event)">Refresh</button>
+                <span id="ago-storage"></span>
+            </td>
+        </tr>
+        <tr class="setting-row refresh-settings">
+            <td class="setting-label">Statistics:</td>
+            <td>
+                <select id="autorefresh-statistics" name="refresh-storage" disabled="disabled">
+                    <option value="0">Auto refresh not available</option>
+                    <option value="60">1 minute</option>
+                    <option value="120">2 minutes</option>
+                    <option value="360">5 minutes</option>
+                    <option value="360">10 minutes</option>
+                    <option value="360">20 minutes</option>
+                    <option value="360">30 minutes</option>
+                    <option value="360">1 hour</option>
+                    <option value="360">2 hours</option>
+                    <option value="360">5 hours</option>
+                </select>
+                <button id="refresh-statistics" class="refresh" disabled="disabled">Refresh</button>
+                <span id="ago-statistics"></span>
+            </td>
+        </tr>
 
         <tr class="setting-section">
         <td colspan="2"><span>Alternative Recipes</span><hr></td>

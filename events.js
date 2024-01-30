@@ -13,6 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.*/
 import { spec } from "./factory.js"
 import { formatSettings } from "./fragment.js"
+import { api } from "./api.js"
 
 // build target events
 
