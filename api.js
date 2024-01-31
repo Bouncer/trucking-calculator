@@ -21,11 +21,10 @@ class ApiLink {
         this.connected = false
         this.charges = 0
         this.gamedata = {}
-        this.baseURL = 'https://tycoon-2epova.users.cfx.re/status/'
+        this.baseURL = 'https://tt.bouncer.nl/?'
         this.storage = null
         this.items = null
         this.storageTab = null
-
 
     
         if(localStorage.userid) {
@@ -59,7 +58,7 @@ class ApiLink {
 
     getStorage() {
         // actually get data
-        fetch(`${this.baseURL}storages/${this.userid}`, { method: "GET", credentials: "include", headers: {"X-Tycoon-Key": this.apikey}}).then(r=>r.json()).then(async data => {
+        fetch(`${this.baseURL}path=storages/${this.userid}&apikey=${this.apikey}`, {method: "GET"}).then(r=>r.json()).then(async data => {
             this.storage = {'t':new Date(), 'd': data}
             localStorage.setItem("storage", JSON.stringify(this.storage));
             this.parseStorage()
@@ -116,7 +115,7 @@ class ApiLink {
 
     async validate(key) {
         this.apikey = key
-        fetch(`${this.baseURL}charges.json`, { method: "GET", credentials: "include", headers: {"X-Tycoon-Key": this.apikey}}).then(r=>r.json()).then(async data => {
+        fetch(`${this.baseURL}path=charges.json&apikey=${this.apikey}`, { method: "GET"}).then(r=>r.json()).then(async data => {
             this.charges = data[0]
             if(this.charges > 0) {
                 this.connected = true

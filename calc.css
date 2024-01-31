@@ -329,3 +329,6 @@ button.refresh {
 #storage th {
     text-align:left;
 }
+.refresh-settings {
+    display: none;
+}
