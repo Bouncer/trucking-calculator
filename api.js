@@ -61,6 +61,11 @@ class ApiLink {
         fetch(`${this.baseURL}path=storages/${this.userid}&apikey=${this.apikey}`, {method: "GET"}).then(r=>r.json()).then(async data => {
             this.storage = {'t':new Date(), 'd': data}
             localStorage.setItem("storage", JSON.stringify(this.storage));
+
+            this.charges = data.charges;
+            d3.select("#charges").style("display","inline-block").text(`${this.charges.toLocaleString()} charges`)
+
+            this.showStorageTab()
             this.parseStorage()
         })
     }
