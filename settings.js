@@ -363,7 +363,7 @@ function renderConfiguration(settings) {
     if(settings.has("trailer")) {
         d3.select("#trailer-"+settings.get("trailer")).property("checked",true)
         beltKey = settings.get("trailer")
-    } else if(loadCache) {
+    } else if(loadCache && spec.cache.belt !== 0) {
         d3.select("#trailer-"+spec.cache.belt.key).property("checked",true)
         beltKey = spec.cache.belt.key
     } else {
