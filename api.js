@@ -76,7 +76,7 @@ class ApiLink {
         var storageTitleRow = storages.append("tr").classed("storage-title",true)
             storageTitleRow.append("th").text(d => `${d.name}`)
             storageTitleRow.append("th").text(d => `(${Object.keys(d.inventory).length})`)
-        var storageItemRow = storages.selectAll(".storage-items").data(d => Object.entries(d.inventory)).join("tr").classed("storage-items", true)
+        var storageItemRow = storages.selectAll(".storage-items").data(d => Object.entries(d.inventory).sort(([,a],[,b]) => b.amount-a.amount)).join("tr").classed("storage-items", true)
             storageItemRow.append("td").append("tt").text(d => `${d[0]}`)
             storageItemRow.append("td").append("tt").text(d => `${d[1].amount}x`)
     }
