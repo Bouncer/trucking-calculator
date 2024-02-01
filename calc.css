@@ -312,6 +312,19 @@ tr.nobuilding img {
 button.refresh {
     margin-left: 6px;
     margin-right: 6px;
+    cursor: pointer;
+    background: var(--bright);
+  border-radius: 4px;
+  width: 80px;
+  height: 24px;
+  display: inline-block;
+  margin-top: -6px;
+  text-align: center;
+  border:none;
+  color: var(--dark);
+}
+button.refresh:hover {
+    background-color: var(--accent);
 }
 .storage-location {
     width: 300px;
@@ -321,14 +334,37 @@ button.refresh {
 .storage-location {
     padding:6px;
 }
-#storage {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-}
 #storage th {
     text-align:left;
 }
 .refresh-settings {
     display: none;
+}
+.refresh-settings td {
+    padding: 2px 0px;
+}
+#storage_tab_content {
+    display:none;
+}
+.storage-header {
+    border-bottom: 1px solid var(--accent);
+    margin-top:6px;
+    padding-bottom:10px;
+    margin-bottom:10px;
+}
+.storage-header-title {
+    color: var(--accent);
+    font-style: italic;
+}
+.storage-header-update {
+    float: right;
+}
+.storage-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-bottom:28px;
+}
+.in-storage {
+    background-color: var(--medium)
 }

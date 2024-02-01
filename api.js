@@ -12,6 +12,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.*/
 
+import { spec } from "./factory.js"
 
 class ApiLink {
     constructor() {
@@ -25,35 +26,18 @@ class ApiLink {
         this.storage = null
         this.items = null
         this.storageTab = null
+        this.storages = {}
+        this.itemrates = {}
+        this.storages = d3.json("data/storages.json")
 
-    
-        if(localStorage.userid) {
-            this.userid = localStorage.getItem("userid")
-            d3.select("#userid").attr("value", this.userid)
-        }
-
-        if(localStorage.apikey) {
-            this.apikey = localStorage.getItem("apikey")
-            d3.select("#apikey").attr("value", this.apikey)
-            this.validate(this.apikey)
-            this.showStorageTab();
-        }
-
-        if(localStorage.storage) {
-            this.showStorageTab()
-            this.storage = JSON.parse(localStorage.getItem("storage"))
-            this.parseStorage()
-        }
-        
+        this.init()
         // timers
 //        this.updateCapacity()
     }
 
     showStorageTab() {
-        let storageTab = d3.select("#storage_tab").html("")
-        this.storageTab = storageTab.append("div")
-            .attr("id","storage")
-            .text("No data found in memory. Press refresh to retrieve your storage data.")
+        d3.select("#storage_tab_instructions").style("display","none")
+        d3.select("#storage_tab_content").style("display","block")
     }
 
     getStorage() {
@@ -62,8 +46,7 @@ class ApiLink {
             this.storage = {'t':new Date(), 'd': data}
             localStorage.setItem("storage", JSON.stringify(this.storage));
 
-            this.charges = data.charges;
-            d3.select("#charges").style("display","inline-block").text(`${this.charges.toLocaleString()} charges`)
+            this.setCharges(data.charges)
 
             this.showStorageTab()
             this.parseStorage()
@@ -72,18 +55,78 @@ class ApiLink {
 
     parseStorage() {
         d3.select("#storage").html("")
-        var storages = d3.select("#storage").selectAll("table").data(this.storage.d.storages).join("table").classed("storage-location", true)
+        var storages = d3.select("#storage").selectAll("table").data(this.storage.d.storages.sort((a,b) => Object.keys(b.inventory).length - Object.keys(a.inventory).length)).join("table")
+            .filter(d => Object.keys(d.inventory).length > 0)
+            .classed("storage-location", true)
         var storageTitleRow = storages.append("tr").classed("storage-title",true)
             storageTitleRow.append("th").text(d => `${d.name}`)
             storageTitleRow.append("th").text(d => `(${Object.keys(d.inventory).length})`)
         var storageItemRow = storages.selectAll(".storage-items").data(d => Object.entries(d.inventory).sort(([,a],[,b]) => b.amount-a.amount)).join("tr").classed("storage-items", true)
+            storageItemRow.filter(d => d[0].replace('_','-') in this.itemrates).classed("in-storage",true)   
             storageItemRow.append("td").append("tt").text(d => `${d[0]}`)
-            storageItemRow.append("td").append("tt").text(d => `${d[1].amount}x`)
+            storageItemRow.append("td").append("tt").text(d => `${d[1].amount.toLocaleString()}x`)
+    }
+
+    getVehicles() {
+        // actually get data
+        fetch(`${this.baseURL}path=trunks/${this.userid}&apikey=${this.apikey}`, {method: "GET"}).then(r=>r.json()).then(async data => {
+            this.vehicles = {'t':new Date(), 'd': data}
+            localStorage.setItem("vehicles", JSON.stringify(this.vehicles));
+            this.setCharges(data.charges)
+
+            this.showStorageTab()
+            this.parseVehicles()
+        })
+    }
+
+    parseVehicles() {
+        d3.select("#vehicles").html("")
+        var storages = d3.select("#vehicles").selectAll("table").data(this.vehicles.d.trunks.sort((a,b) => Object.keys(b.inventory).length - Object.keys(a.inventory).length)).join("table")
+            .filter(d => Object.keys(d.inventory).length > 0)
+            .classed("storage-location", true)
+        var storageTitleRow = storages.append("tr").classed("storage-title",true)
+            storageTitleRow.append("th").text(d => `${d.vehicle}`)
+            storageTitleRow.append("th").text(d => `(${d.type})`)
+        var storageItemRow = storages.selectAll(".storage-items").data(d => Object.entries(d.inventory).sort(([,a],[,b]) => b.amount-a.amount)).join("tr").classed("storage-items", true)
+            storageItemRow.filter(d => d[0].replace('_','-') in this.itemrates).classed("in-storage",true)  
+            storageItemRow.append("td").append("tt").text(d => `${d[0]}`)
+            storageItemRow.append("td").append("tt").text(d => `${d[1].amount.toLocaleString()}x`)
+    }
+
+    getInventory() {
+        // actually get data
+        fetch(`${this.baseURL}path=dataadv/${this.userid}&apikey=${this.apikey}`, {method: "GET"}).then(r=>r.json()).then(async data => {
+            this.inventory = {'t':new Date(), 'd': data}
+            localStorage.setItem("inventory", JSON.stringify(this.inventory));
+            this.setCharges(data.charges)
+
+            this.showStorageTab()
+            this.parseInventory()
+        })
+    }
+
+    parseInventory() {
+        d3.select("#inventory").html("")
+        var storages = d3.select("#inventory").append("table")
+            .classed("storage-location", true)
+        var storageTitleRow = storages.append("tr").classed("storage-title",true)
+            storageTitleRow.append("th").text(d => `Inventory`)
+            storageTitleRow.append("th").text(d => `(${Object.keys(this.inventory.d.data.inventory).length})`)
+        var storageItemRow = storages.selectAll(".storage-items").data(Object.entries(this.inventory.d.data.inventory).sort(([,a],[,b]) => b.amount-a.amount)).join("tr").classed("storage-items", true)
+            storageItemRow.filter(d => d[0].replace('_','-') in this.itemrates).classed("in-storage",true)
+            storageItemRow.append("td").append("tt").text(d => `${d[1].name.replace(/(<([^>]+)>)/gi, '')}`)
+            storageItemRow.append("td").append("tt").text(d => `${d[1].amount.toLocaleString()}x`)
     }
 
     updateTimers() {
         if(this.storage) {
-            d3.select("#ago-storage").text(this.getTimeSince(this.storage.t))
+            d3.selectAll(".ago-storage").text(this.getTimeSince(this.storage.t))
+        }
+        if(this.vehicles) {
+            d3.selectAll(".ago-vehicles").text(this.getTimeSince(this.vehicles.t))
+        }
+        if(this.inventory) {
+            d3.selectAll(".ago-inventory").text(this.getTimeSince(this.inventory.t))
         }
     }
 
@@ -104,8 +147,9 @@ class ApiLink {
         return `${count} ${interval.label}${count !== 1 ? 's' : ''} ago`;
     }
 
-    getCharges() {
-
+    setCharges(charges) {
+        this.charges = charges;
+        d3.select("#charges").style("display","inline-block").text(`${charges.toLocaleString()} charges`)
     }
 
     setUserid(event) {
@@ -126,10 +170,9 @@ class ApiLink {
                 this.connected = true
                 localStorage.setItem("apikey",key)
                 d3.select("#api-valid").style("display","inline-block")
-                d3.select("#charges").style("display","inline-block").text(`${this.charges.toLocaleString()} charges`)
+                this.setCharges(this.charges)
                 d3.select("#api-invalid").style("display","none")
                 d3.selectAll(".refresh-settings").style("display","table-row")
-                this.update()
             } else {
                 this.apikey = null
                 this.connected = false
@@ -141,7 +184,52 @@ class ApiLink {
         })
 
     }
-    update() {
+    init() {
+
+        if(localStorage.userid) {
+            this.userid = localStorage.getItem("userid")
+            d3.select("#userid").attr("value", this.userid)
+        }
+
+        if(localStorage.apikey) {
+            this.apikey = localStorage.getItem("apikey")
+            d3.select("#apikey").attr("value", this.apikey)
+            this.validate(this.apikey)
+            this.showStorageTab();
+        }
+
+        if(localStorage.storage) {
+            this.showStorageTab()
+            this.storage = JSON.parse(localStorage.getItem("storage"))
+            this.parseStorage()
+        }
+
+        if(localStorage.vehicles) {
+            this.showStorageTab()
+            this.vehicles = JSON.parse(localStorage.getItem("vehicles"))
+            this.parseVehicles()
+        }
+
+        if(localStorage.inventory) {
+            this.showStorageTab()
+            this.inventory = JSON.parse(localStorage.getItem("inventory"))
+            this.parseInventory()
+        }
+    }
+
+    update(totals) {
+        this.itemrates = totals.itemRates
+        if(this.storage) {
+            this.parseStorage()
+        }
+
+        if(this.vehicles) {
+            this.parseVehicles()
+        }
+
+        if(this.inventory) {
+            this.parseInventory()
+        }
     }
 }
 

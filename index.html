@@ -75,7 +75,38 @@ limitations under the License.-->
     </div>
 
     <div id="storage_tab" class="tab">
-        You have no storage data in memory. Go to <button class="tab_button" id="settings_button" onclick="handlers.clickTab('settings')">settings</button> to retrieve your data.
+        <div id="storage_tab_instructions">
+            You have no storage data in memory. Go to <button class="tab_button" id="settings_button" onclick="handlers.clickTab('settings')">settings</button> to retrieve your data.
+        </div>
+        <div id="storage_tab_content">
+            <div class="storage-header">
+                <span class="storage-header-title">Storages</span>
+                <span class="storage-header-update">
+                    <span class="ago-storage"></span> <button class="refresh right-align" onclick="api.getStorage(event)">Refresh</button>
+                </span>
+            </div>
+            <div id="storage" class="storage-container">
+                No data found in memory. Press refresh to retrieve your storage data.
+            </div>
+            <div class="storage-header">
+                <span class="storage-header-title">Inventory</span>
+                <span class="storage-header-update">
+                    <span class="ago-inventory"></span> <button class="refresh right-align" onclick="api.getInventory(event)">Refresh</button>
+                </span>
+            </div>
+            <div id="inventory" class="storage-container">
+                No data found in memory. Press refresh to retrieve your business data.
+            </div>
+            <div class="storage-header">
+                <span class="storage-header-title">Vehicle Storages</span>
+                <span class="storage-header-update">
+                    <span class="ago-vehicles"></span> <button class="refresh right-align" onclick="api.getVehicles(event)">Refresh</button>
+                </span>
+            </div>
+            <div id="vehicles" class="storage-container">
+                No data found in memory. Press refresh to retrieve your vehicle data.
+            </div>
+        </div>
     </div>
 
     <div id="map_tab" class="tab map">
@@ -193,7 +224,7 @@ limitations under the License.-->
             <td>Load Data</td>
         </tr>
         <tr class="setting-row refresh-settings">
-            <td class="setting-label">Storage:</td>
+            <td class="setting-label">Storages:</td>
             <td>
                 <select id="autorefresh-storage" name="refresh-storage" disabled="disabled">
                     <option value="0">Auto refresh not available</option>
@@ -207,14 +238,14 @@ limitations under the License.-->
                     <option value="360">2 hours</option>
                     <option value="360">5 hours</option>
                 </select>
-                <button id="refresh-storage" class="refresh" onclick="api.getStorage(event)">Refresh</button>
-                <span id="ago-storage"></span>
+                <button class="refresh" onclick="api.getStorage(event)">Refresh</button>
+                <span class="ago-storage"></span>
             </td>
         </tr>
         <tr class="setting-row refresh-settings">
-            <td class="setting-label">Wealth:</td>
+            <td class="setting-label">Inventory:</td>
             <td>
-                <select id="autorefresh-statistics" name="refresh-storage" disabled="disabled">
+                <select id="autorefresh-inventory" name="refresh-inventory" disabled="disabled">
                     <option value="0">Auto refresh not available</option>
                     <option value="60">1 minute</option>
                     <option value="120">2 minutes</option>
@@ -226,8 +257,27 @@ limitations under the License.-->
                     <option value="360">2 hours</option>
                     <option value="360">5 hours</option>
                 </select>
-                <button id="refresh-statistics" class="refresh" disabled="disabled">Refresh</button>
-                <span id="ago-statistics"></span>
+                <button class="refresh" onclick="api.getInventory(event)">Refresh</button>
+                <span class="ago-inventory"></span>
+            </td>
+        </tr>
+        <tr class="setting-row refresh-settings">
+            <td class="setting-label">Vehicles:</td>
+            <td>
+                <select id="autorefresh-vehicles" name="refresh-vehicles" disabled="disabled">
+                    <option value="0">Auto refresh not available</option>
+                    <option value="60">1 minute</option>
+                    <option value="120">2 minutes</option>
+                    <option value="360">5 minutes</option>
+                    <option value="360">10 minutes</option>
+                    <option value="360">20 minutes</option>
+                    <option value="360">30 minutes</option>
+                    <option value="360">1 hour</option>
+                    <option value="360">2 hours</option>
+                    <option value="360">5 hours</option>
+                </select>
+                <button class="refresh" onclick="api.getVehicles(event)">Refresh</button>
+                <span class="ago-vehicles"></span>
             </td>
         </tr>
 

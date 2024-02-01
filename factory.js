@@ -17,6 +17,7 @@ import { formatSettings } from "./fragment.js"
 import { Rational, zero, half, one } from "./rational.js"
 import { BuildTarget } from "./target.js"
 import { Totals } from "./totals.js"
+import { api } from "./api.js"
 import { renderTotals } from "./visualize.js"
 
 const DEFAULT_ITEM_KEY = "concrete"
@@ -300,6 +301,7 @@ class FactorySpecification {
         displayItems(this, totals, this.ignore)
         renderTotals(totals, this.buildTargets, this.ignore)
         this.setHash()
+        api.update(totals)
     }
 }
 
