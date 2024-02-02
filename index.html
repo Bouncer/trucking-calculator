@@ -79,32 +79,49 @@ limitations under the License.-->
             You have no storage data in memory. Go to <button class="tab_button" id="settings_button" onclick="handlers.clickTab('settings')">settings</button> to retrieve your data.
         </div>
         <div id="storage_tab_content">
+            <div id="storage-combination">
+                <div class="storage-combination">
+                    <div class="storage-header">
+                        <span class="storage-header-title">Inventory</span>
+                        <span class="storage-header-update">
+                            <span class="ago-inventory"></span> <button class="refresh right-align" onclick="api.getInventory(event)">Refresh</button>
+                        </span>
+                    </div>
+                    <div id="inventory" class="storage-container">
+                        No inventory data found in memory.
+                    </div>
+                </div>
+                <div class="storage-combination">
+                    <div class="storage-header">
+                        <span class="storage-header-title">Vehicle</span>
+                        <span class="storage-header-update">
+                            <span class="ago-vehicles"></span> <button class="refresh right-align" onclick="api.getVehicles(event)">Refresh</button>
+                        </span>
+                    </div>
+                    <div id="vehicles" class="storage-container">
+                        No vehicle storage data found in memory.
+                    </div>
+                </div>
+                <div class="storage-combination">
+                    <div class="storage-header">
+                        <span class="storage-header-title">Faction</span>
+                        <span class="storage-header-update">
+                            <span class="ago-faction"></span> <button class="refresh right-align" onclick="api.getFaction(event)">Refresh</button>
+                        </span>
+                    </div>
+                    <div id="faction" class="storage-container">
+                        No faction storage data found in memory.
+                    </div>
+                </div>
+            </div>
             <div class="storage-header">
-                <span class="storage-header-title">Storages</span>
+                <span class="storage-header-title">Self Storage</span>
                 <span class="storage-header-update">
                     <span class="ago-storage"></span> <button class="refresh right-align" onclick="api.getStorage(event)">Refresh</button>
                 </span>
             </div>
             <div id="storage" class="storage-container">
-                No data found in memory. Press refresh to retrieve your storage data.
-            </div>
-            <div class="storage-header">
-                <span class="storage-header-title">Inventory</span>
-                <span class="storage-header-update">
-                    <span class="ago-inventory"></span> <button class="refresh right-align" onclick="api.getInventory(event)">Refresh</button>
-                </span>
-            </div>
-            <div id="inventory" class="storage-container">
-                No data found in memory. Press refresh to retrieve your business data.
-            </div>
-            <div class="storage-header">
-                <span class="storage-header-title">Vehicle Storages</span>
-                <span class="storage-header-update">
-                    <span class="ago-vehicles"></span> <button class="refresh right-align" onclick="api.getVehicles(event)">Refresh</button>
-                </span>
-            </div>
-            <div id="vehicles" class="storage-container">
-                No data found in memory. Press refresh to retrieve your vehicle data.
+                No self storage data found in memory.
             </div>
         </div>
     </div>
@@ -209,38 +226,19 @@ limitations under the License.-->
             <td id="api-instructions" colspan="2">Add your <a href="https://dash.tycoon.community/wiki/index.php/API#API_Keys" target="_blank">private API key</a> to enable features that require your data. Your key and loaded data are cached in your browser.</td>
         </tr>
         <tr class="setting-row">
-            <td class="setting-label">Player id:</td>
-            <td><input id="userid" class="" type="text" size="40" onchange="api.setUserid(event)"/></td>
-        </tr>
-        <tr class="setting-row">
             <td class="setting-label">API Key:</td>
             <td><input id="apikey" class="" type="password" size="40" onpaste="api.setAPIkey(event)" /><div id="api-valid" class="api-box">&#10003;</div><div id="charges">0 charges</div><div id="api-invalid" class="api-box">Invalid</div></td>
         </tr>
-        <tr class="setting-row refresh-settings">
+        <tr class="setting-row">
+            <td class="setting-label">Player id:</td>
+            <td><input id="userid" class="" type="text" size="20" onchange="api.setUserid(event)"/></td>
+        </tr>
+        <tr class="setting-row">
             <td colspan="2"><hr /></td>
         </tr>
         <tr class="setting-row refresh-settings">
             <td class="setting-label"></td>
             <td>Load Data</td>
-        </tr>
-        <tr class="setting-row refresh-settings">
-            <td class="setting-label">Storages:</td>
-            <td>
-                <select id="autorefresh-storage" name="refresh-storage" disabled="disabled">
-                    <option value="0">Auto refresh not available</option>
-                    <option value="60">1 minute</option>
-                    <option value="120">2 minutes</option>
-                    <option value="360">5 minutes</option>
-                    <option value="360">10 minutes</option>
-                    <option value="360">20 minutes</option>
-                    <option value="360">30 minutes</option>
-                    <option value="360">1 hour</option>
-                    <option value="360">2 hours</option>
-                    <option value="360">5 hours</option>
-                </select>
-                <button class="refresh" onclick="api.getStorage(event)">Refresh</button>
-                <span class="ago-storage"></span>
-            </td>
         </tr>
         <tr class="setting-row refresh-settings">
             <td class="setting-label">Inventory:</td>
@@ -262,7 +260,7 @@ limitations under the License.-->
             </td>
         </tr>
         <tr class="setting-row refresh-settings">
-            <td class="setting-label">Vehicles:</td>
+            <td class="setting-label">Vehicle Storage:</td>
             <td>
                 <select id="autorefresh-vehicles" name="refresh-vehicles" disabled="disabled">
                     <option value="0">Auto refresh not available</option>
@@ -278,6 +276,48 @@ limitations under the License.-->
                 </select>
                 <button class="refresh" onclick="api.getVehicles(event)">Refresh</button>
                 <span class="ago-vehicles"></span>
+            </td>
+        </tr>
+        <tr class="setting-row refresh-settings">
+            <td class="setting-label">Self Storage:</td>
+            <td>
+                <select id="autorefresh-storage" name="refresh-storage" disabled="disabled">
+                    <option value="0">Auto refresh not available</option>
+                    <option value="60">1 minute</option>
+                    <option value="120">2 minutes</option>
+                    <option value="360">5 minutes</option>
+                    <option value="360">10 minutes</option>
+                    <option value="360">20 minutes</option>
+                    <option value="360">30 minutes</option>
+                    <option value="360">1 hour</option>
+                    <option value="360">2 hours</option>
+                    <option value="360">5 hours</option>
+                </select>
+                <button class="refresh" onclick="api.getStorage(event)">Refresh</button>
+                <span class="ago-storage"></span>
+            </td>
+        </tr>
+        <tr class="setting-row refresh-settings">
+            <td class="setting-label">Faction id:</td>
+            <td><span id="factionid" class="">Unknown</span> <button class="refresh" onclick="api.getFactionId(event)">Refresh</button></td>
+        </tr>
+        <tr class="setting-row refresh-settings">
+            <td class="setting-label">Faction Storage:</td>
+            <td>
+                <select id="autorefresh-faction" name="refresh-vehicles" disabled="disabled">
+                    <option value="0">Auto refresh not available</option>
+                    <option value="60">1 minute</option>
+                    <option value="120">2 minutes</option>
+                    <option value="360">5 minutes</option>
+                    <option value="360">10 minutes</option>
+                    <option value="360">20 minutes</option>
+                    <option value="360">30 minutes</option>
+                    <option value="360">1 hour</option>
+                    <option value="360">2 hours</option>
+                    <option value="360">5 hours</option>
+                </select>
+                <button class="refresh" onclick="api.getFaction(event)">Refresh</button>
+                <span class="ago-faction"></span>
             </td>
         </tr>
 

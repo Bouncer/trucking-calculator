@@ -108,7 +108,7 @@ tr.setting-row td:first-child {
 }
 td.setting-label {
     text-align: right;
-    max-width: 40px;
+    max-width: 50px;
 }
 div#resource_settings, div#alt_recipe_settings {
     padding-left: 3em;
@@ -315,8 +315,8 @@ button.refresh {
     cursor: pointer;
     background: var(--bright);
   border-radius: 4px;
-  width: 80px;
-  height: 24px;
+  width: 70px;
+  height: 20px;
   display: inline-block;
   margin-top: -6px;
   text-align: center;
@@ -339,6 +339,7 @@ button.refresh:hover {
 }
 .refresh-settings {
     display: none;
+    height:28px;
 }
 .refresh-settings td {
     padding: 2px 0px;
@@ -351,6 +352,7 @@ button.refresh:hover {
     margin-top:6px;
     padding-bottom:10px;
     margin-bottom:10px;
+    margin-right: 20px;
 }
 .storage-header-title {
     color: var(--accent);
@@ -367,4 +369,19 @@ button.refresh:hover {
 }
 .in-storage {
     background-color: var(--medium)
+}
+#factionid {
+    width: 100px;
+    font-family: courier;
+    margin: 0 0 0 4px;
+    font-size: 14px;
+}
+#storage-combination {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+.storage-combination {
+    width: 30%;
+    min-width: 300px;
 }

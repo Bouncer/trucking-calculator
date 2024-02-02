@@ -19,6 +19,7 @@ class ApiLink {
         // api definitions
         this.userid = null
         this.apikey = null
+        this.factionid = null
         this.connected = false
         this.charges = 0
         this.gamedata = {}
@@ -38,6 +39,7 @@ class ApiLink {
     showStorageTab() {
         d3.select("#storage_tab_instructions").style("display","none")
         d3.select("#storage_tab_content").style("display","block")
+        d3.selectAll(".refresh-settings").style("display","table-row")
     }
 
     getStorage() {
@@ -118,6 +120,35 @@ class ApiLink {
             storageItemRow.append("td").append("tt").text(d => `${d[1].amount.toLocaleString()}x`)
     }
 
+    getFaction() {
+        // actually get data
+        if(!this.factionid) {
+            this.getFactionId(true)
+        } else {
+            fetch(`${this.baseURL}path=chest/self_storage:${this.userid}:faq_${this.factionid}:chest&apikey=${this.apikey}`, {method: "GET"}).then(r=>r.json()).then(async data => {
+                this.faction = {'t':new Date(), 'd': data}
+                localStorage.setItem("faction", JSON.stringify(this.faction));
+                this.setCharges(data.charges)
+
+                this.showStorageTab()
+                this.parseFaction()
+            })
+        }
+    }
+
+    parseFaction() {
+        d3.select("#faction").html("")
+        var storages = d3.select("#faction").append("table")
+            .classed("storage-location", true)
+        var storageTitleRow = storages.append("tr").classed("storage-title",true)
+            storageTitleRow.append("th").text(d => `Faction`)
+            storageTitleRow.append("th").text(d => `(${Object.keys(this.faction.d.data).length})`)
+        var storageItemRow = storages.selectAll(".storage-items").data(Object.entries(this.faction.d.data).sort(([,a],[,b]) => b.amount-a.amount)).join("tr").classed("storage-items", true)
+            storageItemRow.filter(d => d[0].replace('_','-') in this.itemrates).classed("in-storage",true)
+            storageItemRow.append("td").append("tt").text(d => `${d[0]}`)
+            storageItemRow.append("td").append("tt").text(d => `${d[1].amount.toLocaleString()}x`)
+    }
+
     updateTimers() {
         if(this.storage) {
             d3.selectAll(".ago-storage").text(this.getTimeSince(this.storage.t))
@@ -127,6 +158,9 @@ class ApiLink {
         }
         if(this.inventory) {
             d3.selectAll(".ago-inventory").text(this.getTimeSince(this.inventory.t))
+        }
+        if(this.faction) {
+            d3.selectAll(".ago-faction").text(this.getTimeSince(this.faction.t))
         }
     }
 
@@ -155,7 +189,9 @@ class ApiLink {
     setUserid(event) {
         this.userid = event.target.value
         localStorage.setItem("userid", this.userid);
-
+        if(this.connected) {
+            this.showStorageTab()
+        }
     }
 
     setAPIkey(event) {
@@ -163,8 +199,7 @@ class ApiLink {
         this.validate(key)
     }
 
-    async validate(key) {
-        console.log(key)
+    validate(key) {
         this.apikey = key
         fetch(`${this.baseURL}path=charges.json&apikey=${this.apikey}`, { method: "GET"}).then(r=>r.json()).then(async data => {
             this.charges = data[0]
@@ -174,7 +209,9 @@ class ApiLink {
                 d3.select("#api-valid").style("display","inline-block")
                 this.setCharges(this.charges)
                 d3.select("#api-invalid").style("display","none")
-                d3.selectAll(".refresh-settings").style("display","table-row")
+                if(this.userid) {
+                    this.showStorageTab();
+                }
             } else {
                 this.apikey = null
                 this.connected = false
@@ -184,8 +221,28 @@ class ApiLink {
                 d3.selectAll(".refresh-settings").style("display","none")
             }
         })
-
     }
+
+    getFactionId(getFaction) {
+        fetch(`${this.baseURL}path=getuserfaq/${this.userid}&apikey=${this.apikey}`, {method: "GET"}).then(r=>r.json()).then(async data => {
+            if(data.code == 200) {
+                if(data.is_in_faction) {
+                    this.factionid = data.faction_id
+                    localStorage.setItem("factionid", this.factionid);
+                    d3.select("#factionid").text(`#${data.faction_id}`)
+                } else {
+                    this.factionid = null
+                    d3.select("#factionid").text(`None`)
+                }
+            }
+            this.setCharges(data.charges)
+
+            if(getFaction) {
+                this.getFaction()
+            }
+        })
+    }
+
     init() {
 
         if(localStorage.userid) {
@@ -200,10 +257,15 @@ class ApiLink {
             this.showStorageTab();
         }
 
-        if(localStorage.storage) {
+        if(localStorage.factionid) {
+            this.factionid = localStorage.getItem("factionid")
+            d3.select("#factionid").text(`#${this.factionid}`)
+        }
+
+        if(localStorage.inventory) {
             this.showStorageTab()
-            this.storage = JSON.parse(localStorage.getItem("storage"))
-            this.parseStorage()
+            this.inventory = JSON.parse(localStorage.getItem("inventory"))
+            this.parseInventory()
         }
 
         if(localStorage.vehicles) {
@@ -212,25 +274,35 @@ class ApiLink {
             this.parseVehicles()
         }
 
-        if(localStorage.inventory) {
+        if(localStorage.storage) {
             this.showStorageTab()
-            this.inventory = JSON.parse(localStorage.getItem("inventory"))
-            this.parseInventory()
+            this.storage = JSON.parse(localStorage.getItem("storage"))
+            this.parseStorage()
+        }
+        if(localStorage.faction) {
+            this.showStorageTab()
+            this.faction = JSON.parse(localStorage.getItem("faction"))
+            this.parseFaction()
         }
     }
 
     update(totals) {
         this.itemrates = totals.itemRates
-        if(this.storage) {
-            this.parseStorage()
+
+        if(this.inventory) {
+            this.parseInventory()
         }
 
         if(this.vehicles) {
             this.parseVehicles()
         }
 
-        if(this.inventory) {
-            this.parseInventory()
+        if(this.storage) {
+            this.parseStorage()
+        }
+
+        if(this.faction) {
+            this.parseFaction()
         }
     }
 }
