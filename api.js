@@ -159,10 +159,12 @@ class ApiLink {
     }
 
     setAPIkey(event) {
-        this.validate(event.target.value)
+        const key = event.clipboardData.getData('text')
+        this.validate(key)
     }
 
     async validate(key) {
+        console.log(key)
         this.apikey = key
         fetch(`${this.baseURL}path=charges.json&apikey=${this.apikey}`, { method: "GET"}).then(r=>r.json()).then(async data => {
             this.charges = data[0]
