@@ -61,6 +61,13 @@ limitations under the License.-->
         </li>
     </ul>
 
+    <div id="playerinfo">
+        <div id="wallet">$ 0</div>
+        <div id="bank">Bank: $ 0</div>
+        <div id="loan">Loan: $ 0</div>
+        <div class="charges">0 charges</div>
+    </div>
+
     <div class="tabs">
         <button class="tab_button" id="graph_button" onclick="handlers.clickTab('graph')">Planner</button>
         <button class="tab_button" id="totals_button" onclick="handlers.clickTab('totals')">Items</button>
@@ -223,11 +230,11 @@ limitations under the License.-->
             <td colspan="2"><span>Server data</span><hr></td>
         </tr>
         <tr>
-            <td id="api-instructions" colspan="2">Add your <a href="https://dash.tycoon.community/wiki/index.php/API#API_Keys" target="_blank">private API key</a> to enable features that require your data. Your key and loaded data are cached in your browser.</td>
+            <td id="api-instructions" colspan="2">Add your <a href="https://dash.tycoon.community/wiki/index.php/API#API_Keys" target="_blank">private API key</a> and user id to enable features that require your data. Your key and loaded data are cached in your browser. Loading wealth data requires that you are online in game.</td>
         </tr>
         <tr class="setting-row">
             <td class="setting-label">API Key:</td>
-            <td><input id="apikey" class="" type="password" size="40" onpaste="api.setAPIkey(event)" /><div id="api-valid" class="api-box">&#10003;</div><div id="charges">0 charges</div><div id="api-invalid" class="api-box">Invalid</div></td>
+            <td><input id="apikey" class="" type="password" size="40" onpaste="api.setAPIkey(event)" /><div class="api-valid api-box">&#10003;</div><div class="api-invalid api-box">Invalid</div> <span class="charges">0 charges</span></td>
         </tr>
         <tr class="setting-row">
             <td class="setting-label">Player id:</td>
@@ -318,6 +325,25 @@ limitations under the License.-->
                 </select>
                 <button class="refresh" onclick="api.getFaction(event)">Refresh</button>
                 <span class="ago-faction"></span>
+            </td>
+        </tr>
+        <tr class="setting-row refresh-settings">
+            <td class="setting-label">Wealth:</td>
+            <td>
+                <select id="autorefresh-wealth" name="refresh-wealth" disabled="disabled">
+                    <option value="0">Auto refresh not available</option>
+                    <option value="60">1 minute</option>
+                    <option value="120">2 minutes</option>
+                    <option value="360">5 minutes</option>
+                    <option value="360">10 minutes</option>
+                    <option value="360">20 minutes</option>
+                    <option value="360">30 minutes</option>
+                    <option value="360">1 hour</option>
+                    <option value="360">2 hours</option>
+                    <option value="360">5 hours</option>
+                </select>
+                <button class="refresh" onclick="api.getWealth(event)">Refresh</button>
+                <span class="ago-wealth"></span>
             </td>
         </tr>
 

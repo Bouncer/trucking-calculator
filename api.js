@@ -22,6 +22,9 @@ class ApiLink {
         this.factionid = null
         this.connected = false
         this.charges = 0
+        this.wallet = 0
+        this.bank = 0
+        this.loan = 0
         this.gamedata = {}
         this.baseURL = 'https://tt.bouncer.nl/?'
         this.storage = null
@@ -42,16 +45,74 @@ class ApiLink {
         d3.selectAll(".refresh-settings").style("display","table-row")
     }
 
+    getWealth() {
+        // actually get data
+        fetch(`${this.baseURL}path=wealth/${this.userid}&apikey=${this.apikey}`, {method: "GET"}).then(r=>r.json()).then(async data => {
+            if(data.code == 200) {
+                this.wealth = {'t':new Date(), 'd': data}
+                localStorage.setItem("wealth", JSON.stringify(this.wealth));
+
+                this.setCharges(data.charges)
+                this.parseWealth()
+            }
+        })
+    }
+
+    parseWealth() {
+        const prevWallet = this.wallet
+        this.wallet = this.wealth.d.wallet
+        d3.select("#wallet").transition().tween("text", () => {
+            const interpolator = d3.interpolateNumber(prevWallet, this.wallet);
+            return function(t) {
+                var text = Math.round(interpolator(t)).toLocaleString()
+                d3.select(this).text(`$ ${text}`)
+            }
+        })
+        .duration(2000);
+
+
+        if(this.wealth.d.bank > 0) {
+            const prevBank = this.bank
+            this.bank = this.wealth.d.bank
+            d3.select("#bank").transition().tween("text", () => {
+                const interpolator = d3.interpolateNumber(prevBank, this.bank);
+                return function(t) {
+                    var text = Math.round(interpolator(t)).toLocaleString()
+                    d3.select(this).text(`Bank: $ ${text}`)
+                }
+            })
+            .duration(2000);
+        } else {
+            d3.select("#bank").text(``)
+        }
+        if(this.wealth.d.loan > 0) {
+            const prevLoan = this.loan
+            this.loan = this.wealth.d.loan
+            d3.select("#loan").transition().tween("text", () => {
+                const interpolator = d3.interpolateNumber(prevLoan, this.loan);
+                return function(t) {
+                    var text = Math.round(interpolator(t)).toLocaleString()
+                    d3.select(this).text(`Loan: $ ${text}`)
+                }
+            })
+            .duration(2000);
+        } else {
+            d3.select("#loan").text(``)
+        }
+    }
+
     getStorage() {
         // actually get data
         fetch(`${this.baseURL}path=storages/${this.userid}&apikey=${this.apikey}`, {method: "GET"}).then(r=>r.json()).then(async data => {
-            this.storage = {'t':new Date(), 'd': data}
-            localStorage.setItem("storage", JSON.stringify(this.storage));
+            if(data.code == 200) {
+                this.storage = {'t':new Date(), 'd': data}
+                localStorage.setItem("storage", JSON.stringify(this.storage));
 
-            this.setCharges(data.charges)
+                this.setCharges(data.charges)
 
-            this.showStorageTab()
-            this.parseStorage()
+                this.showStorageTab()
+                this.parseStorage()
+            }
         })
     }
 
@@ -72,12 +133,14 @@ class ApiLink {
     getVehicles() {
         // actually get data
         fetch(`${this.baseURL}path=trunks/${this.userid}&apikey=${this.apikey}`, {method: "GET"}).then(r=>r.json()).then(async data => {
-            this.vehicles = {'t':new Date(), 'd': data}
-            localStorage.setItem("vehicles", JSON.stringify(this.vehicles));
-            this.setCharges(data.charges)
+            if(data.code == 200) {
+                this.vehicles = {'t':new Date(), 'd': data}
+                localStorage.setItem("vehicles", JSON.stringify(this.vehicles));
+                this.setCharges(data.charges)
 
-            this.showStorageTab()
-            this.parseVehicles()
+                this.showStorageTab()
+                this.parseVehicles()
+            }
         })
     }
 
@@ -98,12 +161,14 @@ class ApiLink {
     getInventory() {
         // actually get data
         fetch(`${this.baseURL}path=dataadv/${this.userid}&apikey=${this.apikey}`, {method: "GET"}).then(r=>r.json()).then(async data => {
-            this.inventory = {'t':new Date(), 'd': data}
-            localStorage.setItem("inventory", JSON.stringify(this.inventory));
-            this.setCharges(data.charges)
+            if(data.code == 200) {
+                this.inventory = {'t':new Date(), 'd': data}
+                localStorage.setItem("inventory", JSON.stringify(this.inventory));
+                this.setCharges(data.charges)
 
-            this.showStorageTab()
-            this.parseInventory()
+                this.showStorageTab()
+                this.parseInventory()
+            }
         })
     }
 
@@ -126,12 +191,14 @@ class ApiLink {
             this.getFactionId(true)
         } else {
             fetch(`${this.baseURL}path=chest/self_storage:${this.userid}:faq_${this.factionid}:chest&apikey=${this.apikey}`, {method: "GET"}).then(r=>r.json()).then(async data => {
-                this.faction = {'t':new Date(), 'd': data}
-                localStorage.setItem("faction", JSON.stringify(this.faction));
-                this.setCharges(data.charges)
+                if(data.code == 200) {
+                    this.faction = {'t':new Date(), 'd': data}
+                    localStorage.setItem("faction", JSON.stringify(this.faction));
+                    this.setCharges(data.charges)
 
-                this.showStorageTab()
-                this.parseFaction()
+                    this.showStorageTab()
+                    this.parseFaction()
+                }
             })
         }
     }
@@ -162,6 +229,9 @@ class ApiLink {
         if(this.faction) {
             d3.selectAll(".ago-faction").text(this.getTimeSince(this.faction.t))
         }
+        if(this.wealth) {
+            d3.selectAll(".ago-wealth").text(this.getTimeSince(this.wealth.t))
+        }
     }
 
     getTimeSince(date) {
@@ -182,8 +252,17 @@ class ApiLink {
     }
 
     setCharges(charges) {
-        this.charges = charges;
-        d3.select("#charges").style("display","inline-block").text(`${charges.toLocaleString()} charges`)
+        const prev = this.charges
+        this.charges = charges
+        d3.selectAll(".charges").style("display","inline-block")        
+        d3.selectAll(".charges").transition().tween("text", () => {
+            const interpolator = d3.interpolateNumber(prev, charges);
+            return function(t) {
+                var text = Math.round(interpolator(t)).toLocaleString()
+                d3.select(this).text(`${text} charges`)
+            }
+        })
+        .duration(2000);
     }
 
     setUserid(event) {
@@ -202,12 +281,11 @@ class ApiLink {
     validate(key) {
         this.apikey = key
         fetch(`${this.baseURL}path=charges.json&apikey=${this.apikey}`, { method: "GET"}).then(r=>r.json()).then(async data => {
-            this.charges = data[0]
-            if(this.charges > 0) {
+            if(data[0] > 0) {
+                this.setCharges(data[0])
                 this.connected = true
                 localStorage.setItem("apikey",key)
                 d3.select("#api-valid").style("display","inline-block")
-                this.setCharges(this.charges)
                 d3.select("#api-invalid").style("display","none")
                 if(this.userid) {
                     this.showStorageTab();
@@ -216,7 +294,7 @@ class ApiLink {
                 this.apikey = null
                 this.connected = false
                 d3.select("#api-valid").style("display","none")
-                d3.select("#charges").style("display","none")
+                d3.selectAll(".charges").style("display","none")
                 d3.select("#api-invalid").style("display","inline-block")
                 d3.selectAll(".refresh-settings").style("display","none")
             }
@@ -260,6 +338,11 @@ class ApiLink {
         if(localStorage.factionid) {
             this.factionid = localStorage.getItem("factionid")
             d3.select("#factionid").text(`#${this.factionid}`)
+        }
+
+        if(localStorage.wealth) {
+            this.wealth = JSON.parse(localStorage.getItem("wealth"))
+            this.parseWealth();
         }
 
         if(localStorage.inventory) {

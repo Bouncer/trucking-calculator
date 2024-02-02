@@ -299,7 +299,7 @@ tr.nobuilding img {
     background-color: #CC0000;
     padding: 2px 8px;
 }
-#charges {
+.charges {
     display: none;
     margin-left:6px;
 }
@@ -384,4 +384,26 @@ button.refresh:hover {
 .storage-combination {
     width: 30%;
     min-width: 300px;
+}
+#playerinfo {
+    position: absolute;
+    top: 20px;
+    right: 50px;
+}
+#playerinfo div {
+    text-align: right;
+    font-family: 'Courier New', Courier, monospace
+}
+#playerinfo .charges {
+    float:right;
+}
+#wallet {
+    font-size: 20px;
+}
+#bank {
+    font-size: 14px;
+}
+#loan {
+    font-size: 14px;
+    margin-bottom:6px;
 }
