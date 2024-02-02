@@ -940,19 +940,11 @@
         "stack_size": "600"
     },
     {
-        "name": "Planks",
-        "key_name": "planks",
-        "tier": "1",
-        "category": "special",
-        "weight": "30",
-        "stack_size": "300"
-    },
-    {
         "name": "Export Planks",
         "key_name": "export-planks",
         "tier": "-1",
         "category": "special",
-        "weight": "30",
+        "weight": "15",
         "stack_size": "300"
     },
     {
@@ -3303,7 +3295,7 @@
             ["export-planks",
             1]
         ],
-        "weight": 5,
+        "weight": 15,
         "cost": 0,
         "pays": 14400
     },
