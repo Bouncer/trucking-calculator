@@ -93,12 +93,10 @@ function makeGraph(totals, targets, ignore) {
             resource = true
         }
         var [tripDetails, trips] = spec.getMagicTrip(items, rate)
-        
         let textoffset = recipe.ingredients.length;
         if(trips < 2) {
             textoffset = 0;
         }
-
         let node = {
             "name": recipe.name,
             "ingredients": recipe.ingredients,
@@ -345,14 +343,14 @@ export function renderTotals(totals, targets, ignore) {
                 .attr("text-anchor", "start")
                 .attr("class", "item-location")
                 .text(d => (d.count.isZero() ? d.count : `${d.building.name}`))
-    rects.append("text")
+    rects.filter(d => d.pertrip).append("text")
         .attr("x", d => d.x0 + iconSize + 4)
         .attr("y", d => ((d.y1 - d.y0 > minNodeHeight) ? (d.y0 + d.y1) / 2 + 18 + (d.textoffset * -10) : d.y0 + 40))
         .attr("dy", "0.35em")
         .attr("text-anchor", "start")
         .attr("class", "item-ingredient")
-        .text(d => `${d.trips} trip` + (d.trips > 1 ? `s` : ``) + ` of` + (d.trips > 1 ? ` max` : ``) + `:` + (d.resource ? ` ${d.pertrip[0].triptext.toLocaleString()}` : ``))
-    rects.filter(d => !d.resource).append("g").selectAll("text").data(d => d.pertrip).join("text")
+        .text(d => `${d.trips} trip` + (d.trips > 1 ? `s` : ``) + ` of` + (d.trips > 1 ? ` max` : ``) + `:` + (d.resource || (d.pertrip && d.pertrip.length <= 1) ? ` ${d.pertrip[0].triptext.toLocaleString()}` : ``))
+    rects.filter(d => !d.resource && d.pertrip && d.pertrip.length > 1).append("g").selectAll("text").data(d => d.pertrip).join("text")
             .attr("x", d => d.x0 + iconSize + 4)
             .attr("y", d => ((d.y1 - d.y0 > minNodeHeight) ? (d.y0 + d.y1) / 2 + 20 + (d.textoffset * -10) : d.y0 + 40))
             .attr("dy", "0.35em")
