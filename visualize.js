@@ -85,28 +85,15 @@ function makeGraph(totals, targets, ignore) {
     for (let [recipe, rate] of totals.rates) {
         let building = spec.getBuilding(recipe)
         let count = spec.getCount(recipe, rate)
-        let pertrip = 0
-        var weight = zero
-        for(let i of recipe.ingredients) {
-            weight = weight.add(i.item.weight.mul(i.amount))
-        }
+        let items = recipe.ingredients
+        let resource = false;
         // sources
         if(recipe.ingredients.length === 0) {
-            for(let i of recipe.products) {
-                weight = weight.add(i.item.weight.mul(i.amount))
-            }
+            items = recipe.products
+            resource = true
         }
-        let groupCapacity = spec.getPerTrip(weight)
-        let beltCountExact = spec.getBeltCount(weight.mul(rate));
-        let beltCount = beltCountExact.toFloat();
-        let trips = Math.ceil(beltCount);
-        for(let i of recipe.ingredients) {
-            i.pertrip = Math.min(rate.mul(i.amount).toFloat(),groupCapacity * i.amount.toFloat())
-        }
-        if(recipe.ingredients.length === 0) {
-            pertrip = Math.min(rate.mul(recipe.products[0].amount).toFloat(),groupCapacity * recipe.products[0].amount.toFloat())
-        }
-
+        var [tripDetails, trips] = spec.getMagicTrip(items, rate)
+        
         let textoffset = recipe.ingredients.length;
         if(trips < 2) {
             textoffset = 0;
@@ -119,10 +106,10 @@ function makeGraph(totals, targets, ignore) {
             "building": building,
             "count": count,
             "rate": rate,
-            "weight": weight,
             "textoffset": textoffset,
             "trips": trips,
-            "pertrip": pertrip
+            "resource": resource,
+            "pertrip": tripDetails,
         }
         nodes.push(node)
         nodeMap.set(recipe.name, node)
@@ -142,7 +129,7 @@ function makeGraph(totals, targets, ignore) {
                     totalRate = totalRate.add(totals.rates.get(subRecipe).mul(subRecipe.gives(ing.item, spec)))
                 }
             }
-            //console.log(totalRate)
+
             for (let subRecipe of ing.item.recipes) {
                 if (totals.rates.has(subRecipe)) {
                     if (node.name == "output") {
@@ -358,21 +345,20 @@ export function renderTotals(totals, targets, ignore) {
                 .attr("text-anchor", "start")
                 .attr("class", "item-location")
                 .text(d => (d.count.isZero() ? d.count : `${d.building.name}`))
-    rects.filter(d => d.trips > 1)
-        .append("text")
+    rects.append("text")
         .attr("x", d => d.x0 + iconSize + 4)
         .attr("y", d => ((d.y1 - d.y0 > minNodeHeight) ? (d.y0 + d.y1) / 2 + 18 + (d.textoffset * -10) : d.y0 + 40))
         .attr("dy", "0.35em")
         .attr("text-anchor", "start")
         .attr("class", "item-ingredient")
-        .text(d => `${d.trips} trips of max` + (d.pertrip > 0 ? ` ${d.pertrip.toLocaleString()}x` : `:`))
-    rects.filter(d => d.trips > 1).append("g").selectAll("text").data(d => d.ingredients).join("text")
+        .text(d => `${d.trips} trip` + (d.trips > 1 ? `s` : ``) + ` of` + (d.trips > 1 ? ` max` : ``) + `:` + (d.resource ? ` ${d.pertrip[0].triptext.toLocaleString()}` : ``))
+    rects.filter(d => !d.resource).append("g").selectAll("text").data(d => d.pertrip).join("text")
             .attr("x", d => d.x0 + iconSize + 4)
             .attr("y", d => ((d.y1 - d.y0 > minNodeHeight) ? (d.y0 + d.y1) / 2 + 20 + (d.textoffset * -10) : d.y0 + 40))
             .attr("dy", "0.35em")
             .attr("class", "item-ingredient")
             .attr("text-anchor", "start")
-            .text(d => `${d.pertrip.toLocaleString()}x ${d.item.name}`)
+            .text(d => `${d.item.name}: ${d.triptext}`)
         
 
         //.text(nodeText)
@@ -441,7 +427,6 @@ export function renderTotals(totals, targets, ignore) {
 
 
     // update map
-    //console.log(links);
     updateMap(links)
 
     /*

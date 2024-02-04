@@ -146,8 +146,8 @@ limitations under the License.-->
                 <td class="item"><i><b>Total</b></i></td>
                 <td class="right-align"></td>
                 <td class="right-align"><tt id="total_amount"></tt></td>
-                <td class="right-align"></td>
-                <td class="right-align"><tt id="total_trips"></tt></td>
+                <!--<td class="right-align"></td>
+                <td class="right-align"><tt id="total_trips"></tt></td>-->
                 <td class="right-align"><tt id="total_weight"></tt></td>
                 <td class="right-align"><tt id="total_cost"></tt></td>
                 <td class="right-align"><tt id="total_revenue"></tt></td>
@@ -155,7 +155,7 @@ limitations under the License.-->
                 <td class="right-align"></td>
             </tr>
             <tr>
-                <td class="right-align power-label padded-cell" colspan="7"><b>Total profit: </b></td>
+                <td class="right-align power-label padded-cell" colspan="5"><b>Total profit: </b></td>
                 <td class="right-align pad padded-cell"><tt id="total_profit"></tt></td>
             </tr>
         </tfoot>
@@ -167,12 +167,19 @@ limitations under the License.-->
 
 
         <tr class="setting-section">
-        <td colspan="2"><span>Truck Settings</span><hr></td>
+        <td colspan="2"><div>Truck Settings</div></td>
+        </tr>
+        <tr>
+            <td id="api-instructions" colspan="2">You can configure the capacity for your inventory, the <a href="https://dash.tycoon.community/wiki/index.php/Getting_Started_Guide#trunk" target="_blank">trunk</a> of your vehicle and your trailer. Your settings are saved in your browser. The planner will display the amount of trips and how to distribute them in the order: trailer + trunk + inventory.</td>
         </tr>
 
         <tr class="setting-row">
             <td class="setting-label">Strength:</td>
             <td><input id="strength" class="prec" type="number" value="30" max="30" min="1" onchange="handlers.changeStrength(event)"></td>
+        </tr>
+        <tr class="setting-row">
+            <td class="setting-label">Inventory:</td>
+            <td><div id="capacity-inventory" class="truck-totals"></div></td>
         </tr>
 
         <tr class="setting-row">
@@ -188,6 +195,10 @@ limitations under the License.-->
                 </div>
             </td>
         </tr>
+        <tr class="setting-row">
+            <td class="setting-label">Trunk:</td>
+            <td><div id="capacity-trunk" class="truck-totals"></div></td>
+        </tr>
 
         <tr class="setting-row">
             <td colspan="2"><hr /></td>
@@ -195,7 +206,11 @@ limitations under the License.-->
             <tr class="setting-row">
             <td class="setting-label">Trailer:</td>
             <td><div id="belt_selector"></div></td>
-            </tr>
+        </tr>
+        <tr class="setting-row">
+            <td class="setting-label">Capacity:</td>
+            <td><div id="capacity-trailer" class="truck-totals"></div></td>
+        </tr>
         
         <tr class="setting-row">
             <td colspan="2"><hr /></td>
@@ -216,21 +231,16 @@ limitations under the License.-->
                 </div>
             </td>
         </tr>
-
-        <tr class="setting-row">
-            <td colspan="2"><hr /></td>
-        </tr>
-
         <tr class="setting-row">
             <td class="setting-label">Total Capacity:</td>
-            <td><input id="capacity" class="" type="number" value="1" min="0" onchange="handlers.changeCapacity(event)"> Note: this the combined player inventory and trailer capacity</td>
+            <td><div id="capacity" class="truck-totals"></div></td>
         </tr>
 
         <tr class="setting-section">
-            <td colspan="2"><span>Server data</span><hr></td>
+            <td colspan="2"><div>Server data</div></td>
         </tr>
         <tr>
-            <td id="api-instructions" colspan="2">Add your <a href="https://dash.tycoon.community/wiki/index.php/API#API_Keys" target="_blank">private API key</a> and user id to enable features that require your data. Your key and loaded data are cached in your browser. Loading wealth data requires that you are online in game.</td>
+            <td id="api-instructions" colspan="2">Add your <a href="https://dash.tycoon.community/wiki/index.php/API#API_Keys" target="_blank">private API key</a> and user id to enable features that require your data. Your key and loaded data are saved in your browser. Loading wealth data requires that you are online in game.</td>
         </tr>
         <tr class="setting-row">
             <td class="setting-label">API Key:</td>
@@ -306,7 +316,7 @@ limitations under the License.-->
         </tr>
         <tr class="setting-row refresh-settings">
             <td class="setting-label">Faction id:</td>
-            <td><span id="factionid" class="">Unknown</span> <button class="refresh" onclick="api.getFactionId(event)">Refresh</button></td>
+            <td><span id="factionid" class="">Unknown</span> <button class="refresh" onclick="api.getFactionId()">Refresh</button></td>
         </tr>
         <tr class="setting-row refresh-settings">
             <td class="setting-label">Faction Storage:</td>
@@ -348,7 +358,7 @@ limitations under the License.-->
         </tr>
 
         <tr class="setting-section">
-        <td colspan="2"><span>Alternative Recipes</span><hr></td>
+        <td colspan="2"><div>Alternative Recipes</div></td>
         </tr>
 
             <tr>
@@ -359,15 +369,16 @@ limitations under the License.-->
             <td colspan="2"><div id="alt_recipe_settings"></div></td>
             </tr>
 
+        <!--
         <tr class="setting-section">
         <td colspan="2"><span>Resources</span><hr></td>
         </tr>
 
-            <tr>
-            <!--<td class="setting-label"></td>-->
-            <td colspan="2"><div id="resource_settings"></div></td>
-            </tr>
-
+        <tr>
+        <td class="setting-label"></td>
+        <td colspan="2"><div id="resource_settings"></div></td>
+        </tr>
+        -->
         </table>
     </div>
 

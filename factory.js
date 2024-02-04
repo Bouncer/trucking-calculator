@@ -68,6 +68,7 @@ class FactorySpecification {
             "truck": 0,
             "postop": 0,
             "trailer": 0,
+            "totaltrunk": 0,
             "totaltrailer": 0,
             "totalinv": 0,
             "total": Rational.from_float(0)
@@ -208,13 +209,79 @@ class FactorySpecification {
     getBeltCount(rate) {
         return rate.div(Rational.from_float(this.capacity.total))
     }
-    getTrailerBeltCount(rate) {
-        return rate.div(Rational.from_float(this.capacity.totaltrailer))
-    }
-    getInvBeltCount(rate) {
-        return rate.div(Rational.from_float(this.capacity.totalinv))
+    getMagicTrip(items, rate) {
+        // theoretical maximum rate
+        var recipeWeight = 0
+        for(let i of items) {
+            recipeWeight += i.weight.toFloat()
+        }
+        items.sort((a,b) => b.weight.toFloat() - a.weight.toFloat())
+
+        var tripRate = Math.floor(this.capacity.total / recipeWeight);
+        
+        // because we cannot split items in pieces, calculate how to distribute
+        var searching = true;
+        while(searching) {
+            // start with heaviest ingredients
+            var attempt = true;
+            var storages = [
+                ['inventory', this.capacity.totalinv],
+                ['trunk', this.capacity.totaltrunk],
+                ['trailer', this.capacity.totaltrailer]
+            ]
+            storages.sort((a,b) => a[1] - b[1])
+
+            for(let i in items) {
+                items[i]["storage"] = {
+                    'inventory': 0,
+                    'trunk': 0,
+                    'trailer': 0,
+                    'total': 0
+                }
+                var target = items[i].amount.toFloat() * tripRate;
+                for(var s in storages) {
+                    // is there still room?
+                    if(storages[s][1] >= items[i].item.weight.toFloat()) {
+                        // how much can we add?
+                        var capable = Math.min(Math.floor(storages[s][1] / items[i].item.weight.toFloat()), target)
+                        target -= capable;
+                        items[i].storage[storages[s][0]] += capable
+                        items[i].storage['total'] += capable
+                        storages[s][1] -= capable * items[i].item.weight.toFloat()
+                        //console.log(s[1])
+                    }
+                }
+                // try a smaller rate if it doesn't fit
+                if(target >= items[i]['storage']['total']) {
+                    tripRate -= 1;
+                    attempt = false;
+                    break
+                }
+            }
+            if(tripRate <= 1 || attempt) {
+                searching = false;
+                var tripCount = Math.ceil(rate / tripRate)
+
+                for(let item in items) {
+                    let triptext = [];
+                    if(this.capacity.totaltrailer > 0) {
+                        triptext.push(`${items[item]['storage']['trailer'].toLocaleString()}x`)
+                    }
+                    if(this.capacity.totaltrunk > 0) {
+                        triptext.push(`${items[item]['storage']['trunk'].toLocaleString()}x`)
+                    }
+                    if(this.capacity.totalinv > 0) {
+                        triptext.push(`${items[item]['storage']['inventory'].toLocaleString()}x`)
+                    }
+                    items[item]['triptext'] = triptext.join(' + ')
+                }
+
+                return [items, tripCount]
+            }
+        }
     }
     getPerTrip(weight) {
+        // how many times could we fit this in one trip?
         return Math.floor(this.capacity.total / weight.toFloat());
     }
     getPowerUsage(recipe, rate, itemCount) {
@@ -286,12 +353,17 @@ class FactorySpecification {
         window.location.hash = "#" + formatSettings()
     }
     updateCapacity() {
-        this.capacity.total = Math.round((this.capacity.strength * 10 * (1 + this.capacity.strengthperk + this.capacity.premium)) + (this.capacity.truck * (1 + this.capacity.postop + this.capacity.premium)) + (this.capacity.trailer * (1 + this.capacity.premium + this.capacity.postop)))
-        this.capacity.totaltrailer = (this.capacity.trailer * (1 + this.capacity.premium + this.capacity.postop))
-        this.capacity.totalinv = (this.capacity.strength * 10 * (1 + this.capacity.strengthperk + this.capacity.premium)) + (this.capacity.truck * (1 + this.capacity.postop + this.capacity.premium))
+//        this.capacity.total = Math.round((this.capacity.strength * 10 * (1 + this.capacity.strengthperk + this.capacity.premium)) + (this.capacity.truck * (1 + this.capacity.postop + this.capacity.premium)) + (this.capacity.trailer * (1 + this.capacity.premium + this.capacity.postop)))
+        this.capacity.totalinv = Math.floor(this.capacity.strength * 10 * (1 + this.capacity.strengthperk + this.capacity.premium))
+        this.capacity.totaltrunk = Math.floor(this.capacity.truck * (1 + this.capacity.postop + this.capacity.premium))
+        this.capacity.totaltrailer = Math.floor(this.capacity.trailer * (1 + this.capacity.premium + this.capacity.postop))
+        this.capacity.total = Math.floor(this.capacity.totalinv + this.capacity.totaltrunk + this.capacity.totaltrailer)
         localStorage.setItem("capacity", JSON.stringify(this.capacity));
         
-        let form = d3.select("#capacity").property("value", this.capacity.total)
+        d3.select("#capacity-inventory").text(`${this.capacity.totalinv.toLocaleString()} kg`)
+        d3.select("#capacity-trunk").text(`${this.capacity.totaltrunk.toLocaleString()} kg`)
+        d3.select("#capacity-trailer").text(`${this.capacity.totaltrailer.toLocaleString()} kg`)
+        d3.select("#capacity").text(`${this.capacity.total.toLocaleString()} kg`)
     }
     updateSolution() {
         if(!this.capacity.fixed) {

@@ -46,8 +46,8 @@ export function displayItems(spec, totals, ignore) {
         new Header("Item",1),
         new Header("Weight",1),
         new Header("Amount", 1),
-        new Header("Per Trip", 1),
-        new Header("Trips", 1),
+        //new Header("Per Trip", 1),
+        //new Header("Trips", 1),
         new Header("Total Weight", 1),
         new Header("Cost", 1),
         new Header("Revenue", 1),
@@ -90,6 +90,7 @@ export function displayItems(spec, totals, ignore) {
             display.itemRate = itemRate.toFloat();
             display.itemWeight = item.weight.toFloat();
             display.weight = itemRate.mul(item.weight).toFloat()
+            
             let beltCountExact = spec.getBeltCount(itemRate.mul(item.weight));
             let beltCount = beltCountExact.toFloat();
             display.trips = Math.ceil(beltCount);
@@ -177,6 +178,7 @@ export function displayItems(spec, totals, ignore) {
             .classed("amount", true)
 
     // per trip
+    /*
     row.append("td")
         .classed("right-align", true)
         .append("tt")
@@ -187,6 +189,7 @@ export function displayItems(spec, totals, ignore) {
         .classed("right-align", true)
         .append("tt")
             .classed("trips", true)
+    */
 
     // weight
     row.append("td")
@@ -262,12 +265,14 @@ export function displayItems(spec, totals, ignore) {
     row.selectAll("tt.weight")
         .html(d => d.weight >= 1000 ? `${Math.round(d.weight/1000).toLocaleString()} <small>t</small>` : `${(d.weight).toLocaleString()} <small>kg</small>`)
 
+    /*
     row.selectAll("tt.trips").filter(d => !d.multirow)
         .html(d => `${d.trips.toLocaleString()}<small>x</small>`)
 
     row.selectAll("tt.per-trip")
         .html(d => d.pertrip > 0 ? `${d.pertrip.toLocaleString()}<small>x</small>` : ``)
-
+    */
+   
     row.selectAll("tt.cost").filter(d => !d.multirow)
         .text(d => d.cost > 0 ? `$ ${d.cost.toLocaleString()}` : `-`)
 

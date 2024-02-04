@@ -32,7 +32,6 @@ class ApiLink {
         this.storageTab = null
         this.storages = {}
         this.itemrates = {}
-        this.storages = d3.json("data/storages.json")
 
         this.init()
         // timers
@@ -54,6 +53,12 @@ class ApiLink {
 
                 this.setCharges(data.charges)
                 this.parseWealth()
+            } else {
+                if(data.code == 412) {
+                    d3.selectAll(".ago-wealth").text(`You must be online`)
+                } else {
+                    d3.selectAll(".ago-wealth").text(`Error ${data.code}`)
+                }
             }
         })
     }

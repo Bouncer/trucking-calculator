@@ -16,6 +16,8 @@
     --accent: #ff7200;
     /* slightly brighter than main foreground color */
     --bright: #f1fff2;
+    /* blue link */
+    --link: #70b8ff;
 }
 /* top-level/shared elements */
 body {
@@ -91,16 +93,16 @@ table#settings {
     border-collapse: collapse;
 }
 tr.setting-section td {
-    padding-top: 1em;
-    padding-bottom: 0.5em;
+
 }
-tr.setting-section td span {
+tr.setting-section td div {
     color: var(--accent);
     font-style: italic;
-}
-tr.setting-section td hr {
-    display: block;
-    border: 1px solid var(--accent);
+    display:block;
+    padding-top: 1em;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom:10px;
+    margin-bottom:10px;
 }
 tr.setting-row td:first-child {
     padding-left: 3em;
@@ -108,7 +110,7 @@ tr.setting-row td:first-child {
 }
 td.setting-label {
     text-align: right;
-    max-width: 50px;
+    min-width: 50px;
 }
 div#resource_settings, div#alt_recipe_settings {
     padding-left: 3em;
@@ -120,7 +122,7 @@ input.prec {
     width: 4em;
 }
 #belt_selector {
-    width: 500px;
+    width: 750px;
 }
 #belt_selector input[type="radio"] {
     display: none;
@@ -406,4 +408,12 @@ button.refresh:hover {
 #loan {
     font-size: 14px;
     margin-bottom:6px;
+}
+.truck-totals {
+    font-family: courier;
+    margin-top: 4px;
+}
+#settings a {
+    text-decoration: none;
+    color: var(--link);
 }
