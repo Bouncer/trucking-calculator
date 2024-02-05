@@ -92,7 +92,7 @@ function makeGraph(totals, targets, ignore) {
             items = recipe.products
             resource = true
         }
-        var [tripDetails, trips] = spec.getMagicTrip(items, rate)
+        var [tripDetails, trips] = spec.getMagicTrip(items, rate.toFloat())
         let textoffset = recipe.ingredients.length;
         if(trips < 2) {
             textoffset = 0;

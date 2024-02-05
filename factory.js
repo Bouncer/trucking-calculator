@@ -217,7 +217,11 @@ class FactorySpecification {
         }
         items.sort((a,b) => b.weight.toFloat() - a.weight.toFloat())
 
-        var tripRate = Math.floor(this.capacity.total / recipeWeight);
+        if(recipeWeight > 0) {
+            var tripRate = Math.floor(this.capacity.total / recipeWeight);
+        } else {
+            var tripRate = rate;
+        }
         
         // because we cannot split items in pieces, calculate how to distribute
         var searching = true;
@@ -238,24 +242,30 @@ class FactorySpecification {
                     'trailer': 0,
                     'total': 0
                 }
-                var target = items[i].amount.toFloat() * tripRate;
-                for(var s in storages) {
-                    // is there still room?
-                    if(storages[s][1] >= items[i].item.weight.toFloat()) {
-                        // how much can we add?
-                        var capable = Math.min(Math.floor(storages[s][1] / items[i].item.weight.toFloat()), target)
-                        target -= capable;
-                        items[i].storage[storages[s][0]] += capable
-                        items[i].storage['total'] += capable
-                        storages[s][1] -= capable * items[i].item.weight.toFloat()
-                        //console.log(s[1])
+
+                if(recipeWeight > 0) {
+                    var target = items[i].amount.toFloat() * tripRate;
+                    for(var s in storages) {
+                        // is there still room?
+                        if(storages[s][1] >= items[i].item.weight.toFloat()) {
+                            // how much can we add?
+                            var capable = Math.min(Math.floor(storages[s][1] / items[i].item.weight.toFloat()), target)
+                            target -= capable;
+                            items[i].storage[storages[s][0]] += capable
+                            items[i].storage['total'] += capable
+                            storages[s][1] -= capable * items[i].item.weight.toFloat()
+                            //console.log(s[1])
+                        }
                     }
-                }
-                // try a smaller rate if it doesn't fit
-                if(target >= items[i]['storage']['total']) {
-                    tripRate -= 1;
-                    attempt = false;
-                    break
+                    // try a smaller rate if it doesn't fit
+                    if(target >= items[i]['storage']['total']) {
+                        tripRate -= 1;
+                        attempt = false;
+                        break
+                    }
+                } else {
+                    items[i]["storage"]["inventory"] = rate;
+                    items[i]["storage"]["total"] = rate;
                 }
             }
             if(tripRate <= 1 || attempt) {
