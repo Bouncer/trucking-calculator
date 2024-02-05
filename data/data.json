@@ -3564,6 +3564,28 @@
         "weight": 5,
         "cost": 0,
         "pays": 1200
+    },
+    {
+        "name": "Chipboard Planks",
+        "key_name": "chipboard-planks",
+        "category": "sawmill",
+        "time": 1,
+        "ingredients": [
+            [
+                "sawdust",
+                30
+            ],
+            [
+                "logs",
+                5
+            ]
+        ],
+        "product": [
+            ["planks",15]
+        ],
+        "weight": 21,
+        "cost": 2500,
+        "pays": 0
     }
 ],
     "resources": [
