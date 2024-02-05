@@ -51,6 +51,7 @@ export function toggleIgnoreHandler(d) {
 // setting events
 
 export function changeStrength(event) {
+    log.add('log',`Strength set to ${event.target.value}`)
     spec.capacity.fixed = false
 
     spec.capacity.strength = Number(event.target.value)
@@ -60,8 +61,10 @@ export function changePremium(event) {
     spec.capacity.fixed = false
     if(event.target.checked) {
         spec.capacity.premium = 0.15
+        log.add('log','Premium enabled')
     } else {
         spec.capacity.premium = 0
+        log.add('log','Premium enabled')
     }
     spec.updateSolution()
 }
@@ -72,15 +75,18 @@ export function changePerk(event) {
     if(event.target.value == "strength") {
         spec.capacity.perk = "strength"
         spec.capacity.strengthperk = 1; 
-        spec.capacity.postop = 0; 
+        spec.capacity.postop = 0;
+        log.add('log','Perk set to strength')
     } else if(event.target.value == "postop") {
         spec.capacity.perk = "postop"
         spec.capacity.strengthperk = 0;
         spec.capacity.postop = 0.15; 
+        log.add('log','Perk set to postop')
     } else {
         spec.capacity.perk = "none"
         spec.capacity.strengthperk = 0;
         spec.capacity.postop = 0;
+        log.add('log','Perks removed')
     }
     spec.updateSolution()
 }
@@ -89,6 +95,7 @@ export function changePerk(event) {
 export function changeTruck(event) {
     spec.capacity.fixed = false
     spec.capacity.truck = Number(event.target.value)
+    log.add('log',`Truck capacity set to ${event.target.value}`)
     spec.updateSolution()
 }
 

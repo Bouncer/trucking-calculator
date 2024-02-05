@@ -184,6 +184,8 @@ export class BuildTarget {
         this.buildings = zero
         this.rate = Rational.from_string(this.rateInput.value).div(spec.format.rateFactor)
         this.buildingInput.value = ""
+        
+        log.add('log',`Rate changed for ${this.itemKey} to ${this.rateInput.value}`)
     }
     setRate(rate) {
         this.rateInput.value = rate

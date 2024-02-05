@@ -205,6 +205,7 @@ function renderBelts(settings) {
 // alternate recipes
 
 function changeAltRecipe(recipe) {
+    log.add('log',`Changed recipe ${recipe.key}`)
     spec.setRecipe(recipe)
     spec.updateSolution()
 }

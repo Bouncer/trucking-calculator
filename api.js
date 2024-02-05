@@ -13,13 +13,15 @@ See the License for the specific language governing permissions and
 limitations under the License.*/
 
 import { spec } from "./factory.js"
+import { log } from "./log.js"
 
 class ApiLink {
     constructor() {
         // api definitions
         this.userid = null
         this.apikey = null
-        this.factionid = null
+        this.factiontax = 0
+        this.factionid = 'None'
         this.connected = false
         this.charges = 0
         this.wallet = 0
@@ -51,15 +53,16 @@ class ApiLink {
                 this.wealth = {'t':new Date(), 'd': data}
                 localStorage.setItem("wealth", JSON.stringify(this.wealth));
 
-                this.setCharges(data.charges)
+                log.add('success',`Loaded wealth of $ ${data.wallet.toLocaleString()}`)
                 this.parseWealth()
             } else {
                 if(data.code == 412) {
-                    d3.selectAll(".ago-wealth").text(`You must be online`)
+                    log.add('warning',`You must be online to load wealth`)
                 } else {
-                    d3.selectAll(".ago-wealth").text(`Error ${data.code}`)
+                    log.add('error',`Wealth error ${data.code}`)
                 }
             }
+            this.setCharges(data.charges)
         })
     }
 
@@ -113,11 +116,13 @@ class ApiLink {
                 this.storage = {'t':new Date(), 'd': data}
                 localStorage.setItem("storage", JSON.stringify(this.storage));
 
-                this.setCharges(data.charges)
-
+                log.add('success',`Loaded ${data.storages.length} storages`)
                 this.showStorageTab()
                 this.parseStorage()
+            } else {
+                log.add('error',`Storage error ${data.code}`)
             }
+            this.setCharges(data.charges)
         })
     }
 
@@ -141,11 +146,13 @@ class ApiLink {
             if(data.code == 200) {
                 this.vehicles = {'t':new Date(), 'd': data}
                 localStorage.setItem("vehicles", JSON.stringify(this.vehicles));
-                this.setCharges(data.charges)
-
+                log.add('success',`Loaded ${data.trunks.length} vehicles`)
                 this.showStorageTab()
                 this.parseVehicles()
+            } else {
+                log.add('error',`Trunk error ${data.code}`)
             }
+            this.setCharges(data.charges)
         })
     }
 
@@ -169,11 +176,13 @@ class ApiLink {
             if(data.code == 200) {
                 this.inventory = {'t':new Date(), 'd': data}
                 localStorage.setItem("inventory", JSON.stringify(this.inventory));
-                this.setCharges(data.charges)
-
+                log.add('success',`Loaded ${Object.keys(data.data.inventory).length} items in inventory`)
                 this.showStorageTab()
                 this.parseInventory()
+            } else {
+                log.add('error',`Inventory error ${data.code}`)
             }
+            this.setCharges(data.charges)
         })
     }
 
@@ -192,18 +201,23 @@ class ApiLink {
 
     getFaction() {
         // actually get data
-        if(!this.factionid) {
+        if(this.factionid == 'None') {
             this.getFactionId(true)
         } else {
             fetch(`${this.baseURL}path=chest/self_storage:${this.userid}:faq_${this.factionid}:chest&apikey=${this.apikey}`, {method: "GET"}).then(r=>r.json()).then(async data => {
-                if(data.code == 200) {
+                if(data.code == 200 && 'data' in data) {
                     this.faction = {'t':new Date(), 'd': data}
                     localStorage.setItem("faction", JSON.stringify(this.faction));
-                    this.setCharges(data.charges)
-
+                    
+                    log.add('success',`Loaded ${Object.keys(data.data).length} items in faction storage`)
                     this.showStorageTab()
                     this.parseFaction()
+                } else if(data.code == 200) {
+                    log.add('warning',`Your faction has no storage`)
+                } else {
+                    log.add('error',`Faction error ${data.code}`)
                 }
+                this.setCharges(data.charges)
             })
         }
     }
@@ -259,6 +273,11 @@ class ApiLink {
     setCharges(charges) {
         const prev = this.charges
         this.charges = charges
+        if(charges == 1) {
+            log.add('warning',`You have ${charges} charg remaining`)
+        } else if(charges <= 10) {
+            log.add('info',`You have ${charges} charges remaining`)
+        }
         d3.selectAll(".charges").style("display","inline-block")        
         d3.selectAll(".charges").transition().tween("text", () => {
             const interpolator = d3.interpolateNumber(prev, charges);
@@ -273,13 +292,22 @@ class ApiLink {
     setUserid(event) {
         this.userid = event.target.value
         localStorage.setItem("userid", this.userid);
+        log.add('log',`Set userid to ${this.userid}`)
         if(this.connected) {
             this.showStorageTab()
         }
     }
 
+    setFactionTax(event) {
+        this.factiontax = event.target.value
+        localStorage.setItem("factiontax", this.factiontax);
+        log.add('log',`Set faction tax to ${this.factiontax}%`)
+        spec.updateSolution()
+    }
+
     setAPIkey(event) {
         const key = event.clipboardData.getData('text')
+        log.add('log','Set API key')
         this.validate(key)
     }
 
@@ -287,6 +315,8 @@ class ApiLink {
         this.apikey = key
         fetch(`${this.baseURL}path=charges.json&apikey=${this.apikey}`, { method: "GET"}).then(r=>r.json()).then(async data => {
             if(data[0] > 0) {
+                
+                log.add('success',`Connected! ${data[0]} charges remaining`)
                 this.setCharges(data[0])
                 this.connected = true
                 localStorage.setItem("apikey",key)
@@ -298,6 +328,7 @@ class ApiLink {
             } else {
                 this.apikey = null
                 this.connected = false
+                log.add('warning',`Could not connect. Do you have charges?`)
                 d3.select("#api-valid").style("display","none")
                 d3.selectAll(".charges").style("display","none")
                 d3.select("#api-invalid").style("display","inline-block")
@@ -309,18 +340,22 @@ class ApiLink {
     getFactionId(getFaction) {
         fetch(`${this.baseURL}path=getuserfaq/${this.userid}&apikey=${this.apikey}`, {method: "GET"}).then(r=>r.json()).then(async data => {
             if(data.code == 200) {
+
                 if(data.is_in_faction) {
                     this.factionid = data.faction_id
                     localStorage.setItem("factionid", this.factionid);
                     d3.select("#factionid").text(`#${data.faction_id}`)
+                    log.add('success',`Faction set to ${data.faction_id}`)
                 } else {
-                    this.factionid = null
+                    this.factionid = 'None'
+                    localStorage.setItem("factionid", this.factionid);
                     d3.select("#factionid").text(`None`)
+                    log.add('warning','No faction found')
                 }
             }
             this.setCharges(data.charges)
 
-            if(getFaction) {
+            if(getFaction && this.factionid != 'None') {
                 this.getFaction()
             }
         })
@@ -340,9 +375,18 @@ class ApiLink {
             this.showStorageTab();
         }
 
+        if(localStorage.factiontax) {
+            this.factiontax = localStorage.getItem("factiontax")
+            d3.select("#factiontax").attr("value", this.factiontax)
+        }
+
         if(localStorage.factionid) {
             this.factionid = localStorage.getItem("factionid")
-            d3.select("#factionid").text(`#${this.factionid}`)
+            if(this.factionid != 'None') {
+                d3.select("#factionid").text(`#${this.factionid}`)
+            } else {
+                d3.select("#factionid").text(`None`)
+            }
         }
 
         if(localStorage.wealth) {

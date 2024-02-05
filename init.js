@@ -30,10 +30,12 @@ function loadData(settings) {
         renderSettings(settings)
 
         spec.updateSolution()
+        log.add('log','Data initialized')
     })
 }
 
 export function init() {
+    log.add('log','Welcome to the party')
     let settings = loadSettings(window.location.hash)
     loadData(settings)
 }

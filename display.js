@@ -67,6 +67,7 @@ export function displayItems(spec, totals, ignore) {
     // totals
     let totalCost = 0
     let totalRevenue = 0
+    let totalTax = 0
     let totalProfit = 0
     let totalAmount = 0
     let totalWeight = 0
@@ -124,7 +125,8 @@ export function displayItems(spec, totals, ignore) {
             // totals sum
             totalCost += display.cost
             totalRevenue += display.pays
-            totalProfit = totalRevenue - totalCost
+            totalTax += display.pays * (api.factiontax / 100)
+            totalProfit = totalRevenue - totalCost - totalTax
             totalAmount += display.itemRate
             totalWeight += display.weight
             totalTrips += display.trips
@@ -309,5 +311,6 @@ export function displayItems(spec, totals, ignore) {
     //d3.select("tt#total_trips").html(`${totalTrips}<small>x</small>`)
     d3.select("tt#total_cost").text(totalCost > 0 ? `$ ${totalCost.toLocaleString()}` : `-`)
     d3.select("tt#total_revenue").text(totalRevenue > 0 ? `$ ${totalRevenue.toLocaleString() }` : `-`)
+    d3.select("tt#total_tax").text(`$ ${totalTax.toLocaleString()}`)
     d3.select("tt#total_profit").text(`$ ${totalProfit.toLocaleString()}`)
 }

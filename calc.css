@@ -417,3 +417,20 @@ button.refresh:hover {
     text-decoration: none;
     color: var(--link);
 }
+#logbook td {
+    padding: 0px 4px;
+    font-family: courier;
+    font-size:14px;
+}
+#logbook .success {
+    color:#00CC00;
+}
+#logbook .info {
+    color:#2f96b4;
+}
+#logbook .warning {
+    color:#FF7400;
+}
+#logbook .error {
+    color:#FF0000;
+}

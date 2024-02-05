@@ -329,6 +329,7 @@ class FactorySpecification {
         let target = new BuildTarget(this.buildTargets.length, itemKey, item, this.itemTiers)
         this.buildTargets.push(target)
         d3.select("#targets").insert(() => target.element, "#plusButton")
+        log.add('log',`Added target ${itemKey}`)
         return target
     }
     removeTarget(target) {
@@ -337,6 +338,7 @@ class FactorySpecification {
             this.buildTargets[i].index--
         }
         d3.select(target.element).remove()
+        log.add('log',`Removed target ${target.itemKey}`)
     }
     toggleIgnore(recipe) {
         if (this.ignore.has(recipe)) {
