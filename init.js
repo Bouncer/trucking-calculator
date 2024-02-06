@@ -28,8 +28,8 @@ function loadData(settings) {
         spec.setData(items, recipes, buildings, belts)
 
         renderSettings(settings)
-
-        spec.updateSolution()
+        api.init()
+        //spec.updateSolution()
         log.add('log','Data initialized')
     })
 }

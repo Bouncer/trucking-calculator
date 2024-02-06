@@ -57,6 +57,10 @@ class FactorySpecification {
         this.altRecipes = new Map()
         this.altRecipeList = {}
 
+        // storages
+        this.storageRecipes = new Map()
+        this.storageRecipeList = {}  
+
         // cargo capacity settings
         this.capacity = {
             "fixed": false,
@@ -139,7 +143,8 @@ class FactorySpecification {
         }
     }
     getRecipe(item) {
-        // TODO: Alternate recipes.
+        // first check if we can get this from storage
+
         let recipe = this.altRecipes.get(item)
         if (recipe === undefined) {
             return item.recipes[0]

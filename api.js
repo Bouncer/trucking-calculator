@@ -35,7 +35,14 @@ class ApiLink {
         this.storages = {}
         this.itemrates = {}
 
-        this.init()
+        this.itemMap = {
+            'military_': '',
+            'scrap_': '',
+            'liquid\-': '',
+            'refined_': ''
+        };
+        this.itemRegex = new RegExp(Object.keys(this.itemMap).join("|"),"gi");
+        
         // timers
 //        this.updateCapacity()
     }
@@ -44,6 +51,14 @@ class ApiLink {
         d3.select("#storage_tab_instructions").style("display","none")
         d3.select("#storage_tab_content").style("display","block")
         d3.selectAll(".refresh-settings").style("display","table-row")
+    }
+
+    itemLookup(item) {
+        item = item.replace('_','-')
+        item = item.replace(this.itemRegex, function(match){
+            return this.itemMap[match];
+          });
+          return item
     }
 
     getWealth() {
@@ -223,6 +238,15 @@ class ApiLink {
     }
 
     parseFaction() {
+        console.log(spec.items)
+        for(let item in this.faction.d.data) {
+            console.log(item)
+            item = this.itemLookup(item)
+            console.log(item)
+            console.log(spec.items.get(item))
+        }
+        //console.log(parsedItems)
+
         d3.select("#faction").html("")
         var storages = d3.select("#faction").append("table")
             .classed("storage-location", true)
@@ -419,6 +443,7 @@ class ApiLink {
     }
 
     update(totals) {
+        console.log('update')
         this.itemrates = totals.itemRates
 
         if(this.inventory) {
