@@ -30,18 +30,9 @@ class ApiLink {
         this.gamedata = {}
         this.baseURL = 'https://tt.bouncer.nl/?'
         this.storage = null
-        this.items = null
         this.storageTab = null
         this.storages = {}
         this.itemrates = {}
-
-        this.itemMap = {
-            'military_': '',
-            'scrap_': '',
-            'liquid\-': '',
-            'refined_': ''
-        };
-        this.itemRegex = new RegExp(Object.keys(this.itemMap).join("|"),"gi");
         
         // timers
 //        this.updateCapacity()
@@ -53,12 +44,16 @@ class ApiLink {
         d3.selectAll(".refresh-settings").style("display","table-row")
     }
 
-    itemLookup(item) {
-        item = item.replace('_','-')
-        item = item.replace(this.itemRegex, function(match){
-            return this.itemMap[match];
-          });
-          return item
+    setLocation(location) {
+        this.items[location.key] = {
+            'location': location,
+            'items': []
+        }
+    }
+
+    addItem(item, rate, location) {
+        item = item.replace('_premium','').replace('fridge_','').replace('military_','').replace('mechanicals_','').replace('petrochem_','').replace('crafted_','').replace(new RegExp('^hide.*'),'hide').replaceAll('_','-')
+        spec.addStorage(item, rate, location)
     }
 
     getWealth() {
@@ -142,6 +137,22 @@ class ApiLink {
     }
 
     parseStorage() {
+        for(let storage in this.storage.d.storages){
+            let location = {
+                "name": " Storage",
+                "key_name": "storage-faction",
+                "category": "storage-faction",
+                "power": 1,
+                "max": 1,
+                "color": 1,
+                "x": 0,
+                "y": 0
+            }
+            for(let item in this.storage.d.storages[storage].inventory) {
+                this.addItem(item, this.storage.d.storages[storage].inventory[item].amount, location)
+            }
+        }
+
         d3.select("#storage").html("")
         var storages = d3.select("#storage").selectAll("table").data(this.storage.d.storages.sort((a,b) => Object.keys(b.inventory).length - Object.keys(a.inventory).length)).join("table")
             .filter(d => Object.keys(d.inventory).length > 0)
@@ -202,6 +213,20 @@ class ApiLink {
     }
 
     parseInventory() {
+        let location = {
+            "name": "Inventory",
+            "key_name": "storage-inventory",
+            "category": "storage-inventory",
+            "power": 1,
+            "max": 1,
+            "color": 1,
+            "x": 0,
+            "y": 0
+        }
+        for(let item in this.inventory.d.data.inventory) {
+            this.addItem(item, this.inventory.d.data.inventory[item].amount, location)
+        }
+
         d3.select("#inventory").html("")
         var storages = d3.select("#inventory").append("table")
             .classed("storage-location", true)
@@ -238,14 +263,19 @@ class ApiLink {
     }
 
     parseFaction() {
-        console.log(spec.items)
-        for(let item in this.faction.d.data) {
-            console.log(item)
-            item = this.itemLookup(item)
-            console.log(item)
-            console.log(spec.items.get(item))
+        let location = {
+            "name": "Faction Storage",
+            "key_name": "storage-faction",
+            "category": "storage-faction",
+            "power": 1,
+            "max": 1,
+            "color": 1,
+            "x": 0,
+            "y": 0
         }
-        //console.log(parsedItems)
+        for(let item in this.faction.d.data) {
+            this.addItem(item, this.faction.d.data[item].amount, location)
+        }
 
         d3.select("#faction").html("")
         var storages = d3.select("#faction").append("table")

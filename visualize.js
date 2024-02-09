@@ -97,6 +97,17 @@ function makeGraph(totals, targets, ignore) {
         if(trips < 2) {
             textoffset = 0;
         }
+        
+        // debug
+        let debugText = "";
+        for(let i of recipe.ingredients) {
+            debugText += `${i.amount}x ${i.item.name.substr('0','10')}, `
+        }
+        debugText += ` = `
+        for(let i of recipe.products) {
+            debugText += `${i.amount}x ${i.item.name.substr('0','10')}, `
+        }
+
         let node = {
             "name": recipe.name,
             "ingredients": recipe.ingredients,
@@ -108,6 +119,7 @@ function makeGraph(totals, targets, ignore) {
             "trips": trips,
             "resource": resource,
             "pertrip": tripDetails,
+            "debug": debugText
         }
         nodes.push(node)
         nodeMap.set(recipe.name, node)
@@ -329,6 +341,13 @@ export function renderTotals(totals, targets, ignore) {
             .attr("height", iconSize)
             .attr("width", iconSize)
             .attr("xlink:href", d => (d.count.isZero() ? d.count : `${d.building.iconPath()}`))
+    rects.filter(d => d.name != "output").append("text")
+            .attr("x", d => d.x0 + iconSize + 4)
+            .attr("y", d => (d.y1 - d.y0 > minNodeHeight) ? (d.y0 + d.y1) / 2 - 20 + (d.textoffset * -10) : d.y0 + 8)
+            .attr("dy", "0.35em")
+            .attr("text-anchor", "start")
+            .style("font-size","8px")
+            .text(d => d.debug)
     rects.filter(d => d.name != "output").append("text")
         .attr("x", d => d.x0 + iconSize + 4)
         .attr("y", d => (d.y1 - d.y0 > minNodeHeight) ? (d.y0 + d.y1) / 2 - 6 + (d.textoffset * -10) : d.y0 + 8)

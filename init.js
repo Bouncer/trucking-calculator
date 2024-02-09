@@ -26,7 +26,6 @@ function loadData(settings) {
         let buildings = getBuildings(data)
         let belts = getBelts(data)
         spec.setData(items, recipes, buildings, belts)
-
         renderSettings(settings)
         api.init()
         //spec.updateSolution()

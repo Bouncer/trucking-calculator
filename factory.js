@@ -58,8 +58,8 @@ class FactorySpecification {
         this.altRecipeList = {}
 
         // storages
-        this.storageRecipes = new Map()
-        this.storageRecipeList = {}  
+        this.storageItems = {}
+        this.storageLocations = {}
 
         // cargo capacity settings
         this.capacity = {
@@ -142,6 +142,7 @@ class FactorySpecification {
             }
         }
     }
+
     getRecipe(item) {
         // first check if we can get this from storage
 
@@ -227,6 +228,10 @@ class FactorySpecification {
         } else {
             var tripRate = rate;
         }
+        // if the rate isn't the trip max, take that
+        if(tripRate > rate) {
+            tripRate = rate
+        }
         
         // because we cannot split items in pieces, calculate how to distribute
         var searching = true;
@@ -239,7 +244,8 @@ class FactorySpecification {
                 ['trailer', this.capacity.totaltrailer]
             ]
             storages.sort((a,b) => a[1] - b[1])
-
+            
+            // try to distribute
             for(let i in items) {
                 items[i]["storage"] = {
                     'inventory': 0,
@@ -249,17 +255,33 @@ class FactorySpecification {
                 }
 
                 if(recipeWeight > 0) {
+
                     var target = items[i].amount.toFloat() * tripRate;
-                    for(var s in storages) {
-                        // is there still room?
-                        if(storages[s][1] >= items[i].item.weight.toFloat()) {
-                            // how much can we add?
-                            var capable = Math.min(Math.floor(storages[s][1] / items[i].item.weight.toFloat()), target)
-                            target -= capable;
-                            items[i].storage[storages[s][0]] += capable
-                            items[i].storage['total'] += capable
-                            storages[s][1] -= capable * items[i].item.weight.toFloat()
-                            //console.log(s[1])
+
+                    // try to put everything in one storage
+                    for(let s of storages) {
+                        var totalItemWeight = target * items[i].item.weight.toFloat()
+                        if(s[1] > totalItemWeight) {
+                            items[i]['storage'][s[0]] = target
+                            items[i]['storage']['total'] = target
+                            target = 0
+                            break
+                        }
+                    }
+
+                    // if it doesnt fit, distribute
+                    if(items[i]['storage']['total'] == 0) {
+                        for(var s in storages) {
+                            // is there room at all?
+                            if(storages[s][1] >= items[i].item.weight.toFloat()) {
+                                // how much can we add?
+                                var capable = Math.min(Math.floor(storages[s][1] / items[i].item.weight.toFloat()), target)
+                                target -= capable;
+                                items[i].storage[storages[s][0]] += capable
+                                items[i].storage['total'] += capable
+                                storages[s][1] -= capable * items[i].item.weight.toFloat()
+                                //console.log(s[1])
+                            }
                         }
                     }
                     // try a smaller rate if it doesn't fit
@@ -352,8 +374,23 @@ class FactorySpecification {
             this.ignore.add(recipe)
         }
     }
+    addStorage(itemKey, rate, location) {
+        //console.log(itemKey)
+        if(!this.items.has(itemKey)) {
+            return false
+        }
+        let item = this.items.get(itemKey)
+        //console.log(item)
+        if(!this.storageItems[itemKey]) {
+            this.storageItems[itemKey] = {}
+        }
+        this.storageItems[itemKey][location.key_name] = rate
+        //console.log(this.storageItems)
+        //this.storageLocations = 
+    }
     solve() {
         let totals = new Totals()
+        console.log('planks:new')
         for (let target of this.buildTargets) {
             let subtotals = target.item.produce(this, target.getRate(), this.ignore, totals.itemRates, target.item.key)
             //if(totals.rates.has(target.recipe))
@@ -383,9 +420,7 @@ class FactorySpecification {
         d3.select("#capacity").text(`${this.capacity.total.toLocaleString()} kg`)
     }
     updateSolution() {
-        if(!this.capacity.fixed) {
-            this.updateCapacity()
-        }
+        this.updateCapacity()
         let totals = this.solve()
         displayItems(this, totals, this.ignore)
         renderTotals(totals, this.buildTargets, this.ignore)

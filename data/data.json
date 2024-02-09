@@ -637,7 +637,7 @@
     },
     {
         "name": "Cement Mix",
-        "key_name": "cement-mix",
+        "key_name": "crafted-cement",
         "tier": "3",
         "category": "commercial",
         "weight": "25",
@@ -725,7 +725,7 @@
     },
     {
         "name": "Copper Wire",
-        "key_name": "copper-wire",
+        "key_name": "crafted-copperwire",
         "tier": "3",
         "category": "special",
         "weight": "20",
@@ -733,7 +733,7 @@
     },
     {
         "name": "Deliver Copper Wire",
-        "key_name": "export-copper-wire",
+        "key_name": "export-crafted-copperwire",
         "tier": "-1",
         "category": "special",
         "weight": "20",
@@ -933,7 +933,7 @@
     },
     {
         "name": "Planks",
-        "key_name": "planks",
+        "key_name": "refined-planks",
         "tier": "1",
         "category": "commercial",
         "weight": "15",
@@ -941,7 +941,7 @@
     },
     {
         "name": "Export Planks",
-        "key_name": "export-planks",
+        "key_name": "export-refined-planks",
         "tier": "-1",
         "category": "special",
         "weight": "15",
@@ -965,7 +965,7 @@
     },
     {
         "name": "Raw Emeralds",
-        "key_name": "raw-emeralds",
+        "key_name": "scrap-emerald",
         "tier": "1",
         "category": "commercial",
         "weight": "10",
@@ -973,7 +973,7 @@
     },
     {
         "name": "Deliver Raw Emeralds",
-        "key_name": "export-raw-emeralds",
+        "key_name": "export-scrap-emerald",
         "tier": "-1",
         "category": "commercial",
         "weight": "10",
@@ -989,7 +989,7 @@
     },
     {
         "name": "Raw Ore Mix",
-        "key_name": "raw-ore-mix",
+        "key_name": "scrap-ore",
         "tier": "1",
         "category": "commercial",
         "weight": "15",
@@ -1029,7 +1029,7 @@
     },
     {
         "name": "Refined Aluminium",
-        "key_name": "refined-aluminium",
+        "key_name": "refined-aluminum",
         "tier": "2",
         "category": "commercial",
         "weight": "10",
@@ -1037,7 +1037,7 @@
     },
     {
         "name": "Export Aluminium",
-        "key_name": "export-refined-aluminium",
+        "key_name": "export-refined-aluminum",
         "tier": "-1",
         "category": "commercial",
         "weight": "10",
@@ -1141,7 +1141,7 @@
     },
     {
         "name": "Sand",
-        "key_name": "sand",
+        "key_name": "refined-sand",
         "tier": "2",
         "category": "commercial",
         "weight": "5",
@@ -1149,7 +1149,7 @@
     },
     {
         "name": "Sawdust",
-        "key_name": "sawdust",
+        "key_name": "tcargodust",
         "tier": "1",
         "category": "commercial",
         "weight": "3",
@@ -1157,7 +1157,7 @@
     },
     {
         "name": "Export Sawdust",
-        "key_name": "export-sawdust",
+        "key_name": "export-tcargodust",
         "tier": "-1",
         "category": "commercial",
         "weight": "3",
@@ -1165,7 +1165,7 @@
     },
     {
         "name": "Scrap Aluminium",
-        "key_name": "scrap-aluminium",
+        "key_name": "scrap-aluminum",
         "tier": "1",
         "category": "commercial",
         "weight": "5",
@@ -1269,7 +1269,7 @@
     },
     {
         "name": "Treated Water",
-        "key_name": "treated-water",
+        "key_name": "liquid-water",
         "tier": "3",
         "category": "commercial",
         "weight": "100",
@@ -1277,7 +1277,7 @@
     },
     {
         "name": "Unfiltered Water",
-        "key_name": "unfiltered-water",
+        "key_name": "liquid-water-raw",
         "tier": "0",
         "category": "commercial",
         "weight": "100",
@@ -1285,7 +1285,7 @@
     },
     {
         "name": "Vegetables",
-        "key_name": "vegetables",
+        "key_name": "veggies",
         "tier": "6",
         "category": "refridgerated",
         "weight": "15",
@@ -1535,7 +1535,7 @@
         "time": 1,
         "ingredients": [
             [
-                "scrap-aluminium",
+                "scrap-aluminum",
                 1
             ],
             [
@@ -1557,21 +1557,21 @@
     },
     {
         "name": "Create Cement",
-        "key_name": "cement-mix",
+        "key_name": "crafted-cement",
         "category": "quarry",
         "time": 1,
         "ingredients": [
             [
-                "sand",
+                "refined-sand",
                 5
             ],
             [
-                "sawdust",
+                "tcargodust",
                 2
             ]
         ],
         "product": [
-            ["cement-mix",
+            ["crafted-cement",
             1]
         ],
         "weight": 25,
@@ -1585,7 +1585,7 @@
         "time": 1,
         "ingredients": [
             [
-                "sand",
+                "refined-sand",
                 2
             ],
             [
@@ -1616,7 +1616,7 @@
                 2
             ],
             [
-                "copper-wire",
+                "crafted-copperwire",
                 1
             ]
         ],
@@ -1662,11 +1662,11 @@
         "time": 1,
         "ingredients": [
             [
-                "cement-mix",
+                "crafted-cement",
                 5
             ],
             [
-                "treated-water",
+                "liquid-water",
                 1
             ]
         ],
@@ -1680,12 +1680,12 @@
     },
     {
         "name": "Copper Wire",
-        "key_name": "copper-wire",
+        "key_name": "crafted-copperwire",
         "category": "ls-factory",
         "time": 1,
         "ingredients": [
             [
-                "planks",
+                "refined-planks",
                 1
             ],
             [
@@ -1694,7 +1694,7 @@
             ]
         ],
         "product": [
-            ["copper-wire",
+            ["crafted-copperwire",
             2]
         ],
         "weight": 40,
@@ -1708,7 +1708,7 @@
         "time": 1,
         "ingredients": [
             [
-                "planks",
+                "refined-planks",
                 1
             ],
             [
@@ -1741,7 +1741,7 @@
         ],
         "product": [
             ["flint",4],
-            ["sand",6]
+            ["refined-sand",6]
         ],
         "weight": 50,
         "cost": 15000,
@@ -1754,7 +1754,7 @@
         "time": 1,
         "ingredients": [
             [
-                "sand",
+                "refined-sand",
                 1
             ]
         ],
@@ -1781,11 +1781,11 @@
                 1
             ],
             [
-                "planks",
+                "refined-planks",
                 2
             ],
             [
-                "copper-wire",
+                "crafted-copperwire",
                 1
             ],
             [
@@ -1812,7 +1812,7 @@
         "time": 1,
         "ingredients": [
             [
-                "raw-emeralds",
+                "scrap-emerald",
                 1
             ],
             [
@@ -1830,7 +1830,7 @@
     },
     {
         "name": "Grind Sawdust",
-        "key_name": "sawdust",
+        "key_name": "tcargodust",
         "category": "sawmill",
         "time": 1,
         "ingredients": [
@@ -1840,7 +1840,7 @@
             ]
         ],
         "product": [
-            ["sawdust",
+            ["tcargodust",
             10]
         ],
         "weight": 30,
@@ -1849,7 +1849,7 @@
     },
     {
         "name": "Mill Planks",
-        "key_name": "planks",
+        "key_name": "refined-planks",
         "category": "sawmill",
         "time": 1,
         "ingredients": [
@@ -1859,8 +1859,8 @@
             ]
         ],
         "product": [
-            ["planks",1],
-            ["sawdust",2]
+            ["refined-planks",1],
+            ["tcargodust",2]
         ],
         "weight": 21,
         "cost": 500,
@@ -1868,7 +1868,7 @@
     },
     {
         "name": "Filter Quarry Rubble",
-        "key_name": "raw-ore-mix",
+        "key_name": "scrap-ore",
         "category": "filtering-plant",
         "time": 1,
         "ingredients": [
@@ -1878,9 +1878,9 @@
             ]
         ],
         "product": [
-            ["raw-emeralds",1],
+            ["scrap-emerald",1],
             ["gravel",12],
-            ["raw-ore-mix",4]
+            ["scrap-ore",4]
         ],
         "weight": 130,
         "cost": 15000,
@@ -1911,17 +1911,17 @@
     },
     {
         "name": "Refined Aluminium",
-        "key_name": "refined-aluminium",
+        "key_name": "refined-aluminum",
         "category": "ls-foundry",
         "time": 1,
         "ingredients": [
             [
-                "scrap-aluminium",
+                "scrap-aluminum",
                 2
             ]
         ],
         "product": [
-            ["refined-aluminium",
+            ["refined-aluminum",
             1]
         ],
         "weight": 10,
@@ -1958,7 +1958,7 @@
         "time": 1,
         "ingredients": [
             [
-                "raw-ore-mix",
+                "scrap-ore",
                 2
             ]
         ],
@@ -2000,7 +2000,7 @@
                 2
             ],
             [
-                "refined-aluminium",
+                "refined-aluminum",
                 2
             ]
         ],
@@ -2033,7 +2033,7 @@
     },
     {
         "name": "Sort Recycled Trash",
-        "key_name": "scrap-aluminium",
+        "key_name": "scrap-aluminum",
         "category": "sorting-facility",
         "time": 1,
         "ingredients": [
@@ -2043,7 +2043,7 @@
             ]
         ],
         "product": [
-            ["scrap-aluminium",4],
+            ["scrap-aluminum",4],
             ["scrap-plastic",8],
             ["scrap-tin",4]
         ],
@@ -2142,7 +2142,7 @@
         ],
         "product": [
             ["titanium-ore",4],
-            ["raw-emeralds",10]
+            ["scrap-emerald",10]
         ],
         "weight": 25,
         "cost": 0,
@@ -2169,12 +2169,12 @@
     },
     {
         "name": "Treat Unfiltered Water ",
-        "key_name": "treated-water",
+        "key_name": "liquid-water",
         "category": "water-treatment-plant",
         "time": 1,
         "ingredients": [
             [
-                "unfiltered-water",
+                "liquid-water-raw",
                 1
             ],
             [
@@ -2183,7 +2183,7 @@
             ]
         ],
         "product": [
-            ["treated-water",
+            ["liquid-water",
             1]
         ],
         "weight": 100,
@@ -2220,7 +2220,7 @@
         "time": 1,
         "ingredients": [
             [
-                "planks",
+                "refined-planks",
                 1
             ],
             [
@@ -2331,7 +2331,7 @@
                 "frozen-raw-meat",1
             ],
             [
-                "vegetables",1
+                "veggies",1
             ]
         ],
         "product": [
@@ -2478,7 +2478,7 @@
         "time": 1,
         "ingredients": [
             [
-                "planks",10
+                "refined-planks",10
             ],
             [
                 "hardened-steel",10
@@ -2526,7 +2526,7 @@
         "time": 1,
         "ingredients": [
             [
-                "sand",
+                "refined-sand",
                 10
             ],
             [
@@ -2535,7 +2535,7 @@
             ]
         ],
         "product": [
-            ["sawdust",
+            ["tcargodust",
             100]
         ],
         "weight": 80,
@@ -2572,11 +2572,11 @@
         "time": 1,
         "ingredients": [
             [
-                "treated-water",
+                "liquid-water",
                 1
             ],
             [
-                "sawdust",
+                "tcargodust",
                 50
             ]
         ],
@@ -2599,7 +2599,7 @@
                 10
             ],
             [
-                "raw-ore-mix",
+                "scrap-ore",
                 20
             ]
         ],
@@ -2622,7 +2622,7 @@
                 200
             ],
             [
-                "sawdust",
+                "tcargodust",
                 20
             ]
         ],
@@ -2664,7 +2664,7 @@
                 1000
             ],
             [
-                "sawdust",
+                "tcargodust",
                 20
             ]
         ],
@@ -2683,7 +2683,7 @@
         "time": 1,
         "ingredients": [
             [
-                "treated-water",
+                "liquid-water",
                 2
             ],
             [
@@ -2716,7 +2716,7 @@
             ]
         ],
         "product": [
-            ["sand",
+            ["refined-sand",
             100]
         ],
         "weight": 1,
@@ -2734,12 +2734,12 @@
                 1
             ],
             [
-                "raw-ore-mix",
+                "scrap-ore",
                 15
             ]
         ],
         "product": [
-            ["sand",
+            ["refined-sand",
             90]
         ],
         "weight": 1,
@@ -2800,7 +2800,7 @@
             ]
         ],
         "product": [
-            ["treated-water",
+            ["liquid-water",
             1]
         ],
         "weight": 1,
@@ -2818,7 +2818,7 @@
                 2
             ],
             [
-                "raw-ore-mix",
+                "scrap-ore",
                 20
             ]
         ],
@@ -2846,9 +2846,9 @@
             ]
         ],
         "product": [
-            ["raw-emeralds",1],
+            ["scrap-emerald",1],
             ["gravel",10],
-            ["raw-ore-mix",3]
+            ["scrap-ore",3]
         ],
         "weight": 0,
         "cost": 30000,
@@ -2998,7 +2998,7 @@
                 1
             ],
             [
-                "planks",
+                "refined-planks",
                 1
             ]
         ],
@@ -3021,7 +3021,7 @@
                 1
             ],
             [
-                "copper-wire",
+                "crafted-copperwire",
                 1
             ]
         ],
@@ -3149,17 +3149,17 @@
     },
     {
         "name": "Export Sawdust",
-        "key_name": "export-sawdust",
+        "key_name": "export-tcargodust",
         "category": "ls-port-export",
         "time": 1,
         "ingredients": [
             [
-                "sawdust",
+                "tcargodust",
                 1
             ]
         ],
         "product": [
-            ["export-sawdust",
+            ["export-tcargodust",
             1]
         ],
         "weight": 5,
@@ -3225,17 +3225,17 @@
     },
     {
         "name": "Export Aluminium",
-        "key_name": "export-refined-aluminium",
+        "key_name": "export-refined-aluminum",
         "category": "ls-port-export",
         "time": 1,
         "ingredients": [
             [
-                "refined-aluminium",
+                "refined-aluminum",
                 1
             ]
         ],
         "product": [
-            ["export-refined-aluminium",
+            ["export-refined-aluminum",
             1]
         ],
         "weight": 5,
@@ -3282,17 +3282,17 @@
     },
     {
         "name": "Export Planks",
-        "key_name": "export-planks",
+        "key_name": "export-refined-planks",
         "category": "ls-port-export",
         "time": 1,
         "ingredients": [
             [
-                "planks",
+                "refined-planks",
                 1
             ]
         ],
         "product": [
-            ["export-planks",
+            ["export-refined-planks",
             1]
         ],
         "weight": 15,
@@ -3434,17 +3434,17 @@
     },
     {
         "name": "Deliver Copper Wire",
-        "key_name": "export-copper-wire",
+        "key_name": "export-crafted-copperwire",
         "category": "electronics-store",
         "time": 1,
         "ingredients": [
             [
-                "copper-wire",
+                "crafted-copperwire",
                 1
             ]
         ],
         "product": [
-            ["export-copper-wire",
+            ["export-crafted-copperwire",
             1]
         ],
         "weight": 5,
@@ -3510,17 +3510,17 @@
     },
     {
         "name": "Deliver Raw Emeralds",
-        "key_name": "export-raw-emeralds",
+        "key_name": "export-scrap-emerald",
         "category": "jewelry-store",
         "time": 1,
         "ingredients": [
             [
-                "raw-emeralds",
+                "scrap-emerald",
                 1
             ]
         ],
         "product": [
-            ["export-raw-emeralds",
+            ["export-scrap-emerald",
             1]
         ],
         "weight": 5,
@@ -3572,7 +3572,7 @@
         "time": 1,
         "ingredients": [
             [
-                "sawdust",
+                "tcargodust",
                 30
             ],
             [
@@ -3581,7 +3581,7 @@
             ]
         ],
         "product": [
-            ["planks",15]
+            ["refined-planks",15]
         ],
         "weight": 21,
         "cost": 2500,
@@ -3611,7 +3611,7 @@
             "cost": 7500
         },
         {
-            "key_name": "unfiltered-water",
+            "key_name": "liquid-water-raw",
             "category": "land-act-reservoir"
         },
         {
@@ -3619,7 +3619,7 @@
             "category": "gsd-gas-pumping-station"
         },
         {
-            "key_name": "vegetables",
+            "key_name": "veggies",
             "category": "great-chaprral-farming"
         },
         {

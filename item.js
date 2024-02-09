@@ -34,8 +34,11 @@ export class Item {
         totals.itemRates = itemRates
         let recipe = spec.getRecipe(this)
         let gives = recipe.gives(this)
-        totals.addItemRate(this.key, rate.toFloat(), parent)
-        rate = rate.div(gives).ceil()
+        console.log(`${this.name}: ${rate.toFloat()}`)
+        totals.addItemRate(recipe.key, rate.div(gives), this.key, parent)
+        let itemRate = totals.itemRates[recipe.key]['_rate']
+        rate = itemRate
+        rate = rate.ceil()
         // keep track of item rates to combine them
         totals.add(recipe, rate)
         totals.updateHeight(recipe, 0)
@@ -46,6 +49,7 @@ export class Item {
             let subtotals = ing.item.produce(spec, rate.mul(ing.amount), ignore, totals.itemRates, this.key)
             totals.combine(subtotals)
         }
+        console.log(itemRates)
         return totals
     }
     iconPath() {

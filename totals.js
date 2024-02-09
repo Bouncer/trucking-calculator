@@ -26,6 +26,7 @@ export class Totals {
         this.topo.push(recipe)
         // check if we are already producing enough
         this.rates.set(recipe, rate)
+        //console.log(recipe.name)
         for(let product of recipe.products) {
             if(product.item.key in this.itemRates) {
                 let gives = recipe.gives(product.item)
@@ -42,20 +43,29 @@ export class Totals {
     addWaste(recipe, rate) {
         this.waste.set(recipe, (this.waste.get(recipe) || zero).add(rate))
     }
-    addItemRate(item, rate, parent) {
+    addItemRate(recipe, rate, item, parent) {
 
-        if(!(item in this.itemRates)) {
-            this.itemRates[item] = {}
+        if(!(recipe in this.itemRates)) {
+            this.itemRates[recipe] = {'_rate': zero}
         }
-        if(!(parent in this.itemRates[item])) {
-            this.itemRates[item][parent] = rate
+        if(!(item in this.itemRates[recipe])) {
+            this.itemRates[recipe][item] = {}
         }
-        this.itemRates[item]['_rate'] = 0
-        for (var i in this.itemRates[item]) {
+        this.itemRates[recipe][item][parent] = rate
+        this.itemRates[recipe][item]['_rate'] = zero
+        for (let i in this.itemRates[recipe][item]) {
             if(i != "_rate") {
-                this.itemRates[item]['_rate'] += this.itemRates[item][i];
+                this.itemRates[recipe][item]['_rate'] = this.itemRates[recipe][item]['_rate'].add(this.itemRates[recipe][item][i]);
             }
         }
+        for(let i in this.itemRates[recipe]) {
+            if(i != "_rate") {
+                if(this.itemRates[recipe]['_rate'].less(this.itemRates[recipe][i]['_rate'])) {
+                    this.itemRates[recipe]['_rate'] = this.itemRates[recipe][i]['_rate']
+                }
+            }
+        }
+        
     }
     getWaste(itemName) {
         var waste = this.waste[itemName]

@@ -22,6 +22,7 @@ const SELECTED_INPUT = "selected"
 function itemHandler(target) {
     return function(item) {
         // if it can be exported, use that instead
+        log.add('log',`Target changed to ${item.name}`)
         target.itemKey = "export-"+item.key
         target.item = spec.items.get(target.itemKey);
         if(target.item === undefined) {
