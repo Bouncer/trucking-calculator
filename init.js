@@ -35,7 +35,7 @@ function loadData(settings) {
 
 export function init() {
     log.add('log','Welcome to the party')
-    log.add('info','Update info Feb 10th: \n- Fixed errors in item calculations on large routes \n- Added trip item prioritization to put all of one item in the same storage container\n- Added recipe dragging in the planner')
+    log.add('info','Update info Feb 10th: \n- Fixed errors in item calculations on large routes \n- Added trip item prioritization to put all of one item in the same storage container\n- Fixed trip prioritization capacity overflow error\n- Added recipe dragging in the planner')
     let settings = loadSettings(window.location.hash)
     loadData(settings)
 }
