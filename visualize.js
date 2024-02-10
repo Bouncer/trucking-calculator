@@ -108,6 +108,8 @@ function makeGraph(totals, targets, ignore) {
             debugText += `${i.amount}x ${i.item.name.substr('0','10')}, `
         }
 
+        debugText = null
+
         let node = {
             "name": recipe.name,
             "ingredients": recipe.ingredients,
@@ -317,7 +319,64 @@ export function renderTotals(totals, targets, ignore) {
             nodes[node].ingredients[ing].y1 = nodes[node].y1 + (ing * 10) + 10
         }
     }
+
+    function dragmove(d) {
+        var rectY = d3.select(this).select("rect").attr("y");
+        var rectX = d3.select(this).select("rect").attr("x");
+        d.y0 = d.y0 + d3.event.dy;
+        d.x1 = d.x1 + d3.event.dx;
+        d.x0 = d.x0 + d3.event.dx;
+        var yTranslate = d.y0 - rectY;
+        var xTranslate = d.x0 - rectX;
+        d3.select(this).attr('transform', "translate(" + (xTranslate) + "," + (yTranslate) + ")");
+        link.selectAll('.paths').attr('d', d3.sankeyLinkHorizontal());
+        link.selectAll('text')
+        .attr("x", d => d.source.x1 + 6)
+        .attr("y", d => d.y0)
+        sankey.update(data);
+    }
     
+
+
+        //.text(nodeText)
+
+
+    // Link paths
+    let link = svg.append("g")
+        .classed("links", true)
+        .selectAll("g")
+        .data(links)
+        .join("g")
+            //.style("mix-blend-mode", "multiply")
+    link.append("path")
+        .classed('paths',true)
+        .attr("d", d3.sankeyLinkHorizontal())
+        .attr("fill", "none")
+        .attr("stroke-opacity", 0.3)
+        .attr("stroke", d => d3.color(colorList[d.source.building.color]).brighter())
+        .attr("stroke-width", d => Math.max(2, d.width) - 1)
+    // Don't draw belts if we have less than three pixels per belt.
+    if ((d => d.belts) >= 3) {
+        link.append("g")
+            .selectAll("path")
+            .data(d => d.belts)
+            .join("path")
+                .attr("fill", "none")
+                .attr("stroke-opacity", 0.3)
+                .attr("d", beltPath)
+                .attr("stroke", d => color(d.link.source.name))
+                .attr("stroke-width", 1)
+    }
+    link.append("text")
+        .attr("x", d => d.source.x1 + 6)
+        .attr("y", d => d.y0)
+        .classed('paths',true)
+        .attr("dy", "0.35em")
+        .attr("text-anchor", "start")
+        .attr("class", "item-ingredient")
+        .text(d => d.name + ' ' + d.rate.ceil().toFloat().toLocaleString() + 'x, ' + (d.weight >= 1000 ? Math.round(d.weight.ceil().toFloat()/1000).toLocaleString() + 't' : d.weight.ceil().toFloat().toLocaleString() + 'kg'))
+
+
     // Node rects
     let rects = svg.append("g")
         .classed("nodes", true)
@@ -325,6 +384,10 @@ export function renderTotals(totals, targets, ignore) {
         .data(nodes)
         .join("g")
             .classed("node", true)
+            .call(d3.drag()
+            .subject(d => d)
+            .on('start', function () { this.parentNode.appendChild(this); })
+            .on('drag', dragmove))
 
     rects.append("rect")
         .attr("x", d => d.x0)
@@ -377,52 +440,7 @@ export function renderTotals(totals, targets, ignore) {
             .attr("text-anchor", "start")
             .text(d => `${d.item.name}: ${d.triptext}`)
         
-
-        //.text(nodeText)
-
-
-    // Link paths
-    let link = svg.append("g")
-        .classed("links", true)
-        .selectAll("g")
-        .data(links)
-        .join("g")
-            //.style("mix-blend-mode", "multiply")
-    link.append("path")
-        .attr("fill", "none")
-        .attr("stroke-opacity", 0.3)
-        .attr("d", d3.sankeyLinkHorizontal())
-        .attr("stroke", d => d3.color(colorList[d.source.building.color]).brighter())
-        .attr("stroke-width", d => Math.max(2, d.width) - 1)
-    // Don't draw belts if we have less than three pixels per belt.
-    if (beltDensity >= 3) {
-        link.append("g")
-            .selectAll("path")
-            .data(d => d.belts)
-            .join("path")
-                .attr("fill", "none")
-                .attr("stroke-opacity", 0.3)
-                .attr("d", beltPath)
-                .attr("stroke", d => color(d.link.source.name))
-                .attr("stroke-width", 1)
-    }
-    link.append("title")
-        .text(d => `${d.source.name} \u2192 ${d.target.name}\n${spec.format.rate(d.rate)}`)
-    link.append("text")
-        .attr("x", d => d.source.x1 + 6)
-        .attr("y", d => d.y0)
-        .attr("dy", "0.35em")
-        .attr("text-anchor", "start")
-        .attr("class", "item-ingredient")
-        .text(d => d.name + ' ' + d.rate.ceil().toFloat().toLocaleString() + 'x, ' + (d.weight >= 1000 ? Math.round(d.weight.ceil().toFloat()/1000).toLocaleString() + 't' : d.weight.ceil().toFloat().toLocaleString() + 'kg'))
-    /*link.filter(d => d.trips > 1)
-        .append("text")
-            .attr("x", d => d.source.x1 + 6)
-            .attr("y", d => d.y0 + 12)
-            .attr("dy", "0.35em")
-            .attr("text-anchor", "start")
-            .text(d => `${d.trips} trips`)
-            */
+            
 
     // Overlay transparent rect on top of each node, for click events.
     let rectElements = svg.selectAll("g.node").nodes()

@@ -473,7 +473,6 @@ class ApiLink {
     }
 
     update(totals) {
-        console.log('update')
         this.itemrates = totals.itemRates
 
         if(this.inventory) {

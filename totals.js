@@ -24,18 +24,7 @@ export class Totals {
     }
     add(recipe, rate) {
         this.topo.push(recipe)
-        // check if we are already producing enough
         this.rates.set(recipe, rate)
-        //console.log(recipe.name)
-        for(let product of recipe.products) {
-            if(product.item.key in this.itemRates) {
-                let gives = recipe.gives(product.item)
-                var ratio = Math.ceil(this.itemRates[product.item.key]['_rate'] / gives.toFloat())
-                if(ratio > rate.toFloat()) {
-                    this.rates.set(recipe, Rational.from_float(ratio))
-                }
-            }
-        }
     }
     addUnfinished(recipe, rate) {
         this.unfinished.set(recipe, (this.unfinished.get(recipe) || zero).add(rate))
@@ -43,7 +32,7 @@ export class Totals {
     addWaste(recipe, rate) {
         this.waste.set(recipe, (this.waste.get(recipe) || zero).add(rate))
     }
-    addItemRate(recipe, rate, item, parent) {
+    addItemRate(recipe, amount, item, path) {
 
         if(!(recipe in this.itemRates)) {
             this.itemRates[recipe] = {'_rate': zero}
@@ -51,7 +40,7 @@ export class Totals {
         if(!(item in this.itemRates[recipe])) {
             this.itemRates[recipe][item] = {}
         }
-        this.itemRates[recipe][item][parent] = rate
+        this.itemRates[recipe][item][path] = amount
         this.itemRates[recipe][item]['_rate'] = zero
         for (let i in this.itemRates[recipe][item]) {
             if(i != "_rate") {

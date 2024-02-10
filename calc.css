@@ -434,3 +434,9 @@ button.refresh:hover {
 #logbook .error {
     color:#FF0000;
 }
+.links .paths:hover {
+    stroke-opacity:0.4;
+}
+.nodes .node:hover {
+    cursor:pointer;
+}

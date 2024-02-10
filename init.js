@@ -35,6 +35,7 @@ function loadData(settings) {
 
 export function init() {
     log.add('log','Welcome to the party')
+    log.add('info','Update info: \nFixed item calculations on large routes \nYou can now move recipes in the planner')
     let settings = loadSettings(window.location.hash)
     loadData(settings)
 }

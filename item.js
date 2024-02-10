@@ -34,7 +34,6 @@ export class Item {
         totals.itemRates = itemRates
         let recipe = spec.getRecipe(this)
         let gives = recipe.gives(this)
-        console.log(`${this.name}: ${rate.toFloat()}`)
         totals.addItemRate(recipe.key, rate.div(gives), this.key, parent)
         let itemRate = totals.itemRates[recipe.key]['_rate']
         rate = itemRate
@@ -46,10 +45,10 @@ export class Item {
             return totals
         }
         for (let ing of recipe.ingredients) {
-            let subtotals = ing.item.produce(spec, rate.mul(ing.amount), ignore, totals.itemRates, this.key)
+            let subtotals = ing.item.produce(spec, rate.mul(ing.amount), ignore, totals.itemRates, recipe.key)
             totals.combine(subtotals)
         }
-        console.log(itemRates)
+        //console.log(itemRates)
         return totals
     }
     iconPath() {

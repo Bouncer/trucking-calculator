@@ -390,7 +390,6 @@ class FactorySpecification {
     }
     solve() {
         let totals = new Totals()
-        console.log('planks:new')
         for (let target of this.buildTargets) {
             let subtotals = target.item.produce(this, target.getRate(), this.ignore, totals.itemRates, target.item.key)
             //if(totals.rates.has(target.recipe))

@@ -15,7 +15,7 @@ class Logbook {
             displayCloseButton: false,
             positionClass: 'nfc-bottom-right',
             onclick: false,
-            showDuration: 5000,
+            showDuration: 10000,
             theme: 'info'
         })
         this.warning = window.createNotification({
@@ -23,7 +23,7 @@ class Logbook {
             displayCloseButton: false,
             positionClass: 'nfc-bottom-right',
             onclick: false,
-            showDuration: 5000,
+            showDuration: 10000,
             theme: 'warning'
         })
         this.error = window.createNotification({
@@ -31,7 +31,7 @@ class Logbook {
             displayCloseButton: false,
             positionClass: 'nfc-bottom-right',
             onclick: false,
-            showDuration: 5000,
+            showDuration: 10000,
             theme: 'error'
         })
     }
