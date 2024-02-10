@@ -424,6 +424,7 @@ button.refresh:hover {
     padding: 0px 4px;
     font-family: courier;
     font-size:14px;
+    vertical-align: top;
 }
 #logbook .success {
     color:#00CC00;

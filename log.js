@@ -44,7 +44,7 @@ class Logbook {
         }
         let row = d3.select('#logbook').append("tr")
         row.append('td').text(new Date().toTimeString().split(' ')[0])
-        row.append('td').classed(type,true).text(message)
+        row.append('td').classed(type,true).html(message.replaceAll('\n','<br />'))
     }
 }
 
