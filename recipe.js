@@ -70,6 +70,10 @@ function makeRecipe(data, items, d) {
     return new Recipe(d.key_name, d.name, d.category, time, ingredients, products, d.cost, d.pays)
 }
 
+export function makeStorageRecipe(key, items, location) {
+    return new Recipe(key, `From Storage`, location, zero, [], items, zero, zero)
+}
+
 class ResourceRecipe extends Recipe {
     constructor(item, category, cost) {
         super(item.key, item.name, category, zero, [], [new Ingredient(item, one)], cost, zero)

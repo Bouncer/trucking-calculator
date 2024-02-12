@@ -573,7 +573,7 @@
     "items": [
     {
         "name": "Acid",
-        "key_name": "acid",
+        "key_name": "scrap-acid",
         "tier": "1",
         "category": "commercial",
         "weight": "5",
@@ -581,7 +581,7 @@
     },
     {
         "name": "Export Acid",
-        "key_name": "export-acid",
+        "key_name": "export-scrap-acid",
         "tier": "-1",
         "category": "commercial",
         "weight": "5",
@@ -637,7 +637,7 @@
     },
     {
         "name": "Cement Mix",
-        "key_name": "crafted-cement",
+        "key_name": "cement",
         "tier": "3",
         "category": "commercial",
         "weight": "25",
@@ -645,15 +645,7 @@
     },
     {
         "name": "Ceramic Tiles",
-        "key_name": "ceramic-tiles",
-        "tier": "3",
-        "category": "special",
-        "weight": "40",
-        "stack_size": "225"
-    },
-    {
-        "name": "Ceramic Tiles",
-        "key_name": "ceramic-tiles",
+        "key_name": "ceramictiles",
         "tier": "3",
         "category": "commercial",
         "weight": "10",
@@ -661,7 +653,7 @@
     },
     {
         "name": "Export Ceramic Tiles",
-        "key_name": "export-ceramic-tiles",
+        "key_name": "export-ceramictiles",
         "tier": "-1",
         "category": "commercial",
         "weight": "10",
@@ -725,7 +717,7 @@
     },
     {
         "name": "Copper Wire",
-        "key_name": "crafted-copperwire",
+        "key_name": "copperwire",
         "tier": "3",
         "category": "special",
         "weight": "20",
@@ -733,7 +725,7 @@
     },
     {
         "name": "Deliver Copper Wire",
-        "key_name": "export-crafted-copperwire",
+        "key_name": "export-copperwire",
         "tier": "-1",
         "category": "special",
         "weight": "20",
@@ -749,7 +741,7 @@
     },
     {
         "name": "Dairy Products",
-        "key_name": "dairy-products",
+        "key_name": "dairy",
         "tier": "6",
         "category": "refridgerated",
         "weight": "15",
@@ -789,7 +781,7 @@
     },
     {
         "name": "Flint",
-        "key_name": "flint",
+        "key_name": "refined-flint",
         "tier": "2",
         "category": "commercial",
         "weight": "5",
@@ -797,7 +789,7 @@
     },
     {
         "name": "Export Flint",
-        "key_name": "export-flint",
+        "key_name": "export-refined-flint",
         "tier": "-1",
         "category": "commercial",
         "weight": "5",
@@ -861,7 +853,7 @@
     },
     {
         "name": "Gravel",
-        "key_name": "gravel",
+        "key_name": "scrap-gravel",
         "tier": "1",
         "category": "commercial",
         "weight": "5",
@@ -1261,7 +1253,7 @@
     },
     {
         "name": "Toxic Waste",
-        "key_name": "toxic-waste",
+        "key_name": "recycled-waste",
         "tier": "0",
         "category": "commercial",
         "weight": "110",
@@ -1516,7 +1508,7 @@
                 4
             ],
             [
-                "acid",
+                "scrap-acid",
                 8
             ]
         ],
@@ -1557,7 +1549,7 @@
     },
     {
         "name": "Create Cement",
-        "key_name": "crafted-cement",
+        "key_name": "cement",
         "category": "quarry",
         "time": 1,
         "ingredients": [
@@ -1571,7 +1563,7 @@
             ]
         ],
         "product": [
-            ["crafted-cement",
+            ["cement",
             1]
         ],
         "weight": 25,
@@ -1580,7 +1572,7 @@
     },
     {
         "name": "Ceramic Tiles",
-        "key_name": "ceramic-tiles",
+        "key_name": "ceramictiles",
         "category": "ls-foundry",
         "time": 1,
         "ingredients": [
@@ -1589,12 +1581,12 @@
                 2
             ],
             [
-                "flint",
+                "refined-flint",
                 10
             ]
         ],
         "product": [
-            ["ceramic-tiles",
+            ["ceramictiles",
             2]
         ],
         "weight": 20,
@@ -1616,7 +1608,7 @@
                 2
             ],
             [
-                "crafted-copperwire",
+                "copperwire",
                 1
             ]
         ],
@@ -1662,7 +1654,7 @@
         "time": 1,
         "ingredients": [
             [
-                "crafted-cement",
+                "cement",
                 5
             ],
             [
@@ -1680,7 +1672,7 @@
     },
     {
         "name": "Copper Wire",
-        "key_name": "crafted-copperwire",
+        "key_name": "copperwire",
         "category": "ls-factory",
         "time": 1,
         "ingredients": [
@@ -1694,7 +1686,7 @@
             ]
         ],
         "product": [
-            ["crafted-copperwire",
+            ["copperwire",
             2]
         ],
         "weight": 40,
@@ -1730,17 +1722,17 @@
     },
     {
         "name": "Filter Gravel",
-        "key_name": "flint",
+        "key_name": "refined-flint",
         "category": "filtering-plant",
         "time": 1,
         "ingredients": [
             [
-                "gravel",
+                "scrap-gravel",
                 10
             ]
         ],
         "product": [
-            ["flint",4],
+            ["refined-flint",4],
             ["refined-sand",6]
         ],
         "weight": 50,
@@ -1773,7 +1765,7 @@
         "time": 1,
         "ingredients": [
             [
-                "ceramic-tiles",
+                "ceramictiles",
                 4
             ],
             [
@@ -1785,7 +1777,7 @@
                 2
             ],
             [
-                "crafted-copperwire",
+                "copperwire",
                 1
             ],
             [
@@ -1879,7 +1871,7 @@
         ],
         "product": [
             ["scrap-emerald",1],
-            ["gravel",12],
+            ["scrap-gravel",12],
             ["scrap-ore",4]
         ],
         "weight": 130,
@@ -2078,12 +2070,12 @@
         "time": 1,
         "ingredients": [
             [
-                "toxic-waste",
+                "recycled-waste",
                 1
             ]
         ],
         "product": [
-            ["acid",4],
+            ["scrap-acid",4],
             ["scrap-lead",2],
             ["scrap-mercury",2]
         ],
@@ -2178,7 +2170,7 @@
                 1
             ],
             [
-                "acid",
+                "scrap-acid",
                 1
             ]
         ],
@@ -2325,7 +2317,7 @@
         "time": 1,
         "ingredients": [
             [
-                "dairy-products",1
+                "dairy",1
             ],
             [
                 "frozen-raw-meat",1
@@ -2403,7 +2395,7 @@
         "time": 1,
         "ingredients": [
             [
-                "dairy-products",4
+                "dairy",4
             ]
         ],
         "product": [
@@ -2553,7 +2545,7 @@
                 1
             ],
             [
-                "gravel",
+                "scrap-gravel",
                 20
             ]
         ],
@@ -2711,7 +2703,7 @@
                 1
             ],
             [
-                "gravel",
+                "scrap-gravel",
                 20
             ]
         ],
@@ -2847,7 +2839,7 @@
         ],
         "product": [
             ["scrap-emerald",1],
-            ["gravel",10],
+            ["scrap-gravel",10],
             ["scrap-ore",3]
         ],
         "weight": 0,
@@ -2894,17 +2886,17 @@
     },
     {
         "name": "Export Flint",
-        "key_name": "export-flint",
+        "key_name": "export-refined-flint",
         "category": "mckenzie-export",
         "time": 1,
         "ingredients": [
             [
-                "flint",
+                "refined-flint",
                 1
             ]
         ],
         "product": [
-            ["export-flint",
+            ["export-refined-flint",
             1]
         ],
         "weight": 0,
@@ -3021,7 +3013,7 @@
                 1
             ],
             [
-                "crafted-copperwire",
+                "copperwire",
                 1
             ]
         ],
@@ -3168,17 +3160,17 @@
     },
     {
         "name": "Export Ceramic Tiles",
-        "key_name": "export-ceramic-tiles",
+        "key_name": "export-ceramictiles",
         "category": "ls-port-export",
         "time": 1,
         "ingredients": [
             [
-                "ceramic-tiles",
+                "ceramictiles",
                 1
             ]
         ],
         "product": [
-            ["export-ceramic-tiles",
+            ["export-ceramictiles",
             1]
         ],
         "weight": 5,
@@ -3206,17 +3198,17 @@
     },
     {
         "name": "Export Acid",
-        "key_name": "export-acid",
+        "key_name": "export-scrap-acid",
         "category": "ls-port-export",
         "time": 1,
         "ingredients": [
             [
-                "acid",
+                "scrap-acid",
                 1
             ]
         ],
         "product": [
-            ["export-acid",
+            ["export-scrap-acid",
             1]
         ],
         "weight": 5,
@@ -3434,17 +3426,17 @@
     },
     {
         "name": "Deliver Copper Wire",
-        "key_name": "export-crafted-copperwire",
+        "key_name": "export-copperwire",
         "category": "electronics-store",
         "time": 1,
         "ingredients": [
             [
-                "crafted-copperwire",
+                "copperwire",
                 1
             ]
         ],
         "product": [
-            ["export-crafted-copperwire",
+            ["export-copperwire",
             1]
         ],
         "weight": 5,
@@ -3598,7 +3590,7 @@
             "category": "quarry-resource"
         },
         {
-            "key_name": "toxic-waste",
+            "key_name": "recycled-waste",
             "category": "lsia-waste-depot"
         },
         {
@@ -3623,7 +3615,7 @@
             "category": "great-chaprral-farming"
         },
         {
-            "key_name": "dairy-products",
+            "key_name": "dairy",
             "category": "grapeseed-farm"
         },
         {

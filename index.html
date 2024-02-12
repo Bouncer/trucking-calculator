@@ -113,17 +113,6 @@ limitations under the License.-->
                         No vehicle storage data found in memory.
                     </div>
                 </div>
-                <div class="storage-combination">
-                    <div class="storage-header">
-                        <span class="storage-header-title">Faction</span>
-                        <span class="storage-header-update">
-                            <span class="ago-faction"></span> <button class="refresh right-align" onclick="api.getFaction(event)">Refresh</button>
-                        </span>
-                    </div>
-                    <div id="faction" class="storage-container">
-                        No faction storage data found in memory.
-                    </div>
-                </div>
             </div>
             <div class="storage-header">
                 <span class="storage-header-title">Self Storage</span>
@@ -226,7 +215,7 @@ limitations under the License.-->
 
         <tr class="setting-row">
             <td class="setting-label">Premium:</td>
-            <td><input id="premium" type="checkbox" value="1" min="0" onchange="handlers.changePremium(event)"> +15%</td>
+            <td><input id="premium" type="checkbox" value="1" min="0" onchange="handlers.changePremium(event)"><label for="premium"> +15%</label></td>
         </tr>
 
         <tr class="setting-row">
@@ -257,6 +246,22 @@ limitations under the License.-->
         <tr class="setting-row">
             <td class="setting-label">Player id:</td>
             <td><input id="userid" class="" type="text" size="20" onchange="api.setUserid(event)"/></td>
+        </tr>
+        <tr class="setting-row refresh-settings">
+            <td class="setting-label">Faction id:</td>
+            <td><span id="factionid" class="">Unknown</span> <button class="refresh" onclick="api.getFactionId()">Refresh</button></td>
+        </tr>
+        <tr class="setting-row refresh-settings">
+            <td class="setting-label">Faction tax:</td>
+            <td><input id="factiontax" class="" type="number" min="0" max="100" size="6" value="0" onchange="api.setFactionTax(event)"/>%</td>
+        </tr>
+        <tr class="setting-row refresh-settings">
+            <td class="setting-label">Show only trucking items:</td>
+            <td><input id="onlytrucking" type="checkbox" value="1" min="0" onchange="api.setOnlyTrucking(event)"> <label for="onlytrucking">(Disabling this will also show items not used for trucking)</label></td>
+        </tr>
+        <tr class="setting-row refresh-settings">
+            <td class="setting-label">Use items in storage:</td>
+            <td><input id="showinstorage" type="checkbox" value="1" min="0" onchange="api.setShowInStorage(event)" disabled="disabled"> (Not yet available) <!--(Disabling this will ignore your storages for calculating routes)--></td>
         </tr>
         <tr class="setting-row">
             <td colspan="2"><hr /></td>
@@ -320,33 +325,6 @@ limitations under the License.-->
                 </select>
                 <button class="refresh" onclick="api.getStorage(event)">Refresh</button>
                 <span class="ago-storage"></span>
-            </td>
-        </tr>
-        <tr class="setting-row refresh-settings">
-            <td class="setting-label">Faction id:</td>
-            <td><span id="factionid" class="">Unknown</span> <button class="refresh" onclick="api.getFactionId()">Refresh</button></td>
-        </tr>
-        <tr class="setting-row refresh-settings">
-            <td class="setting-label">Faction tax:</td>
-            <td><input id="factiontax" class="" type="number" min="0" max="100" size="6" value="0" onchange="api.setFactionTax(event)"/>%</td>
-        </tr>
-        <tr class="setting-row refresh-settings">
-            <td class="setting-label">Faction Storage:</td>
-            <td>
-                <select id="autorefresh-faction" name="refresh-vehicles" disabled="disabled">
-                    <option value="0">Auto refresh not available</option>
-                    <option value="60">1 minute</option>
-                    <option value="120">2 minutes</option>
-                    <option value="360">5 minutes</option>
-                    <option value="360">10 minutes</option>
-                    <option value="360">20 minutes</option>
-                    <option value="360">30 minutes</option>
-                    <option value="360">1 hour</option>
-                    <option value="360">2 hours</option>
-                    <option value="360">5 hours</option>
-                </select>
-                <button class="refresh" onclick="api.getFaction(event)">Refresh</button>
-                <span class="ago-faction"></span>
             </td>
         </tr>
         <tr class="setting-row refresh-settings">

@@ -49,6 +49,19 @@ class Miner extends Building {
     }
 }
 
+export function addBuilding(d) {
+    return new Building(
+        d.key_name,
+        d.name,
+        d.category,
+        Rational.from_float(d.power),
+        d.max,
+        d.color,
+        d.x,
+        d.y
+    )
+}
+
 export function getBuildings(data) {
     let buildings = []
     for (let d of data.buildings) {

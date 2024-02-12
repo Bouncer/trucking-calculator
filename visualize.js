@@ -41,6 +41,9 @@ const colorList = [
     colors["Light Green"][700], // food
     colors.Orange[700], // logs
     colors.Cyan[800], // water
+    colors.Indigo[100],
+    colors.Teal[100],
+    colors.Lime[100]
 ]
 
 function makeGraph(totals, targets, ignore) {
@@ -403,7 +406,7 @@ export function renderTotals(totals, targets, ignore) {
             .attr("y", d => ((d.y1 - d.y0 > minNodeHeight) ? (d.y0 + d.y1) / 2 - 8 + (d.textoffset * -10) : d.y0 + 4))
             .attr("height", iconSize)
             .attr("width", iconSize)
-            .attr("xlink:href", d => (d.count.isZero() ? d.count : `${d.building.iconPath()}`))
+            .attr("xlink:href", d => (d.count.isZero() ? `` : `${d.building.iconPath()}`))
     rects.filter(d => d.name != "output").append("text")
             .attr("x", d => d.x0 + iconSize + 4)
             .attr("y", d => (d.y1 - d.y0 > minNodeHeight) ? (d.y0 + d.y1) / 2 - 20 + (d.textoffset * -10) : d.y0 + 8)
@@ -417,14 +420,14 @@ export function renderTotals(totals, targets, ignore) {
         .attr("dy", "0.35em")
         .attr("text-anchor", "start")
         .attr("class", "item-name")
-        .text(d => (d.count.isZero() ? d.count : `${d.rate.toFloat().toLocaleString()}x ${d.name}`))
+        .text(d => (d.count.isZero() ? `${d.name}` : `${d.rate.toFloat().toLocaleString()}x ${d.name}`))
     rects.append("text")
                 .attr("x", d => d.x0 + iconSize + 4)
                 .attr("y", d => ((d.y1 - d.y0 > minNodeHeight) ? (d.y0 + d.y1) / 2 + 6 + (d.textoffset * -10) : d.y0 + 20))
                 .attr("dy", "0.35em")
                 .attr("text-anchor", "start")
                 .attr("class", "item-location")
-                .text(d => (d.count.isZero() ? d.count : `${d.building.name}`))
+                .text(d => (d.count.isZero() ? `${d.building.name}` : `${d.building.name}`))
     rects.filter(d => d.pertrip).append("text")
         .attr("x", d => d.x0 + iconSize + 4)
         .attr("y", d => ((d.y1 - d.y0 > minNodeHeight) ? (d.y0 + d.y1) / 2 + 18 + (d.textoffset * -10) : d.y0 + 40))

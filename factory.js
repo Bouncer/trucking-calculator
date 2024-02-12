@@ -17,6 +17,7 @@ import { formatSettings } from "./fragment.js"
 import { Rational, zero, half, one } from "./rational.js"
 import { BuildTarget } from "./target.js"
 import { Totals } from "./totals.js"
+import { addBuilding } from "./building.js"
 import { api } from "./api.js"
 import { renderTotals } from "./visualize.js"
 
@@ -59,7 +60,7 @@ class FactorySpecification {
 
         // storages
         this.storageItems = {}
-        this.storageLocations = {}
+        this.storageLocations = new Map()
 
         // cargo capacity settings
         this.capacity = {
@@ -385,13 +386,23 @@ class FactorySpecification {
             this.storageItems[itemKey] = {}
         }
         this.storageItems[itemKey][location.key_name] = rate
-        //console.log(this.storageItems)
-        //this.storageLocations = 
+    }
+    addStorageLocation(location) {
+        if(!this.buildings.has(location.key_name)) {
+            let building = addBuilding(location)
+            this.buildings.set(location.key_name, [building])
+        }
     }
     solve() {
         let totals = new Totals()
+        this.storageUsed = { ...this.storageItems }
+        //console.log(this.storageUsed)
+        // sort storages by size
+        for(let item in this.storageUsed) {
+            this.storageUsed[item] = Object.entries(spec.storageUsed[item]).sort((a,b)=>b[1]-a[1])
+        }
         for (let target of this.buildTargets) {
-            let subtotals = target.item.produce(this, target.getRate(), this.ignore, totals.itemRates, target.item.key)
+            let subtotals = target.item.produce(this, target.getRate(), this.ignore, totals.itemRates, target.item.key, null)
             //if(totals.rates.has(target.recipe))
             /*
             if(totals.topo[target.item.key]) {

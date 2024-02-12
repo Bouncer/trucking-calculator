@@ -21,10 +21,14 @@ export class Totals {
         this.waste = new Map()
         this.topo = []
         this.itemRates = {}
+        this.items = {}
     }
     add(recipe, rate) {
         this.topo.push(recipe)
         this.rates.set(recipe, rate)
+    }
+    addItem(item, rate) {
+        this.items[item] = (this.items[item] || zero).add(rate)
     }
     addUnfinished(recipe, rate) {
         this.unfinished.set(recipe, (this.unfinished.get(recipe) || zero).add(rate))
@@ -33,6 +37,12 @@ export class Totals {
         this.waste.set(recipe, (this.waste.get(recipe) || zero).add(rate))
     }
     addItemRate(recipe, amount, item, path) {
+
+        if(!(item in this.items)) {
+            this.items[item] = amount
+        } else {
+            this.items[item] = this.items[item].add(amount)
+        }
 
         if(!(recipe in this.itemRates)) {
             this.itemRates[recipe] = {'_rate': zero}
@@ -79,9 +89,8 @@ export class Totals {
         newTopo = newTopo.concat(other.topo)
         // sort from largest to smallest rate to be able to combine rates
         //other.rates = new Map([...other.rates.entries()].sort((a, b) => b[1].toFloat() - a[1].toFloat()));
-        //console.log(other)
-        for (var item in other.itemRates) {
-            //this.addItemRate(item, other.itemRates[item])
+        for (let item in other.items) {
+            this.addItem(item, other.items[item])
         }
         for (let [recipe, rate] of other.rates) {
             this.add(recipe, rate)

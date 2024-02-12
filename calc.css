@@ -336,6 +336,9 @@ button.refresh:hover {
 .storage-location {
     padding:6px;
 }
+.storage-location tr.storage-other {
+    display: none;
+}
 #storage th {
     text-align:left;
 }
@@ -383,8 +386,12 @@ button.refresh:hover {
     flex-wrap: wrap;
     align-items: flex-start;
 }
-.storage-combination {
-    width: 30%;
+.storage-combination:first-of-type {
+    width: 33%;
+    min-width: 300px;
+}
+.storage-combination:last-of-type {
+    width:66%;
     min-width: 300px;
 }
 #playerinfo {
