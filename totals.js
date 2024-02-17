@@ -24,8 +24,12 @@ export class Totals {
         this.items = {}
     }
     add(recipe, rate) {
-        this.topo.push(recipe)
-        this.rates.set(recipe, rate)
+        if(!this.rates.has(recipe)) {
+            this.topo.push(recipe)
+            this.rates.set(recipe, rate)
+        } else {
+            this.rates.set(recipe, this.rates.get(recipe).add(rate))
+        }
     }
     addItem(item, rate) {
         this.items[item] = (this.items[item] || zero).add(rate)

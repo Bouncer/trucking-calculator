@@ -223,7 +223,6 @@ class FactorySpecification {
             recipeWeight += i.weight.toFloat()
         }
         items.sort((a,b) => b.weight.toFloat() - a.weight.toFloat())
-
         if(recipeWeight > 0) {
             var tripRate = Math.floor(this.capacity.total / recipeWeight);
         } else {

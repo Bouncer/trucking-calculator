@@ -47,24 +47,19 @@ export class Item {
         if (ignore.has(recipe)) {
             return totals
         }
-        if(recipe.ingredients.length > 0) {
-            var ingredients = recipe.ingredients.map(function(r) { return new Ingredient(r.item, one) })
-            console.log(ingredients)
-        }
         // keep track for this recipe which we are going to get from storage
         var storageShopList = {}
         for (let ing of recipe.ingredients) {
             // do we have this item in storage?
             var target = rate.mul(ing.amount).toFloat()
+
             if(ing.item.key in spec.storageUsed) {
-                console.log(`in store: ${ing.item.key} ${spec.storageUsed[ing.item.key][0][1]}`)
                 // how many we have, sort from largest to smallest location
                 for(let storage in spec.storageUsed[ing.item.key]) {
-
                     var storageName = `${recipe.key}-${spec.storageUsed[ing.item.key][storage][0]}`
                     // any available?
                     if(spec.storageUsed[ing.item.key][storage][1] > 0 && target > 0) {                        
-                        console.log(`available: ${spec.storageUsed[ing.item.key][storage][1]}`)
+                        console.log(`available: ${spec.storageUsed[ing.item.key][storage][1]} at ${storageName}`)
                         var capable = Math.min(spec.storageUsed[ing.item.key][storage][1], target)
                         target -= capable;
                         spec.storageUsed[ing.item.key][storage][1] -= capable
@@ -72,7 +67,8 @@ export class Item {
                         if(!(storageName in storageShopList)) {
                             storageShopList[storageName] = []
                         }
-                        storageShopList[storageName].push({'item': ing.item, 'amount': capable})
+                        ing.recipes = []
+                        storageShopList[storageName].push(new Ingredient(ing.item, Rational.from_float(capable)))
                     }
                 }
             }
@@ -82,10 +78,10 @@ export class Item {
                 totals.combine(subtotals)
             }
         }
-        console.log(recipe)
         // for each storage, add a recipe
-        console.log(storageShopList)
         for(let storage in storageShopList) {
+            console.log(`storage: ${storage}`)
+            console.log(storageShopList[storage])
             // add location
             var recipeLocation = {
                 "name": storage,
@@ -97,13 +93,27 @@ export class Item {
                 "x": 0,
                 "y": 0
             }
-            spec.addStorageLocation(recipeLocation)           
-            let subRecipe = makeStorageRecipe(recipeLocation.key_name, ingredients, recipeLocation.key_name)
+            spec.addStorageLocation(recipeLocation)
+            // check if recipe exists
+            if(!spec.recipes.get(recipeLocation.key_name)) {
+                var subRecipe = makeStorageRecipe(recipeLocation.key_name, storageShopList[storage], recipeLocation.key_name)
+            } else {
+                var subRecipe = spec.recipes.get(recipeLocation.key_name)
+                console.log('This should never happen')
+            }
             for(let ing of storageShopList[storage]) {
-                let subtotals = ing.item.produce(spec, Rational.from_float(ing.amount), ignore, totals.itemRates, recipe.key, subRecipe)
-                totals.combine(subtotals)
+                if(!(subRecipe.key in itemRates)) {
+                    let subtotals = ing.item.produce(spec, one, ignore, totals.itemRates, subRecipe.key, subRecipe)
+                    totals.combine(subtotals)
+                } else {
+                    console.log('blap')
+                    console.log(subRecipe)
+                    //subRecipe.products[ing]
+                    totals.addItemRate(subRecipe.key, one, ing.item.key, subRecipe.key)
+                    //totals.rates.set(subRecipe, one)
+                }
             }
-            }
+        }
 
         return totals
     }

@@ -178,7 +178,6 @@ class ApiLink {
                 }
             }
         }
-        console.log(this.itemrates)
         d3.select("#storage").html("")
         var storages = d3.select("#storage").selectAll("table").data(this.storage.d.storages.sort((a,b) => Object.keys(b.inventory).length - Object.keys(a.inventory).length)).join("table")
             .filter(d => Object.keys(d.inventory).length > 0)
