@@ -232,7 +232,6 @@ class FactorySpecification {
         if(tripRate > rate) {
             tripRate = rate
         }
-        
         // because we cannot split items in pieces, calculate how to distribute
         var searching = true;
         while(searching) {
@@ -244,7 +243,6 @@ class FactorySpecification {
                 ['trailer', this.capacity.totaltrailer]
             ]
             storages.sort((a,b) => a[1] - b[1])
-            
             // try to distribute
             for(let i in items) {
                 items[i]["storage"] = {
@@ -259,11 +257,12 @@ class FactorySpecification {
                     var target = items[i].amount.toFloat() * tripRate;
 
                     // try to put everything in one storage
-                    for(let s of storages) {
+                    for(let s in storages) {
                         var totalItemWeight = target * items[i].item.weight.toFloat()
-                        if(s[1] > totalItemWeight) {
-                            items[i]['storage'][s[0]] = target
+                        if(storages[s][1] > totalItemWeight) {
+                            items[i]['storage'][storages[s][0]] = target
                             items[i]['storage']['total'] = target
+                            storages[s][1] -= target * items[i].item.weight.toFloat()
                             target = 0
                             break
                         }
@@ -280,7 +279,6 @@ class FactorySpecification {
                                 items[i].storage[storages[s][0]] += capable
                                 items[i].storage['total'] += capable
                                 storages[s][1] -= capable * items[i].item.weight.toFloat()
-                                //console.log(s[1])
                             }
                         }
                     }
@@ -375,12 +373,10 @@ class FactorySpecification {
         }
     }
     addStorage(itemKey, rate, location) {
-        //console.log(itemKey)
         if(!this.items.has(itemKey)) {
             return false
         }
         let item = this.items.get(itemKey)
-        //console.log(item)
         if(!this.storageItems[itemKey]) {
             this.storageItems[itemKey] = {}
         }

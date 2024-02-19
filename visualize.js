@@ -24,7 +24,7 @@ const nodePadding = 80
 
 const columnWidth = 120
 const maxNodeHeight = 100
-const minNodeHeight = 28
+const minNodeHeight = 38
 
 const colorList = [
     colors.Red[700], // base
@@ -80,6 +80,7 @@ function makeGraph(totals, targets, ignore) {
             "building": {"name":"Storage"},
             "count": one,
             "rate": null,
+            "textoffset": 10,
         }
     }
 
@@ -97,11 +98,8 @@ function makeGraph(totals, targets, ignore) {
             resource = true
         }
         var [tripDetails, trips] = spec.getMagicTrip(items, rate.toFloat())
-        let textoffset = recipe.ingredients.length;
-        if(trips < 2) {
-            textoffset = 0;
-        }
-        
+        let textoffset = (Math.max(recipe.ingredients.length, 1) * 10);
+
         // debug
         let debugText = "";
         for(let i of recipe.ingredients) {
@@ -285,7 +283,7 @@ export function renderTotals(totals, targets, ignore) {
     for (let node of data.nodes) {
         let text = testSVG.append("text")
             .text(nodeText(node))
-        let textWidth = text.node().getBBox().width
+        let textWidth = Math.max(text.node().getBBox().width,140)
         text.remove()
         if (textWidth > maxTextWidth) {
             maxTextWidth = textWidth
@@ -294,6 +292,7 @@ export function renderTotals(totals, targets, ignore) {
     testSVG.remove()
     let nodeWidth = iconSize + maxTextWidth + 20
     let width = maxRank * (nodeWidth + columnWidth) + nodeWidth
+    let svgWidth = Math.max(width + 300, window.innerWidth - 20)
     // The height of the display is normalized by the height of the tallest box
     // in the graph. We define it to be (approximately) maxNodeHeight pixels
     // high.
@@ -306,11 +305,12 @@ export function renderTotals(totals, targets, ignore) {
         }
     }
     let height = largestEstimate * Math.min(1.5,maxRank/2)
+    let svgHeight = Math.max(height + 300, window.innerHeight - 150)
 
     let svg = d3.select("svg#graph")
-        .attr("viewBox", `0,0,${width+20},${height+50}`)
-        .style("width", `${width+20}px`)
-        .style("height", `${height+50}px`)
+        .attr("viewBox", `-50,-50,${svgWidth},${svgHeight}`)
+        .style("width", `${svgWidth}px`)
+        .style("height", `${svgHeight}px`)
 
     svg.selectAll("g").remove()
 
@@ -411,42 +411,41 @@ export function renderTotals(totals, targets, ignore) {
         .append("image")
             .classed("ignore", d => ignore.has(d.recipe))
             .attr("x", d => d.x0 + 2)
-            .attr("y", d => ((d.y1 - d.y0 > minNodeHeight) ? (d.y0 + d.y1) / 2 - 8 + (d.textoffset * -10) : d.y0 + 4))
+            .attr("y", d => (d.y0 + d.y1) / 2 - d.textoffset + 0)
             .attr("height", iconSize)
             .attr("width", iconSize)
             .attr("xlink:href", d => (d.count.isZero() ? `` : `${d.building.iconPath()}`))
     rects.filter(d => d.name != "output").append("text")
             .attr("x", d => d.x0 + iconSize + 4)
-            .attr("y", d => (d.y1 - d.y0 > minNodeHeight) ? (d.y0 + d.y1) / 2 - 20 + (d.textoffset * -10) : d.y0 + 8)
+            .attr("y", d => (d.y0 + d.y1) / 2 - d.textoffset - 10)
             .attr("dy", "0.35em")
             .attr("text-anchor", "start")
             .style("font-size","8px")
             .text(d => d.debug)
     rects.filter(d => d.name != "output").append("text")
         .attr("x", d => d.x0 + iconSize + 4)
-        .attr("y", d => (d.y1 - d.y0 > minNodeHeight) ? (d.y0 + d.y1) / 2 - 6 + (d.textoffset * -10) : d.y0 + 8)
+        .attr("y", d => (d.y0 + d.y1) / 2 - d.textoffset + 0)
         .attr("dy", "0.35em")
         .attr("text-anchor", "start")
         .attr("class", "item-name")
         .text(d => (d.count.isZero() ? `${d.name}` : `${d.rate.toFloat().toLocaleString()}x ${d.name}`))
     rects.append("text")
                 .attr("x", d => d.x0 + iconSize + 4)
-                .attr("y", d => ((d.y1 - d.y0 > minNodeHeight) ? (d.y0 + d.y1) / 2 + 6 + (d.textoffset * -10) : d.y0 + 20))
+                .attr("y", d => (d.y0 + d.y1) / 2 - d.textoffset + 12)
                 .attr("dy", "0.35em")
                 .attr("text-anchor", "start")
                 .attr("class", "item-location")
                 .text(d => (d.count.isZero() ? `${d.building.name}` : `${d.building.name}`))
     rects.filter(d => d.pertrip).append("text")
         .attr("x", d => d.x0 + iconSize + 4)
-        .attr("y", d => ((d.y1 - d.y0 > minNodeHeight) ? (d.y0 + d.y1) / 2 + 18 + (d.textoffset * -10) : d.y0 + 40))
+        .attr("y", d => (d.y0 + d.y1) / 2 - d.textoffset + 24)
         .attr("dy", "0.35em")
         .attr("text-anchor", "start")
         .attr("class", "item-ingredient")
         .text(d => `${d.trips} trip` + (d.trips > 1 ? `s` : ``) + ` of` + (d.trips > 1 ? ` max` : ``) + `:` + (d.resource || (d.pertrip && d.pertrip.length <= 1) ? ` ${d.pertrip[0].triptext.toLocaleString()}` : ``))
     rects.filter(d => !d.resource && d.pertrip && d.pertrip.length > 1).append("g").selectAll("text").data(d => d.pertrip).join("text")
             .attr("x", d => d.x0 + iconSize + 4)
-            .attr("y", d => ((d.y1 - d.y0 > minNodeHeight) ? (d.y0 + d.y1) / 2 + 20 + (d.textoffset * -10) : d.y0 + 40))
-            .attr("dy", "0.35em")
+            .attr("y", d => (d.y0 + d.y1) / 2 - d.textoffset + 30)
             .attr("class", "item-ingredient")
             .attr("text-anchor", "start")
             .text(d => `${d.item.name}: ${d.triptext}`)

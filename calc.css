@@ -214,6 +214,9 @@ div.tab {
     padding: 1em;
     background-color: #474646;
 }
+#graph_tab {
+    padding: 0px;
+}
 /* visualizer */
 div.graph {
     min-width: max-content;
@@ -428,6 +431,7 @@ button.refresh:hover {
     padding: 0px 4px;
     font-family: courier;
     font-size:14px;
+    vertical-align: top;
 }
 #logbook .success {
     color:#00CC00;
