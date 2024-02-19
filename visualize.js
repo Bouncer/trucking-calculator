@@ -272,7 +272,7 @@ export function renderTotals(totals, targets, ignore) {
     for (let node of data.nodes) {
         let text = testSVG.append("text")
             .text(nodeText(node))
-        let textWidth = Math.max(text.node().getBBox().width,100)
+        let textWidth = Math.max(text.node().getBBox().width,140)
         text.remove()
         if (textWidth > maxTextWidth) {
             maxTextWidth = textWidth

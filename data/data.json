@@ -1360,7 +1360,7 @@
         "key_name": "asphalt",
         "tier": "3",
         "category": "trucking",
-        "weight": "100",
+        "weight": "5",
         "stack_size": "1000"
     },
     {
@@ -1368,7 +1368,7 @@
         "key_name": "export-asphalt",
         "tier": "-1",
         "category": "trucking",
-        "weight": "100",
+        "weight": "5",
         "stack_size": "1000"
     },
     {
@@ -2855,7 +2855,7 @@
         "pays": 0
     },
     {
-        "name": "Deliver Asphalt",
+        "name": "Deliver Asphalt 5x",
         "key_name": "export-asphalt",
         "category": "alta-construction-site",
         "time": 1,
@@ -2867,7 +2867,7 @@
         ],
         "product": [
             ["export-asphalt",
-            1]
+            5]
         ],
         "weight": 0,
         "cost": 0,
