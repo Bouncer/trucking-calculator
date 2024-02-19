@@ -113,7 +113,6 @@ function makeGraph(totals, targets, ignore) {
         }
 
         debugText = null
-        console.log(recipe)
         let node = {
             "key": recipe.key,
             "name": recipe.name,
@@ -146,8 +145,15 @@ function makeGraph(totals, targets, ignore) {
                     totalRate = totalRate.add(totals.rates.get(subRecipe).mul(subRecipe.gives(ing.item, spec)))
                 }
             }
-
             for (let subRecipe of ing.item.recipes) {
+                // if this is a storage, only use if its meant for this recipe
+                if(subRecipe.key.startsWith('storage|')) {
+                    let targetRecipe = subRecipe.key.split('|')[2]
+                    console.log(`target recipe: ${targetRecipe}`)
+                    if(recipe.key != targetRecipe) {
+                        continue
+                    }
+                }
                 if (totals.rates.has(subRecipe)) {
                     if (node.name == "output") {
                         rate = ing.amount
@@ -161,7 +167,7 @@ function makeGraph(totals, targets, ignore) {
                         "name": ing.item.name,
                         "source": nodeMap.get(subRecipe.key),
                         "target": node,
-                        "value": Math.min(500,Math.max(40,rate.mul(ing.item.weight).toFloat())),
+                        "value": Math.min(100,Math.max(40,rate.mul(ing.item.weight).toFloat())),
                         "rate": subRate,
                         "weight": rate.mul(ing.item.weight),
                         "amount": ing.amount

@@ -70,8 +70,16 @@ function makeRecipe(data, items, d) {
     return new Recipe(d.key_name, d.name, d.category, time, ingredients, products, d.cost, d.pays)
 }
 
-export function makeStorageRecipe(key, items, location) {
-    return new Recipe(key, `From Storage`, location, zero, [], items, zero, zero)
+export function makeStorageRecipe(location, items) {
+    let title = 'Storage'
+    if(location.key_name.startsWith('storage|inventory|')) {
+        title = 'Inventory'
+        location.color = 15
+    } else if(location.key_name.startsWith('storage|vehicle-')) {
+        title = 'Vehicle'
+        location.color = 16
+    }
+    return new Recipe(location.key_name, title, location.key_name, zero, [], items, zero, zero)
 }
 
 class ResourceRecipe extends Recipe {

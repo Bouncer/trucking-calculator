@@ -56,7 +56,7 @@ export class Item {
             if(ing.item.key in spec.storageUsed) {
                 // how many we have, sort from largest to smallest location
                 for(let storage in spec.storageUsed[ing.item.key]) {
-                    var storageName = `${recipe.key}-${spec.storageUsed[ing.item.key][storage][0]}`
+                    var storageName = `${spec.storageUsed[ing.item.key][storage][0]}|${recipe.key}`
                     // any available?
                     if(spec.storageUsed[ing.item.key][storage][1] > 0 && target > 0) {                        
                         console.log(`available: ${spec.storageUsed[ing.item.key][storage][1]} at ${storageName}`)
@@ -83,8 +83,9 @@ export class Item {
             console.log(`storage: ${storage}`)
             console.log(storageShopList[storage])
             // add location
+            let storageId = storage.split('|')[1]
             var recipeLocation = {
-                "name": storage,
+                "name": spec.getStorageInfo(storageId).name,
                 "key_name": storage,
                 "category": storage,
                 "power": 1,
@@ -96,12 +97,13 @@ export class Item {
             spec.addStorageLocation(recipeLocation)
             // check if recipe exists
             if(!spec.recipes.get(recipeLocation.key_name)) {
-                var subRecipe = makeStorageRecipe(recipeLocation.key_name, storageShopList[storage], recipeLocation.key_name)
+                var subRecipe = makeStorageRecipe(recipeLocation, storageShopList[storage])
             } else {
                 var subRecipe = spec.recipes.get(recipeLocation.key_name)
                 console.log('This should never happen')
             }
             for(let ing of storageShopList[storage]) {
+                //ing.item.target = recipe.key
                 if(!(subRecipe.key in itemRates)) {
                     let subtotals = ing.item.produce(spec, one, ignore, totals.itemRates, subRecipe.key, subRecipe)
                     totals.combine(subtotals)

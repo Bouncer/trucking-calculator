@@ -436,6 +436,134 @@ class FactorySpecification {
         this.setHash()
         api.update(totals)
     }
+
+    getStorageInfo(key) {
+        let storages = {
+            "bctp": {
+                "name": "Blaine County Tractor Parts",
+                "fee": 50,
+                "size": 40000,
+                "cost": 1000000
+            },
+            "pbsf": {
+                "name": "Paleto Bay Self Storage",
+                "fee": 200,
+                "size": 60000,
+                "cost": 1000000
+            },
+            "bhsl": {
+                "name": "Big House Storage LSIA",
+                "fee": 100,
+                "size": 250000,
+                "cost": 1000000
+            },
+            "tsu": {
+                "name": "The Secure Unit",
+                "fee": 200,
+                "size": 150000,
+                "cost": 1000000
+            },
+            "dpss": {
+                "name": "Del Perro Self Storage",
+                "fee": 100,
+                "size": 80000,
+                "cost": 1000000
+            },
+            "gohq": {
+                "name": "Palmer-Taylor Power Station",
+                "fee": 100,
+                "size": 100000,
+                "cost": 0
+            },
+            "fthq": {
+                "name": "Pillbox Hill Storage Unit",
+                "fee": 100,
+                "size": 100000,
+                "cost": 0
+            },
+            "bats": {
+                "name": "Rogers Salvage & Scrap",
+                "fee": 100,
+                "size": 100000,
+                "cost": 0
+            },
+            "rts": {
+                "name": "R.T.S. HQ Self Storage",
+                "fee": 0,
+                "size": 20000,
+                "cost": 0
+            },
+            "pigs": {
+                "name": "P.I.G.S. HQ Self Storage",
+                "fee": 0,
+                "size": 20000,
+                "cost": 0
+            },
+            "collins": {
+                "name": "CollinsCo HQ Self Storage",
+                "fee": 0,
+                "size": 20000,
+                "cost": 0
+            },
+            "lc2": {
+                "name": "Staunton Island Self Storage",
+                "fee": 50,
+                "size": 40000,
+                "cost": 0
+            },
+            "fyrecay": {
+                "name": "Cayo Perico Airfield",
+                "fee": 50,
+                "size": 40000,
+                "cost": 0
+            },
+            "mp": {
+                "name": "Marketplace Delivery",
+                "fee": 0,
+                "size": 0,
+                "cost": 0
+            },
+            "cst": {
+                "name": "Carson Self Storage",
+                "fee": 50,
+                "size": 10000,
+                "cost": 1000000
+            },
+            "biz_yellowjack": {
+                "name": "Yellowjack",
+                "fee": 10,
+                "size": 35000,
+                "cost": 950000
+            },
+            "biz_train": {
+                "name": "Train Network",
+                "fee": 250,
+                "size": 16000,
+                "cost": 0
+            }
+        }
+        if(key in storages) {
+            console.log(key)
+            return storages[key]
+        } else {
+            if(key.startsWith('faq_')) {
+                let name = key.split('_')
+                return {
+                    "name": `Faction ${name[1]}`,
+                    "fee": 0,
+                    "size": 500000,
+                    "cost": 0
+                }
+            } else {
+                return {
+                    "name": key,
+                    "fee": 0,
+                    "size": 0,
+                    "cost": 0
+                }
+            }
+        }
+    }
 }
 
 export let spec = new FactorySpecification()

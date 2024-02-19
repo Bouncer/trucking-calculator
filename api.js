@@ -33,7 +33,8 @@ class ApiLink {
         this.storageTab = null
         this.storages = {}
         this.itemrates = {}
-        this.onlytrucking = localStorage.getItem("onlytrucking") || true
+        this.onlytrucking = true
+        this.usestorage = true
         
         // timers
 //        this.updateCapacity()
@@ -62,15 +63,43 @@ class ApiLink {
             localStorage.setItem("onlytrucking", false)
             log.add('log','Disabled showing only trucking items')
         }
+        spec.updateSolution()
+    }
+
+    setUseStorage(event) {
+        if(event.target.checked) {
+            this.usestorage = true
+            localStorage.setItem("usestorage", "true")
+            log.add('log','Enabled using items from storage')
+        } else {
+
+            spec.storageItems = {}
+            this.usestorage = false
+            localStorage.setItem("usestorage", "false")
+            log.add('log','Disabled using items from storage')
+        }
+        this.update()
         spec.updateSolution() 
     }
 
     addItem(item, rate, location) {
         item = item.replace('_premium','').replace('fridge_','').replace('military_','').replace('mechanicals_','').replace('petrochem_','').replace('crafted_','').replace(new RegExp('^hide.*'),'hide').replaceAll('_','-')
         let parsedItem = spec.items.get(item) || false
-        if(parsedItem) {
+
+        if(parsedItem && this.usestorage == true) {
             spec.addStorage(item, rate, location)
         }
+
+        // ignore inaccessible factions
+        console.log(location)
+        if(location.key_name.startsWith('storage|faq_')) {
+            if(this.factionid == location.key_name.replace('storage|faq_','')) {
+                return [item, parsedItem.name]
+            } else {
+                return [item, false]
+            }
+        }
+        
         return [item, parsedItem.name]
     }
 
@@ -157,15 +186,17 @@ class ApiLink {
     parseStorage() {
         for(let storage in this.storage.d.storages){
             let location = {
-                "name": `${this.storage.d.storages[storage].name}`,
-                "key_name": `storage-self-${this.storage.d.storages[storage].name}`,
-                "category": `storage-self-${this.storage.d.storages[storage].name}`,
+                "name": spec.getStorageInfo(this.storage.d.storages[storage].name).name,
+                "key_name": `storage|${this.storage.d.storages[storage].name}`,
+                "category": `storage|${this.storage.d.storages[storage].name}`,
                 "power": 1,
                 "max": 1,
                 "color": 14,
                 "x": 0,
                 "y": 0
             }
+
+            this.storage.d.storages[storage].fullname = location.name
             for(let item in this.storage.d.storages[storage].inventory) {
                 let [key, name] = this.addItem(item, this.storage.d.storages[storage].inventory[item].amount, location)
                 this.storage.d.storages[storage].inventory[item].key = key
@@ -183,7 +214,7 @@ class ApiLink {
             .filter(d => Object.keys(d.inventory).length > 0)
             .classed("storage-location", true)
         var storageTitleRow = storages.append("tr").classed("storage-title",true)
-            storageTitleRow.append("th").text(d => `${d.name}`)
+            storageTitleRow.append("th").text(d => `${d.fullname}`)
             storageTitleRow.append("th").text(d => `(${Object.keys(d.inventory).length})`)
         var storageItemRow = storages.selectAll(".storage-items").data(d => Object.entries(d.inventory).sort(([,a],[,b]) => b.amount-a.amount)).join("tr").classed("storage-items", true)
             storageItemRow.filter(d => !d[1].visible).classed("storage-other", true)
@@ -212,8 +243,8 @@ class ApiLink {
         for(let storage in this.vehicles.d.trunks){
             let location = {
                 "name": `${this.vehicles.d.trunks[storage].vehicle}`,
-                "key_name": `storage-vehicle-${this.vehicles.d.trunks[storage].vehicle}`,
-                "category": `storage-vehicle-${this.vehicles.d.trunks[storage].vehicle}`,
+                "key_name": `storage|vehicle-${this.vehicles.d.trunks[storage].vehicle}`,
+                "category": `storage|vehicle-${this.vehicles.d.trunks[storage].vehicle}`,
                 "power": 1,
                 "max": 1,
                 "color": 15,
@@ -266,8 +297,8 @@ class ApiLink {
     parseInventory() {
         let location = {
             "name": "Inventory",
-            "key_name": "storage-inventory",
-            "category": "storage-inventory",
+            "key_name": "storage|inventory",
+            "category": "storage|inventory",
             "power": 1,
             "max": 1,
             "color": 16,
@@ -450,6 +481,16 @@ class ApiLink {
             }
         }
 
+        if(localStorage.onlytrucking) {
+            this.onlytrucking = (/true/).test(localStorage.getItem("onlytrucking"))
+            d3.select("#onlytrucking").attr("selected", this.onlytrucking)
+        }
+
+        if(localStorage.usestorage) {
+            this.usestorage = (/true/).test(localStorage.getItem("usestorage"))
+            d3.select("#usestorage").attr("selected", this.usestorage)
+        }
+
         if(localStorage.wealth) {
             this.wealth = JSON.parse(localStorage.getItem("wealth"))
             this.parseWealth();
@@ -475,7 +516,9 @@ class ApiLink {
     }
 
     update(totals) {
-        this.itemrates = totals.items
+        if(totals) {
+            this.itemrates = totals.items
+        }
 
         if(this.inventory) {
             this.parseInventory()
