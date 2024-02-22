@@ -61,6 +61,7 @@ class FactorySpecification {
         // storages
         this.storageItems = {}
         this.storageLocations = new Map()
+        this.storageRecipes = {}
 
         // cargo capacity settings
         this.capacity = {
@@ -154,6 +155,7 @@ class FactorySpecification {
             return recipe
         }
     }
+
     setRecipe(recipe) {
         // remove
         if(recipe.key in this.altRecipeList) {
@@ -217,6 +219,10 @@ class FactorySpecification {
         return rate.div(Rational.from_float(this.capacity.total))
     }
     getMagicTrip(items, rate) {
+
+        console.log(`getMagicTrip: ${rate}`)
+        console.log(items)
+
         // theoretical maximum rate
         var recipeWeight = 0
         for(let i of items) {

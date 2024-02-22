@@ -99,7 +99,11 @@ function makeGraph(totals, targets, ignore) {
             items = recipe.products
             resource = true
         }
-        var [tripDetails, trips] = spec.getMagicTrip(items, rate.toFloat())
+        var tripDetails = null
+        var trips = null
+        if(!resource) {
+            [tripDetails, trips] = spec.getMagicTrip(items, rate.toFloat())
+        }
         let textoffset = (Math.max(recipe.ingredients.length, 1) * 10);
 
         // debug
@@ -112,7 +116,7 @@ function makeGraph(totals, targets, ignore) {
             debugText += `${i.amount}x ${i.item.name.substr('0','10')}, `
         }
 
-        //debugText = null
+        debugText = null
         let node = {
             "key": recipe.key,
             "name": recipe.name,
@@ -149,7 +153,7 @@ function makeGraph(totals, targets, ignore) {
                 // if this is a storage, only use if its meant for this recipe
                 if(subRecipe.key.startsWith('storage|')) {
                     let targetRecipe = subRecipe.key.split('|')[2]
-                    console.log(`target recipe: ${targetRecipe}`)
+                    //console.log(`target recipe: ${targetRecipe}`)
                     if(recipe.key != targetRecipe) {
                         continue
                     }

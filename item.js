@@ -103,9 +103,9 @@ export class Item {
             }
 
             var recipeLocation = {
-                "name": spec.getStorageInfo(storageId).name,
+                "name": 'Storage',
                 "key_name": storage,
-                "title": title,
+                "title": spec.getStorageInfo(storageId).name,
                 "category": storage,
                 "power": 1,
                 "max": 1,

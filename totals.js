@@ -22,6 +22,7 @@ export class Totals {
         this.topo = []
         this.itemRates = {}
         this.items = {}
+        this.storages = {}
     }
     add(recipe, rate) {
         if(!this.rates.has(recipe)) {
