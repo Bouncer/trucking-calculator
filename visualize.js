@@ -22,7 +22,7 @@ const iconSize = 20
 
 const nodePadding = 80
 
-const columnWidth = 120
+const columnWidth = 150
 const maxNodeHeight = 100
 const minNodeHeight = 38
 
@@ -42,8 +42,10 @@ const colorList = [
     colors.Orange[700], // logs
     colors.Cyan[800], // water
     colors.Indigo[100],
-    colors.Teal[100],
-    colors.Lime[100]
+    colors.Indigo[300],
+    colors.Lime[400],
+    colors.Teal[300],
+    colors["Deep Orange"][300]
 ]
 
 function makeGraph(totals, targets, ignore) {
@@ -110,7 +112,7 @@ function makeGraph(totals, targets, ignore) {
             debugText += `${i.amount}x ${i.item.name.substr('0','10')}, `
         }
 
-        debugText = null
+        //debugText = null
         let node = {
             "key": recipe.key,
             "name": recipe.name,

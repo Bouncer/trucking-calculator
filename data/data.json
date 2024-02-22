@@ -2084,6 +2084,24 @@
         "pays": 0
     },
     {
+        "name": "Refine Chemicals ",
+        "key_name": "refine-chemicals",
+        "category": "chemical-laboratories",
+        "time": 1,
+        "ingredients": [
+            [
+                "chemicals",
+                1
+            ]
+        ],
+        "product": [
+            ["scrap-acid",4]
+        ],
+        "weight": 80,
+        "cost": 2500,
+        "pays": 0
+    },
+    {
         "name": "Sulfur",
         "key_name": "sulfur",
         "category": "water-treatment-plant",

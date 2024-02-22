@@ -71,15 +71,7 @@ function makeRecipe(data, items, d) {
 }
 
 export function makeStorageRecipe(location, items) {
-    let title = 'Storage'
-    if(location.key_name.startsWith('storage|inventory|')) {
-        title = 'Inventory'
-        location.color = 15
-    } else if(location.key_name.startsWith('storage|vehicle-')) {
-        title = 'Vehicle'
-        location.color = 16
-    }
-    return new Recipe(location.key_name, title, location.key_name, zero, [], items, zero, zero)
+    return new Recipe(location.key_name, location.title, location.key_name, zero, [], items, zero, zero)
 }
 
 class ResourceRecipe extends Recipe {

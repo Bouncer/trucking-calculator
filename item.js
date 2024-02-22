@@ -67,7 +67,10 @@ export class Item {
                         if(!(storageName in storageShopList)) {
                             storageShopList[storageName] = []
                         }
-                        ing.recipes = []
+                        //ing.recipes = []
+                        // check if ingredient is already listed
+                        if(totals.rates.has(ing)) {
+                        }
                         storageShopList[storageName].push(new Ingredient(ing.item, Rational.from_float(capable)))
                     }
                 }
@@ -84,9 +87,25 @@ export class Item {
             console.log(storageShopList[storage])
             // add location
             let storageId = storage.split('|')[1]
+
+            let title = 'Storage'
+            let color = 14
+            if(storageId == 'biz_train') {
+                color = 15
+            } else if(storageId == 'inventory') {
+                title = 'Inventory'
+                color = 16
+            } else if(storageId.startsWith('vehicle-')) {
+                title = 'Vehicle'
+                color = 17
+            } else if(storageId.startsWith('faq_')) {
+                color = 18
+            }
+
             var recipeLocation = {
                 "name": spec.getStorageInfo(storageId).name,
                 "key_name": storage,
+                "title": title,
                 "category": storage,
                 "power": 1,
                 "max": 1,
@@ -96,11 +115,13 @@ export class Item {
             }
             spec.addStorageLocation(recipeLocation)
             // check if recipe exists
+            console.log(recipeLocation.key_name)
+            console.log(spec.recipes)
             if(!spec.recipes.get(recipeLocation.key_name)) {
                 var subRecipe = makeStorageRecipe(recipeLocation, storageShopList[storage])
             } else {
                 var subRecipe = spec.recipes.get(recipeLocation.key_name)
-                console.log('This should never happen')
+                console.log('---This should never happen')
             }
             for(let ing of storageShopList[storage]) {
                 //ing.item.target = recipe.key
@@ -110,8 +131,7 @@ export class Item {
                 } else {
                     console.log('blap')
                     console.log(subRecipe)
-                    //subRecipe.products[ing]
-                    totals.addItemRate(subRecipe.key, one, ing.item.key, subRecipe.key)
+                    //totals.addItemRate(subRecipe.key, one, ing.item.key, subRecipe.key)
                     //totals.rates.set(subRecipe, one)
                 }
             }

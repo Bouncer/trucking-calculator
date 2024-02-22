@@ -539,7 +539,6 @@ class FactorySpecification {
             }
         }
         if(key in storages) {
-            console.log(key)
             return storages[key]
         } else {
             if(key.startsWith('faq_')) {

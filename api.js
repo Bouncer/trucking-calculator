@@ -91,7 +91,6 @@ class ApiLink {
         }
 
         // ignore inaccessible factions
-        console.log(location)
         if(location.key_name.startsWith('storage|faq_')) {
             if(this.factionid == location.key_name.replace('storage|faq_','')) {
                 return [item, parsedItem.name]
