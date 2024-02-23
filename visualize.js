@@ -170,7 +170,7 @@ function makeGraph(totals, targets, ignore) {
                         "source": nodeMap.get(subRecipe.key),
                         "target": node,
                         "value": Math.min(100,Math.max(40,rate.mul(ing.item.weight).toFloat())),
-                        "rate": rate,
+                        "rate": subRate,
                         "weight": subRate.mul(ing.item.weight),
                         "amount": ing.amount
                     }

@@ -111,6 +111,7 @@ class ApiLink {
 
                 log.add('success',`Loaded wealth of $ ${data.wallet.toLocaleString()}`)
                 this.parseWealth()
+                this.setCharges(data.charges)
             } else {
                 if(data.code == 412) {
                     log.add('warning',`You must be online to load wealth`)
@@ -118,7 +119,6 @@ class ApiLink {
                     log.add('error',`Wealth error ${data.code}`)
                 }
             }
-            this.setCharges(data.charges)
         })
     }
 
