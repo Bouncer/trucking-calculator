@@ -33,10 +33,7 @@ class Recipe {
             ing.item.addUse(this)
         }
 
-        this.products = products
-        for (let prod of products) {
-            prod.item.addRecipe(this)
-        }
+        this.setProducts(products)
 
         this.cost = cost;
         this.pays = pays;
@@ -51,6 +48,19 @@ class Recipe {
     }
     iconPath() {
         return this.products[0].item.iconPath()
+    }
+    setProducts(products) {
+        this.products = products
+        for (let prod of products) {
+            prod.item.addRecipe(this)
+        }
+    }
+    updateProduct(ing) {
+        for (let prod of this.products) {
+            if(prod.item.key == ing.item.key) {
+                prod.amount = prod.amount.add(ing.amount)
+            }
+        }
     }
 }
 

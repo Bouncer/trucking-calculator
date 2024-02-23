@@ -87,12 +87,12 @@ class ApiLink {
         let parsedItem = spec.items.get(item) || false
 
         if(parsedItem && this.usestorage == true) {
-            spec.addStorage(item, rate, location)
+            spec.setStorage(item, rate, location)
         }
 
         // ignore inaccessible factions
         if(location.key_name.startsWith('storage|faq_')) {
-            if(this.factionid == location.key_name.replace('storage|faq_','')) {
+            if(this.factionid == 'None' || this.factionid == location.key_name.replace('storage|faq_','')) {
                 return [item, parsedItem.name]
             } else {
                 return [item, false]
@@ -365,9 +365,9 @@ class ApiLink {
         const prev = this.charges
         this.charges = charges
         if(charges == 1) {
-            log.add('warning',`You have ${charges} charg remaining`)
+            log.add('warning',`You have ${charges.toLocaleString()} charg remaining`)
         } else if(charges <= 10) {
-            log.add('info',`You have ${charges} charges remaining`)
+            log.add('info',`You have ${charges.toLocaleString()} charges remaining`)
         }
         d3.selectAll(".charges").style("display","inline-block")        
         d3.selectAll(".charges").transition().tween("text", () => {
@@ -407,7 +407,7 @@ class ApiLink {
         fetch(`${this.baseURL}path=charges.json&apikey=${this.apikey}`, { method: "GET"}).then(r=>r.json()).then(async data => {
             if(data[0] > 0) {
                 
-                log.add('success',`Connected! ${data[0]} charges remaining`)
+                log.add('success',`Connected! ${data[0].toLocaleString()} charges remaining`)
                 this.setCharges(data[0])
                 this.connected = true
                 localStorage.setItem("apikey",key)

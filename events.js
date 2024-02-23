@@ -64,7 +64,7 @@ export function changePremium(event) {
         log.add('log','Premium enabled')
     } else {
         spec.capacity.premium = 0
-        log.add('log','Premium enabled')
+        log.add('log','Premium disabled')
     }
     spec.updateSolution()
 }

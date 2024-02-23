@@ -972,8 +972,8 @@
         "stack_size": "900"
     },
     {
-        "name": "Raw Gas",
-        "key_name": "raw-gas",
+        "name": "Gas",
+        "key_name": "gas",
         "tier": "7",
         "category": "petrochem",
         "weight": "150",
@@ -2253,7 +2253,7 @@
         "time": 1,
         "ingredients": [
             [
-                "raw-gas",
+                "gas",
                 1
             ]
         ],
@@ -3625,7 +3625,7 @@
             "category": "land-act-reservoir"
         },
         {
-            "key_name": "raw-gas",
+            "key_name": "gas",
             "category": "gsd-gas-pumping-station"
         },
         {

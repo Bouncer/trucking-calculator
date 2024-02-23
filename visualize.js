@@ -90,6 +90,8 @@ function makeGraph(totals, targets, ignore) {
     //nodeMap.set("output", nodes[0])
     console.log(totals.rates)
     for (let [recipe, rate] of totals.rates) {
+        //console.log(`recipe: ${recipe.key} rate: ${rate.toFloat()}`)
+        //console.log(recipe)
         let building = spec.getBuilding(recipe)
         let count = spec.getCount(recipe, rate)
         let items = recipe.ingredients
@@ -116,7 +118,7 @@ function makeGraph(totals, targets, ignore) {
             debugText += `${i.amount}x ${i.item.name.substr('0','10')}, `
         }
 
-        debugText = null
+        //debugText = null
         let node = {
             "key": recipe.key,
             "name": recipe.name,
@@ -137,7 +139,7 @@ function makeGraph(totals, targets, ignore) {
 
     let links = []
     for (let node of nodes) {
-        let recipe = node.recipe
+        var recipe = node.recipe
         if (ignore.has(recipe)) {
             continue
         }
@@ -172,8 +174,8 @@ function makeGraph(totals, targets, ignore) {
                         "source": nodeMap.get(subRecipe.key),
                         "target": node,
                         "value": Math.min(100,Math.max(40,rate.mul(ing.item.weight).toFloat())),
-                        "rate": subRate,
-                        "weight": rate.mul(ing.item.weight),
+                        "rate": rate,
+                        "weight": subRate.mul(ing.item.weight),
                         "amount": ing.amount
                     }
                     let belts = [];

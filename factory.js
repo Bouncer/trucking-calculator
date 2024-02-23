@@ -220,9 +220,6 @@ class FactorySpecification {
     }
     getMagicTrip(items, rate) {
 
-        console.log(`getMagicTrip: ${rate}`)
-        console.log(items)
-
         // theoretical maximum rate
         var recipeWeight = 0
         for(let i of items) {
@@ -378,7 +375,7 @@ class FactorySpecification {
             this.ignore.add(recipe)
         }
     }
-    addStorage(itemKey, rate, location) {
+    setStorage(itemKey, rate, location) {
         if(!this.items.has(itemKey)) {
             return false
         }
@@ -397,7 +394,6 @@ class FactorySpecification {
     solve() {
         let totals = new Totals()
         this.storageUsed = { ...this.storageItems }
-        //console.log(this.storageUsed)
         // sort storages by size
         for(let item in this.storageUsed) {
             this.storageUsed[item] = Object.entries(spec.storageUsed[item]).sort((a,b)=>b[1]-a[1])
@@ -430,7 +426,23 @@ class FactorySpecification {
         d3.select("#capacity-trailer").text(`${this.capacity.totaltrailer.toLocaleString()} kg`)
         d3.select("#capacity").text(`${this.capacity.total.toLocaleString()} kg`)
     }
+    removeStorageRecipes() {
+        this.items.forEach(function (item, key) {
+            if(key == 'refined-planks') {
+                var recipes = [ ...item.recipes ]
+                for(let r in recipes) {
+                    //console.log(recipes[r])
+                    if(recipes[r].key.startsWith("storage|")) {
+                        console.log(recipes[r])
+                        //delete item.recipes[r]
+                    }
+                }
+            }
+        })
+    }
     updateSolution() {
+        this.removeStorageRecipes()
+        console.log(this.items.get('refined-planks'))
         this.updateCapacity()
         let totals = this.solve()
         displayItems(this, totals, this.ignore)

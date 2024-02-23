@@ -295,6 +295,8 @@ export function displayItems(spec, totals, ignore) {
     buildingRow.selectAll("img.building-icon")
         .attr("src", d => d.building.iconPath())
         .attr("title", d => d.building.name)
+        .filter(d => d.building.iconPath().startsWith('images/storage'))
+        .style("display","none")
 
     row.selectAll("tt.source").filter(d => !d.multirow)
         .text(d => d.building.name)
