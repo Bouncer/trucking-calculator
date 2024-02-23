@@ -88,10 +88,7 @@ function makeGraph(totals, targets, ignore) {
 
     let nodeMap = new Map()
     //nodeMap.set("output", nodes[0])
-    console.log(totals.rates)
     for (let [recipe, rate] of totals.rates) {
-        //console.log(`recipe: ${recipe.key} rate: ${rate.toFloat()}`)
-        //console.log(recipe)
         let building = spec.getBuilding(recipe)
         let count = spec.getCount(recipe, rate)
         let items = recipe.ingredients
@@ -118,7 +115,7 @@ function makeGraph(totals, targets, ignore) {
             debugText += `${i.amount}x ${i.item.name.substr('0','10')}, `
         }
 
-        //debugText = null
+        debugText = null
         let node = {
             "key": recipe.key,
             "name": recipe.name,
@@ -155,7 +152,6 @@ function makeGraph(totals, targets, ignore) {
                 // if this is a storage, only use if its meant for this recipe
                 if(subRecipe.key.startsWith('storage|')) {
                     let targetRecipe = subRecipe.key.split('|')[2]
-                    //console.log(`target recipe: ${targetRecipe}`)
                     if(recipe.key != targetRecipe) {
                         continue
                     }

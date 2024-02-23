@@ -427,22 +427,18 @@ class FactorySpecification {
         d3.select("#capacity").text(`${this.capacity.total.toLocaleString()} kg`)
     }
     removeStorageRecipes() {
-        this.items.forEach(function (item, key) {
-            if(key == 'refined-planks') {
-                var recipes = [ ...item.recipes ]
-                for(let r in recipes) {
-                    //console.log(recipes[r])
-                    if(recipes[r].key.startsWith("storage|")) {
-                        console.log(recipes[r])
-                        //delete item.recipes[r]
-                    }
+        this.items.forEach((item) => {
+            var recipes = [ ...item.recipes ]
+            for(let r = item.recipes.length - 1; r >= 0; r--) {
+                if(item.recipes[r].key.startsWith("storage|")) {
+                    recipes.splice(r,1)
                 }
             }
+            item.recipes = recipes
         })
     }
     updateSolution() {
         this.removeStorageRecipes()
-        console.log(this.items.get('refined-planks'))
         this.updateCapacity()
         let totals = this.solve()
         displayItems(this, totals, this.ignore)

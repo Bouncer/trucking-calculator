@@ -59,7 +59,6 @@ export class Item {
                     var storageName = `${spec.storageUsed[ing.item.key][storage][0]}|${recipe.key}`
                     // any available?
                     if(spec.storageUsed[ing.item.key][storage][1] > 0 && target > 0) {                        
-                        //console.log(`available: ${spec.storageUsed[ing.item.key][storage][1]} at ${storageName}`)
                         var capable = Math.min(spec.storageUsed[ing.item.key][storage][1], target)
                         target -= capable;
                         spec.storageUsed[ing.item.key][storage][1] -= capable
@@ -67,7 +66,7 @@ export class Item {
                         if(!(storageName in storageShopList)) {
                             storageShopList[storageName] = []
                         }
-                        //ing.recipes = []
+                        
                         // check if ingredient is already listed
                         if(totals.rates.has(ing.key)) {
                         }
@@ -83,8 +82,6 @@ export class Item {
         }
         // for each storage, add a recipe
         for(let storage in storageShopList) {
-            //console.log(`storage: ${storage}`)
-            //console.log(storageShopList[storage])
             // add location
             let storageId = storage.split('|')[1]
 
@@ -117,22 +114,16 @@ export class Item {
             // handle joined routes
             spec.addStorageLocation(recipeLocation)
             // check if recipe exists
-            //console.log(storage)
-            //console.log(spec.recipes)
             for(let ing of storageShopList[storage]) {
-                //ing.item.target = recipe.key
+
                 if(!(storage in itemRates)) {
                     let subRecipe = makeStorageRecipe(recipeLocation, storageShopList[storage])
                     let subtotals = ing.item.produce(spec, one, ignore, totals.itemRates, subRecipe.key, subRecipe)
                     totals.combine(subtotals)
                 } else {
-                    //console.log('-- Combining outputs')
                     let subRecipe = ing.item.recipes.find((i) => i.key == storage)
-                    //console.log(subRecipe)
                     // update output
-                    //console.log(ing)
                     subRecipe.updateProduct(ing)
-                    //console.log(subRecipe)
                     //totals.addItemRate(subRecipe.key, one, ing.item.key, subRecipe.key)
                     totals.rates.set(subRecipe, one)
                 }
