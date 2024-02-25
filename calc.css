@@ -384,6 +384,11 @@ button.refresh:hover {
     margin: 0 0 0 4px;
     font-size: 14px;
 }
+#charges-usage {
+    font-family: courier;
+    margin: 0 0 0 4px;
+    font-size: 14px;
+}
 #storage-combination {
     display: flex;
     flex-wrap: wrap;
@@ -401,10 +406,10 @@ button.refresh:hover {
     position: absolute;
     top: 20px;
     right: 50px;
-}
-#playerinfo div {
-    text-align: right;
     font-family: 'Courier New', Courier, monospace
+}
+#playerinfo #wealth {
+    text-align: right;
 }
 #playerinfo .charges {
     float:right;
@@ -450,4 +455,27 @@ button.refresh:hover {
 }
 .nodes .node:hover {
     cursor:pointer;
+}
+#wealth {
+    float: right;
+    margin-left:16px;
+}
+#playerdata {
+    float:right;
+}
+#playername {
+    white-space: nowrap;
+    text-align: left;
+    font-size: 20px;
+}
+#playerjob {
+    white-space: nowrap;
+    text-align: left;
+}
+#playericon {
+    float:right;
+    margin-right: 10px;
+}
+#playericon img {
+    height:36px;
 }

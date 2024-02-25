@@ -65,10 +65,17 @@ limitations under the License.-->
     </ul>
 
     <div id="playerinfo">
-        <div id="wallet"></div>
-        <div id="bank"></div>
-        <div id="loan"></div>
-        <div class="charges">0 charges</div>
+        <div id="wealth">
+            <div id="wallet"></div>
+            <div id="bank"></div>
+            <div id="loan"></div>
+            <div class="charges">0 charges</div>
+        </div>
+        <div id="playerdata">
+            <div id="playername"></div>
+            <div id="playerjob"></div>
+        </div>
+        <div id="playericon"><img src="" /></div>
     </div>
 
     <div class="tabs">
@@ -237,7 +244,7 @@ limitations under the License.-->
             <td colspan="2"><div>Server data</div></td>
         </tr>
         <tr>
-            <td id="api-instructions" colspan="2">Add your <a href="https://dash.tycoon.community/wiki/index.php/API#API_Keys" target="_blank">private API key</a> and user id to enable features that require your data. Your key and loaded data are saved in your browser. Loading wealth data requires that you are online in game.</td>
+            <td id="api-instructions" colspan="2">Add your <a href="https://dash.tycoon.community/wiki/index.php/API#API_Keys" target="_blank">private API key</a> and user id to enable features that require your data. Your key and loaded data are only saved in your browser. Loading wealth data requires that you are online in game. You can set an auto refresh timer, which works only when you are online in game and in a trucking job.</td>
         </tr>
         <tr class="setting-row">
             <td class="setting-label">API Key:</td>
@@ -271,22 +278,22 @@ limitations under the License.-->
         </tr>
         <tr class="setting-row refresh-settings">
             <td class="setting-label"></td>
-            <td>Load Data</td>
+            <td>Auto Refresh Timers</td>
         </tr>
         <tr class="setting-row refresh-settings">
             <td class="setting-label">Inventory:</td>
             <td>
-                <select id="autorefresh-inventory" name="refresh-inventory" disabled="disabled">
-                    <option value="0">Auto refresh not available</option>
+                <select id="autorefresh-inventory" name="refresh-inventory" onchange="api.setAutoRefresh('inventory', event)">
+                    <option value="0">Do not auto refresh</option>
                     <option value="60">1 minute</option>
                     <option value="120">2 minutes</option>
                     <option value="360">5 minutes</option>
-                    <option value="360">10 minutes</option>
-                    <option value="360">20 minutes</option>
-                    <option value="360">30 minutes</option>
-                    <option value="360">1 hour</option>
-                    <option value="360">2 hours</option>
-                    <option value="360">5 hours</option>
+                    <option value="600">10 minutes</option>
+                    <option value="1200">20 minutes</option>
+                    <option value="1800">30 minutes</option>
+                    <option value="3600">1 hour</option>
+                    <option value="7200">2 hours</option>
+                    <option value="86400">Daily</option>
                 </select>
                 <button class="refresh" onclick="api.getInventory(event)">Refresh</button>
                 <span class="ago-inventory"></span>
@@ -295,17 +302,17 @@ limitations under the License.-->
         <tr class="setting-row refresh-settings">
             <td class="setting-label">Vehicle Storage:</td>
             <td>
-                <select id="autorefresh-vehicles" name="refresh-vehicles" disabled="disabled">
-                    <option value="0">Auto refresh not available</option>
+                <select id="autorefresh-vehicles" name="refresh-vehicles" onchange="api.setAutoRefresh('vehicles', event)">
+                    <option value="0">Do not auto refresh</option>
                     <option value="60">1 minute</option>
                     <option value="120">2 minutes</option>
                     <option value="360">5 minutes</option>
-                    <option value="360">10 minutes</option>
-                    <option value="360">20 minutes</option>
-                    <option value="360">30 minutes</option>
-                    <option value="360">1 hour</option>
-                    <option value="360">2 hours</option>
-                    <option value="360">5 hours</option>
+                    <option value="600">10 minutes</option>
+                    <option value="1200">20 minutes</option>
+                    <option value="1800">30 minutes</option>
+                    <option value="3600">1 hour</option>
+                    <option value="7200">2 hours</option>
+                    <option value="86400">Daily</option>
                 </select>
                 <button class="refresh" onclick="api.getVehicles(event)">Refresh</button>
                 <span class="ago-vehicles"></span>
@@ -314,17 +321,17 @@ limitations under the License.-->
         <tr class="setting-row refresh-settings">
             <td class="setting-label">Self Storage:</td>
             <td>
-                <select id="autorefresh-storage" name="refresh-storage" disabled="disabled">
-                    <option value="0">Auto refresh not available</option>
+                <select id="autorefresh-storage" name="refresh-storage" onchange="api.setAutoRefresh('storage', event)">
+                    <option value="0">Do not auto refresh</option>
                     <option value="60">1 minute</option>
                     <option value="120">2 minutes</option>
                     <option value="360">5 minutes</option>
-                    <option value="360">10 minutes</option>
-                    <option value="360">20 minutes</option>
-                    <option value="360">30 minutes</option>
-                    <option value="360">1 hour</option>
-                    <option value="360">2 hours</option>
-                    <option value="360">5 hours</option>
+                    <option value="600">10 minutes</option>
+                    <option value="1200">20 minutes</option>
+                    <option value="1800">30 minutes</option>
+                    <option value="3600">1 hour</option>
+                    <option value="7200">2 hours</option>
+                    <option value="86400">Daily</option>
                 </select>
                 <button class="refresh" onclick="api.getStorage(event)">Refresh</button>
                 <span class="ago-storage"></span>
@@ -333,21 +340,25 @@ limitations under the License.-->
         <tr class="setting-row refresh-settings">
             <td class="setting-label">Wealth:</td>
             <td>
-                <select id="autorefresh-wealth" name="refresh-wealth" disabled="disabled">
-                    <option value="0">Auto refresh not available</option>
+                <select id="autorefresh-wealth" name="refresh-wealth" onchange="api.setAutoRefresh('wealth', event)">
+                    <option value="0">Do not auto refresh</option>
                     <option value="60">1 minute</option>
                     <option value="120">2 minutes</option>
                     <option value="360">5 minutes</option>
-                    <option value="360">10 minutes</option>
-                    <option value="360">20 minutes</option>
-                    <option value="360">30 minutes</option>
-                    <option value="360">1 hour</option>
-                    <option value="360">2 hours</option>
-                    <option value="360">5 hours</option>
+                    <option value="600">10 minutes</option>
+                    <option value="1200">20 minutes</option>
+                    <option value="1800">30 minutes</option>
+                    <option value="3600">1 hour</option>
+                    <option value="7200">2 hours</option>
+                    <option value="86400">Daily</option>
                 </select>
                 <button class="refresh" onclick="api.getWealth(event)">Refresh</button>
                 <span class="ago-wealth"></span>
             </td>
+        </tr>
+        <tr class="setting-row refresh-settings">
+            <td class="setting-label">Charge usage:</td>
+            <td><span id="charges-usage">240 charges ($ 240.000) per hour while trucking</span></td>
         </tr>
 
         <tr class="setting-section">

@@ -282,18 +282,8 @@ export function renderTotals(totals, targets, ignore) {
     let beltDensity = maxNodeHeight / spec.getBeltCount(largestValue).toFloat()
     // The width of the display is the number of ranks, times the width of each
     // rank, plus a small constant for the output node.
-    let maxTextWidth = 0
-    let testSVG = d3.select("body").append("svg")
-    for (let node of data.nodes) {
-        let text = testSVG.append("text")
-            .text(nodeText(node))
-        let textWidth = Math.max(text.node().getBBox().width,140)
-        text.remove()
-        if (textWidth > maxTextWidth) {
-            maxTextWidth = textWidth
-        }
-    }
-    testSVG.remove()
+    let maxTextWidth = 140
+
     let nodeWidth = iconSize + maxTextWidth + 20
     let width = maxRank * (nodeWidth + columnWidth) + nodeWidth
     let svgWidth = Math.max(width + 300, window.innerWidth - 20)

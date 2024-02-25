@@ -29,15 +29,162 @@ class ApiLink {
         this.loan = 0
         this.gamedata = {}
         this.baseURL = 'https://tt.bouncer.nl/?'
+        
         this.storage = null
+        this.vehicles = null
+        this.inventory = null
+        this.wealth = null
+        this.players = null
+
         this.storageTab = null
-        this.storages = {}
         this.itemrates = {}
         this.onlytrucking = true
         this.usestorage = true
+        this.playeronline = false
+        this.playerjob = null
+        this.player = null
+        this.autorefresh = {
+            'inventory': 0,
+            'vehicles': 0,
+            'storage': 0,
+            'wealth': 0
+        }
         
         // timers
 //        this.updateCapacity()
+    }
+
+    updateTimers() {
+        if(this.storage) {
+            d3.selectAll(".ago-storage").text(this.getTimeSince(this.storage.t))
+        }
+        if(this.vehicles) {
+            d3.selectAll(".ago-vehicles").text(this.getTimeSince(this.vehicles.t))
+        }
+        if(this.inventory) {
+            d3.selectAll(".ago-inventory").text(this.getTimeSince(this.inventory.t))
+        }
+        if(this.wealth) {
+            d3.selectAll(".ago-wealth").text(this.getTimeSince(this.wealth.t))
+        }
+
+        var now = Date.now()
+        
+        // if api and player id are set we refresh every minute, otherwise every 10
+        if(this.connected && (!this.players || (now - new Date(this.players.t).getTime()) > 60000)) {
+            // to prevent loops
+            this.players = {t:now}
+            this.getPlayers()
+        }
+
+        // auto refresh
+        // if player is online and trucking
+        if(this.connected && this.player && this.player[5] == 'Trucker') {
+            
+            if(this.inventory && this.autorefresh.inventory > 0 && (now - new Date(this.inventory.t).getTime()) > this.autorefresh.inventory) {
+                this.getInventory()
+                spec.updateSolution()
+                return true
+            }
+            if(this.vehicles && this.autorefresh.vehicles > 0 && (now - new Date(this.vehicles.t).getTime()) > this.autorefresh.vehicles) {
+                this.getVehicles()
+                spec.updateSolution()
+                return true
+            }
+            if(this.storage && this.autorefresh.storage > 0 && (now - new Date(this.storage.t).getTime()) > this.autorefresh.storage) {
+                this.getStorage()
+                spec.updateSolution()
+                return true
+            }
+            if(this.wealth && this.autorefresh.wealth > 0 && (now - new Date(this.wealth.t).getTime()) > this.autorefresh.wealth) {
+                this.getWealth()
+                spec.updateSolution()
+                return true
+            }
+        }
+    }
+
+    setAutoRefresh(storage, event) {
+        this.autorefresh[storage] = event.target.value * 1000
+        localStorage.setItem('autorefresh', JSON.stringify(this.autorefresh))
+        log.add('info',`Set ${storage} auto refresh to ${event.target.selectedOptions[0].outerText}`)
+        this.showChargeUsage()
+    }
+
+    showChargeUsage() {
+        let chargeCount = 0
+        if(this.autorefresh.inventory > 0) {
+            chargeCount += (3600 / (this.autorefresh.inventory / 1000))
+        }
+        if(this.autorefresh.vehicles > 0) {
+            chargeCount += (3600 / (this.autorefresh.vehicles / 1000))
+        }
+        if(this.autorefresh.storage > 0) {
+            chargeCount += (3600 / (this.autorefresh.storage / 1000))
+        }
+        if(this.autorefresh.wealth > 0) {
+            chargeCount += (3600 / (this.autorefresh.wealth / 1000))
+        }
+        d3.select('#charges-usage').text(`${(chargeCount).toLocaleString()} charge${chargeCount > 1 ? 's' : ''} ($ ${(chargeCount  * 1000).toLocaleString()}) per hour while trucking`)
+    }
+
+    getTimeSince(date) {
+        const intervals = [
+            { label: 'year', seconds: 31536000 },
+            { label: 'month', seconds: 2592000 },
+            { label: 'day', seconds: 86400 },
+            { label: 'hour', seconds: 3600 },
+            { label: 'minute', seconds: 60 },
+            { label: 'second', seconds: 1 }
+          ];
+
+        const seconds = Math.floor((Date.now() - new Date(date).getTime()) / 1000);
+        if(seconds < 2) { return `Loading` }
+        const interval = intervals.find(i => i.seconds < seconds);
+        const count = Math.floor(seconds / interval.seconds);
+        return `${count} ${interval.label}${count !== 1 ? 's' : ''} ago`;
+    }
+
+    getPlayers() {
+        // actually get data
+        fetch(`${this.baseURL}path=widget/players.json`, {method: "GET"}).then(r=>r.json()).then(async data => {
+            if(data) {
+                this.players = {'t':new Date(), 'd': data}
+                localStorage.setItem("players", JSON.stringify(this.players));
+                //log.add('success',`Loaded online player data`)
+                this.parsePlayers()
+            } else {
+                log.add('warning',`Server error ${data.code}`)
+            }
+        })
+    }
+
+    parsePlayers() {
+        let player = this.players.d.players.find(p => p[2] == this.userid);
+        if(player === undefined) {
+            if(this.player) {
+                log.add('warning',`You are no longer in game`)
+            }
+            this.player = null
+        } else {
+            if(!this.player) {
+                if(player[5] == "Trucker") {
+                    log.add('info',`Hi ${player[0]}. I see you are now in game and trucking. Auto refresh is available.`)
+                } else {
+                   log.add('info',`Hi ${player[0]}. I see you are now in game, but not yet trucking.`)
+                }
+            } else {
+                if(this.player[5] != "Trucker" && player[5] == "Trucker") {
+                    log.add('info',`You are now trucking.\nAuto refresh is available.`)
+                } else if(this.player[5] == "Trucker" && player[5] != "Trucker") {
+                    log.add('info',`You are no longer trucking. Auto refresh is disabled.`)
+                }
+            }
+            this.player = player
+            d3.select("#playername").text(player[0])
+            d3.select("#playerjob").text(player[5])
+            d3.select("#playericon img").attr('src',player[3])
+        }
     }
 
     showStorageTab() {
@@ -100,6 +247,15 @@ class ApiLink {
         }
         
         return [item, parsedItem.name]
+    }
+
+    removeItem(item, location) {
+        item = item.replace('_premium','').replace('fridge_','').replace('military_','').replace('mechanicals_','').replace('petrochem_','').replace('crafted_','').replace(new RegExp('^hide.*'),'hide').replaceAll('_','-')
+        let parsedItem = spec.items.get(item) || false
+
+        if(parsedItem) {
+            spec.removeStorage(item, location)
+        }
     }
 
     getWealth() {
@@ -169,12 +325,16 @@ class ApiLink {
         // actually get data
         fetch(`${this.baseURL}path=storages/${this.userid}&apikey=${this.apikey}`, {method: "GET"}).then(r=>r.json()).then(async data => {
             if(data.code == 200) {
-                this.storage = {'t':new Date(), 'd': data}
+                if(this.storage) {
+                    this.storage = {'t':new Date(), 'h': this.storage.d, 'd': data}
+                } else {
+                    this.storage = {'t':new Date(), 'd': data}
+                }
                 localStorage.setItem("storage", JSON.stringify(this.storage));
 
                 log.add('success',`Loaded ${data.storages.length} storages`)
                 this.showStorageTab()
-                this.parseStorage()
+                this.parseStorage(true)
             } else {
                 log.add('error',`Storage error ${data.code}`)
             }
@@ -182,7 +342,9 @@ class ApiLink {
         })
     }
 
-    parseStorage() {
+    parseStorage(update) {
+
+        let prevItems = []
         for(let storage in this.storage.d.storages){
             let location = {
                 "name": spec.getStorageInfo(this.storage.d.storages[storage].name).name,
@@ -194,7 +356,6 @@ class ApiLink {
                 "x": 0,
                 "y": 0
             }
-
             this.storage.d.storages[storage].fullname = location.name
             for(let item in this.storage.d.storages[storage].inventory) {
                 let [key, name] = this.addItem(item, this.storage.d.storages[storage].inventory[item].amount, location)
@@ -206,8 +367,21 @@ class ApiLink {
                     this.storage.d.storages[storage].inventory[item].name = item
                     this.storage.d.storages[storage].inventory[item].visible = !this.onlytrucking
                 }
+                prevItems.push(`${item}-${location.key_name}`)
             }
         }
+
+        // remove old items
+        if(update && this.storage.h) {        
+            for(let storage in this.storage.h.storages){
+                for(let item in this.storage.h.storages[storage].inventory) {
+                    if(!(prevItems.includes(`${item}-storage|${this.storage.h.storages[storage].name}`))) {
+                        this.removeItem(item, `storage|${this.storage.h.storages[storage].name}`)
+                    }
+                }
+            }
+        }
+
         d3.select("#storage").html("")
         var storages = d3.select("#storage").selectAll("table").data(this.storage.d.storages.sort((a,b) => Object.keys(b.inventory).length - Object.keys(a.inventory).length)).join("table")
             .filter(d => Object.keys(d.inventory).length > 0)
@@ -226,11 +400,15 @@ class ApiLink {
         // actually get data
         fetch(`${this.baseURL}path=trunks/${this.userid}&apikey=${this.apikey}`, {method: "GET"}).then(r=>r.json()).then(async data => {
             if(data.code == 200) {
-                this.vehicles = {'t':new Date(), 'd': data}
+                if(this.vehicles) {
+                    this.vehicles = {'t':new Date(), 'h': this.vehicles.d, 'd': data}
+                } else {
+                    this.vehicles = {'t':new Date(), 'd': data}
+                }
                 localStorage.setItem("vehicles", JSON.stringify(this.vehicles));
                 log.add('success',`Loaded ${data.trunks.length} vehicles`)
                 this.showStorageTab()
-                this.parseVehicles()
+                this.parseVehicles(true)
             } else {
                 log.add('error',`Trunk error ${data.code}`)
             }
@@ -238,7 +416,9 @@ class ApiLink {
         })
     }
 
-    parseVehicles() {
+    parseVehicles(update) {
+
+        let prevItems = []
         for(let storage in this.vehicles.d.trunks){
             let location = {
                 "name": `${this.vehicles.d.trunks[storage].vehicle}`,
@@ -250,6 +430,7 @@ class ApiLink {
                 "x": 0,
                 "y": 0
             }
+
             for(let item in this.vehicles.d.trunks[storage].inventory) {
                 let [key, name] = this.addItem(item, this.vehicles.d.trunks[storage].inventory[item].amount, location)
                 this.vehicles.d.trunks[storage].inventory[item].key = key
@@ -259,6 +440,18 @@ class ApiLink {
                 } else {
                     this.vehicles.d.trunks[storage].inventory[item].name = item
                     this.vehicles.d.trunks[storage].inventory[item].visible = !this.onlytrucking
+                }
+                prevItems.push(`${item}-${location.key_name}`)
+            }
+        }
+        
+        // remove old items
+        if(update && this.storage.h) {        
+            for(let storage in this.vehicles.h.trunks){
+                for(let item in this.vehicles.h.trunks[storage].inventory) {
+                    if(!(prevItems.includes(`${item}-storage|${this.vehicles.h.trunks[storage].vehicle}`))) {
+                        this.removeItem(item, `storage|${this.vehicles.h.trunks[storage].vehicle}`)
+                    }
                 }
             }
         }
@@ -281,11 +474,15 @@ class ApiLink {
         // actually get data
         fetch(`${this.baseURL}path=dataadv/${this.userid}&apikey=${this.apikey}`, {method: "GET"}).then(r=>r.json()).then(async data => {
             if(data.code == 200) {
-                this.inventory = {'t':new Date(), 'd': data}
+                if(this.inventory) {
+                    this.inventory = {'t':new Date(), 'h': this.inventory.d, 'd': data}
+                } else {
+                    this.inventory = {'t':new Date(), 'd': data}
+                }
                 localStorage.setItem("inventory", JSON.stringify(this.inventory));
                 log.add('success',`Loaded ${Object.keys(data.data.inventory).length} items in inventory`)
                 this.showStorageTab()
-                this.parseInventory()
+                this.parseInventory(true)
             } else {
                 log.add('error',`Inventory error ${data.code}`)
             }
@@ -293,7 +490,7 @@ class ApiLink {
         })
     }
 
-    parseInventory() {
+    parseInventory(update) {
         let location = {
             "name": "Inventory",
             "key_name": "storage|inventory",
@@ -303,6 +500,14 @@ class ApiLink {
             "color": 16,
             "x": 0,
             "y": 0
+        }
+        // remove old items
+        if(update && this.inventory.h) {
+            for(let item in this.inventory.h.data.inventory) {
+                if(!(item in this.inventory.d.data.inventory)) {
+                    this.removeItem(item, location.key_name)
+                }
+            }
         }
         for(let item in this.inventory.d.data.inventory) {
             let [key, name] = this.addItem(item, this.inventory.d.data.inventory[item].amount, location)
@@ -327,38 +532,6 @@ class ApiLink {
             storageItemRow.filter(d => d[1].key in this.itemrates).classed("in-storage",true)
             storageItemRow.append("td").append("tt").text(d => `${d[1].name}`)
             storageItemRow.append("td").append("tt").text(d => `${d[1].amount.toLocaleString()}x`)
-    }
-
-    updateTimers() {
-        if(this.storage) {
-            d3.selectAll(".ago-storage").text(this.getTimeSince(this.storage.t))
-        }
-        if(this.vehicles) {
-            d3.selectAll(".ago-vehicles").text(this.getTimeSince(this.vehicles.t))
-        }
-        if(this.inventory) {
-            d3.selectAll(".ago-inventory").text(this.getTimeSince(this.inventory.t))
-        }
-        if(this.wealth) {
-            d3.selectAll(".ago-wealth").text(this.getTimeSince(this.wealth.t))
-        }
-    }
-
-    getTimeSince(date) {
-        const intervals = [
-            { label: 'year', seconds: 31536000 },
-            { label: 'month', seconds: 2592000 },
-            { label: 'day', seconds: 86400 },
-            { label: 'hour', seconds: 3600 },
-            { label: 'minute', seconds: 60 },
-            { label: 'second', seconds: 1 }
-          ];
-
-        const seconds = Math.floor((Date.now() - new Date(date).getTime()) / 1000);
-        if(seconds < 2) { return `Loading` }
-        const interval = intervals.find(i => i.seconds < seconds);
-        const count = Math.floor(seconds / interval.seconds);
-        return `${count} ${interval.label}${count !== 1 ? 's' : ''} ago`;
     }
 
     setCharges(charges) {
@@ -511,6 +684,15 @@ class ApiLink {
             this.showStorageTab()
             this.storage = JSON.parse(localStorage.getItem("storage"))
             this.parseStorage()
+        }
+
+        if(localStorage.autorefresh) {
+            this.autorefresh = JSON.parse(localStorage.getItem("autorefresh"))
+            d3.select("#autorefresh-inventory").property('value', this.autorefresh.inventory / 1000);
+            d3.select("#autorefresh-vehicles").property('value', this.autorefresh.vehicles / 1000);
+            d3.select("#autorefresh-storage").property('value', this.autorefresh.storage / 1000);
+            d3.select("#autorefresh-wealth").property('value', this.autorefresh.wealth / 1000);
+            this.showChargeUsage()
         }
     }
 

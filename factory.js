@@ -385,6 +385,11 @@ class FactorySpecification {
         }
         this.storageItems[itemKey][location.key_name] = rate
     }
+    removeStorage(item, location) {
+        if(item in this.storageItems) {
+            delete this.storageItems[item][location]
+        }
+    }
     addStorageLocation(location) {
         if(!this.buildings.has(location.key_name)) {
             let building = addBuilding(location)
@@ -396,7 +401,11 @@ class FactorySpecification {
         this.storageUsed = { ...this.storageItems }
         // sort storages by size
         for(let item in this.storageUsed) {
-            this.storageUsed[item] = Object.entries(spec.storageUsed[item]).sort((a,b)=>b[1]-a[1])
+            this.storageUsed[item] = Object.entries(spec.storageUsed[item]).sort((a,b) => {
+                if(a[0] == 'storage|inventory') { return -1 }
+                if(a[0].startsWith('storage|vehicle')) { return -1 }
+                return b[1] - a[1]
+            })
         }
         for (let target of this.buildTargets) {
             let subtotals = target.item.produce(this, target.getRate(), this.ignore, totals.itemRates, target.item.key, null)

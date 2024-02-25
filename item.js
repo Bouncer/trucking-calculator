@@ -87,16 +87,10 @@ export class Item {
 
             let title = 'Storage'
             let color = 14
-            if(storageId == 'biz_train') {
+            if(storageId == 'inventory') {
                 color = 15
-            } else if(storageId == 'inventory') {
-                title = 'Inventory'
-                color = 16
             } else if(storageId.startsWith('vehicle-')) {
-                title = 'Vehicle'
-                color = 17
-            } else if(storageId.startsWith('faq_')) {
-                color = 18
+                color = 16
             }
 
             var recipeLocation = {
@@ -106,7 +100,7 @@ export class Item {
                 "category": storage,
                 "power": 1,
                 "max": 1,
-                "color": 14,
+                "color": color,
                 "x": 0,
                 "y": 0
             }
