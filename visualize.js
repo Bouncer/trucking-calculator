@@ -42,9 +42,9 @@ const colorList = [
     colors.Orange[700], // logs
     colors.Cyan[800], // water
     colors.Indigo[100],
-    colors.Indigo[300],
+    colors["Deep Orange"][300],
     colors.Lime[400],
-    colors.Teal[300],
+    colors.Indigo[200],
     colors["Deep Orange"][300]
 ]
 

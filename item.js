@@ -90,7 +90,7 @@ export class Item {
             if(storageId == 'inventory') {
                 color = 15
             } else if(storageId.startsWith('vehicle-')) {
-                color = 16
+                color = 17
             }
 
             var recipeLocation = {

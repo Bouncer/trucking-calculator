@@ -399,11 +399,14 @@ class FactorySpecification {
     solve() {
         let totals = new Totals()
         this.storageUsed = { ...this.storageItems }
+
         // sort storages by size
         for(let item in this.storageUsed) {
-            this.storageUsed[item] = Object.entries(spec.storageUsed[item]).sort((a,b) => {
+            this.storageUsed[item] = Object.entries(this.storageUsed[item]).sort((a,b) => {
                 if(a[0] == 'storage|inventory') { return -1 }
+                if(b[0] == 'storage|inventory') { return 1 }
                 if(a[0].startsWith('storage|vehicle')) { return -1 }
+                if(b[0].startsWith('storage|vehicle')) { return 1 }
                 return b[1] - a[1]
             })
         }

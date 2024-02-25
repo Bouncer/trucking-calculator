@@ -83,22 +83,18 @@ class ApiLink {
             
             if(this.inventory && this.autorefresh.inventory > 0 && (now - new Date(this.inventory.t).getTime()) > this.autorefresh.inventory) {
                 this.getInventory()
-                spec.updateSolution()
                 return true
             }
             if(this.vehicles && this.autorefresh.vehicles > 0 && (now - new Date(this.vehicles.t).getTime()) > this.autorefresh.vehicles) {
                 this.getVehicles()
-                spec.updateSolution()
                 return true
             }
             if(this.storage && this.autorefresh.storage > 0 && (now - new Date(this.storage.t).getTime()) > this.autorefresh.storage) {
                 this.getStorage()
-                spec.updateSolution()
                 return true
             }
             if(this.wealth && this.autorefresh.wealth > 0 && (now - new Date(this.wealth.t).getTime()) > this.autorefresh.wealth) {
                 this.getWealth()
-                spec.updateSolution()
                 return true
             }
         }
@@ -394,6 +390,9 @@ class ApiLink {
             storageItemRow.filter(d => d[1].key in this.itemrates).classed("in-storage",true)   
             storageItemRow.append("td").append("tt").text(d => `${d[1].name}`)
             storageItemRow.append("td").append("tt").text(d => `${d[1].amount.toLocaleString()}x`)
+        if(update) {
+            spec.updateSolution()
+        }
     }
 
     getVehicles() {
@@ -449,8 +448,8 @@ class ApiLink {
         if(update && this.storage.h) {        
             for(let storage in this.vehicles.h.trunks){
                 for(let item in this.vehicles.h.trunks[storage].inventory) {
-                    if(!(prevItems.includes(`${item}-storage|${this.vehicles.h.trunks[storage].vehicle}`))) {
-                        this.removeItem(item, `storage|${this.vehicles.h.trunks[storage].vehicle}`)
+                    if(!(prevItems.includes(`${item}-storage|vehicle-${this.vehicles.h.trunks[storage].vehicle}`))) {
+                        this.removeItem(item, `storage|vehicle-${this.vehicles.h.trunks[storage].vehicle}`)
                     }
                 }
             }
@@ -468,11 +467,14 @@ class ApiLink {
             storageItemRow.filter(d => d[1].key in this.itemrates).classed("in-storage",true)  
             storageItemRow.append("td").append("tt").text(d => `${d[1].name}`)
             storageItemRow.append("td").append("tt").text(d => `${d[1].amount.toLocaleString()}x`)
+        if(update) {
+            spec.updateSolution()
+        }
     }
 
     getInventory() {
         // actually get data
-        fetch(`${this.baseURL}path=dataadv/${this.userid}&apikey=${this.apikey}`, {method: "GET"}).then(r=>r.json()).then(async data => {
+        fetch(`${this.baseURL}path=data/${this.userid}&apikey=${this.apikey}`, {method: "GET"}).then(r=>r.json()).then(async data => {
             if(data.code == 200) {
                 if(this.inventory) {
                     this.inventory = {'t':new Date(), 'h': this.inventory.d, 'd': data}
@@ -516,7 +518,7 @@ class ApiLink {
                 this.inventory.d.data.inventory[item].name = name
                 this.inventory.d.data.inventory[item].visible = true
             } else {
-                this.inventory.d.data.inventory[item].name = this.inventory.d.data.inventory[item].name.replace(/(<([^>]+)>)/gi, '')
+                this.inventory.d.data.inventory[item].name = item
                 this.inventory.d.data.inventory[item].visible = !this.onlytrucking
             }
         }
@@ -532,6 +534,9 @@ class ApiLink {
             storageItemRow.filter(d => d[1].key in this.itemrates).classed("in-storage",true)
             storageItemRow.append("td").append("tt").text(d => `${d[1].name}`)
             storageItemRow.append("td").append("tt").text(d => `${d[1].amount.toLocaleString()}x`)
+        if(update) {
+            spec.updateSolution()
+        }
     }
 
     setCharges(charges) {

@@ -33,6 +33,9 @@
         handlers.changeCapacity = changeCapacity
         handlers.init = init
         setInterval(function() { api.updateTimers() }, 1000)
+        setTimeout(function() { d3.select('.bmc-btn-container').style('opacity',0.90) }, 1000)
+        setTimeout(function() { d3.select('.bmc-btn-container').style('opacity',0) }, 180000)
+        setTimeout(function() { d3.select('.bmc-btn-container').style('display','none') }, 186000)
     </script>
     <meta name="theme-color" content="#000000" />
     <link rel="shortcut icon" href="./images/tt_logov2_small.png" type="image/png">
@@ -57,6 +60,7 @@ See the License for the specific language governing permissions and
 limitations under the License.-->
 
 <body onload="handlers.init()">
+    <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="bouncer" data-color="#212427" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#ff7200" data-font-color="#ff7200" data-coffee-color="#70b8ff" ></script>
     <ul id="targets">
         <li id="plusButton">
             <button class="targetButton ui" title="Add new item."
@@ -358,7 +362,7 @@ limitations under the License.-->
         </tr>
         <tr class="setting-row refresh-settings">
             <td class="setting-label">Charge usage:</td>
-            <td><span id="charges-usage">240 charges ($ 240.000) per hour while trucking</span></td>
+            <td><span id="charges-usage">0 charges ($ 0) per hour while trucking</span></td>
         </tr>
 
         <tr class="setting-section">
