@@ -949,7 +949,7 @@
     },
     {
         "name": "Quarry Rubble",
-        "key_name": "quarry-rubble",
+        "key_name": "recycled-rubble",
         "tier": "0",
         "category": "commercial",
         "weight": "150",
@@ -1865,7 +1865,7 @@
         "time": 1,
         "ingredients": [
             [
-                "quarry-rubble",
+                "recycled-rubble",
                 1
             ]
         ],
@@ -3604,7 +3604,7 @@
             "category": "recycling-center"
         },
         {
-            "key_name": "quarry-rubble",
+            "key_name": "recycled-rubble",
             "category": "quarry-resource"
         },
         {
