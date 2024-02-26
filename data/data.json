@@ -299,8 +299,8 @@
         },
         {
             "name": "Cargo Buyer: Erasers",
-            "key-name": "buyer-erasers",
-            "category": "buyer-erasers",
+            "key-name": "buyer-tcargosmall",
+            "category": "buyer-tcargosmall",
             "power": "1",
             "max": "1",
             "color": 3,
@@ -339,8 +339,8 @@
         },
         {
             "name": "Defib Kit Charging",
-            "key-name": "defib-kit-charging",
-            "category": "defib-kit-charging",
+            "key-name": "defibkit-charging",
+            "category": "defibkit-charging",
             "power": "1",
             "max": "1",
             "color": 13,
@@ -349,8 +349,8 @@
         },
         {
             "name": "Defib Kit Charging",
-            "key-name": "defib-kit-charging",
-            "category": "defib-kit-charging",
+            "key-name": "defibkit-charging",
+            "category": "defibkit-charging",
             "power": "1",
             "max": "1",
             "color": 13,
@@ -551,8 +551,8 @@
         },
         {
             "name": "Cargo Seller: Erasers",
-            "key-name": "seller-erasers",
-            "category": "seller-erasers",
+            "key-name": "seller-tcargosmall",
+            "category": "seller-tcargosmall",
             "power": "1",
             "max": "1",
             "color": 12,
@@ -605,7 +605,7 @@
     },
     {
         "name": "Battery",
-        "key_name": "battery",
+        "key_name": "batteries",
         "tier": "4",
         "category": "commercial",
         "weight": "30",
@@ -613,7 +613,7 @@
     },
     {
         "name": "Export Batteries",
-        "key_name": "export-battery",
+        "key_name": "export-batteries",
         "tier": "-1",
         "category": "commercial",
         "weight": "30",
@@ -621,7 +621,7 @@
     },
     {
         "name": "Bronze Alloy",
-        "key_name": "bronze-alloy",
+        "key_name": "refined-bronze",
         "tier": "3",
         "category": "commercial",
         "weight": "10",
@@ -629,7 +629,7 @@
     },
     {
         "name": "Export Bronze Alloy",
-        "key_name": "export-bronze-alloy",
+        "key_name": "export-refined-bronze",
         "tier": "-1",
         "category": "commercial",
         "weight": "10",
@@ -669,7 +669,7 @@
     },
     {
         "name": "Circuit Board",
-        "key_name": "circuit-board",
+        "key_name": "circuit",
         "tier": "4",
         "category": "commercial",
         "weight": "20",
@@ -677,7 +677,7 @@
     },
     {
         "name": "Deliver Circuit Board",
-        "key_name": "export-circuit-board",
+        "key_name": "export-circuit",
         "tier": "-1",
         "category": "commercial",
         "weight": "20",
@@ -733,7 +733,7 @@
     },
     {
         "name": "Crude Oil",
-        "key_name": "crude-oil",
+        "key_name": "oil",
         "tier": "7",
         "category": "petrochem",
         "weight": "150",
@@ -765,7 +765,7 @@
     },
     {
         "name": "Fiberglass Spool",
-        "key_name": "fiberglass-spool",
+        "key_name": "fiberglass",
         "tier": "4",
         "category": "commercial",
         "weight": "20",
@@ -773,7 +773,7 @@
     },
     {
         "name": "Deliver Fiberglass Spool",
-        "key_name": "export-fiberglass-spool",
+        "key_name": "export-fiberglass",
         "tier": "-1",
         "category": "commercial",
         "weight": "20",
@@ -797,7 +797,7 @@
     },
     {
         "name": "Food Shipment",
-        "key_name": "food-shipment",
+        "key_name": "fridge-store-delivery",
         "tier": "6",
         "category": "refridgerated",
         "weight": "10",
@@ -805,7 +805,7 @@
     },
     {
         "name": "Deliver Food Shipment",
-        "key_name": "export-food-shipment",
+        "key_name": "export-fridge-store-delivery",
         "tier": "-1",
         "category": "refridgerated",
         "weight": "10",
@@ -893,7 +893,7 @@
     },
     {
         "name": "Logs",
-        "key_name": "logs",
+        "key_name": "tcargologs",
         "tier": "0",
         "category": "commercial",
         "weight": "60",
@@ -1285,7 +1285,7 @@
     },
     {
         "name": "Waste Water",
-        "key_name": "waste-water",
+        "key_name": "waste",
         "tier": "7",
         "category": "petrochem",
         "weight": "50",
@@ -1293,7 +1293,7 @@
     },
     {
         "name": "Methamphetamine",
-        "key_name": "methamphetamine",
+        "key_name": "illegal-meth",
         "tier": "8",
         "category": "illegal",
         "weight": "10",
@@ -1309,7 +1309,7 @@
     },
     {
         "name": "Pills Crate",
-        "key_name": "pills-crate",
+        "key_name": "illegal-crate",
         "tier": "8",
         "category": "illegal",
         "weight": "40",
@@ -1333,7 +1333,7 @@
     },
     {
         "name": "Iron Ore Voucher",
-        "key_name": "iron-ore-voucher",
+        "key_name": "mining-token-iron",
         "tier": "-1",
         "category": "mining",
         "weight": "0",
@@ -1341,7 +1341,7 @@
     },
     {
         "name": "Copper Ore Voucher",
-        "key_name": "copper-ore-voucher",
+        "key_name": "mining-token-copper",
         "tier": "-1",
         "category": "mining",
         "weight": "0",
@@ -1397,7 +1397,7 @@
     },
     {
         "name": "Erasers",
-        "key_name": "erasers",
+        "key_name": "tcargosmall",
         "tier": "0",
         "category": "commercial",
         "weight": "3",
@@ -1413,7 +1413,7 @@
     },
     {
         "name": "Erasers",
-        "key_name": "export-erasers",
+        "key_name": "export-tcargosmall",
         "tier": "-1",
         "category": "commercial",
         "weight": "3",
@@ -1461,7 +1461,7 @@
     },
     {
         "name": "Box of Full Pill Capsules",
-        "key_name": "box-full-pill-capsules",
+        "key_name": "full-box-capsules",
         "tier": "8",
         "category": "illegal",
         "weight": "5",
@@ -1469,7 +1469,7 @@
     },
     {
         "name": "Box of Empty Pill Capsules",
-        "key_name": "box-empty-pill-capsules",
+        "key_name": "empty-box-capsules",
         "tier": "8",
         "category": "illegal",
         "weight": "5",
@@ -1477,7 +1477,7 @@
     },
     {
         "name": "Defib Kit",
-        "key_name": "defib-kit",
+        "key_name": "defibkit",
         "tier": "8",
         "category": "illegal",
         "weight": "5",
@@ -1485,7 +1485,7 @@
     },
     {
         "name": "Empty Defib Kit",
-        "key_name": "empty-defib-kit",
+        "key_name": "e-defibkit",
         "tier": "8",
         "category": "illegal",
         "weight": "5",
@@ -1495,7 +1495,7 @@
     "recipes": [
     {
         "name": "Battery",
-        "key_name": "battery",
+        "key_name": "batteries",
         "category": "ls-factory",
         "time": 1,
         "ingredients": [
@@ -1513,7 +1513,7 @@
             ]
         ],
         "product": [
-            ["battery",
+            ["batteries",
             2]
         ],
         "weight": 60,
@@ -1522,7 +1522,7 @@
     },
     {
         "name": "Bronze Alloy",
-        "key_name": "bronze-alloy",
+        "key_name": "refined-bronze",
         "category": "ls-foundry",
         "time": 1,
         "ingredients": [
@@ -1540,7 +1540,7 @@
             ]
         ],
         "product": [
-            ["bronze-alloy",
+            ["refined-bronze",
             2]
         ],
         "weight": 20,
@@ -1595,7 +1595,7 @@
     },
     {
         "name": "Circuit Board",
-        "key_name": "circuit-board",
+        "key_name": "circuit",
         "category": "ls-factory",
         "time": 1,
         "ingredients": [
@@ -1613,7 +1613,7 @@
             ]
         ],
         "product": [
-            ["circuit-board",
+            ["circuit",
             2]
         ],
         "weight": 40,
@@ -1627,7 +1627,7 @@
         "time": 1,
         "ingredients": [
             [
-                "circuit-board",
+                "circuit",
                 1
             ],
             [
@@ -1635,7 +1635,7 @@
                 2
             ],
             [
-                "battery",
+                "batteries",
                 1
             ]
         ],
@@ -1695,7 +1695,7 @@
     },
     {
         "name": "Fiberglass Spool",
-        "key_name": "fiberglass-spool",
+        "key_name": "fiberglass",
         "category": "ls-factory",
         "time": 1,
         "ingredients": [
@@ -1713,7 +1713,7 @@
             ]
         ],
         "product": [
-            ["fiberglass-spool",
+            ["fiberglass",
             2]
         ],
         "weight": 40,
@@ -1827,7 +1827,7 @@
         "time": 1,
         "ingredients": [
             [
-                "logs",
+                "tcargologs",
                 1
             ]
         ],
@@ -1846,7 +1846,7 @@
         "time": 1,
         "ingredients": [
             [
-                "logs",
+                "tcargologs",
                 1
             ]
         ],
@@ -1889,7 +1889,7 @@
                 6
             ],
             [
-                "bronze-alloy",
+                "refined-bronze",
                 2
             ]
         ],
@@ -2108,7 +2108,7 @@
         "time": 1,
         "ingredients": [
             [
-                "waste-water",
+                "waste",
                 1
             ]
         ],
@@ -2207,11 +2207,11 @@
         "time": 1,
         "ingredients": [
             [
-                "pills-crate",
+                "illegal-crate",
                 3
             ],
             [
-                "methamphetamine",
+                "illegal-meth",
                 8
             ]
         ],
@@ -2225,7 +2225,7 @@
     },
     {
         "name": "Pills Crate",
-        "key_name": "pills-crate",
+        "key_name": "illegal-crate",
         "category": "pops-pills",
         "time": 1,
         "ingredients": [
@@ -2239,7 +2239,7 @@
             ]
         ],
         "product": [
-            ["pills-crate",
+            ["illegal-crate",
             1]
         ],
         "weight": 40,
@@ -2248,7 +2248,7 @@
     },
     {
         "name": "Refine Raw Gas",
-        "key_name": "waste-water",
+        "key_name": "waste",
         "category": "refinery",
         "time": 1,
         "ingredients": [
@@ -2258,7 +2258,7 @@
             ]
         ],
         "product": [
-            ["waste-water",1],
+            ["waste",1],
             ["chemicals",2],
             ["propane",2]
         ],
@@ -2273,7 +2273,7 @@
         "time": 1,
         "ingredients": [
             [
-                "crude-oil",
+                "oil",
                 1
             ]
         ],
@@ -2293,7 +2293,7 @@
         "time": 1,
         "ingredients": [
             [
-                "crude-oil",
+                "oil",
                 4
             ]
         ],
@@ -2408,7 +2408,7 @@
     },
     {
         "name": "Food Shipment",
-        "key_name": "food-shipment",
+        "key_name": "fridge-store-delivery",
         "category": "fridgit-co.",
         "time": 1,
         "ingredients": [
@@ -2417,7 +2417,7 @@
             ]
         ],
         "product": [
-            ["food-shipment",
+            ["fridge-store-delivery",
             5]
         ],
         "weight": 10,
@@ -2467,7 +2467,7 @@
         "time": 1,
         "ingredients": [
             [
-                "iron-ore-voucher",5
+                "mining-token-iron",5
             ],
             [
                 "titanium",1
@@ -2517,7 +2517,7 @@
                 10
             ],
             [
-                "bronze-alloy",
+                "refined-bronze",
                 25
             ]
         ],
@@ -2540,7 +2540,7 @@
                 10
             ],
             [
-                "logs",
+                "tcargologs",
                 5
             ]
         ],
@@ -2559,7 +2559,7 @@
         "time": 1,
         "ingredients": [
             [
-                "crude-oil",
+                "oil",
                 1
             ],
             [
@@ -2697,7 +2697,7 @@
                 2
             ],
             [
-                "crude-oil",
+                "oil",
                 3
             ]
         ],
@@ -2800,12 +2800,12 @@
     },
     {
         "name": "Clean Waste Water",
-        "key_name": "clean-waste-water",
+        "key_name": "clean-waste",
         "category": "water-treatment-plant",
         "time": 1,
         "ingredients": [
             [
-                "waste-water",
+                "waste",
                 2
             ]
         ],
@@ -2847,11 +2847,11 @@
         "time": 1,
         "ingredients": [
             [
-                "copper-ore-voucher",
+                "mining-token-copper",
                 1
             ],
             [
-                "iron-ore-voucher",
+                "mining-token-iron",
                 1
             ]
         ],
@@ -2961,17 +2961,17 @@
     },
     {
         "name": "Erasers",
-        "key_name": "export-erasers",
-        "category": "buyer-erasers",
+        "key_name": "export-tcargosmall",
+        "category": "buyer-tcargosmall",
         "time": 1,
         "ingredients": [
             [
-                "erasers",
+                "tcargosmall",
                 1
             ]
         ],
         "product": [
-            ["export-erasers",
+            ["export-tcargosmall",
             1]
         ],
         "weight": 0,
@@ -3045,17 +3045,17 @@
     },
     {
         "name": "Charge Defib Kit",
-        "key_name": "defib-kit",
-        "category": "defib-kit-charging",
+        "key_name": "defibkit",
+        "category": "defibkit-charging",
         "time": 1,
         "ingredients": [
             [
-                "empty-defib-kit",
+                "e-defibkit",
                 1
             ]
         ],
         "product": [
-            ["defib-kit",
+            ["defibkit",
             1]
         ],
         "weight": 5,
@@ -3064,7 +3064,7 @@
     },
     {
         "name": "Empty Defib Kit",
-        "key_name": "empty-defib-kit",
+        "key_name": "e-defibkit",
         "category": "plastic-molding",
         "time": 1,
         "ingredients": [
@@ -3074,7 +3074,7 @@
             ]
         ],
         "product": [
-            ["empty-defib-kit",
+            ["e-defibkit",
             5]
         ],
         "weight": 5,
@@ -3083,17 +3083,17 @@
     },
     {
         "name": "Fill Empty Pill Box",
-        "key_name": "box-full-pill-capsules",
+        "key_name": "full-box-capsules",
         "category": "liquor-ace",
         "time": 1,
         "ingredients": [
             [
-                "box-empty-pill-capsules",
+                "empty-box-capsules",
                 1
             ]
         ],
         "product": [
-            ["box-full-pill-capsules",
+            ["full-box-capsules",
             1]
         ],
         "weight": 5,
@@ -3102,7 +3102,7 @@
     },
     {
         "name": "Empty Pill Capsule",
-        "key_name": "box-empty-pill-capsules",
+        "key_name": "empty-box-capsules",
         "category": "plastic-molding",
         "time": 1,
         "ingredients": [
@@ -3112,7 +3112,7 @@
             ]
         ],
         "product": [
-            ["box-empty-pill-capsules",
+            ["empty-box-capsules",
             5]
         ],
         "weight": 5,
@@ -3254,17 +3254,17 @@
     },
     {
         "name": "Export Batteries",
-        "key_name": "export-battery",
+        "key_name": "export-batteries",
         "category": "ls-port-export",
         "time": 1,
         "ingredients": [
             [
-                "battery",
+                "batteries",
                 1
             ]
         ],
         "product": [
-            ["export-battery",
+            ["export-batteries",
             1]
         ],
         "weight": 5,
@@ -3311,17 +3311,17 @@
     },
     {
         "name": "Export Bronze Alloy",
-        "key_name": "export-bronze-alloy",
+        "key_name": "export-refined-bronze",
         "category": "ls-port-export",
         "time": 1,
         "ingredients": [
             [
-                "bronze-alloy",
+                "refined-bronze",
                 1
             ]
         ],
         "product": [
-            ["export-bronze-alloy",
+            ["export-refined-bronze",
             1]
         ],
         "weight": 5,
@@ -3425,17 +3425,17 @@
     },
     {
         "name": "Deliver Circuit Boards",
-        "key_name": "export-circuit-board",
+        "key_name": "export-circuit",
         "category": "electronics-store",
         "time": 1,
         "ingredients": [
             [
-                "circuit-board",
+                "circuit",
                 1
             ]
         ],
         "product": [
-            ["export-circuit-board",
+            ["export-circuit",
             1]
         ],
         "weight": 5,
@@ -3463,17 +3463,17 @@
     },
     {
         "name": "Deliver Fiberglass Spool",
-        "key_name": "export-fiberglass-spool",
+        "key_name": "export-fiberglass",
         "category": "electronics-store",
         "time": 1,
         "ingredients": [
             [
-                "fiberglass-spool",
+                "fiberglass",
                 1
             ]
         ],
         "product": [
-            ["export-fiberglass-spool",
+            ["export-fiberglass",
             1]
         ],
         "weight": 5,
@@ -3558,17 +3558,17 @@
     },
     {
         "name": "Deliver Food Shipment",
-        "key_name": "export-food-shipment",
+        "key_name": "export-fridge-store-delivery",
         "category": "harmony-shopping-center",
         "time": 1,
         "ingredients": [
             [
-                "food-shipment",
+                "fridge-store-delivery",
                 1
             ]
         ],
         "product": [
-            ["export-food-shipment",
+            ["export-fridge-store-delivery",
             1]
         ],
         "weight": 5,
@@ -3586,7 +3586,7 @@
                 30
             ],
             [
-                "logs",
+                "tcargologs",
                 5
             ]
         ],
@@ -3612,11 +3612,11 @@
             "category": "lsia-waste-depot"
         },
         {
-            "key_name": "crude-oil",
+            "key_name": "oil",
             "category": "ls-oil-pumping-station"
         },
         {
-            "key_name": "logs",
+            "key_name": "tcargologs",
             "category": "log-camp",
             "cost": 7500
         },
@@ -3641,7 +3641,7 @@
             "category": "electronics-store"
         },
         {
-            "key_name": "methamphetamine",
+            "key_name": "illegal-meth",
             "category": "liquor-ace"
         },
         {
@@ -3649,11 +3649,11 @@
             "category": "hunting"
         },
         {
-            "key_name": "iron-ore-voucher",
+            "key_name": "mining-token-iron",
             "category": "mineshaft"
         },
         {
-            "key_name": "copper-ore-voucher",
+            "key_name": "mining-token-copper",
             "category": "mineshaft"
         },
         {
@@ -3666,8 +3666,8 @@
             "cost": 100
         },
         {
-            "key_name": "erasers",
-            "category": "seller-erasers",
+            "key_name": "tcargosmall",
+            "category": "seller-tcargosmall",
             "cost": 200
         }
     ]
