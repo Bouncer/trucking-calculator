@@ -218,14 +218,24 @@ class FactorySpecification {
     getBeltCount(rate) {
         return rate.div(Rational.from_float(this.capacity.total))
     }
-    getMagicTrip(items, rate) {
+    getMagicTrip(recipe, rate) {
+        let items = recipe.ingredients
+        let resource = false;
+        // sources
+        if(recipe.ingredients.length === 0) {
+            items = recipe.products
+            resource = true
+        }
 
+        if(recipe.key.startsWith('storage')) {
+            return [null, null]
+        }
         // theoretical maximum rate
         var recipeWeight = 0
         for(let i of items) {
             recipeWeight += i.weight.toFloat()
         }
-        items.sort((a,b) => b.weight.toFloat() - a.weight.toFloat())
+        items.sort((a,b) => b.amount.toFloat() - a.amount.toFloat())
         if(recipeWeight > 0) {
             var tripRate = Math.floor(this.capacity.total / recipeWeight);
         } else {

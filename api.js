@@ -175,6 +175,11 @@ class ApiLink {
                 } else if(this.player[5] == "Trucker" && player[5] != "Trucker") {
                     log.add('info',`You are no longer trucking. Auto refresh is disabled.`)
                 }
+                if(this.player[5] != "Train Conductor" && player[5] == "Train Conductor") {
+                    log.add('info',`Choo choo!`)
+                } else if(this.player[5] != "Airline Pilot" && player[5] == "Airline Pilot") {
+                    log.add('info',`Have a safe flight!`)
+                }
             }
             this.player = player
             d3.select("#playername").text(player[0])
