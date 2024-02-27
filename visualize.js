@@ -90,6 +90,7 @@ function makeGraph(totals, targets, ignore) {
     //nodeMap.set("output", nodes[0])
     for (let [recipe, rate] of totals.rates) {
         let building = spec.getBuilding(recipe)
+        rate = totals.itemRates[recipe.key]['_rate']
         let count = spec.getCount(recipe, rate)
         let items = recipe.ingredients
         let resource = false;
@@ -115,7 +116,7 @@ function makeGraph(totals, targets, ignore) {
             debugText += `${i.amount}x ${i.item.name.substr('0','10')}, `
         }
 
-        debugText = null
+        //debugText = null
         let node = {
             "key": recipe.key,
             "name": recipe.name,
@@ -135,6 +136,7 @@ function makeGraph(totals, targets, ignore) {
     }
 
     let links = []
+    console.log(totals.itemRates)
     for (let node of nodes) {
         var recipe = node.recipe
         if (ignore.has(recipe)) {
@@ -156,12 +158,18 @@ function makeGraph(totals, targets, ignore) {
                         continue
                     }
                 }
-                if (totals.rates.has(subRecipe)) {
+                if (subRecipe.key in totals.itemRates && ing.item.key in totals.itemRates[subRecipe.key]) {
                     if (node.name == "output") {
                         rate = ing.amount
                     } else {
-                        rate = totals.rates.get(recipe).mul(ing.amount)
+                        //rate = totals.rates.get(recipe).mul(ing.amount)
                         //rate = rate.mul(ing.item.weight)
+                        console.log(recipe.key)
+                        console.log(subRecipe.key)
+                        console.log(totals.itemRates)
+
+                        //rate = totals.rates.get(recipe).mul(subRecipe.gives(ing.item, spec))
+                        rate = totals.itemRates[subRecipe.key][ing.item.key][recipe.key].mul(subRecipe.gives(ing.item, spec))
                     }
                     var ratio = rate.div(totalRate)
                     var subRate = totals.rates.get(subRecipe).mul(subRecipe.gives(ing.item, spec)).mul(ratio)
@@ -170,7 +178,7 @@ function makeGraph(totals, targets, ignore) {
                         "source": nodeMap.get(subRecipe.key),
                         "target": node,
                         "value": Math.min(100,Math.max(40,rate.mul(ing.item.weight).toFloat())),
-                        "rate": subRate,
+                        "rate": rate,
                         "weight": subRate.mul(ing.item.weight),
                         "amount": ing.amount
                     }

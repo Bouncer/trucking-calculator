@@ -34,7 +34,7 @@ function loadData(settings) {
 }
 
 export function init() {
-    log.add('info','Update info Feb 25th: \n- Added usage of storage items for planning \n- Added auto refresh timers\n- Added api charge estimator\n- Added check for online and trucking \n- Added setting to hide non-trucking items \n- Added setting to disable storage usage \n- Added player info in header \n- Added missing recipes \n- Added preference to use items in inventory or trucks over other storages.\n- Fixed missing item names in storages (Please report if other items are missing) \n- Removed trip info from starting recipes for now due to errors.')
+    log.add('log','Update info Feb 25th: \n- Added usage of storage items for planning \n- Added auto refresh timers\n- Added api charge estimator\n- Added check for online and trucking \n- Added setting to hide non-trucking items \n- Added setting to disable storage usage \n- Added player info in header \n- Added missing recipes \n- Added preference to use items in inventory or trucks over other storages.\n- Fixed missing item names in storages (Please report if other items are missing) \n- Removed trip info from starting recipes for now due to errors.')
     let settings = loadSettings(window.location.hash)
     loadData(settings)
 }

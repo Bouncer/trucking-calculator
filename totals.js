@@ -64,7 +64,7 @@ export class Totals {
         for(let i in this.itemRates[recipe]) {
             if(i != "_rate") {
                 if(this.itemRates[recipe]['_rate'].less(this.itemRates[recipe][i]['_rate'])) {
-                    this.itemRates[recipe]['_rate'] = this.itemRates[recipe][i]['_rate']
+                    this.itemRates[recipe]['_rate'] = this.itemRates[recipe][i]['_rate'].ceil()
                 }
             }
         }

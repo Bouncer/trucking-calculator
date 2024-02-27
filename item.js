@@ -109,16 +109,20 @@ export class Item {
             spec.addStorageLocation(recipeLocation)
             // check if recipe exists
             for(let ing of storageShopList[storage]) {
-
-                if(!(storage in itemRates)) {
+                let subRecipe = ing.item.recipes.find((i) => i.key == storage)
+                if(!(subRecipe)) {
                     let subRecipe = makeStorageRecipe(recipeLocation, storageShopList[storage])
                     let subtotals = ing.item.produce(spec, one, ignore, totals.itemRates, subRecipe.key, subRecipe)
                     totals.combine(subtotals)
                 } else {
                     let subRecipe = ing.item.recipes.find((i) => i.key == storage)
+
+                    console.log(storage)
+                    console.log(ing.item.recipes)
+                    console.log(storage)
                     // update output
                     subRecipe.updateProduct(ing)
-                    //totals.addItemRate(subRecipe.key, one, ing.item.key, subRecipe.key)
+                    totals.addItemRate(subRecipe.key, one, ing.item.key, recipe.key)
                     totals.rates.set(subRecipe, one)
                 }
             }
