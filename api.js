@@ -550,7 +550,7 @@ class ApiLink {
         const prev = this.charges
         this.charges = charges
         if(charges == 1) {
-            log.add('warning',`You have ${charges.toLocaleString()} charg remaining`)
+            log.add('warning',`You have ${charges.toLocaleString()} charge remaining`)
         } else if(charges <= 10) {
             log.add('info',`You have ${charges.toLocaleString()} charges remaining`)
         }
