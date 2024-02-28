@@ -376,6 +376,166 @@
             "color": 8,
             "x": 597.67004394531,
             "y": 2798.603515625
+        },
+        {
+            "name": "Oil Depository",
+            "key_name": "oil-depository",
+            "category": "oil-depository",
+            "power": 1,
+            "max": 1,
+            "color": 8,
+            "x": 0,
+            "y": 0
+        },
+        {
+            "name": "The Undercover Storage Co.",
+            "key_name": "the-undercover-storage-co.",
+            "category": "the-undercover-storage-co.",
+            "power": 1,
+            "max": 1,
+            "color": 8,
+            "x": 0,
+            "y": 0
+        },
+        {
+            "name": "Staunton Military Facility",
+            "key_name": "staunton-military-facility",
+            "category": "staunton-military-facility",
+            "power": 1,
+            "max": 1,
+            "color": 8,
+            "x": 0,
+            "y": 0
+        },
+        {
+            "name": "Radio Station",
+            "key_name": "radio-station",
+            "category": "radio-station",
+            "power": 1,
+            "max": 1,
+            "color": 8,
+            "x": 0,
+            "y": 0
+        },
+        {
+            "name": "Chinatown",
+            "key_name": "chinatown",
+            "category": "chinatown",
+            "power": 1,
+            "max": 1,
+            "color": 8,
+            "x": 0,
+            "y": 0
+        },
+        {
+            "name": "Shoreside Apartments",
+            "key_name": "shoreside-apartments",
+            "category": "shoreside-apartments",
+            "power": 1,
+            "max": 1,
+            "color": 8,
+            "x": 0,
+            "y": 0
+        },
+        {
+            "name": "Staunton Casino",
+            "key_name": "staunton-casino",
+            "category": "staunton-casino",
+            "power": 1,
+            "max": 1,
+            "color": 8,
+            "x": 0,
+            "y": 0
+        },
+        {
+            "name": "Cochrane Dam",
+            "key_name": "cochrane-dam",
+            "category": "cochrane-dam",
+            "power": 1,
+            "max": 1,
+            "color": 8,
+            "x": 0,
+            "y": 0
+        },
+        {
+            "name": "Portland Docks",
+            "key_name": "portland-docks",
+            "category": "portland-docks",
+            "power": 1,
+            "max": 1,
+            "color": 8,
+            "x": 0,
+            "y": 0
+        },
+        {
+            "name": "Fish Factory",
+            "key_name": "fish-factory",
+            "category": "fish-factory",
+            "power": 1,
+            "max": 1,
+            "color": 8,
+            "x": 0,
+            "y": 0
+        },
+        {
+            "name": "Staunton Docks",
+            "key_name": "staunton-docks",
+            "category": "staunton-docks",
+            "power": 1,
+            "max": 1,
+            "color": 8,
+            "x": 0,
+            "y": 0
+        },
+        {
+            "name": "Staunton Mall",
+            "key_name": "staunton-mall",
+            "category": "staunton-mall",
+            "power": 1,
+            "max": 1,
+            "color": 8,
+            "x": 0,
+            "y": 0
+        },
+        {
+            "name": "Francis Intl. Airport",
+            "key_name": "francis-intl.-airport",
+            "category": "francis-intl.-airport",
+            "power": 1,
+            "max": 1,
+            "color": 8,
+            "x": 0,
+            "y": 0
+        },
+        {
+            "name": "AM Petroleum",
+            "key_name": "am-petroleum",
+            "category": "am-petroleum",
+            "power": 1,
+            "max": 1,
+            "color": 8,
+            "x": 0,
+            "y": 0
+        },
+        {
+            "name": "LCFD",
+            "key_name": "lcfd",
+            "category": "lcfd",
+            "power": 1,
+            "max": 1,
+            "color": 8,
+            "x": 0,
+            "y": 0
+        },
+        {
+            "name": "Rooftop",
+            "key_name": "rooftop",
+            "category": "rooftop",
+            "power": 1,
+            "max": 1,
+            "color": 8,
+            "x": 0,
+            "y": 0
         }
     ],
     "miners": [
@@ -568,6 +728,46 @@
             "color": 12,
             "x": 834.75408935547,
             "y": -1988.6525878906
+        },
+        {
+            "name": "Auto Yard",
+            "key_name": "auto-yard",
+            "category": "auto-yard",
+            "power": 1,
+            "max": 1,
+            "color": 8,
+            "x": 0,
+            "y": 0
+        },
+        {
+            "name": "Staunton Business Center",
+            "key_name": "staunton-business-center",
+            "category": "staunton-business-center",
+            "power": 1,
+            "max": 1,
+            "color": 8,
+            "x": 0,
+            "y": 0
+        },
+        {
+            "name": "Turtle Head Fishing Co. Portland",
+            "key_name": "turtle-head-fishing-co.-portland",
+            "category": "turtle-head-fishing-co.-portland",
+            "power": 1,
+            "max": 1,
+            "color": 8,
+            "x": 0,
+            "y": 0
+        },
+        {
+            "name": "Turtle Head Fishing Co. Shoreside Vale",
+            "key_name": "turtle-head-fishing-co.-shoreside-vale",
+            "category": "turtle-head-fishing-co.-shoreside-vale",
+            "power": 1,
+            "max": 1,
+            "color": 8,
+            "x": 0,
+            "y": 0
         }
     ],
     "items": [
@@ -622,7 +822,7 @@
     {
         "name": "Bronze Alloy",
         "key_name": "refined-bronze",
-        "tier": "3",
+        "tier": "2",
         "category": "commercial",
         "weight": "10",
         "stack_size": "900"
@@ -638,7 +838,7 @@
     {
         "name": "Cement Mix",
         "key_name": "cement",
-        "tier": "3",
+        "tier": "2",
         "category": "commercial",
         "weight": "25",
         "stack_size": "360"
@@ -646,7 +846,7 @@
     {
         "name": "Ceramic Tiles",
         "key_name": "ceramictiles",
-        "tier": "3",
+        "tier": "2",
         "category": "commercial",
         "weight": "10",
         "stack_size": "900"
@@ -718,7 +918,7 @@
     {
         "name": "Copper Wire",
         "key_name": "copperwire",
-        "tier": "3",
+        "tier": "2",
         "category": "special",
         "weight": "20",
         "stack_size": "450"
@@ -837,15 +1037,15 @@
     },
     {
         "name": "Glass",
-        "key_name": "glass",
-        "tier": "3",
+        "key_name": "refined-glass",
+        "tier": "2",
         "category": "commercial",
         "weight": "5",
         "stack_size": "1800"
     },
     {
         "name": "Export Glass",
-        "key_name": "export-glass",
+        "key_name": "export-refined-glass",
         "tier": "-1",
         "category": "commercial",
         "weight": "5",
@@ -870,7 +1070,7 @@
     {
         "name": "Jewelry",
         "key_name": "jewelry",
-        "tier": "3",
+        "tier": "2",
         "category": "commercial",
         "weight": "5",
         "stack_size": "1800"
@@ -1038,7 +1238,7 @@
     {
         "name": "Refined Amalgam",
         "key_name": "refined-amalgam",
-        "tier": "3",
+        "tier": "2",
         "category": "commercial",
         "weight": "15",
         "stack_size": "600"
@@ -1086,7 +1286,7 @@
     {
         "name": "Refined Solder",
         "key_name": "refined-solder",
-        "tier": "3",
+        "tier": "2",
         "category": "commercial",
         "weight": "5",
         "stack_size": "1800"
@@ -1262,7 +1462,7 @@
     {
         "name": "Treated Water",
         "key_name": "liquid-water",
-        "tier": "3",
+        "tier": "2",
         "category": "commercial",
         "weight": "100",
         "stack_size": "90"
@@ -1294,7 +1494,7 @@
     {
         "name": "Methamphetamine",
         "key_name": "illegal-meth",
-        "tier": "8",
+        "tier": "6",
         "category": "illegal",
         "weight": "10",
         "stack_size": "1000"
@@ -1302,7 +1502,7 @@
     {
         "name": "Pills",
         "key_name": "pills",
-        "tier": "8",
+        "tier": "6",
         "category": "illegal",
         "weight": "0.1",
         "stack_size": "1000"
@@ -1310,7 +1510,7 @@
     {
         "name": "Pills Crate",
         "key_name": "illegal-crate",
-        "tier": "8",
+        "tier": "6",
         "category": "illegal",
         "weight": "40",
         "stack_size": "1000"
@@ -1350,7 +1550,7 @@
     {
         "name": "Asphalt",
         "key_name": "asphalt",
-        "tier": "3",
+        "tier": "2",
         "category": "trucking",
         "weight": "5",
         "stack_size": "1000"
@@ -1366,7 +1566,7 @@
     {
         "name": "Cardboard",
         "key_name": "cardboard",
-        "tier": "3",
+        "tier": "2",
         "category": "trucking",
         "weight": "1",
         "stack_size": "1000"
@@ -1460,17 +1660,17 @@
         "stack_size": "1000"
     },
     {
-        "name": "Box of Full Pill Capsules",
+        "name": "Full Pill Capsules",
         "key_name": "full-box-capsules",
-        "tier": "8",
+        "tier": "6",
         "category": "illegal",
         "weight": "5",
         "stack_size": "1000"
     },
     {
-        "name": "Box of Empty Pill Capsules",
+        "name": "Empty Pill Capsules",
         "key_name": "empty-box-capsules",
-        "tier": "8",
+        "tier": "6",
         "category": "illegal",
         "weight": "5",
         "stack_size": "1000"
@@ -1478,7 +1678,7 @@
     {
         "name": "Defib Kit",
         "key_name": "defibkit",
-        "tier": "8",
+        "tier": "6",
         "category": "illegal",
         "weight": "5",
         "stack_size": "1000"
@@ -1486,8 +1686,296 @@
     {
         "name": "Empty Defib Kit",
         "key_name": "e-defibkit",
-        "tier": "8",
+        "tier": "6",
         "category": "illegal",
+        "weight": "5",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Annis Zr-350",
+        "key_name": "vehicle-shipment|zr350|Annis ZR-350|car",
+        "tier": "5",
+        "category": "commercial",
+        "weight": "5",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Boat Fuel",
+        "key_name": "jerry-can|BOAT|Boat",
+        "tier": "7",
+        "category": "commercial",
+        "weight": "2",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Car Battery",
+        "key_name": "battery",
+        "tier": "5",
+        "category": "commercial",
+        "weight": "20",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Chassis",
+        "key_name": "chassis",
+        "tier": "5",
+        "category": "commercial",
+        "weight": "80",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Coil Savanna",
+        "key_name": "vehicle-shipment|savanna|coil-savanna|car",
+        "tier": "5",
+        "category": "commercial",
+        "weight": "5",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Diesel Fuel",
+        "key_name": "jerry-can|HEAVY|Diesel",
+        "tier": "7",
+        "category": "commercial",
+        "weight": "2",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Helicopter Fuel",
+        "key_name": "jerry-can|HELICOPTER|Helicopter",
+        "tier": "7",
+        "category": "commercial",
+        "weight": "2",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Hijak Vertice",
+        "key_name": "vehicle-shipment|vertice|Hijak Vertice|car",
+        "tier": "5",
+        "category": "commercial",
+        "weight": "5",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Hvy Nightshark",
+        "key_name": "vehicle-shipment|nightshark|HVY Nightshark|car",
+        "tier": "5",
+        "category": "commercial",
+        "weight": "5",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Jerry Can Empty",
+        "key_name": "jerry-can-empty",
+        "tier": "7",
+        "category": "commercial",
+        "weight": "2",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Karin Futo",
+        "key_name": "vehicle-shipment|futo|Karin Futo|car",
+        "tier": "5",
+        "category": "commercial",
+        "weight": "5",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Landstalker Xl",
+        "key_name": "vehicle-shipment|landstalker2|Landstalker XL|car",
+        "tier": "5",
+        "category": "commercial",
+        "weight": "5",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Liberty Autopart",
+        "key_name": "liberty-autopart",
+        "tier": "9",
+        "category": "commercial",
+        "weight": "100",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Liberty Broadcast",
+        "key_name": "liberty-broadcast",
+        "tier": "9",
+        "category": "commercial",
+        "weight": "100",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Liberty Broadcast Portland",
+        "key_name": "liberty-broadcast-portland",
+        "tier": "9",
+        "category": "commercial",
+        "weight": "25",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Liberty Broadcast Shoreside",
+        "key_name": "liberty-broadcast-shoreside",
+        "tier": "9",
+        "category": "commercial",
+        "weight": "25",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Liberty Broadcast Staunton",
+        "key_name": "liberty-broadcast-staunton",
+        "tier": "9",
+        "category": "commercial",
+        "weight": "25",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Liberty Export Goods",
+        "key_name": "liberty-export-goods",
+        "tier": "9",
+        "category": "commercial",
+        "weight": "100",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Liberty Fish Export",
+        "key_name": "liberty-fish-export",
+        "tier": "9",
+        "category": "commercial",
+        "weight": "100",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Liberty Fish Portland",
+        "key_name": "liberty-fish-portland",
+        "tier": "9",
+        "category": "commercial",
+        "weight": "75",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Liberty Fish Shoreside",
+        "key_name": "liberty-fish-shoreside",
+        "tier": "9",
+        "category": "commercial",
+        "weight": "75",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Liberty Goods",
+        "key_name": "liberty-goods",
+        "tier": "9",
+        "category": "commercial",
+        "weight": "100",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Liberty Token",
+        "key_name": "liberty-token",
+        "tier": "9",
+        "category": "commercial",
+        "weight": "0",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Liberty Voucher Fish",
+        "key_name": "liberty-voucher-fish",
+        "tier": "9",
+        "category": "commercial",
+        "weight": "0",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Liberty Voucher Goods",
+        "key_name": "liberty-voucher-goods",
+        "tier": "9",
+        "category": "commercial",
+        "weight": "0",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Liberty Voucher Islands",
+        "key_name": "liberty-voucher-islands",
+        "tier": "9",
+        "category": "commercial",
+        "weight": "0",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Liberty Voucher Portland",
+        "key_name": "liberty-voucher-portland",
+        "tier": "9",
+        "category": "commercial",
+        "weight": "0",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Liberty Voucher Shoreside",
+        "key_name": "liberty-voucher-shoreside",
+        "tier": "9",
+        "category": "commercial",
+        "weight": "0",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Liberty Voucher Staunton",
+        "key_name": "liberty-voucher-staunton",
+        "tier": "9",
+        "category": "commercial",
+        "weight": "0",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Petrol Fuel",
+        "key_name": "jerry-can|DIESEL|Petrol",
+        "tier": "7",
+        "category": "commercial",
+        "weight": "2",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Plane Fuel",
+        "key_name": "jerry-can|PLANE|Plane",
+        "tier": "7",
+        "category": "commercial",
+        "weight": "2",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Rainbow Voucher",
+        "key_name": "rainbow-voucher",
+        "tier": "9",
+        "category": "commercial",
+        "weight": "5",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Repair Shop",
+        "key_name": "repair-shop",
+        "tier": "5",
+        "category": "commercial",
+        "weight": "5",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Traction Battery",
+        "key_name": "battery-evb",
+        "tier": "5",
+        "category": "commercial",
+        "weight": "5",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Upgrade Kit Voltic2",
+        "key_name": "upgrade-kit-voltic2",
+        "tier": "5",
+        "category": "commercial",
+        "weight": "5",
+        "stack_size": "1000"
+    },
+    {
+        "name": "Wheels",
+        "key_name": "wheels",
+        "tier": "5",
+        "category": "commercial",
         "weight": "5",
         "stack_size": "1000"
     }
@@ -1708,7 +2196,7 @@
                 8
             ],
             [
-                "glass",
+                "refined-glass",
                 4
             ]
         ],
@@ -1740,8 +2228,8 @@
         "pays": 0
     },
     {
-        "name": "Glass",
-        "key_name": "glass",
+        "name": "Refined Glass",
+        "key_name": "refine-glass",
         "category": "ls-foundry",
         "time": 1,
         "ingredients": [
@@ -1751,7 +2239,7 @@
             ]
         ],
         "product": [
-            ["glass",
+            ["refined-glass",
             1]
         ],
         "weight": 5,
@@ -3330,17 +3818,17 @@
     },
     {
         "name": "Export Glass",
-        "key_name": "export-glass",
+        "key_name": "export-refined-glass",
         "category": "ls-port-export",
         "time": 1,
         "ingredients": [
             [
-                "glass",
+                "refined-glass",
                 1
             ]
         ],
         "product": [
-            ["export-glass",
+            ["export-refined-glass",
             1]
         ],
         "weight": 5,
@@ -3596,6 +4084,967 @@
         "weight": 21,
         "cost": 2500,
         "pays": 0
+    },
+    {
+        "name": "Annis ZR-350",
+        "key_name": "annis-zr-350",
+        "category": "vehicle-factory",
+        "time": 1,
+        "ingredients": [
+        [
+            "chassis",
+            1
+        ],
+        [
+            "wheels",
+            4
+        ],
+        [
+            "fiberglass",
+            15
+        ],
+        [
+            "refined-amalgam",
+            50
+        ],
+        [
+            "circuit",
+            5
+        ],
+        [
+            "battery",
+            1
+        ],
+        [
+            "refined-glass",
+            25
+        ],
+        [
+            "vehicle-framework",
+            1
+        ]
+        ],
+        "product": [
+        [
+            "vehicle-shipment|zr350|Annis ZR-350|car",
+            1
+        ]
+        ],
+        "weight": 0,
+        "cost": 1620000,
+        "pays": 0
+    },
+    {
+        "name": "Fill Boat Cans",
+        "key_name": "fill-boat-cans",
+        "category": "oil-depository",
+        "time": 1,
+        "ingredients": [
+        [
+            "diesel",
+            1
+        ]
+        ],
+        "product": [
+        [
+            "jerry-can|BOAT|Boat",
+            10
+        ]
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 8000
+    },
+    {
+        "name": "Car Battery",
+        "key_name": "car-battery",
+        "category": "vehicle-parts",
+        "time": 1,
+        "ingredients": [
+        [
+            "batteries",
+            2
+        ]
+        ],
+        "product": [
+        [
+            "battery",
+            1
+        ]
+        ],
+        "weight": 0,
+        "cost": 35000,
+        "pays": 0
+    },
+    {
+        "name": "HVY Nightshark",
+        "key_name": "hvy-nightshark",
+        "category": "vehicle-factory",
+        "time": 1,
+        "ingredients": [
+        [
+            "liquid-water",
+            1
+        ],
+        [
+            "wheels",
+            4
+        ],
+        [
+            "fiberglass",
+            25
+        ],
+        [
+            "titanium",
+            60
+        ],
+        [
+            "vehicle-framework",
+            2
+        ],
+        [
+            "battery",
+            2
+        ],
+        [
+            "chassis",
+            2
+        ],
+        [
+            "circuit",
+            12
+        ],
+        [
+            "refined-glass",
+            15
+        ],
+        [
+            "refined-amalgam",
+            40
+        ],
+        [
+            "liberty-goods",
+            4
+        ]
+        ],
+        "product": [
+        [
+            "vehicle-shipment|nightshark|HVY Nightshark|car",
+            1
+        ]
+        ],
+        "weight": 0,
+        "cost": 13780000,
+        "pays": 0
+    },
+    {
+        "name": "Karin Futo",
+        "key_name": "karin-futo",
+        "category": "vehicle-factory",
+        "time": 1,
+        "ingredients": [
+        [
+            "chassis",
+            1
+        ],
+        [
+            "wheels",
+            4
+        ],
+        [
+            "fiberglass",
+            15
+        ],
+        [
+            "refined-amalgam",
+            50
+        ],
+        [
+            "circuit",
+            5
+        ],
+        [
+            "battery",
+            1
+        ],
+        [
+            "refined-glass",
+            25
+        ],
+        [
+            "vehicle-framework",
+            1
+        ]
+        ],
+        "product": [
+        [
+            "vehicle-shipment|futo|Karin Futo|car",
+            1
+        ]
+        ],
+        "weight": 0,
+        "cost": 220000,
+        "pays": 0
+    },
+    {
+        "name": "Coil Savanna",
+        "key_name": "coil-savanna",
+        "category": "vehicle-factory",
+        "time": 1,
+        "ingredients": [
+        [
+            "battery",
+            1
+        ],
+        [
+            "fiberglass",
+            35
+        ],
+        [
+            "refined-amalgam",
+            50
+        ],
+        [
+            "circuit",
+            5
+        ],
+        [
+            "chassis",
+            1
+        ],
+        [
+            "refined-glass",
+            25
+        ],
+        [
+            "wheels",
+            4
+        ],
+        [
+            "battery-evb",
+            3
+        ],
+        [
+            "vehicle-framework",
+            1
+        ]
+        ],
+        "product": [
+        [
+            "vehicle-shipment|savanna|coil-savanna|car",
+            1
+        ]
+        ],
+        "weight": 0,
+        "cost": 8380000,
+        "pays": 0
+    },
+    {
+        "name": "Hijak Vertice",
+        "key_name": "hijak-vertice",
+        "category": "vehicle-factory",
+        "time": 1,
+        "ingredients": [
+        [
+            "chassis",
+            1
+        ],
+        [
+            "wheels",
+            4
+        ],
+        [
+            "fiberglass",
+            15
+        ],
+        [
+            "refined-amalgam",
+            50
+        ],
+        [
+            "circuit",
+            5
+        ],
+        [
+            "battery",
+            1
+        ],
+        [
+            "refined-glass",
+            25
+        ],
+        [
+            "vehicle-framework",
+            1
+        ]
+        ],
+        "product": [
+        [
+            "vehicle-shipment|vertice|Hijak Vertice|car",
+            1
+        ]
+        ],
+        "weight": 0,
+        "cost": 320000,
+        "pays": 0
+    },
+    {
+        "name": "Coil Rocket Voltic",
+        "key_name": "coil-rocket-voltic",
+        "category": "vehicle-factory",
+        "time": 1,
+        "ingredients": [
+        [
+            "wheels",
+            4
+        ],
+        [
+            "fiberglass",
+            15
+        ],
+        [
+            "kerosene",
+            100
+        ],
+        [
+            "chassis",
+            1
+        ],
+        [
+            "refined-amalgam",
+            50
+        ],
+        [
+            "refined-glass",
+            25
+        ],
+        [
+            "battery",
+            1
+        ],
+        [
+            "circuit",
+            5
+        ],
+        [
+            "vehicle-framework",
+            1
+        ]
+        ],
+        "product": [
+        [
+            "upgrade-kit-voltic2",
+            1
+        ]
+        ],
+        "weight": 0,
+        "cost": 90110000,
+        "pays": 0
+    },
+    {
+        "name": "Landstalker XL",
+        "key_name": "landstalker-xl",
+        "category": "vehicle-factory",
+        "time": 1,
+        "ingredients": [
+        [
+            "chassis",
+            1
+        ],
+        [
+            "wheels",
+            4
+        ],
+        [
+            "fiberglass",
+            30
+        ],
+        [
+            "refined-amalgam",
+            100
+        ],
+        [
+            "circuit",
+            10
+        ],
+        [
+            "battery",
+            2
+        ],
+        [
+            "refined-glass",
+            50
+        ],
+        [
+            "vehicle-framework",
+            1
+        ]
+        ],
+        "product": [
+        [
+            "vehicle-shipment|landstalker2|Landstalker XL|car",
+            1
+        ]
+        ],
+        "weight": 0,
+        "cost": 32000000,
+        "pays": 0
+    },
+    {
+        "name": "Traction Battery",
+        "key_name": "traction-battery",
+        "category": "vehicle-parts",
+        "time": 1,
+        "ingredients": [
+        [
+            "battery",
+            6
+        ]
+        ],
+        "product": [
+        [
+            "battery-evb",
+            1
+        ]
+        ],
+        "weight": 0,
+        "cost": 120000,
+        "pays": 0
+    },
+    {
+        "name": "Chassis",
+        "key_name": "chassis",
+        "category": "vehicle-parts",
+        "time": 1,
+        "ingredients": [
+        [
+            "refined-amalgam",
+            15
+        ]
+        ],
+        "product": [
+        [
+            "chassis",
+            1
+        ]
+        ],
+        "weight": 0,
+        "cost": 100000,
+        "pays": 0
+    },
+    {
+        "name": "Temporary Repair Shop",
+        "key_name": "temporary-repair-shop",
+        "category": "vehicle-parts",
+        "time": 1,
+        "ingredients": [
+        [
+            "titanium",
+            2
+        ],
+        [
+            "wheels",
+            2
+        ],
+        [
+            "tools",
+            2
+        ],
+        [
+            "chassis",
+            2
+        ]
+        ],
+        "product": [
+        [
+            "repair-shop",
+            1
+        ]
+        ],
+        "weight": 0,
+        "cost": 1500000,
+        "pays": 0
+    },
+    {
+        "name": "Fill Diesel Cans",
+        "key_name": "fill-diesel-cans",
+        "category": "oil-depository",
+        "time": 1,
+        "ingredients": [
+        [
+            "diesel",
+            1
+        ]
+        ],
+        "product": [
+        [
+            "jerry-can|HEAVY|Diesel",
+            10
+        ]
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 8000
+    },
+    {
+        "name": "Tokens to Fridge Store Delivery",
+        "key_name": "tokens-to-fridge-store-delivery",
+        "category": "the-undercover-storage-co.",
+        "time": 1,
+        "ingredients": [
+        [
+            "liberty-token",
+            1
+        ]
+        ],
+        "product": [
+        [
+            "fridge-store-delivery",
+            1
+        ]
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 0
+    },
+    {
+        "name": "Fill Helicoper Cans",
+        "key_name": "fill-helicoper-cans",
+        "category": "oil-depository",
+        "time": 1,
+        "ingredients": [
+        [
+            "kerosene",
+            1
+        ]
+        ],
+        "product": [
+        [
+            "jerry-can|HELICOPTER|Helicopter",
+            10
+        ]
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 11000
+    },
+    {
+        "name": "Process Auto Parts",
+        "key_name": "process-auto-parts",
+        "category": "staunton-military-facility",
+        "time": 1,
+        "ingredients": [
+        [
+            "liberty-autopart",
+            1
+        ]
+        ],
+        "product": [
+        [
+            "liberty-goods",
+            1
+        ]
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 0
+    },
+    {
+        "name": "Spread Broadcast",
+        "key_name": "spread-broadcast",
+        "category": "radio-station",
+        "time": 1,
+        "ingredients": [
+        [
+            "liberty-broadcast",
+            1
+        ]
+        ],
+        "product": [
+        [
+            "liberty-broadcast-portland",
+            1
+        ],
+        [
+            "liberty-broadcast-staunton",
+            1
+        ],
+        [
+            "liberty-broadcast-shoreside",
+            1
+        ]
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 0
+    },
+    {
+        "name": "Deliver Portland Broadcast",
+        "key_name": "deliver-portland-broadcast",
+        "category": "chinatown",
+        "time": 1,
+        "ingredients": [
+        [
+            "liberty-broadcast-portland",
+            1
+        ]
+        ],
+        "product": [
+        [
+            "liberty-voucher-portland",
+            1
+        ]
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 0
+    },
+    {
+        "name": "Deliver Shoreside Broadcast",
+        "key_name": "deliver-shoreside-broadcast",
+        "category": "shoreside-apartments",
+        "time": 1,
+        "ingredients": [
+        [
+            "liberty-broadcast-shoreside",
+            1
+        ]
+        ],
+        "product": [
+        [
+            "liberty-voucher-shoreside",
+            1
+        ]
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 0
+    },
+    {
+        "name": "Deliver Staunton Broadcast",
+        "key_name": "deliver-staunton-broadcast",
+        "category": "staunton-casino",
+        "time": 1,
+        "ingredients": [
+        [
+            "liberty-broadcast-staunton",
+            1
+        ]
+        ],
+        "product": [
+        [
+            "liberty-voucher-staunton",
+            1
+        ]
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 0
+    },
+    {
+        "name": "Process Military Goods",
+        "key_name": "process-military-goods",
+        "category": "cochrane-dam",
+        "time": 1,
+        "ingredients": [
+        [
+            "liberty-goods",
+            1
+        ]
+        ],
+        "product": [
+        [
+            "liberty-export-goods",
+            1
+        ]
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 0
+    },
+    {
+        "name": "Export Goods",
+        "key_name": "export-goods",
+        "category": "portland-docks",
+        "time": 1,
+        "ingredients": [
+        [
+            "liberty-export-goods",
+            1
+        ]
+        ],
+        "product": [
+        [
+            "liberty-voucher-goods",
+            1
+        ],
+        [
+            "liberty-token",
+            1
+        ]
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 0
+    },
+    {
+        "name": "Package Fish",
+        "key_name": "package-fish",
+        "category": "fish-factory",
+        "time": 1,
+        "ingredients": [
+        [
+            "liberty-fish-shoreside",
+            1
+        ],
+        [
+            "liberty-fish-portland",
+            1
+        ]
+        ],
+        "product": [
+        [
+            "liberty-fish-export",
+            1
+        ]
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 0
+    },
+    {
+        "name": "Export Fish",
+        "key_name": "export-fish",
+        "category": "staunton-docks",
+        "time": 1,
+        "ingredients": [
+        [
+            "liberty-fish-export",
+            1
+        ]
+        ],
+        "product": [
+        [
+            "liberty-voucher-fish",
+            1
+        ],
+        [
+            "liberty-token",
+            1
+        ]
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 0
+    },
+    {
+        "name": "Trade for Liberty Goods",
+        "key_name": "trade-for-liberty-goods",
+        "category": "staunton-mall",
+        "time": 1,
+        "ingredients": [
+        [
+            "liberty-voucher-fish",
+            1
+        ],
+        [
+            "liberty-voucher-goods",
+            1
+        ]
+        ],
+        "product": [
+        [
+            "liberty-goods",
+            1
+        ]
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 0
+    },
+    {
+        "name": "Deliver Liberty Goods",
+        "key_name": "deliver-liberty-goods",
+        "category": "francis-intl.-airport",
+        "time": 1,
+        "ingredients": [
+        [
+            "liberty-goods",
+            1
+        ]
+        ],
+        "product": [
+        [
+            "liberty-voucher-islands",
+            1
+        ]
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 0
+    },
+    {
+        "name": "Tokens to Kerosene",
+        "key_name": "tokens-to-kerosene",
+        "category": "am-petroleum",
+        "time": 1,
+        "ingredients": [
+        [
+            "liberty-token",
+            1
+        ]
+        ],
+        "product": [
+        [
+            "kerosene",
+            1
+        ]
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 0
+    },
+    {
+        "name": "Tokens to Treated Water",
+        "key_name": "tokens-to-treated-water",
+        "category": "lcfd",
+        "time": 1,
+        "ingredients": [
+        [
+            "liberty-token",
+            1
+        ]
+        ],
+        "product": [
+        [
+            "liquid-water",
+            1
+        ]
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 0
+    },
+    {
+        "name": "Tokens to Airline Meal",
+        "key_name": "tokens-to-airline-meal",
+        "category": "the-undercover-storage-co.",
+        "time": 1,
+        "ingredients": [
+        [
+            "liberty-token",
+            1
+        ]
+        ],
+        "product": [
+        [
+            "airline-meal",
+            1
+        ]
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 0
+    },
+    {
+        "name": "Trade for Rainbow Voucher",
+        "key_name": "trade-for-rainbow-voucher",
+        "category": "rooftop",
+        "time": 1,
+        "ingredients": [
+        [
+            "liberty-voucher-portland",
+            1
+        ],
+        [
+            "liberty-voucher-shoreside",
+            1
+        ],
+        [
+            "liberty-voucher-staunton",
+            1
+        ],
+        [
+            "liberty-voucher-islands",
+            1
+        ]
+        ],
+        "product": [
+        [
+            "rainbow-voucher",
+            1
+        ]
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 0
+    },
+    {
+        "name": "Fill Petrol Cans",
+        "key_name": "fill-petrol-cans",
+        "category": "oil-depository",
+        "time": 1,
+        "ingredients": [
+        [
+            "petrol",
+            1
+        ]
+        ],
+        "product": [
+        [
+            "jerry-can|DIESEL|Petrol",
+            10
+        ]
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 4000
+    },
+    {
+        "name": "Fill Plane Cans",
+        "key_name": "fill-plane-cans",
+        "category": "oil-depository",
+        "time": 1,
+        "ingredients": [
+        [
+            "kerosene",
+            1
+        ]
+        ],
+        "product": [
+        [
+            "jerry-can|PLANE|Plane",
+            10
+        ]
+        ],
+        "weight": 0,
+        "cost": 0,
+        "pays": 11000
+    },
+    {
+        "name": "Wheels",
+        "key_name": "wheels",
+        "category": "vehicle-parts",
+        "time": 1,
+        "ingredients": [
+        [
+            "rubber",
+            10
+        ],
+        [
+            "refined-aluminum",
+            1
+        ]
+        ],
+        "product": [
+        [
+            "wheels",
+            1
+        ]
+        ],
+        "weight": 0,
+        "cost": 20000,
+        "pays": 0
     }
 ],
     "resources": [
@@ -3669,6 +5118,22 @@
             "key_name": "tcargosmall",
             "category": "seller-tcargosmall",
             "cost": 200
+        },
+        {
+            "key_name": "liberty-autopart",
+            "category": "auto-yard"
+        },
+        {
+            "key_name": "liberty-broadcast",
+            "category": "staunton-business-center"
+        },
+        {
+            "key_name": "liberty-fish-portland",
+            "category": "turtle-head-fishing-co.-portland"
+        },
+        {
+            "key_name": "liberty-fish-shoreside",
+            "category": "turtle-head-fishing-co.-shoreside-vale"
         }
     ]
 }

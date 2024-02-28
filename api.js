@@ -165,13 +165,13 @@ class ApiLink {
         } else {
             if(!this.player) {
                 if(player[5] == "Trucker") {
-                    log.add('info',`Hi ${player[0]}. I see you are now in game and trucking. Auto refresh is available.`)
+                    log.add('info',`Hi ${player[0]}. I see you are now in game and trucking. Auto refresh is enabled.`)
                 } else {
-                   log.add('info',`Hi ${player[0]}. I see you are now in game, but not yet trucking.`)
+                   log.add('info',`Hi ${player[0]}. I see you are now in game, but not trucking.`)
                 }
             } else {
                 if(this.player[5] != "Trucker" && player[5] == "Trucker") {
-                    log.add('info',`You are now trucking.\nAuto refresh is available.`)
+                    log.add('info',`You are now trucking.\nAuto refresh is enabled.`)
                 } else if(this.player[5] == "Trucker" && player[5] != "Trucker") {
                     log.add('info',`You are no longer trucking. Auto refresh is disabled.`)
                 }
@@ -179,6 +179,8 @@ class ApiLink {
                     log.add('info',`Choo choo!`)
                 } else if(this.player[5] != "Airline Pilot" && player[5] == "Airline Pilot") {
                     log.add('info',`Have a safe flight!`)
+                } else if(this.player[5] != "Bus Driver" && player[5] == "Bus Driver") {
+                    log.add('info',`Vroom Vroom!`)
                 }
             }
             this.player = player

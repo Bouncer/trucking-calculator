@@ -80,6 +80,10 @@ export class BuildTarget {
             .on("click", removeHandler(this))
         this.element = element.node()
 
+        for(let tier in tiers) {
+            tiers[tier].sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
+        }
+
         let dropdown = makeDropdown(element)
         let itemSpan = dropdown.selectAll("div")
             .data(tiers)
