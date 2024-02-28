@@ -384,8 +384,8 @@
             "power": 1,
             "max": 1,
             "color": 8,
-            "x": 0,
-            "y": 0
+            "x": 1589.0988769531,
+            "y": -1713.2185058594
         },
         {
             "name": "The Undercover Storage Co.",
@@ -394,8 +394,8 @@
             "power": 1,
             "max": 1,
             "color": 8,
-            "x": 0,
-            "y": 0
+            "x": -4300.4321289063,
+            "y": 7407.4287109375
         },
         {
             "name": "Staunton Military Facility",
@@ -403,9 +403,9 @@
             "category": "staunton-military-facility",
             "power": 1,
             "max": 1,
-            "color": 8,
-            "x": 0,
-            "y": 0
+            "color": 4,
+            "x": -2915.3051757813,
+            "y": 7508.7041015625
         },
         {
             "name": "Radio Station",
@@ -413,9 +413,9 @@
             "category": "radio-station",
             "power": 1,
             "max": 1,
-            "color": 8,
-            "x": 0,
-            "y": 0
+            "color": 3,
+            "x": -2107.5363769531,
+            "y": 7250.9057617188
         },
         {
             "name": "Chinatown",
@@ -424,8 +424,8 @@
             "power": 1,
             "max": 1,
             "color": 8,
-            "x": 0,
-            "y": 0
+            "x": -2071.1101074219,
+            "y": 6625.369140625
         },
         {
             "name": "Shoreside Apartments",
@@ -434,8 +434,8 @@
             "power": 1,
             "max": 1,
             "color": 8,
-            "x": 0,
-            "y": 0
+            "x": -3758.060546875,
+            "y": 7388.93359375
         },
         {
             "name": "Staunton Casino",
@@ -444,8 +444,8 @@
             "power": 1,
             "max": 1,
             "color": 8,
-            "x": 0,
-            "y": 0
+            "x": -2628.431640625,
+            "y": 5877.154296875
         },
         {
             "name": "Cochrane Dam",
@@ -454,8 +454,8 @@
             "power": 1,
             "max": 1,
             "color": 8,
-            "x": 0,
-            "y": 0
+            "x": -4255.0014648438,
+            "y": 7696.3461914063
         },
         {
             "name": "Portland Docks",
@@ -464,8 +464,8 @@
             "power": 1,
             "max": 1,
             "color": 8,
-            "x": 0,
-            "y": 0
+            "x": -1559.1865234375,
+            "y": 6439.8857421875
         },
         {
             "name": "Fish Factory",
@@ -473,9 +473,9 @@
             "category": "fish-factory",
             "power": 1,
             "max": 1,
-            "color": 8,
-            "x": 0,
-            "y": 0
+            "color": 1,
+            "x": -2202.697265625,
+            "y": 6753.4174804688
         },
         {
             "name": "Staunton Docks",
@@ -484,8 +484,8 @@
             "power": 1,
             "max": 1,
             "color": 8,
-            "x": 0,
-            "y": 0
+            "x": -2631.7390136719,
+            "y": 6508.0190429688
         },
         {
             "name": "Staunton Mall",
@@ -494,8 +494,8 @@
             "power": 1,
             "max": 1,
             "color": 8,
-            "x": 0,
-            "y": 0
+            "x": -2894.3967285156,
+            "y": 6678.9565429688
         },
         {
             "name": "Francis Intl. Airport",
@@ -504,8 +504,8 @@
             "power": 1,
             "max": 1,
             "color": 8,
-            "x": 0,
-            "y": 0
+            "x": -3939.3083496094,
+            "y": 6844.8818359375
         },
         {
             "name": "AM Petroleum",
@@ -514,8 +514,8 @@
             "power": 1,
             "max": 1,
             "color": 8,
-            "x": 0,
-            "y": 0
+            "x": -4083.6000976563,
+            "y": 7206.6787109375
         },
         {
             "name": "LCFD",
@@ -524,8 +524,8 @@
             "power": 1,
             "max": 1,
             "color": 8,
-            "x": 0,
-            "y": 0
+            "x": -3157.9516601563,
+            "y": 6836.3637695313
         },
         {
             "name": "Rooftop",
@@ -534,8 +534,8 @@
             "power": 1,
             "max": 1,
             "color": 8,
-            "x": 0,
-            "y": 0
+            "x": -2979.8818359375,
+            "y": 5741.8139648438
         }
     ],
     "miners": [
@@ -735,9 +735,9 @@
             "category": "auto-yard",
             "power": 1,
             "max": 1,
-            "color": 8,
-            "x": 0,
-            "y": 0
+            "color": 4,
+            "x": -1931.2093505859,
+            "y": 7343.478515625
         },
         {
             "name": "Staunton Business Center",
@@ -745,9 +745,9 @@
             "category": "staunton-business-center",
             "power": 1,
             "max": 1,
-            "color": 8,
-            "x": 0,
-            "y": 0
+            "color": 3,
+            "x": -2847.7797851563,
+            "y": 6247.693359375
         },
         {
             "name": "Turtle Head Fishing Co. Portland",
@@ -755,9 +755,9 @@
             "category": "turtle-head-fishing-co.-portland",
             "power": 1,
             "max": 1,
-            "color": 8,
-            "x": 0,
-            "y": 0
+            "color": 1,
+            "x": -2104.8134765625,
+            "y": 6205.3720703125
         },
         {
             "name": "Turtle Head Fishing Co. Shoreside Vale",
@@ -765,9 +765,9 @@
             "category": "turtle-head-fishing-co.-shoreside-vale",
             "power": 1,
             "max": 1,
-            "color": 8,
-            "x": 0,
-            "y": 0
+            "color": 1,
+            "x": -3989.7124023438,
+            "y": 7098.4057617188
         }
     ],
     "items": [
