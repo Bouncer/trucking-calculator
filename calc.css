@@ -249,8 +249,6 @@ text.item-ingredient {
 }
 #totals th {
     padding-bottom: 10px;
-    padding-right: 10px;
-    padding-left: 10px;
 }
 td.building {
     padding-left: 5px !important;
@@ -493,4 +491,26 @@ a.bmc-btn svg {
   left: 16px;
   bottom: 16px;
   transition: opacity 5s;
+}
+#totals .ingredients {
+    text-align: left;
+}
+#totals .products {
+    text-align: left;
+}
+#totals .ingredient {
+    white-space: nowrap;
+}
+#totals .item {
+    white-space: nowrap;
+}
+#totals .notused {
+    color:#C99;
+    font-style: italic;
+}
+#totals .per-trip {
+    text-align: left;
+}
+.nopadding {
+    padding:0px!important;
 }

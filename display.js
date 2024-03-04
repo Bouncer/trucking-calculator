@@ -14,6 +14,7 @@ limitations under the License.*/
 import { toggleIgnoreHandler } from "./events.js"
 import { spec } from "./factory.js"
 import { Rational, zero, one } from "./rational.js"
+import { colors } from "./colors.js"
 
 class Header {
     constructor(text, colspan) {
@@ -21,6 +22,28 @@ class Header {
         this.colspan = colspan
     }
 }
+
+const colorList = [
+    colors.Red[700], // base
+    colors.Blue[700], // foundry
+    colors.Purple[800], // factory
+    colors.Green[700], // sorting
+    colors.Yellow[800], // filtering
+    colors.Brown[600], // quarry
+    colors.Orange[700], // sawmill
+    colors.Cyan[700], // treated water
+    colors.Pink[700], // house
+    colors["Deep Purple"][700], // illegal
+    colors["Blue Grey"][700], // oil
+    colors["Light Green"][700], // food
+    colors.Orange[700], // logs
+    colors.Cyan[800], // water
+    colors.Indigo[100],
+    colors["Deep Orange"][300],
+    colors.Lime[400],
+    colors.Indigo[200],
+    colors["Deep Orange"][300]
+]
 
 function changeOverclock(d) {
     let hundred = Rational.from_float(100)
@@ -41,14 +64,29 @@ function changeOverclock(d) {
 // elements.
 let displayedItems = []
 
+function renderIngredient(ingSpan) {
+    ingSpan.classed("ingredient", true)
+        .attr("title", d => d.item.name)
+        .text(d => d.total.toLocaleString() + "x " + d.item.name)
+        .filter(d => !d.used)
+        .classed("notused", true)
+}
+
+
+function renderTrips(ingSpan) {
+    ingSpan.classed("ingredient", true)
+        .attr("title", d => d.item.name)
+        .text(d => d.triptext)
+}
+
 export function displayItems(spec, totals, ignore) {
     let headers = [
-        new Header("Item",1),
-        new Header("Weight",1),
-        new Header("Amount", 1),
-        //new Header("Per Trip", 1),
-        //new Header("Trips", 1),
-        new Header("Total Weight", 1),
+        new Header("",1),
+        new Header("Recipe",1),
+        new Header("Ingredients",1),
+        new Header("Trips", 1),
+        new Header("Per Trip",1),
+        new Header("Produces",1),
         new Header("Cost", 1),
         new Header("Revenue", 1),
         new Header("Location", 2),
@@ -72,75 +110,63 @@ export function displayItems(spec, totals, ignore) {
     let totalAmount = 0
     let totalWeight = 0
     let totalTrips = 0
-    for (let i = 0; i < totals.topo.length; i++) {
-        let recipe = totals.topo[i]
-        for(let p in recipe.products) {
-            let product = recipe.products[p]
-            let display = {}
-            let rate = totals.rates.get(recipe)
-            let item = product.item
-            let itemRate = rate.mul(recipe.gives(item))
-            let overclock = spec.getOverclock(recipe)
-            let overclockString = overclock.mul(Rational.from_float(100)).toString()
-            let {average, peak} = spec.getPowerUsage(recipe, rate, totals.topo.length)
-            totalAveragePower = totalAveragePower.add(average)
-            totalPeakPower = totalPeakPower.add(peak)
-            
-            // item data
-            display.item = item
-            display.itemRate = itemRate.toFloat();
-            display.itemWeight = item.weight.toFloat();
-            display.weight = itemRate.mul(item.weight).toFloat()
-            
-            let beltCountExact = spec.getBeltCount(itemRate.mul(item.weight));
-            let beltCount = beltCountExact.toFloat();
-            display.trips = Math.ceil(beltCount);
-            display.pertrip = spec.getPerTrip(item.weight)
-            if(recipe.products.length > 1) {
-                var groupWeight = zero
-                var thisRate = zero
-                for(let i of recipe.products) {
-                    if(i.item.key == item.key) {
-                        thisRate = i.amount
-                    }
-                    groupWeight = groupWeight.add(i.item.weight.mul(i.amount))
-                }
-                let groupCapacity = spec.getPerTrip(groupWeight)
-                let beltCountExact = spec.getBeltCount(groupWeight.mul(rate));
-                let beltCount = beltCountExact.toFloat();
-                display.trips = Math.ceil(beltCount);
-                display.pertrip = groupCapacity * thisRate.toFloat()
-            }
-            display.cost = parseInt(recipe.cost) * rate
-            display.pays = parseInt(recipe.pays) * rate
 
-            display.multirow = false;
-            if(p > 0) {
-                display.cost = 0
-                display.pays = 0
-                display.trips = 0
-                display.multirow = true
-            }
-
-            // totals sum
-            totalCost += display.cost
-            totalRevenue += display.pays
-            totalTax += display.pays * (api.factiontax / 100)
-            totalProfit = totalRevenue - totalCost - totalTax
-            totalAmount += display.itemRate
-            totalWeight += display.weight
-            totalTrips += display.trips
-
-            display.recipe = recipe
-            display.ignore = ignore.has(recipe)
-            display.rate = rate
-            display.building = spec.getBuilding(recipe)
-            display.count = spec.getCount(recipe, rate)
-            display.overclock = overclockString
-            display.average = average
-            display.peak = peak
-            displayedItems.push(display)
+    for (let [recipe, rate] of totals.rates) {
+        let building = spec.getBuilding(recipe)
+        rate = totals.itemRates[recipe.key]['_rate']
+        let count = spec.getCount(recipe, rate)
+        let resource = false;
+        // sources
+        if(recipe.ingredients.length === 0) {
+            resource = true
         }
+        var tripDetails = null
+        var trips = null
+        var [tripDetails, trips] = spec.getMagicTrip(recipe, rate.toFloat())
+        let textoffset = (Math.max(recipe.ingredients.length, 1) * 10);
+
+        let display = {}
+
+        display.recipe = { ...recipe}
+
+        for(let item of display.recipe.ingredients) {
+            item.total = item.amount.mul(rate).toFloat()
+            if(item.item.key in totals.items) {
+                item.used = true
+            }
+        }
+        for(let item of display.recipe.products) {
+            item.total = item.amount.mul(rate).toFloat()
+            if(item.item.key in totals.items) {
+                item.used = true
+            }
+        }
+
+        display.cost = parseInt(recipe.cost) * rate
+        display.pays = parseInt(recipe.pays) * rate
+
+        // totals sum
+        totalCost += display.cost
+        totalRevenue += display.pays
+        totalTax += display.pays * (api.factiontax / 100)
+        totalProfit = totalRevenue - totalCost - totalTax
+        totalAmount += 0//display.itemRate
+        totalWeight += 0//display.weight
+        if(trips) {
+            totalTrips += trips
+        }
+
+        display.tripDetails = tripDetails
+        display.trips = trips
+        display.recipe = recipe
+        display.ignore = ignore.has(recipe)
+        display.rate = rate
+        display.building = spec.getBuilding(recipe)
+        display.count = spec.getCount(recipe, rate)
+        display.overclock = null
+        display.average = null//average
+        display.peak = null//peak
+        displayedItems.push(display)
     }
 
     let table = d3.select("table#totals")
@@ -159,45 +185,41 @@ export function displayItems(spec, totals, ignore) {
     let row = rows.enter()
         .append("tr")
             .classed("display-row", true)
+            
+    row.append("td")
+        .attr("style", d => ("width:10px; padding:0px; background-color: " + d3.rgb(colorList[d.building.color]).darker()))
+
+
     // items
     row.append("td")
         .classed("left-align", true)
         .append("tt")
             .classed("item", true)
-            .on("click", toggleIgnoreHandler)
-
-
-    // amount
-    row.append("td")
-        .classed("right-align", true)
-        .append("tt")
-            .classed("itemWeight", true)
+            //.on("click", toggleIgnoreHandler)
 
     // amount
     row.append("td")
         .classed("right-align", true)
         .append("tt")
-            .classed("amount", true)
-
-    // per trip
-    /*
-    row.append("td")
-        .classed("right-align", true)
-        .append("tt")
-            .classed("per-trip", true)
+            .classed("ingredients", true)
 
     // trips
     row.append("td")
         .classed("right-align", true)
         .append("tt")
             .classed("trips", true)
-    */
 
-    // weight
+    // per trip
+    row.append("td")
+    .classed("right-align", true)
+    .append("tt")
+        .classed("per-trip", true)
+
+    // amount
     row.append("td")
         .classed("right-align", true)
         .append("tt")
-            .classed("weight", true)
+            .classed("products", true)
 
     // cost
     row.append("td")
@@ -250,14 +272,33 @@ export function displayItems(spec, totals, ignore) {
 
     row.filter(d => d.multirow).classed("multirow",true)
 
+/*
+
     row.selectAll("img.item-icon")
         .classed("ignore", d => d.ignore)
         .attr("src", d => d.item.iconPath())
         .attr("title", d => d.item.name)
-
+*/
     row.selectAll("tt.item")
-        .html(d => d.item.name)
+        .html(d => `${d.rate.toFloat().toLocaleString()}x ${d.recipe.name}`)
 
+
+    let ingredients = row.selectAll("tt.ingredients")
+        .selectAll("div")
+        .data(d => d.recipe.ingredients)
+        .join("div")
+    renderIngredient(ingredients)
+
+    let products = row.selectAll("tt.products")
+        .selectAll("div")
+        .data(d => d.recipe.products)
+        .join("div")
+    renderIngredient(products)
+
+
+
+
+/*
     row.selectAll("tt.amount")
         .html(d => `${d.itemRate.toLocaleString()}<small>x</small>`)
 
@@ -266,14 +307,19 @@ export function displayItems(spec, totals, ignore) {
 
     row.selectAll("tt.weight")
         .html(d => d.weight >= 1000 ? `${Math.round(d.weight/1000).toLocaleString()} <small>t</small>` : `${(d.weight).toLocaleString()} <small>kg</small>`)
-
-    /*
-    row.selectAll("tt.trips").filter(d => !d.multirow)
+    */
+    row.selectAll("tt.trips").filter(d => d.trips)
         .html(d => `${d.trips.toLocaleString()}<small>x</small>`)
 
     row.selectAll("tt.per-trip")
         .html(d => d.pertrip > 0 ? `${d.pertrip.toLocaleString()}<small>x</small>` : ``)
-    */
+
+    let perTrip= row.selectAll("tt.per-trip")
+        .filter(d => d.trips)
+        .selectAll("div")
+        .data(d => d.tripDetails)
+        .join("div")
+    renderTrips(perTrip)
    
     row.selectAll("tt.cost").filter(d => !d.multirow)
         .text(d => d.cost > 0 ? `$ ${d.cost.toLocaleString()}` : `-`)
@@ -308,9 +354,7 @@ export function displayItems(spec, totals, ignore) {
     buildingRow.selectAll("tt.power")
         .text(d => spec.format.alignCount(d.average) + " MW")
 
-    d3.select("tt#total_amount").html(`${totalAmount.toLocaleString()}<small>x</small>`)
-    d3.select("tt#total_weight").html(totalWeight >= 1000 ? `${Math.round(totalWeight/1000).toLocaleString()} <small>t</small>` : `${(totalWeight).toLocaleString()} <small>kg</small>`)
-    //d3.select("tt#total_trips").html(`${totalTrips}<small>x</small>`)
+    d3.select("tt#total_trips").html(`${totalTrips}<small>x</small>`)
     d3.select("tt#total_cost").text(totalCost > 0 ? `$ ${totalCost.toLocaleString()}` : `-`)
     d3.select("tt#total_revenue").text(totalRevenue > 0 ? `$ ${totalRevenue.toLocaleString() }` : `-`)
     d3.select("tt#total_tax").text(`$ ${totalTax.toLocaleString()}`)

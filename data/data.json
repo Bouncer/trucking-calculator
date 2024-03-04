@@ -1693,7 +1693,7 @@
     },
     {
         "name": "Annis Zr-350",
-        "key_name": "vehicle-shipment|zr350|Annis ZR-350|car",
+        "key_name": "vehicle-shipment|zr350|annis-zr-350|car",
         "tier": "5",
         "category": "commercial",
         "weight": "5",
@@ -1732,6 +1732,14 @@
         "stack_size": "1000"
     },
     {
+        "name": "10F",
+        "key_name": "vehicle-shipment|10f|car",
+        "tier": "5",
+        "category": "commercial",
+        "weight": "5",
+        "stack_size": "1000"
+    },
+    {
         "name": "Diesel Fuel",
         "key_name": "jerry-can|HEAVY|Diesel",
         "tier": "7",
@@ -1749,7 +1757,7 @@
     },
     {
         "name": "Hijak Vertice",
-        "key_name": "vehicle-shipment|vertice|Hijak Vertice|car",
+        "key_name": "vehicle-shipment|vertice|hijak-vertice|car",
         "tier": "5",
         "category": "commercial",
         "weight": "5",
@@ -1757,7 +1765,7 @@
     },
     {
         "name": "Hvy Nightshark",
-        "key_name": "vehicle-shipment|nightshark|HVY Nightshark|car",
+        "key_name": "vehicle-shipment|nightshark|hvy-nightshark|car",
         "tier": "5",
         "category": "commercial",
         "weight": "5",
@@ -1773,7 +1781,7 @@
     },
     {
         "name": "Karin Futo",
-        "key_name": "vehicle-shipment|futo|Karin Futo|car",
+        "key_name": "vehicle-shipment|futo|karin-futo|car",
         "tier": "5",
         "category": "commercial",
         "weight": "5",
@@ -1781,7 +1789,7 @@
     },
     {
         "name": "Landstalker Xl",
-        "key_name": "vehicle-shipment|landstalker2|Landstalker XL|car",
+        "key_name": "vehicle-shipment|landstalker2|landstalker-xl|car",
         "tier": "5",
         "category": "commercial",
         "weight": "5",
@@ -4126,7 +4134,7 @@
         ],
         "product": [
         [
-            "vehicle-shipment|zr350|Annis ZR-350|car",
+            "vehicle-shipment|zr350|annis-zr-350|car",
             1
         ]
         ],
@@ -4229,7 +4237,7 @@
         ],
         "product": [
         [
-            "vehicle-shipment|nightshark|HVY Nightshark|car",
+            "vehicle-shipment|nightshark|hvy-nightshark|car",
             1
         ]
         ],
@@ -4278,7 +4286,7 @@
         ],
         "product": [
         [
-            "vehicle-shipment|futo|Karin Futo|car",
+            "vehicle-shipment|futo|karin-futo|car",
             1
         ]
         ],
@@ -4380,7 +4388,7 @@
         ],
         "product": [
         [
-            "vehicle-shipment|vertice|Hijak Vertice|car",
+            "vehicle-shipment|vertice|hijak-vertice|car",
             1
         ]
         ],
@@ -4482,12 +4490,61 @@
         ],
         "product": [
         [
-            "vehicle-shipment|landstalker2|Landstalker XL|car",
+            "vehicle-shipment|landstalker2|landstalker-xl|car",
             1
         ]
         ],
         "weight": 0,
         "cost": 32000000,
+        "pays": 0
+    },
+    {
+        "name": "10F",
+        "key_name": "10f",
+        "category": "vehicle-factory",
+        "time": 1,
+        "ingredients": [
+        [
+            "chassis",
+            1
+        ],
+        [
+            "wheels",
+            4
+        ],
+        [
+            "fiberglass",
+            25
+        ],
+        [
+            "refined-amalgam",
+            50
+        ],
+        [
+            "circuit",
+            5
+        ],
+        [
+            "battery",
+            1
+        ],
+        [
+            "refined-glass",
+            25
+        ],
+        [
+            "vehicle-framework",
+            1
+        ]
+        ],
+        "product": [
+        [
+            "vehicle-shipment|10f|car",
+            1
+        ]
+        ],
+        "weight": 0,
+        "cost": 22500000,
         "pays": 0
     },
     {

@@ -48,6 +48,19 @@ const colorList = [
     colors["Deep Orange"][300]
 ]
 
+var t = d3.transition()
+    .duration(2000);
+
+var svg = d3.select("svg#graph")
+    .attr("viewBox", `0,0,0,0`)
+    .style("width", `100px`)
+    .style("height", `100px`)
+
+var link = svg.append("g")
+        .classed("links", true)
+var rects = svg.append("g")
+        .classed("nodes", true)
+
 function makeGraph(totals, targets, ignore) {
     let outputs = []
     let rates = new Map()
@@ -259,6 +272,25 @@ function beltPath(d) {
 
 let color = d3.scaleOrdinal(colorList)
 
+function update(){
+    //renderTotals({}, {}, {});
+    var nodes = d3.selectAll(".node")
+                    .transition().duration(750)
+                    .attr('opacity', 1.0)
+                    .attr("transform", function (d) {
+                        if(d.node == 3){
+                            console.log(d.x, d.y);
+                        }
+                        return "translate(" + d.x + "," + d.y + ")";
+                    });
+
+    var links = d3.selectAll(".link")
+                    .transition().duration(750)
+                    .attr('d', path)
+                    .attr('opacity', 1.0)
+    
+}
+
 export function renderTotals(totals, targets, ignore) {
     let data = makeGraph(totals, targets, ignore)
 
@@ -306,12 +338,9 @@ export function renderTotals(totals, targets, ignore) {
     let height = largestEstimate * Math.min(1.5,maxRank/2)
     let svgHeight = Math.max(height + 300, window.innerHeight - 150)
 
-    let svg = d3.select("svg#graph")
-        .attr("viewBox", `-50,-50,${svgWidth},${svgHeight}`)
+    svg.attr("viewBox", `-50,-50,${svgWidth},${svgHeight}`)
         .style("width", `${svgWidth}px`)
         .style("height", `${svgHeight}px`)
-
-    svg.selectAll("g").remove()
 
     let sankey = d3.sankey()
         .nodeWidth(nodeWidth)
@@ -349,109 +378,178 @@ export function renderTotals(totals, targets, ignore) {
 
 
         //.text(nodeText)
-
+    console.log(nodes)
 
     // Link paths
-    let link = svg.append("g")
-        .classed("links", true)
-        .selectAll("g")
-        .data(links)
-        .join("g")
-            //.style("mix-blend-mode", "multiply")
-    link.append("path")
-        .classed('paths',true)
-        .attr("d", d3.sankeyLinkHorizontal())
-        .attr("fill", "none")
-        .attr("stroke-opacity", 0.3)
-        .attr("stroke", d => d3.color(colorList[d.source.building.color]).brighter())
-        .attr("stroke-width", d => Math.max(2, d.width) - 1)
-    // Don't draw belts if we have less than three pixels per belt.
-    if ((d => d.belts) >= 3) {
-        link.append("g")
-            .selectAll("path")
-            .data(d => d.belts)
-            .join("path")
+    let linkData = link.selectAll(".paths")
+        .data(links, function(d) { return `${d.source.key}-${d.target.key}`; })
+        .join(
+            function(enter) {
+                let l = enter.append('path')
+                .classed('paths',true)
+                .attr("d", d3.sankeyLinkHorizontal())
                 .attr("fill", "none")
                 .attr("stroke-opacity", 0.3)
-                .attr("d", beltPath)
-                .attr("stroke", d => color(d.link.source.name))
-                .attr("stroke-width", 1)
-    }
-    link.append("text")
-        .attr("x", d => d.source.x1 + 6)
-        .attr("y", d => d.y0)
-        .classed('paths',true)
-        .attr("dy", "0.35em")
-        .attr("text-anchor", "start")
-        .attr("class", "item-ingredient")
-        .text(d => d.name + ' ' + d.rate.ceil().toFloat().toLocaleString() + 'x, ' + (d.weight >= 1000 ? Math.round(d.weight.ceil().toFloat()/1000).toLocaleString() + 't' : d.weight.ceil().toFloat().toLocaleString() + 'kg'))
+                .attr("stroke", d => d3.color(colorList[d.source.building.color]).brighter())
+                .attr("stroke-width", d => Math.max(2, d.width) - 1)
+            // Don't draw belts if we have less than three pixels per belt.
+            /*
+            if ((d => d.belts) >= 3) {
+                l.append("g")
+                    .selectAll("path")
+                    .data(d => d.belts)
+                    .join("path")
+                        .attr("fill", "none")
+                        .attr("stroke-opacity", 0.3)
+                        .attr("d", beltPath)
+                        .attr("stroke", d => color(d.link.source.name))
+                        .attr("stroke-width", 1)
+            }*/
+            l.append("text")
+                .attr("x", d => d.source.x1 + 6)
+                .attr("y", d => d.y0)
+                .classed('paths',true)
+                .attr("dy", "0.35em")
+                .attr("text-anchor", "start")
+                .attr("class", "item-ingredient")
+                .text(d => d.name + ' ' + d.rate.ceil().toFloat().toLocaleString() + 'x, ' + (d.weight >= 1000 ? Math.round(d.weight.ceil().toFloat()/1000).toLocaleString() + 't' : d.weight.ceil().toFloat().toLocaleString() + 'kg'))
+        
+            
+              return l
+            },
+            function(update) {
+                update.select('.paths').transition(t)
+                //.attr("d", d3.sankeyLinkHorizontal())
+                .attr("x", d => d.x0)
+                .attr("y", d => d.y0)
+                .attr("stroke-width", d => Math.max(2, d.width) - 1)
+
+                update.select('.item-ingredient').transition(t)
+                .attr("x", d => d.source.x1 + 6)
+                .attr("y", d => d.y0)
+                .text(d => d.name + ' ' + d.rate.ceil().toFloat().toLocaleString() + 'x, ' + (d.weight >= 1000 ? Math.round(d.weight.ceil().toFloat()/1000).toLocaleString() + 't' : d.weight.ceil().toFloat().toLocaleString() + 'kg'))
+        
+
+              return update
+            },
+            function(exit) {
+              return exit.transition(t).style('opacity',0).remove();
+            }
+          )
 
 
     // Node rects
-    let rects = svg.append("g")
-        .classed("nodes", true)
-        .selectAll("rect")
-        .data(nodes)
-        .join("g")
-            .classed("node", true)
-            .call(d3.drag()
-            .subject(d => d)
-            .on('start', function () { this.parentNode.appendChild(this); })
-            .on('drag', dragmove))
+    let rectsData = rects.selectAll(".node")
+        .data(nodes, function(d) { return d.key; })
+        .join(
+            function(enter) {
 
-    rects.append("rect")
-        .attr("x", d => d.x0)
-        .attr("y", d => d.y0)
-        .attr("height", d => Math.max(d.y1 - d.y0, minNodeHeight))
-        .attr("width", d => d.x1 - d.x0)
-        .attr("fill", d => d.name == "output" ? d3.rgb("#AAAAAA").darker() : d3.rgb(colorList[d.building.color]).darker())
-        .attr("stroke", d => d.name == "output" ? d3.rgb("#AAAAAA") : d3.color(colorList[d.building.color]))
-    rects.filter(d => d.name != "output")
-        .append("image")
-            .classed("ignore", d => ignore.has(d.recipe))
-            .attr("x", d => d.x0 + 2)
-            .attr("y", d => (d.y0 + d.y1) / 2 - d.textoffset + 0)
-            .attr("height", iconSize)
-            .attr("width", iconSize)
-            .attr("xlink:href", d => (d.count.isZero() ? `` : `${d.building.iconPath()}`))
-    rects.filter(d => d.name != "output").append("text")
-            .attr("x", d => d.x0 + iconSize + 4)
-            .attr("y", d => (d.y0 + d.y1) / 2 - d.textoffset - 10)
-            .attr("dy", "0.35em")
-            .attr("text-anchor", "start")
-            .style("font-size","8px")
-            .text(d => d.debug)
-    rects.filter(d => d.name != "output").append("text")
-        .attr("x", d => d.x0 + iconSize + 4)
-        .attr("y", d => (d.y0 + d.y1) / 2 - d.textoffset + 0)
-        .attr("dy", "0.35em")
-        .attr("text-anchor", "start")
-        .attr("class", "item-name")
-        .text(d => (d.count.isZero() ? `${d.name}` : `${d.rate.toFloat().toLocaleString()}x ${d.name}`))
-    rects.append("text")
+                let r = enter.append('g')
+                .classed("node", true)
+                .call(d3.drag()
+                .subject(d => d)
+                .on('start', function () { this.parentNode.appendChild(this); })
+                .on('drag', dragmove))
+        
+                r.append("rect")
+                    .attr("x", d => d.x0)
+                    .attr("y", d => d.y0)
+                    .attr("height", d => Math.max(d.y1 - d.y0, minNodeHeight))
+                    .attr("width", d => d.x1 - d.x0)
+                    .attr("fill", d => d.name == "output" ? d3.rgb("#AAAAAA").darker() : d3.rgb(colorList[d.building.color]).darker())
+                    .attr("stroke", d => d.name == "output" ? d3.rgb("#AAAAAA") : d3.color(colorList[d.building.color]))
+                    .style('opacity',0)
+                    .transition(t).style('opacity',1)
+                r.filter(d => d.name != "output")
+                    .append("image")
+                        .classed("ignore", d => ignore.has(d.recipe))
+                        .attr("x", d => d.x0 + 2)
+                        .attr("y", d => (d.y0 + d.y1) / 2 - d.textoffset + 0)
+                        .attr("height", iconSize)
+                        .attr("width", iconSize)
+                        .attr("xlink:href", d => (d.count.isZero() ? `` : `${d.building.iconPath()}`))
+                r.filter(d => d.name != "output").append("text")
+                        .attr("x", d => d.x0 + iconSize + 4)
+                        .attr("y", d => (d.y0 + d.y1) / 2 - d.textoffset - 10)
+                        .attr("dy", "0.35em")
+                        .attr("text-anchor", "start")
+                        .style("font-size","8px")
+                        .text(d => d.debug)
+                r.filter(d => d.name != "output").append("text")
+                    .attr("x", d => d.x0 + iconSize + 4)
+                    .attr("y", d => (d.y0 + d.y1) / 2 - d.textoffset + 0)
+                    .attr("dy", "0.35em")
+                    .attr("text-anchor", "start")
+                    .attr("class", "item-name")
+                    .text(d => (d.count.isZero() ? `${d.name}` : `${d.rate.toFloat().toLocaleString()}x ${d.name}`))
+                r.append("text")
+                            .attr("x", d => d.x0 + iconSize + 4)
+                            .attr("y", d => (d.y0 + d.y1) / 2 - d.textoffset + 12)
+                            .attr("dy", "0.35em")
+                            .attr("text-anchor", "start")
+                            .attr("class", "item-location")
+                            .text(d => (d.count.isZero() ? `${d.building.name}` : `${d.building.name}`))
+                r.filter(d => d.pertrip).append("text")
+                    .attr("x", d => d.x0 + iconSize + 4)
+                    .attr("y", d => (d.y0 + d.y1) / 2 - d.textoffset + 24)
+                    .attr("dy", "0.35em")
+                    .attr("text-anchor", "start")
+                    .attr("class", "item-ingredient")
+                    .text(d => `${d.trips} trip` + (d.trips > 1 ? `s` : ``) + ` of` + (d.trips > 1 ? ` max` : ``) + `:` + (d.resource || (d.pertrip && d.pertrip.length <= 1) ? ` ${d.pertrip[0].triptext.toLocaleString()}` : ``))
+        
+
+              return r
+            },
+            function(update) {
+
+            update.select('rect').transition(t)
+                .attr("x", d => d.x0)
+                .attr("y", d => d.y0)
+                .attr("height", d => Math.max(d.y1 - d.y0, minNodeHeight))
+                .attr("width", d => d.x1 - d.x0)
+            update.select('image').transition(t)
+                .attr("x", d => d.x0 + 2)
+                .attr("y", d => (d.y0 + d.y1) / 2 - d.textoffset + 0)
+            update.select('.item-name').transition(t)
+                .attr("x", d => d.x0 + iconSize + 4)
+                .attr("y", d => (d.y0 + d.y1) / 2 - d.textoffset + 0)
+                .text(d => (d.count.isZero() ? `${d.name}` : `${d.rate.toFloat().toLocaleString()}x ${d.name}`))
+            update.select('.item-location').transition(t)
                 .attr("x", d => d.x0 + iconSize + 4)
                 .attr("y", d => (d.y0 + d.y1) / 2 - d.textoffset + 12)
-                .attr("dy", "0.35em")
-                .attr("text-anchor", "start")
-                .attr("class", "item-location")
                 .text(d => (d.count.isZero() ? `${d.building.name}` : `${d.building.name}`))
-    rects.filter(d => d.pertrip).append("text")
-        .attr("x", d => d.x0 + iconSize + 4)
-        .attr("y", d => (d.y0 + d.y1) / 2 - d.textoffset + 24)
-        .attr("dy", "0.35em")
-        .attr("text-anchor", "start")
-        .attr("class", "item-ingredient")
-        .text(d => `${d.trips} trip` + (d.trips > 1 ? `s` : ``) + ` of` + (d.trips > 1 ? ` max` : ``) + `:` + (d.resource || (d.pertrip && d.pertrip.length <= 1) ? ` ${d.pertrip[0].triptext.toLocaleString()}` : ``))
-    rects.filter(d => !d.resource && d.pertrip && d.pertrip.length > 1).append("g").selectAll("text").data(d => d.pertrip).join("text")
+            update.select('.item-ingredient').transition(t)
+                .attr("x", d => d.x0 + iconSize + 4)
+                .attr("y", d => (d.y0 + d.y1) / 2 - d.textoffset + 24)
+                .text(d => `${d.trips} trip` + (d.trips > 1 ? `s` : ``) + ` of` + (d.trips > 1 ? ` max` : ``) + `:` + (d.resource || (d.pertrip && d.pertrip.length <= 1) ? ` ${d.pertrip[0].triptext.toLocaleString()}` : ``))
+
+
+              return update
+            },
+            function(exit) {
+              return exit.transition(t).style('opacity',0).remove();
+            }
+          )
+
+
+        
+        
+        
+        
+        /*
+        r.filter(d => !d.resource && d.pertrip && d.pertrip.length > 1).append("g").selectAll("text").data(d => d.pertrip).join("text")
             .attr("x", d => d.x0 + iconSize + 4)
             .attr("y", d => (d.y0 + d.y1) / 2 - d.textoffset + 30)
             .attr("class", "item-ingredient")
             .attr("text-anchor", "start")
             .text(d => `${d.item.name}: ${d.triptext}`)
+*/
+
         
             
 
     // Overlay transparent rect on top of each node, for click events.
+    /*
     let rectElements = svg.selectAll("g.node").nodes()
     let overlayData = []
     // Flash the graph tab to be visible, so that the graph is laid out and
@@ -468,7 +566,7 @@ export function renderTotals(totals, targets, ignore) {
         }
     }
     graphTab.style("display", origDisplay)
-
+*/
 
     // update map
     updateMap(links)
