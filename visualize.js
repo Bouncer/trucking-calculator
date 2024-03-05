@@ -48,9 +48,6 @@ const colorList = [
     colors["Deep Orange"][300]
 ]
 
-var t = d3.transition()
-    .duration(2000);
-
 var svg = d3.select("svg#graph")
     .attr("viewBox", `0,0,0,0`)
     .style("width", `100px`)
@@ -272,26 +269,11 @@ function beltPath(d) {
 
 let color = d3.scaleOrdinal(colorList)
 
-function update(){
-    //renderTotals({}, {}, {});
-    var nodes = d3.selectAll(".node")
-                    .transition().duration(750)
-                    .attr('opacity', 1.0)
-                    .attr("transform", function (d) {
-                        if(d.node == 3){
-                            console.log(d.x, d.y);
-                        }
-                        return "translate(" + d.x + "," + d.y + ")";
-                    });
-
-    var links = d3.selectAll(".link")
-                    .transition().duration(750)
-                    .attr('d', path)
-                    .attr('opacity', 1.0)
-    
-}
-
 export function renderTotals(totals, targets, ignore) {
+
+    var anim = d3.transition()
+    .duration(2000);
+
     let data = makeGraph(totals, targets, ignore)
 
     let maxRank = 0
@@ -369,31 +351,28 @@ export function renderTotals(totals, targets, ignore) {
         var xTranslate = d.x0 - rectX;
         d3.select(this).attr('transform', "translate(" + (xTranslate) + "," + (yTranslate) + ")");
         link.selectAll('.paths').attr('d', d3.sankeyLinkHorizontal());
-        link.selectAll('text')
+        link.selectAll('.path-text')
         .attr("x", d => d.source.x1 + 6)
         .attr("y", d => d.y0)
         sankey.update(data);
     }
     
-
-
-        //.text(nodeText)
-    console.log(nodes)
-
     // Link paths
-    let linkData = link.selectAll(".paths")
+    let linkData = link.selectAll("g")
         .data(links, function(d) { return `${d.source.key}-${d.target.key}`; })
         .join(
             function(enter) {
-                let l = enter.append('path')
+                let l = enter.append('g')
+                l.append('path')
                 .classed('paths',true)
                 .attr("d", d3.sankeyLinkHorizontal())
                 .attr("fill", "none")
                 .attr("stroke-opacity", 0.3)
                 .attr("stroke", d => d3.color(colorList[d.source.building.color]).brighter())
                 .attr("stroke-width", d => Math.max(2, d.width) - 1)
+
             // Don't draw belts if we have less than three pixels per belt.
-            /*
+/*
             if ((d => d.belts) >= 3) {
                 l.append("g")
                     .selectAll("path")
@@ -404,36 +383,35 @@ export function renderTotals(totals, targets, ignore) {
                         .attr("d", beltPath)
                         .attr("stroke", d => color(d.link.source.name))
                         .attr("stroke-width", 1)
-            }*/
+            }
+        */
             l.append("text")
                 .attr("x", d => d.source.x1 + 6)
                 .attr("y", d => d.y0)
-                .classed('paths',true)
+                .classed('path-text',true)
                 .attr("dy", "0.35em")
                 .attr("text-anchor", "start")
-                .attr("class", "item-ingredient")
                 .text(d => d.name + ' ' + d.rate.ceil().toFloat().toLocaleString() + 'x, ' + (d.weight >= 1000 ? Math.round(d.weight.ceil().toFloat()/1000).toLocaleString() + 't' : d.weight.ceil().toFloat().toLocaleString() + 'kg'))
         
             
               return l
             },
             function(update) {
-                update.select('.paths').transition(t)
-                //.attr("d", d3.sankeyLinkHorizontal())
-                .attr("x", d => d.x0)
-                .attr("y", d => d.y0)
+                update.select('.paths').transition(anim)
+                .attr("d", d3.sankeyLinkHorizontal())
                 .attr("stroke-width", d => Math.max(2, d.width) - 1)
 
-                update.select('.item-ingredient').transition(t)
+                update.select('.path-text').transition(anim)
                 .attr("x", d => d.source.x1 + 6)
                 .attr("y", d => d.y0)
                 .text(d => d.name + ' ' + d.rate.ceil().toFloat().toLocaleString() + 'x, ' + (d.weight >= 1000 ? Math.round(d.weight.ceil().toFloat()/1000).toLocaleString() + 't' : d.weight.ceil().toFloat().toLocaleString() + 'kg'))
         
+                sankey.update(data);
 
               return update
             },
             function(exit) {
-              return exit.transition(t).style('opacity',0).remove();
+              return exit.transition(anim).style('opacity',0).remove();
             }
           )
 
@@ -458,8 +436,8 @@ export function renderTotals(totals, targets, ignore) {
                     .attr("width", d => d.x1 - d.x0)
                     .attr("fill", d => d.name == "output" ? d3.rgb("#AAAAAA").darker() : d3.rgb(colorList[d.building.color]).darker())
                     .attr("stroke", d => d.name == "output" ? d3.rgb("#AAAAAA") : d3.color(colorList[d.building.color]))
-                    .style('opacity',0)
-                    .transition(t).style('opacity',1)
+                    .style('opacity',1)
+
                 r.filter(d => d.name != "output")
                     .append("image")
                         .classed("ignore", d => ignore.has(d.recipe))
@@ -496,38 +474,51 @@ export function renderTotals(totals, targets, ignore) {
                     .attr("text-anchor", "start")
                     .attr("class", "item-ingredient")
                     .text(d => `${d.trips} trip` + (d.trips > 1 ? `s` : ``) + ` of` + (d.trips > 1 ? ` max` : ``) + `:` + (d.resource || (d.pertrip && d.pertrip.length <= 1) ? ` ${d.pertrip[0].triptext.toLocaleString()}` : ``))
-        
+                r.filter(d => !d.resource && d.pertrip && d.pertrip.length > 1).append("g").selectAll("text").data(d => d.pertrip).join("text")
+                    .attr("x", d => d.x0 + iconSize + 4)
+                    .attr("y", d => (d.y0 + d.y1) / 2 - d.textoffset + 30)
+                    .attr("class", "item-trips")
+                    .attr("text-anchor", "start")
+                    .text(d => `${d.item.name}: ${d.triptext}`)
 
               return r
             },
             function(update) {
 
-            update.select('rect').transition(t)
+            update.attr("transform","").call(d3.drag()
+            .subject(d => d)
+            .on('start', function () { this.parentNode.appendChild(this); })
+            .on('drag', dragmove))
+            .transition(anim)
+            update.select('rect').transition(anim)
                 .attr("x", d => d.x0)
                 .attr("y", d => d.y0)
                 .attr("height", d => Math.max(d.y1 - d.y0, minNodeHeight))
                 .attr("width", d => d.x1 - d.x0)
-            update.select('image').transition(t)
+            update.select('image').transition(anim)
                 .attr("x", d => d.x0 + 2)
                 .attr("y", d => (d.y0 + d.y1) / 2 - d.textoffset + 0)
-            update.select('.item-name').transition(t)
+            update.select('.item-name').transition(anim)
                 .attr("x", d => d.x0 + iconSize + 4)
                 .attr("y", d => (d.y0 + d.y1) / 2 - d.textoffset + 0)
                 .text(d => (d.count.isZero() ? `${d.name}` : `${d.rate.toFloat().toLocaleString()}x ${d.name}`))
-            update.select('.item-location').transition(t)
+            update.select('.item-location').transition(anim)
                 .attr("x", d => d.x0 + iconSize + 4)
                 .attr("y", d => (d.y0 + d.y1) / 2 - d.textoffset + 12)
                 .text(d => (d.count.isZero() ? `${d.building.name}` : `${d.building.name}`))
-            update.select('.item-ingredient').transition(t)
+            update.select('.item-ingredient').transition(anim)
                 .attr("x", d => d.x0 + iconSize + 4)
                 .attr("y", d => (d.y0 + d.y1) / 2 - d.textoffset + 24)
                 .text(d => `${d.trips} trip` + (d.trips > 1 ? `s` : ``) + ` of` + (d.trips > 1 ? ` max` : ``) + `:` + (d.resource || (d.pertrip && d.pertrip.length <= 1) ? ` ${d.pertrip[0].triptext.toLocaleString()}` : ``))
-
+            update.select('g').selectAll(".item-trips").transition(anim)
+                    .attr("x", d => d.x0 + iconSize + 4)
+                    .attr("y", d => (d.y0 + d.y1) / 2 - d.textoffset + 30)
+                    .text(d => `${d.item.name}: ${d.triptext}`)
 
               return update
             },
             function(exit) {
-              return exit.transition(t).style('opacity',0).remove();
+              return exit.transition(anim).style('opacity',0).remove();
             }
           )
 

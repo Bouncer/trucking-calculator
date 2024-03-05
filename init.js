@@ -37,7 +37,7 @@ export function init() {
     log.add('log','Update info Feb 25th: \n- Added usage of storage items for planning \n- Added auto refresh timers\n- Added api charge estimator\n- Added check for online and trucking \n- Added setting to hide non-trucking items \n- Added setting to disable storage usage \n- Added player info in header \n- Added missing recipes \n- Added preference to use items in inventory or trucks over other storages.\n- Fixed missing item names in storages (Please report if other items are missing) \n- Removed trip info from starting recipes for now due to errors.')
     log.add('log','Update info Feb 27th: \n- Fixed algorithm miscalculation for large routes. \n- Fixed trip details for starting items')
     log.add('log','Update info Feb 28th: \n- Added vehicle and liberty recipes and items')
-    log.add('info','Update info March 4th: \n- Fixed vehicle recipe issues\n- Fixed items page amounts\n- Added trip details to items page')
+    log.add('info','Update info March 5th: \n- Added planner animations\n- Added trip details to items page\n- Fixed vehicle recipe issues\n- Fixed items page amounts\n- Fixed Gravel Pulverizing calculation\n- Fixed ignoring of old factions\n- Fixed item names of old factions')
     let settings = loadSettings(window.location.hash)
     loadData(settings)
 }

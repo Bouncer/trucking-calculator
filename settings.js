@@ -378,7 +378,7 @@ function renderConfiguration(settings) {
     spec.capacity.belt = spec.belts.get(beltKey)
     beltHandler(spec.capacity.belt)
 
-    if(settings.has("premium") || (loadCache && spec.cache.premium === 0)) {
+    if(settings.get("premium") == "no" || (loadCache && spec.cache.premium === 0)) {
         d3.select("#premium").property("checked",false)
         spec.capacity.premium = 0
     } else {

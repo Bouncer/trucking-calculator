@@ -232,9 +232,21 @@ class FactorySpecification {
         }
         // theoretical maximum rate
         var recipeWeight = 0
-        for(let i of items) {
+        for(let i of recipe.ingredients) {
             recipeWeight += i.weight.toFloat()
         }
+
+        //
+        var prodWeight = 0
+        for(let i of recipe.products) {
+            prodWeight += i.weight.toFloat()
+        }
+
+        if(prodWeight > recipeWeight) {
+            recipeWeight = prodWeight
+        }
+
+        
         items.sort((a,b) => b.amount.toFloat() - a.amount.toFloat())
         if(recipeWeight > 0) {
             var tripRate = Math.floor(this.capacity.total / recipeWeight);

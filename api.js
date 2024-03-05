@@ -236,18 +236,17 @@ class ApiLink {
         item = item.replace('_premium','').replace('fridge_','').replace('military_','').replace('mechanicals_','').replace('petrochem_','').replace('crafted_','').replace(new RegExp('^hide.*'),'hide').replaceAll('_','-')
         let parsedItem = spec.items.get(item) || false
 
-        if(parsedItem && this.usestorage == true) {
+        // ignore inaccessible factions
+        let useFaction = true
+        if(location.key_name.startsWith('storage|faq_') && this.factionid != 'None' && this.factionid != location.key_name.replace('storage|faq_','')) {
+            useFaction = false
+        }
+
+        if(parsedItem && this.usestorage == true && useFaction) {
             spec.setStorage(item, rate, location)
         }
 
-        // ignore inaccessible factions
-        if(location.key_name.startsWith('storage|faq_')) {
-            if(this.factionid == 'None' || this.factionid == location.key_name.replace('storage|faq_','')) {
-                return [item, parsedItem.name]
-            } else {
-                return [item, false]
-            }
-        }
+
         
         return [item, parsedItem.name]
     }
@@ -550,9 +549,9 @@ class ApiLink {
         const prev = this.charges
         this.charges = charges
         if(charges == 1) {
-            log.add('warning',`You have ${charges.toLocaleString()} charge remaining`)
+            log.add('warning',`You have ${charges.toLocaleString()} charge remaining. Renew with /api private refill`)
         } else if(charges <= 10) {
-            log.add('info',`You have ${charges.toLocaleString()} charges remaining`)
+            log.add('info',`You have ${charges.toLocaleString()} charges remaining. Renew with /api private refill`)
         }
         d3.selectAll(".charges").style("display","inline-block")        
         d3.selectAll(".charges").transition().tween("text", () => {
