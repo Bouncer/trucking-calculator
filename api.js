@@ -54,6 +54,29 @@ class ApiLink {
 //        this.updateCapacity()
     }
 
+    roundedTime() {
+        return new Date(Math.floor(new Date() / 60000) * 60000)
+    }
+
+    timedUpdateSolution() {
+        // check if auto update in queue
+        if(this.connected && this.player && this.player[5] == 'Trucker') {
+            var now = Date.now()
+            if(this.inventory && this.autorefresh.inventory > 0 && (now - new Date(this.inventory.t).getTime() - this.autorefresh.inventory) > -5000) {
+                return false
+            }
+            if(this.vehicles && this.autorefresh.vehicles > 0 && (now - new Date(this.vehicles.t).getTime() - this.autorefresh.vehicles) > -5000) {
+                return false
+            }
+            if(this.storage && this.autorefresh.storage > 0 && (now - new Date(this.storage.t).getTime() - this.autorefresh.storage) > -5000) {
+                return false
+            }
+            spec.updateSolution()
+        } else {
+            spec.updateSolution()
+        }
+    }
+
     updateTimers() {
         if(this.storage) {
             d3.selectAll(".ago-storage").text(this.getTimeSince(this.storage.t))
@@ -81,19 +104,23 @@ class ApiLink {
         // if player is online and trucking
         if(this.connected && this.player && this.player[5] == 'Trucker') {
             
-            if(this.inventory && this.autorefresh.inventory > 0 && (now - new Date(this.inventory.t).getTime()) > this.autorefresh.inventory) {
+            if(this.inventory && !this.inventory.updating && this.autorefresh.inventory > 0 && (now - new Date(this.inventory.t).getTime()) > this.autorefresh.inventory) {
+                this.inventory.updating = true
                 this.getInventory()
                 return true
             }
-            if(this.vehicles && this.autorefresh.vehicles > 0 && (now - new Date(this.vehicles.t).getTime()) > this.autorefresh.vehicles) {
+            if(this.vehicles && !this.vehicles.updating && this.autorefresh.vehicles > 0 && (now - new Date(this.vehicles.t).getTime()) > this.autorefresh.vehicles) {
+                this.vehicles.updating = true
                 this.getVehicles()
                 return true
             }
-            if(this.storage && this.autorefresh.storage > 0 && (now - new Date(this.storage.t).getTime()) > this.autorefresh.storage) {
+            if(this.storage && !this.storage.updating && this.autorefresh.storage > 0 && (now - new Date(this.storage.t).getTime()) > this.autorefresh.storage) {
+                this.storage.updating = true
                 this.getStorage()
                 return true
             }
-            if(this.wealth && this.autorefresh.wealth > 0 && (now - new Date(this.wealth.t).getTime()) > this.autorefresh.wealth) {
+            if(this.wealth && !this.wealth.updating && this.autorefresh.wealth > 0 && (now - new Date(this.wealth.t).getTime()) > this.autorefresh.wealth) {
+                this.wealth.updating = true
                 this.getWealth()
                 return true
             }
@@ -135,7 +162,7 @@ class ApiLink {
           ];
 
         const seconds = Math.floor((Date.now() - new Date(date).getTime()) / 1000);
-        if(seconds < 2) { return `Loading` }
+        if(seconds <= 60) { return `Up to date` }
         const interval = intervals.find(i => i.seconds < seconds);
         const count = Math.floor(seconds / interval.seconds);
         return `${count} ${interval.label}${count !== 1 ? 's' : ''} ago`;
@@ -264,7 +291,7 @@ class ApiLink {
         // actually get data
         fetch(`${this.baseURL}path=wealth/${this.userid}&apikey=${this.apikey}`, {method: "GET"}).then(r=>r.json()).then(async data => {
             if(data.code == 200) {
-                this.wealth = {'t':new Date(), 'd': data}
+                this.wealth = {'t': this.roundedTime(), 'd': data}
                 localStorage.setItem("wealth", JSON.stringify(this.wealth));
 
                 log.add('success',`Loaded wealth of $ ${data.wallet.toLocaleString()}`)
@@ -328,9 +355,9 @@ class ApiLink {
         fetch(`${this.baseURL}path=storages/${this.userid}&apikey=${this.apikey}`, {method: "GET"}).then(r=>r.json()).then(async data => {
             if(data.code == 200) {
                 if(this.storage) {
-                    this.storage = {'t':new Date(), 'h': this.storage.d, 'd': data}
+                    this.storage = {'t': this.roundedTime(), 'h': this.storage.d, 'd': data}
                 } else {
-                    this.storage = {'t':new Date(), 'd': data}
+                    this.storage = {'t': this.roundedTime(), 'd': data}
                 }
                 localStorage.setItem("storage", JSON.stringify(this.storage));
 
@@ -397,7 +424,7 @@ class ApiLink {
             storageItemRow.append("td").append("tt").text(d => `${d[1].name}`)
             storageItemRow.append("td").append("tt").text(d => `${d[1].amount.toLocaleString()}x`)
         if(update) {
-            spec.updateSolution()
+            this.timedUpdateSolution()
         }
     }
 
@@ -406,9 +433,9 @@ class ApiLink {
         fetch(`${this.baseURL}path=trunks/${this.userid}&apikey=${this.apikey}`, {method: "GET"}).then(r=>r.json()).then(async data => {
             if(data.code == 200) {
                 if(this.vehicles) {
-                    this.vehicles = {'t':new Date(), 'h': this.vehicles.d, 'd': data}
+                    this.vehicles = {'t': this.roundedTime(), 'h': this.vehicles.d, 'd': data}
                 } else {
-                    this.vehicles = {'t':new Date(), 'd': data}
+                    this.vehicles = {'t': this.roundedTime(), 'd': data}
                 }
                 localStorage.setItem("vehicles", JSON.stringify(this.vehicles));
                 log.add('success',`Loaded ${data.trunks.length} vehicles`)
@@ -474,7 +501,7 @@ class ApiLink {
             storageItemRow.append("td").append("tt").text(d => `${d[1].name}`)
             storageItemRow.append("td").append("tt").text(d => `${d[1].amount.toLocaleString()}x`)
         if(update) {
-            spec.updateSolution()
+            this.timedUpdateSolution()
         }
     }
 
@@ -483,9 +510,9 @@ class ApiLink {
         fetch(`${this.baseURL}path=data/${this.userid}&apikey=${this.apikey}`, {method: "GET"}).then(r=>r.json()).then(async data => {
             if(data.code == 200) {
                 if(this.inventory) {
-                    this.inventory = {'t':new Date(), 'h': this.inventory.d, 'd': data}
+                    this.inventory = {'t': this.roundedTime(), 'h': this.inventory.d, 'd': data}
                 } else {
-                    this.inventory = {'t':new Date(), 'd': data}
+                    this.inventory = {'t': this.roundedTime(), 'd': data}
                 }
                 localStorage.setItem("inventory", JSON.stringify(this.inventory));
                 log.add('success',`Loaded ${Object.keys(data.data.inventory).length} items in inventory`)
@@ -541,7 +568,7 @@ class ApiLink {
             storageItemRow.append("td").append("tt").text(d => `${d[1].name}`)
             storageItemRow.append("td").append("tt").text(d => `${d[1].amount.toLocaleString()}x`)
         if(update) {
-            spec.updateSolution()
+            this.timedUpdateSolution()
         }
     }
 
@@ -568,6 +595,7 @@ class ApiLink {
         this.userid = event.target.value
         localStorage.setItem("userid", this.userid);
         log.add('log',`Set userid to ${this.userid}`)
+        this.getPlayers()
         if(this.connected) {
             this.showStorageTab()
         }
@@ -597,6 +625,7 @@ class ApiLink {
                 localStorage.setItem("apikey",key)
                 d3.select("#api-valid").style("display","inline-block")
                 d3.select("#api-invalid").style("display","none")
+
                 if(this.userid) {
                     this.showStorageTab();
                 }
