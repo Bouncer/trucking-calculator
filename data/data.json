@@ -2440,8 +2440,26 @@
         "pays": 0
     },
     {
-        "name": "Refine Raw Ore Mix",
+        "name": "Refine Copper",
         "key_name": "refined-copper",
+        "category": "ls-foundry",
+        "time": 1,
+        "ingredients": [
+            [
+                "scrap-copper",
+                2
+            ]
+        ],
+        "product": [
+            ["refined-copper",1]
+        ],
+        "weight": 0,
+        "cost": 1000,
+        "pays": 0
+    },
+    {
+        "name": "Refine Raw Ore Mix",
+        "key_name": "refined-raw-ore-mix",
         "category": "ls-foundry",
         "time": 1,
         "ingredients": [
