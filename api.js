@@ -43,7 +43,7 @@ class ApiLink {
         this.playeronline = false
         this.playerjob = null
         this.player = null
-        this.server = ""
+        this.server = "beta"
         this.autorefresh = {
             'inventory': 0,
             'vehicles': 0,
@@ -171,16 +171,23 @@ class ApiLink {
 
     getPlayers() {
         // actually get data
+
+        if(!this.player) {
+            if(this.server == "") {
+                this.server = "beta"
+            } else {
+                this.server = ""
+            }
+        }
+        
         fetch(`${this.baseURL}path=widget/players.json&server=${this.server}`, {method: "GET"}).then(r=>r.json()).then(async data => {
             if(data) {
                 this.players = {'t':new Date(), 'd': data}
                 localStorage.setItem("players", JSON.stringify(this.players));
                 //log.add('success',`Loaded online player data`)
                 this.parsePlayers()
-            } else {
-                log.add('warning',`Server error ${data.code}`)
             }
-        })
+        })        
     }
 
     parsePlayers() {
@@ -190,11 +197,6 @@ class ApiLink {
                 log.add('warning',`You are no longer in game`)
             }
             this.player = null
-            if(this.server == "") {
-                this.server = "beta"
-            } else {
-                this.server = ""
-            }
         } else {
             if(!this.player) {
                 if(player[5] == "Trucker") {
