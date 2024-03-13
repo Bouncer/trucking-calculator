@@ -40,7 +40,8 @@ export function init() {
     log.add('log','Update info March 5th: \n- Added planner animations\n- Added trip details to items page\n- Fixed vehicle recipe issues\n- Fixed items page amounts\n- Fixed Gravel Pulverizing calculation\n- Fixed ignoring of old factions\n- Fixed item names of old factions')
     log.add('log','Update info March 7th: \n- Added auto update synchronisation\n- Increased update speed')
     log.add('log','Update info March 8th: \n- Fixed auto update for beta server')
-    log.add('info','Update info March 12th: \n- Fixed Refine Copper recipe not working\n- Fixed alt recipes not loading from memory. Alt recipes in your bookmarked url overwrite the memory on each load.')
+    log.add('log','Update info March 12th: \n- Fixed Refine Copper recipe not working\n- Fixed alt recipes not loading from memory. Alt recipes in your bookmarked url overwrite the memory on each load.')
+    log.add('info','Update info March 13th: \n- Fixed fridge meat usage from storage')
     let settings = loadSettings(window.location.hash)
     loadData(settings)
 }

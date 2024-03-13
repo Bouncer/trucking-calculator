@@ -789,7 +789,7 @@
     },
     {
         "name": "Airline Meal",
-        "key_name": "airline-meal",
+        "key_name": "fridge-airline-meal",
         "tier": "6",
         "category": "refridgerated",
         "weight": "3",
@@ -797,7 +797,7 @@
     },
     {
         "name": "Export Airline Meal",
-        "key_name": "export-airline-meal",
+        "key_name": "export-fridge-airline-meal",
         "tier": "-1",
         "category": "refridgerated",
         "weight": "3",
@@ -941,7 +941,7 @@
     },
     {
         "name": "Dairy Products",
-        "key_name": "dairy",
+        "key_name": "fridge-dairy",
         "tier": "6",
         "category": "refridgerated",
         "weight": "15",
@@ -1013,7 +1013,7 @@
     },
     {
         "name": "Frozen Raw Meat",
-        "key_name": "frozen-raw-meat",
+        "key_name": "fridge-meat",
         "tier": "6",
         "category": "refridgerated",
         "weight": "15",
@@ -1477,7 +1477,7 @@
     },
     {
         "name": "Vegetables",
-        "key_name": "veggies",
+        "key_name": "fridge-veggies",
         "tier": "6",
         "category": "refridgerated",
         "weight": "15",
@@ -2451,7 +2451,7 @@
             ]
         ],
         "product": [
-            ["refined-copper",1]
+                ["refined-copper",1]
         ],
         "weight": 0,
         "cost": 1000,
@@ -2844,22 +2844,22 @@
     },
     {
         "name": "Airline Meal",
-        "key_name": "airline-meal",
+        "key_name": "fridge-airline-meal",
         "category": "fridgit-co.",
         "time": 1,
         "ingredients": [
             [
-                "dairy",1
+                "fridge-dairy",1
             ],
             [
-                "frozen-raw-meat",1
+                "fridge-meat",1
             ],
             [
-                "veggies",1
+                "fridge-veggies",1
             ]
         ],
         "product": [
-            ["airline-meal",
+            ["fridge-airline-meal",
             4]
         ],
         "weight": 3,
@@ -2868,16 +2868,16 @@
     },
     {
         "name": "Export Airline Meal",
-        "key_name": "export-airline-meal",
+        "key_name": "export-fridge-airline-meal",
         "category": "lsia-shipments",
         "time": 1,
         "ingredients": [
             [
-                "airline-meal",1
+                "fridge-airline-meal",1
             ]
         ],
         "product": [
-            ["export-airline-meal",
+            ["export-fridge-airline-meal",
             1]
         ],
         "weight": 3,
@@ -2886,7 +2886,7 @@
     },
     {
         "name": "Frozen Raw Meat",
-        "key_name": "frozen-raw-meat",
+        "key_name": "fridge-meat",
         "category": "clucking-bell-farms",
         "time": 1,
         "ingredients": [
@@ -2895,7 +2895,7 @@
             ]
         ],
         "product": [
-            ["frozen-raw-meat",
+            ["fridge-meat",
             1]
         ],
         "weight": 15,
@@ -2927,7 +2927,7 @@
         "time": 1,
         "ingredients": [
             [
-                "dairy",4
+                "fridge-dairy",4
             ]
         ],
         "product": [
@@ -3151,7 +3151,7 @@
             ]
         ],
         "product": [
-            ["frozen-raw-meat",
+            ["fridge-meat",
             10]
         ],
         "weight": 0,
@@ -3160,7 +3160,7 @@
     },
     {
         "name": "Frozen Fish Meat",
-        "key_name": "frozen-fish-meat",
+        "key_name": "fridge-fish-meat",
         "category": "clucking-bell-farms",
         "time": 1,
         "ingredients": [
@@ -3170,7 +3170,7 @@
             ]
         ],
         "product": [
-            ["frozen-raw-meat",
+            ["fridge-meat",
             1]
         ],
         "weight": 1,
@@ -3193,7 +3193,7 @@
             ]
         ],
         "product": [
-            ["frozen-raw-meat",
+            ["fridge-meat",
             10]
         ],
         "weight": 1,
@@ -5002,7 +5002,7 @@
     },
     {
         "name": "Tokens to Airline Meal",
-        "key_name": "tokens-to-airline-meal",
+        "key_name": "tokens-to-fridge-airline-meal",
         "category": "the-undercover-storage-co.",
         "time": 1,
         "ingredients": [
@@ -5013,7 +5013,7 @@
         ],
         "product": [
         [
-            "airline-meal",
+            "fridge-airline-meal",
             1
         ]
         ],
@@ -5153,11 +5153,11 @@
             "category": "gsd-gas-pumping-station"
         },
         {
-            "key_name": "veggies",
+            "key_name": "fridge-veggies",
             "category": "great-chaprral-farming"
         },
         {
-            "key_name": "dairy",
+            "key_name": "fridge-dairy",
             "category": "grapeseed-farm"
         },
         {

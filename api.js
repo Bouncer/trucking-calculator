@@ -270,7 +270,7 @@ class ApiLink {
     }
 
     addItem(item, rate, location) {
-        item = item.replace('_premium','').replace('fridge_','').replace('military_','').replace('mechanicals_','').replace('petrochem_','').replace('crafted_','').replace(new RegExp('^hide.*'),'hide').replaceAll('_','-')
+        item = item.replace('_premium','').replace('military_','').replace('mechanicals_','').replace('petrochem_','').replace('crafted_','').replace(new RegExp('^hide.*'),'hide').replaceAll('_','-')
         let parsedItem = spec.items.get(item) || false
 
         // ignore inaccessible factions
@@ -289,7 +289,7 @@ class ApiLink {
     }
 
     removeItem(item, location) {
-        item = item.replace('_premium','').replace('fridge_','').replace('military_','').replace('mechanicals_','').replace('petrochem_','').replace('crafted_','').replace(new RegExp('^hide.*'),'hide').replaceAll('_','-')
+        item = item.replace('_premium','').replace('military_','').replace('mechanicals_','').replace('petrochem_','').replace('crafted_','').replace(new RegExp('^hide.*'),'hide').replaceAll('_','-')
         let parsedItem = spec.items.get(item) || false
 
         if(parsedItem) {
