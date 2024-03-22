@@ -38,7 +38,7 @@ export function init() {
     log.add('log','Update info Feb 27th: \n- Fixed algorithm miscalculation for large routes. \n- Fixed trip details for starting items')
     log.add('log','Update info Feb 28th: \n- Added vehicle and liberty recipes and items')
     log.add('log','Update info March 5th: \n- Added planner animations\n- Added trip details to items page\n- Fixed vehicle recipe issues\n- Fixed items page amounts\n- Fixed Gravel Pulverizing calculation\n- Fixed ignoring of old factions\n- Fixed item names of old factions')
-    log.add('info','Update info March 7th: \n- Added auto update synchronisation\n- Increased update speed')
+    log.add('log','Update info March 7th: \n- Added auto update synchronisation\n- Increased update speed')
     let settings = loadSettings(window.location.hash)
     loadData(settings)
 }
