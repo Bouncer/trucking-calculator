@@ -86,6 +86,7 @@ export function formatSettings() {
     if (alt.length > 0) {
         settings += "&alt=" + alt.join(",")
     }
+    localStorage.setItem('altrecipes',alt.join(","))
 
     let minerStrings = []
     for (let [recipe, {miner, purity}] of spec.minerSettings) {

@@ -43,6 +43,7 @@ class ApiLink {
         this.playeronline = false
         this.playerjob = null
         this.player = null
+        this.server = "beta"
         this.autorefresh = {
             'inventory': 0,
             'vehicles': 0,
@@ -94,7 +95,7 @@ class ApiLink {
         var now = Date.now()
         
         // if api and player id are set we refresh every minute, otherwise every 10
-        if(this.connected && (!this.players || (now - new Date(this.players.t).getTime()) > 60000)) {
+        if(this.connected && (!this.players || (!this.player && (now - new Date(this.players.t).getTime()) > 5000) || (this.player && (now - new Date(this.players.t).getTime()) > 60000))) {
             // to prevent loops
             this.players = {t:now}
             this.getPlayers()
@@ -170,16 +171,23 @@ class ApiLink {
 
     getPlayers() {
         // actually get data
-        fetch(`${this.baseURL}path=widget/players.json`, {method: "GET"}).then(r=>r.json()).then(async data => {
+
+        if(!this.player) {
+            if(this.server == "") {
+                this.server = "beta"
+            } else {
+                this.server = ""
+            }
+        }
+        
+        fetch(`${this.baseURL}path=widget/players.json&server=${this.server}`, {method: "GET"}).then(r=>r.json()).then(async data => {
             if(data) {
                 this.players = {'t':new Date(), 'd': data}
                 localStorage.setItem("players", JSON.stringify(this.players));
                 //log.add('success',`Loaded online player data`)
                 this.parsePlayers()
-            } else {
-                log.add('warning',`Server error ${data.code}`)
             }
-        })
+        })        
     }
 
     parsePlayers() {
@@ -214,6 +222,8 @@ class ApiLink {
             d3.select("#playername").text(player[0])
             d3.select("#playerjob").text(player[5])
             d3.select("#playericon img").attr('src',player[3])
+            let serverText = `${this.server}`// ${this.players.d.players.length} online ${this.players.d.server.uptime.replace(" ","")}`
+            d3.select("#serverdxp").text(serverText)
         }
     }
 
@@ -260,7 +270,7 @@ class ApiLink {
     }
 
     addItem(item, rate, location) {
-        item = item.replace('_premium','').replace('fridge_','').replace('military_','').replace('mechanicals_','').replace('petrochem_','').replace('crafted_','').replace(new RegExp('^hide.*'),'hide').replaceAll('_','-')
+        item = item.replace('_premium','').replace('military_','').replace('mechanicals_','').replace('petrochem_','').replace('crafted_','').replace(new RegExp('^hide.*'),'hide').replaceAll('_','-')
         let parsedItem = spec.items.get(item) || false
 
         // ignore inaccessible factions
@@ -279,7 +289,7 @@ class ApiLink {
     }
 
     removeItem(item, location) {
-        item = item.replace('_premium','').replace('fridge_','').replace('military_','').replace('mechanicals_','').replace('petrochem_','').replace('crafted_','').replace(new RegExp('^hide.*'),'hide').replaceAll('_','-')
+        item = item.replace('_premium','').replace('military_','').replace('mechanicals_','').replace('petrochem_','').replace('crafted_','').replace(new RegExp('^hide.*'),'hide').replaceAll('_','-')
         let parsedItem = spec.items.get(item) || false
 
         if(parsedItem) {

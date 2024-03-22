@@ -231,6 +231,12 @@ function renderAltRecipes(settings) {
                 spec.setRecipe(recipe)
             }
         }
+    } else if(localStorage.getItem('altrecipes')) {
+        let alt = localStorage.getItem('altrecipes').split(",")
+        for (let recipeKey of alt) {
+            let recipe = spec.recipes.get(recipeKey)
+            spec.setRecipe(recipe)
+        }
     }
 
 
