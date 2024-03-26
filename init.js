@@ -34,14 +34,9 @@ function loadData(settings) {
 }
 
 export function init() {
-    log.add('log','Update info Feb 25th: \n- Added usage of storage items for planning \n- Added auto refresh timers\n- Added api charge estimator\n- Added check for online and trucking \n- Added setting to hide non-trucking items \n- Added setting to disable storage usage \n- Added player info in header \n- Added missing recipes \n- Added preference to use items in inventory or trucks over other storages.\n- Fixed missing item names in storages (Please report if other items are missing) \n- Removed trip info from starting recipes for now due to errors.')
-    log.add('log','Update info Feb 27th: \n- Fixed algorithm miscalculation for large routes. \n- Fixed trip details for starting items')
-    log.add('log','Update info Feb 28th: \n- Added vehicle and liberty recipes and items')
-    log.add('log','Update info March 5th: \n- Added planner animations\n- Added trip details to items page\n- Fixed vehicle recipe issues\n- Fixed items page amounts\n- Fixed Gravel Pulverizing calculation\n- Fixed ignoring of old factions\n- Fixed item names of old factions')
-    log.add('log','Update info March 7th: \n- Added auto update synchronisation\n- Increased update speed')
-    log.add('log','Update info March 8th: \n- Fixed auto update for beta server')
     log.add('log','Update info March 12th: \n- Fixed Refine Copper recipe not working\n- Fixed alt recipes not loading from memory. Alt recipes in your bookmarked url overwrite the memory on each load.')
     log.add('log','Update info March 13th: \n- Fixed fridge meat usage from storage')
+    log.add('info','Update info March 26th: \n- Elements in the planner can now be clicked on to visually tick them off. This has no further effect and is not stored.\n- Increased spacing between nodes')
     let settings = loadSettings(window.location.hash)
     loadData(settings)
 }

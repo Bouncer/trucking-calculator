@@ -20,7 +20,8 @@ import { updateMap } from "./map.js"
 
 const iconSize = 20
 
-const nodePadding = 80
+const nodePadding = 100
+const nodePaddingCalc = 80
 
 const columnWidth = 150
 const maxNodeHeight = 100
@@ -222,7 +223,7 @@ function recipeValue(recipe, rate, ignore) {
 }
 
 function rankHeightEstimate(rank, valueFactor) {
-    let total = nodePadding * (rank.length - 1)
+    let total = nodePaddingCalc * (rank.length - 1)
     for (let value of rank) {
         total += value.mul(valueFactor).toFloat()
     }
@@ -370,6 +371,13 @@ export function renderTotals(totals, targets, ignore) {
                 .attr("stroke-opacity", 0.3)
                 .attr("stroke", d => d3.color(colorList[d.source.building.color]).brighter())
                 .attr("stroke-width", d => Math.max(2, d.width) - 1)
+                .on("click", function(d) {
+                    if(d3.select(this).attr("stroke-opacity") == 0.3) {
+                        d3.select(this).attr("stroke-opacity", 0.1)
+                    } else {
+                        d3.select(this).attr("stroke-opacity", 0.3)
+                    }
+                  })
 
             // Don't draw belts if we have less than three pixels per belt.
 /*
@@ -428,6 +436,13 @@ export function renderTotals(totals, targets, ignore) {
                 .subject(d => d)
                 .on('start', function () { this.parentNode.appendChild(this); })
                 .on('drag', dragmove))
+                .on("click", function(d) {
+                    if(d3.select(this).select("rect").style('opacity') == 0.9) {
+                        d3.select(this).select("rect").style('opacity',0.3)
+                    } else {
+                        d3.select(this).select("rect").style('opacity',0.9)
+                    }
+                  })
         
                 r.append("rect")
                     .attr("x", d => d.x0)
@@ -436,7 +451,7 @@ export function renderTotals(totals, targets, ignore) {
                     .attr("width", d => d.x1 - d.x0)
                     .attr("fill", d => d.name == "output" ? d3.rgb("#AAAAAA").darker() : d3.rgb(colorList[d.building.color]).darker())
                     .attr("stroke", d => d.name == "output" ? d3.rgb("#AAAAAA") : d3.color(colorList[d.building.color]))
-                    .style('opacity',1)
+                    .style('opacity',0.9)
 
                 r.filter(d => d.name != "output")
                     .append("image")
