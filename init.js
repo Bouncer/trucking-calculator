@@ -34,9 +34,8 @@ function loadData(settings) {
 }
 
 export function init() {
-    log.add('log','Update info March 12th: \n- Fixed Refine Copper recipe not working\n- Fixed alt recipes not loading from memory. Alt recipes in your bookmarked url overwrite the memory on each load.')
-    log.add('log','Update info March 13th: \n- Fixed fridge meat usage from storage')
-    log.add('info','Update info March 26th: \n- Elements in the planner can now be clicked on to visually tick them off. This has no further effect and is not stored.\n- Increased spacing between nodes')
+//    log.add('log','Update info March 13th: \n- Fixed fridge meat usage from storage')
+    log.add('info','Update December 1st: \n- Fixed server data not loading. Enjoy!')
     let settings = loadSettings(window.location.hash)
     loadData(settings)
 }
