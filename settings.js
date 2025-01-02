@@ -363,9 +363,9 @@ function renderConfiguration(settings) {
         spec.capacity.strength = spec.cache.strength
     }
 
-    if(settings.has("truck") || (loadCache && spec.cache.truck == 6900)) {
+    if(settings.has("truck") || (loadCache && spec.cache.truck == 6000)) {
         d3.select("#truck-mk15").property("checked",true)
-        spec.capacity.truck = 6900
+        spec.capacity.truck = 6000
     } else {
         d3.select("#truck-none").property("checked",true)
         spec.capacity.truck = 0

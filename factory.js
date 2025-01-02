@@ -449,10 +449,10 @@ class FactorySpecification {
     }
     updateCapacity() {
 //        this.capacity.total = Math.round((this.capacity.strength * 10 * (1 + this.capacity.strengthperk + this.capacity.premium)) + (this.capacity.truck * (1 + this.capacity.postop + this.capacity.premium)) + (this.capacity.trailer * (1 + this.capacity.premium + this.capacity.postop)))
-        this.capacity.totalinv = Math.floor(this.capacity.strength * 10 * (1 + this.capacity.strengthperk + this.capacity.premium))
-        this.capacity.totaltrunk = Math.floor(this.capacity.truck * (1 + this.capacity.postop + this.capacity.premium))
-        this.capacity.totaltrailer = Math.floor(this.capacity.trailer * (1 + this.capacity.premium + this.capacity.postop))
-        this.capacity.total = Math.floor(this.capacity.totalinv + this.capacity.totaltrunk + this.capacity.totaltrailer)
+        this.capacity.totalinv = Math.round(this.capacity.strength * 10 * (1 + this.capacity.strengthperk + this.capacity.premium))
+        this.capacity.totaltrunk = Math.round(this.capacity.truck * (1 + this.capacity.postop + this.capacity.premium))
+        this.capacity.totaltrailer = Math.round(this.capacity.trailer * (1 + this.capacity.premium + this.capacity.postop))
+        this.capacity.total = Math.round(this.capacity.totalinv + this.capacity.totaltrunk + this.capacity.totaltrailer)
         localStorage.setItem("capacity", JSON.stringify(this.capacity));
         
         d3.select("#capacity-inventory").text(`${this.capacity.totalinv.toLocaleString()} kg`)

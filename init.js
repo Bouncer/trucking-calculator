@@ -35,7 +35,7 @@ function loadData(settings) {
 
 export function init() {
 //    log.add('log','Update info March 13th: \n- Fixed fridge meat usage from storage')
-    log.add('info','Update December 1st: \n- Fixed server data not loading. Enjoy!')
+    log.add('info','Update January 2nd 2025: \n- Fixed incorrect MK15 capacity.')
     let settings = loadSettings(window.location.hash)
     loadData(settings)
 }
