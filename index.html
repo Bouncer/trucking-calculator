@@ -22,7 +22,7 @@
     </script>
     <script type="module">
         import { log } from "./log.js"
-        import { plusHandler, clickTab, changeStrength, changePremium, changePerk, changeTruck, changeCapacity } from "./events.js"
+        import { plusHandler, clickTab, changeStrength, changePremium, changePerk, changeTruck, changeDistribution, changeCapacity } from "./events.js"
         import { init } from "./init.js"
         handlers.plusHandler = plusHandler
         handlers.clickTab = clickTab
@@ -30,6 +30,7 @@
         handlers.changePremium = changePremium
         handlers.changePerk = changePerk
         handlers.changeTruck = changeTruck
+        handlers.changeDistribution = changeDistribution
         handlers.changeCapacity = changeCapacity
         handlers.init = init
         setInterval(function() { api.updateTimers() }, 100)
@@ -244,6 +245,21 @@ limitations under the License.-->
             <td class="setting-label">Total Capacity:</td>
             <td><div id="capacity" class="truck-totals"></div></td>
         </tr>
+
+        <tr class="setting-row">
+            <td colspan="2"><hr /></td>
+        </tr>
+
+        <tr class="setting-row">
+            <td class="setting-label">Cargo Distribution:</td>
+            <td>
+                <div id="truck_selector">
+                    <span><input id="distribution-maximum" type="radio" name="distribution" checked="checked" value="maximum" onchange="handlers.changeDistribution(event)"><label for="distribution-maximum">Maximum load</label></span>
+                    <span><input id="distribution-optimal" type="radio" name="distribution" value="optimal" onchange="handlers.changeDistribution(event)"><label for="distribution-optimal">Optimal for processing</label></span>
+                </div>
+            </td>
+        </tr>
+
 
         <tr class="setting-section">
             <td colspan="2"><div>Server data</div></td>

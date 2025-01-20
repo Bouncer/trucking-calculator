@@ -33,6 +33,9 @@ export function formatSettings() {
     if (spec.capacity.truck !== 0) {
         settings += "truck=" + spec.capacity.truck + "&"
     }
+    if (spec.capacity.distribution !== "maximum") {
+        settings += "distribution=" + spec.capacity.distribution + "&"
+    }
     if (spec.capacity.strength !== 30) {
         settings += "strength=" + spec.capacity.strength + "&"
     }

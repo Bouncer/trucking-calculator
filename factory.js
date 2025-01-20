@@ -66,6 +66,7 @@ class FactorySpecification {
         // cargo capacity settings
         this.capacity = {
             "fixed": false,
+            "distribution": "maximum",
             "belt": 0,
             "strength": 30,
             "premium": 0,
@@ -257,18 +258,104 @@ class FactorySpecification {
         if(tripRate > rate) {
             tripRate = rate
         }
-        // because we cannot split items in pieces, calculate how to distribute
-        var searching = true;
-        while(searching) {
-            // start with heaviest ingredients
-            var attempt = true;
+
+        // distribute maximum
+        if(this.capacity.distribution == "maximum") {
+            // because we cannot split items in pieces, calculate how to distribute
+            var searching = true;
+            while(searching) {
+                // start with heaviest ingredients
+                var attempt = true;
+                var storages = [
+                    ['inventory', this.capacity.totalinv],
+                    ['trunk', this.capacity.totaltrunk],
+                    ['trailer', this.capacity.totaltrailer]
+                ]
+                storages.sort((a,b) => a[1] - b[1])
+
+                for(let i in items) {
+                    items[i]["storage"] = {
+                        'inventory': 0,
+                        'trunk': 0,
+                        'trailer': 0,
+                        'total': 0
+                    }
+
+                    if(recipeWeight > 0) {
+
+                        var target = items[i].amount.toFloat() * tripRate;
+
+                        // try to put everything in one storage
+                        for(let s in storages) {
+                            var totalItemWeight = target * items[i].item.weight.toFloat()
+                            if(storages[s][1] > totalItemWeight) {
+                                items[i]['storage'][storages[s][0]] = target
+                                items[i]['storage']['total'] = target
+                                storages[s][1] -= target * items[i].item.weight.toFloat()
+                                target = 0
+                                break
+                            }
+                        }
+
+                        // if it doesnt fit, distribute
+                        if(items[i]['storage']['total'] == 0) {
+                            for(var s in storages) {
+                                // is there room at all?
+                                if(storages[s][1] >= items[i].item.weight.toFloat()) {
+                                    // how much can we add?
+                                    var capable = Math.min(Math.floor(storages[s][1] / items[i].item.weight.toFloat()), target)
+                                    target -= capable;
+                                    items[i].storage[storages[s][0]] += capable
+                                    items[i].storage['total'] += capable
+                                    storages[s][1] -= capable * items[i].item.weight.toFloat()
+                                }
+                            }
+                        }
+                        // try a smaller rate if it doesn't fit
+                        if(target >= items[i]['storage']['total']) {
+                            tripRate -= 1;
+                            attempt = false;
+                            break
+                        }
+                    } else {
+                        items[i]["storage"]["inventory"] = rate;
+                        items[i]["storage"]["total"] = rate;
+                    }
+                }
+
+                if(tripRate <= 1 || attempt) {
+                    searching = false;
+                    var tripCount = Math.ceil(rate / tripRate)
+
+                    for(let item in items) {
+                        let triptext = [];
+                        if(this.capacity.totaltrailer > 0) {
+                            triptext.push(`${items[item]['storage']['trailer'].toLocaleString()}x`)
+                        }
+                        if(this.capacity.totaltrunk > 0) {
+                            triptext.push(`${items[item]['storage']['trunk'].toLocaleString()}x`)
+                        }
+                        if(this.capacity.totalinv > 0) {
+                            triptext.push(`${items[item]['storage']['inventory'].toLocaleString()}x`)
+                        }
+                        items[item]['triptext'] = triptext.join(' + ')
+                    }
+
+                    return [items, tripCount]
+                }
+            }
+        } else if(this.capacity.distribution == "optimal") {
+
+            // distribute optimal
+            var target = tripRate;
+
             var storages = [
                 ['inventory', this.capacity.totalinv],
                 ['trunk', this.capacity.totaltrunk],
                 ['trailer', this.capacity.totaltrailer]
             ]
             storages.sort((a,b) => a[1] - b[1])
-            // try to distribute
+            
             for(let i in items) {
                 items[i]["storage"] = {
                     'inventory': 0,
@@ -276,68 +363,48 @@ class FactorySpecification {
                     'trailer': 0,
                     'total': 0
                 }
+            }
 
+            for(let s in storages) {
+
+                // how many recipes fit in this storage
                 if(recipeWeight > 0) {
-
-                    var target = items[i].amount.toFloat() * tripRate;
-
-                    // try to put everything in one storage
-                    for(let s in storages) {
-                        var totalItemWeight = target * items[i].item.weight.toFloat()
-                        if(storages[s][1] > totalItemWeight) {
-                            items[i]['storage'][storages[s][0]] = target
-                            items[i]['storage']['total'] = target
-                            storages[s][1] -= target * items[i].item.weight.toFloat()
-                            target = 0
-                            break
-                        }
-                    }
-
-                    // if it doesnt fit, distribute
-                    if(items[i]['storage']['total'] == 0) {
-                        for(var s in storages) {
-                            // is there room at all?
-                            if(storages[s][1] >= items[i].item.weight.toFloat()) {
-                                // how much can we add?
-                                var capable = Math.min(Math.floor(storages[s][1] / items[i].item.weight.toFloat()), target)
-                                target -= capable;
-                                items[i].storage[storages[s][0]] += capable
-                                items[i].storage['total'] += capable
-                                storages[s][1] -= capable * items[i].item.weight.toFloat()
-                            }
-                        }
-                    }
-                    // try a smaller rate if it doesn't fit
-                    if(target >= items[i]['storage']['total']) {
-                        tripRate -= 1;
-                        attempt = false;
-                        break
-                    }
-                } else {
-                    items[i]["storage"]["inventory"] = rate;
-                    items[i]["storage"]["total"] = rate;
-                }
-            }
-            if(tripRate <= 1 || attempt) {
-                searching = false;
-                var tripCount = Math.ceil(rate / tripRate)
-
-                for(let item in items) {
-                    let triptext = [];
-                    if(this.capacity.totaltrailer > 0) {
-                        triptext.push(`${items[item]['storage']['trailer'].toLocaleString()}x`)
-                    }
-                    if(this.capacity.totaltrunk > 0) {
-                        triptext.push(`${items[item]['storage']['trunk'].toLocaleString()}x`)
-                    }
-                    if(this.capacity.totalinv > 0) {
-                        triptext.push(`${items[item]['storage']['inventory'].toLocaleString()}x`)
-                    }
-                    items[item]['triptext'] = triptext.join(' + ')
+                    var storageRate = Math.min(Math.floor(storages[s][1] / recipeWeight), target);
+                    target -= storageRate;
                 }
 
-                return [items, tripCount]
+                for(let i in items) {
+
+                    if(recipeWeight > 0) {
+                        // how much can we add?
+                        var itemAmount = storageRate * items[i].amount.toFloat();
+                        items[i].storage[storages[s][0]] = itemAmount;
+                        //items[i].storage['total'] += itemAmount;
+                        storages[s][1] -= itemAmount * items[i].item.weight.toFloat();
+
+                    } else {
+                        items[i]["storage"]["inventory"] = rate;
+                        items[i]["storage"]["total"] = rate;
+                    }
+                }
             }
+
+            // texts
+            var tripCount = Math.ceil(rate / (tripRate - target));
+            for(let item in items) {
+                let triptext = [];
+                if(this.capacity.totaltrailer > 0) {
+                    triptext.push(`${items[item]['storage']['trailer'].toLocaleString()}x`)
+                }
+                if(this.capacity.totaltrunk > 0) {
+                    triptext.push(`${items[item]['storage']['trunk'].toLocaleString()}x`)
+                }
+                if(this.capacity.totalinv > 0) {
+                    triptext.push(`${items[item]['storage']['inventory'].toLocaleString()}x`)
+                }
+                items[item]['triptext'] = triptext.join(' + ')
+            }
+            return [items, tripCount]
         }
     }
     getPerTrip(weight) {

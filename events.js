@@ -99,6 +99,12 @@ export function changeTruck(event) {
     spec.updateSolution()
 }
 
+export function changeDistribution(event) {
+    spec.capacity.distribution = event.target.value
+    log.add('log',`Cargo distribution set to ${event.target.value}`)
+    spec.updateSolution()
+}
+
 export function changeCapacity(event) {
     spec.capacity.fixed = true
     spec.capacity.total = Number(event.target.value)

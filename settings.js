@@ -371,6 +371,14 @@ function renderConfiguration(settings) {
         spec.capacity.truck = 0
     }
 
+    if(settings.has("distribution") || (loadCache && spec.cache.distribution == "optimal")) {
+        d3.select("#distribution-optimal").property("checked",true)
+        spec.capacity.distribution = "optimal";
+    } else {
+        d3.select("#distribution-maximum").property("checked",true)
+        spec.capacity.distribution = "maximum";
+    }
+
     let beltKey = DEFAULT_BELT
     if(settings.has("trailer")) {
         d3.select("#trailer-"+settings.get("trailer")).property("checked",true)
