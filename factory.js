@@ -70,6 +70,7 @@ class FactorySpecification {
             "belt": 0,
             "strength": 30,
             "premium": 0,
+            "milk":0,
             "perk": "none",
             "strengthperk": 0,
             "truck": 0,
@@ -516,9 +517,9 @@ class FactorySpecification {
     }
     updateCapacity() {
 //        this.capacity.total = Math.round((this.capacity.strength * 10 * (1 + this.capacity.strengthperk + this.capacity.premium)) + (this.capacity.truck * (1 + this.capacity.postop + this.capacity.premium)) + (this.capacity.trailer * (1 + this.capacity.premium + this.capacity.postop)))
-        this.capacity.totalinv = Math.round(this.capacity.strength * 10 * (1 + this.capacity.strengthperk + this.capacity.premium))
-        this.capacity.totaltrunk = Math.round(this.capacity.truck * (1 + this.capacity.postop + this.capacity.premium))
-        this.capacity.totaltrailer = Math.round(this.capacity.trailer * (1 + this.capacity.premium + this.capacity.postop))
+        this.capacity.totalinv = Math.round(this.capacity.strength * 10 * (1 + this.capacity.strengthperk + this.capacity.premium + this.capacity.milk))
+        this.capacity.totaltrunk = Math.round(this.capacity.truck * (1 + this.capacity.postop + this.capacity.premium + this.capacity.milk))
+        this.capacity.totaltrailer = Math.round(this.capacity.trailer * (1 + this.capacity.premium + this.capacity.postop + this.capacity.milk))
         this.capacity.total = Math.round(this.capacity.totalinv + this.capacity.totaltrunk + this.capacity.totaltrailer)
         localStorage.setItem("capacity", JSON.stringify(this.capacity));
         

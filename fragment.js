@@ -45,6 +45,9 @@ export function formatSettings() {
     if (spec.capacity.premium == 0) {
         settings += "premium=no&"
     }
+    if (spec.capacity.milk == 0.20) {
+        settings += "milk=yes&"
+    }
     if (spec.capacity.perk !== "none") {
         settings += "perk=" + spec.capacity.perk + "&"
     }

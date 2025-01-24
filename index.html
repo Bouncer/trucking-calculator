@@ -22,12 +22,13 @@
     </script>
     <script type="module">
         import { log } from "./log.js"
-        import { plusHandler, clickTab, changeStrength, changePremium, changePerk, changeTruck, changeDistribution, changeCapacity } from "./events.js"
+        import { plusHandler, clickTab, changeStrength, changePremium, changeMilk, changePerk, changeTruck, changeDistribution, changeCapacity } from "./events.js"
         import { init } from "./init.js"
         handlers.plusHandler = plusHandler
         handlers.clickTab = clickTab
         handlers.changeStrength = changeStrength
         handlers.changePremium = changePremium
+        handlers.changeMilk = changeMilk
         handlers.changePerk = changePerk
         handlers.changeTruck = changeTruck
         handlers.changeDistribution = changeDistribution
@@ -241,6 +242,12 @@ limitations under the License.-->
                 </div>
             </td>
         </tr>
+
+        <tr class="setting-row">
+            <td class="setting-label">Farmers Milk:</td>
+            <td><input id="milk" type="checkbox" value="1" min="0" onchange="handlers.changeMilk(event)"><label for="milk"> +20%</label></td>
+        </tr>
+
         <tr class="setting-row">
             <td class="setting-label">Total Capacity:</td>
             <td><div id="capacity" class="truck-totals"></div></td>

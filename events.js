@@ -69,6 +69,19 @@ export function changePremium(event) {
     spec.updateSolution()
 }
 
+export function changeMilk(event) {
+    spec.capacity.fixed = false
+    if(event.target.checked) {
+        spec.capacity.milk = 0.20
+        log.add('log','Farmers milk enabled')
+    } else {
+        spec.capacity.milk = 0
+        log.add('log','Farmers milk disabled')
+    }
+    spec.updateSolution()
+}
+
+
 export function changePerk(event) {
     spec.capacity.fixed = false
 

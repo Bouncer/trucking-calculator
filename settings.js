@@ -400,6 +400,14 @@ function renderConfiguration(settings) {
         spec.capacity.premium = 0.15
     }
 
+    if(settings.get("milk") == "yes" || (loadCache && spec.cache.milk === 0.20)) {
+        d3.select("#milk").property("checked",true)
+        spec.capacity.milk = 0.20
+    } else {
+        d3.select("#milk").property("checked",false)
+        spec.capacity.milk = 0
+    }
+
     if(settings.get("perk") == "strength" || (loadCache && spec.cache.perk == "strength")) {
         d3.select("#perk-strength").property("checked",true)
         spec.capacity.perk = "strength"

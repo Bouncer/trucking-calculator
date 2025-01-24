@@ -35,7 +35,7 @@ function loadData(settings) {
 
 export function init() {
 //    log.add('log','Update info March 13th: \n- Fixed fridge meat usage from storage')
-    log.add('info','Update January 20th 2025: \n- The cargo distribution can now be configured to be either the maximum load or optimal distribution for processing.')
+    log.add('info','Update January 24th 2025: \n- Added Farmers Milk boost to settings.')
     let settings = loadSettings(window.location.hash)
     loadData(settings)
 }
